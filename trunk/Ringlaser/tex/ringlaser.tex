@@ -203,7 +203,7 @@ Mittels etwas komplizierten Überlegungen (siehe Staatsex. ...) kann man $w$ und
 
 Durch Einsetzten in Gl. \ref{nuexp} bekommt man für den Mitführungskoeffizienten:
 \begin{align}
- \alpha = \frac{\Delta\nu_{exp} \ \lambda \ L}{2 \ n \ d \ x_0 \ \omega}
+\label{mitfuehrungskoeff} \alpha = \frac{\Delta\nu_{exp} \ \lambda \ L}{2 \ n \ d \ x_0 \ \omega}
 \end{align}
 
 
@@ -241,6 +241,44 @@ Bestimmung der Frequenz zulässt.
 Wir unternahmen 3 Messreihen mit konstanter Drehzahl der Quarzscheibe unter Variation des Eintrittspunktes des Strahls auf der Scheibe und 3 Messreihen
 mit festem Eintrittspunkt bei Variation der Drehzahl.
 \section{Auswertung}
+
+
+\subsection{Variation der Drehzahl}
+Bei den Messreihen mit Variation der Drehzahl haben wir jeweils die Schwebungsfrequenz $\Delta\nu_{exp}$ gegen die Winkelgeschwindigkeit $\omega$
+aufgetragen. Wie sich $\omega$ und $\Delta\nu_{exp}$ und deren Fehler berechnen wurde bereits im Abschnitt Variation des Durschtrittspunktes behandelt.
+
+Nach Gleichung \ref{mitfuehrungskoeff} gilt:
+\begin{align}
+ \Delta\nu_{exp} = \frac{2 \ n \ d \ x_0 \ \alpha}{L \ \lambda}
+\end{align}
+
+Mit hilfe einer linearen Regression lässt sich also $\alpha$ bestimmen:
+\begin{align}
+ \alpha = \frac{L \ \lambda \ 
+\end{align}
+
+
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/36,5mm1.eps}
+\caption{Messreihe bei $x_0 = 36,5mm$ mit variabler Drehzahl}
+\label{36mm}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/39mm1.eps}
+\caption{Messreihe bei $x_0 = 39mm$ mit variabler Drehzahl}
+\label{39mmm}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/55mm1.eps}
+\caption{Messreihe bei $x_0 = 55mm$ mit variabler Drehzahl}
+\label{55mm}
+\end{figure}
 
 \section{Zusammenfassung}
 
