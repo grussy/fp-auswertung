@@ -159,7 +159,7 @@ Vergleicht man dies mit Gleichung \ref{fresneldreck} sieht man das zu dem Mitfü
 
 hinzugekommen ist. Dieser wird auch \textit{Dipersionsterm} genannt. Also erhalten wir für unsere Anordnung den Mitführungskoeffizienten 
 \begin{align}
- \alpha = 1 - \frac{1}{n^2} - \frac{\lambda}{n} \frac{dn}{d\lambda}
+\label{mitfuehrung} \alpha = 1 - \frac{1}{n^2} - \frac{\lambda}{n} \frac{dn}{d\lambda}
 \end{align}
 
 
@@ -292,6 +292,18 @@ Von den Werten für $\alpha$ aus den 3 Messreihen bildeten wir das gewichtete Mi
 \caption{Messreihe bei $x_0 = 55mm$ mit variabler Drehzahl}
 \label{55mm}
 \end{figure}
+
+\subsection{Vergleich mit berechnetem Mitführungskoeffizient}
+Mit Hilfe des angegebenen Brechungsindex $n=1,457$ und der Änderung des Brechungsindexes mit der Wellenlänge $\Delta n / \Delta\lambda = -300 cm^{-1}$
+lässt sich der Mitführungskoeffizient nach Gleichung \ref{mitfuehrung} berechnen:
+\begin{align}
+ \alpha_{ber} = 1 - \frac{1}{n^2} - \frac{\lambda}{n} \frac{\Delta n}{\Delta \lambda} = 0,5420
+\end{align}
+
+Ohne den Disperionsterm erhält man:
+\begin{align}
+ \alpha_{Fres} = 1 - \frac{1}{n^2} = 0,5289
+\end{align}
 
 \section{Zusammenfassung}
 
