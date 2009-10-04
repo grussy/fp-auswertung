@@ -22,7 +22,7 @@
 \fancyhead[L]{FPI Versuch: Ringlaser}
 \renewcommand{\headrulewidth}{0.6pt}
 \renewcommand{\footrulewidth}{0.6pt}
-\setlength{\headheight}{15pt}
+\setlength{\headheight}{16pt}
 \setlength{\parindent}{0pt}
 % Für die Wahl der Schriftart
 \newcommand{\changefont}[3]{
@@ -252,10 +252,23 @@ Nach Gleichung \ref{mitfuehrungskoeff} gilt:
  \Delta\nu_{exp} = \frac{2 \ n \ d \ x_0 \ \alpha}{L \ \lambda}
 \end{align}
 
-Mit hilfe einer linearen Regression lässt sich also $\alpha$ bestimmen:
+Mit hilfe einer linearen Regression $\Delta\nu_{exp} = p_0 + p_1 \ \omega$ lässt sich also $\alpha$ bestimmen:
 \begin{align}
- \alpha = \frac{L \ \lambda \ 
+ \alpha = \frac{L \ \lambda \ p_1}{2 \ n \ d \ x_0}
 \end{align}
+
+wobei $x_0$ aus dem in der Messung, mit Variablem Durchtrittspunkt, bestimmten Mittelpunkt $x_m$ bestimmt haben.
+Mit Gauß erhält man für den Fehler auf $\alpha$:
+\begin{align}
+ s_{\alpha} = \lvert \alpha \rvert \sqrt{\left(\frac{s_{p_1}}{p_1}\right)^2 + \left(\frac{s_{x_0}}{x_0}\right)^2}
+\end{align}
+
+Von den Werten für $\alpha$ aus den 3 Messreihen bildeten wir das gewichtete Mittel:
+\begin{align}
+ \alpha = x \ \pm \ x
+\end{align}
+
+
 
 
 
