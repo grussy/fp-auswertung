@@ -241,7 +241,74 @@ Bestimmung der Frequenz zulässt.
 Wir unternahmen 3 Messreihen mit konstanter Drehzahl der Quarzscheibe unter Variation des Eintrittspunktes des Strahls auf der Scheibe und 3 Messreihen
 mit festem Eintrittspunkt bei Variation der Drehzahl.
 \section{Auswertung}
+\subsection{Variabler Durchtrittspunkt}
+Als wir den Abstand des Durchtrittspunktes zum Mittelpunkt der Quarzscheibe bei konstanter Motordrehzahl variierten, trugen wir die die Differenzfrequenz gegen diesen Abstand auf. Die Differenzfrequenz lies sich in der Software direkt ablesen, wir maßen die Frequenz für einen, zwei und vier Peaks, bildeten den Mittelwert und nahmen die Standardabweichung als Fehler an. Den Messfehler der x-Werte schätzten wir mit $s_x=0,01mm$ ab, da dieser per micrometerschraube recht genau justierbar war.
 
+Nach Gleichung \ref{mitfuehrungskoeff} gilt für den Zusammenhang zwischen Abstand und Differenzfrequenz:
+\begin{align}
+ \varDelta \nu_{exp}=\frac{n\alpha\omega d}{L \lambda}x_0=cx_0=c(x-x_m)=ax+b
+\end{align}
+
+Liegt der Durchtrittspunkt in der Mitte der Quarzscheibe, dann gilt $\varDelta\nu_{exp}(x_m)=0$, also
+folgt:
+\begin{align}
+ ax_m+b=0 \Leftrightarrow x_m=-\frac{b}{a}
+\end{align}
+
+Also lässt sich aus Steigung und Achsenabschnitt der an die Messwerte angepassten Geraden der Mittelpunkt $x_m$ bestimmen. Der Fehler des Mittelpunkts ergibt sich aus $s_a$ und $s_b$ durch:
+\begin{align}
+  s_{x_m}=|x_m|\sqrt{\left( \frac{s_a}{a}\right)^2 + \left( \frac{s_b}{b}\right) ^2 }
+\end{align}
+
+Für die ersten drei Messreihen bei denen $x$ verändert wurde berechneten wir so den Mittelpunkt. Aus den so erhaltenen drei Werten für den Mittelpunkt $x_m$ berechnteten wir das gewichtete Mittel und erhielten so
+\begin{align}
+ x_m=(46,48 \pm 0,11) mm
+\end{align}
+
+Mit der Kenntniss von $x_m$ lassen sich nun die Werte für $\alpha$ berechnen. Dazu setzen wir nur alle nun bekannten Werte in Gleichung \ref{mitfuehrungskoeff} ein. Als Fehler erhalten wir:
+\begin{align}
+ s_{\alpha} = |\alpha|\sqrt{\left( \frac{s_{\varDelta\nu_{exp}}}{\varDelta\nu_{exp}}\right)^2+\left( \frac{s_{\omega}}{\omega}\right)^2+\left( \frac{s_{x_0}}{x_0}\right)^2}
+\end{align}
+
+wobei wir $x_0$ nun mit Hilfe des Mittelpunktes berechnen können:
+\begin{align}
+ x_0=x-x_m \textnormal{  mit Fehler  } s_{x_0}=\sqrt{s_x^2+s_{x_m}^2}
+\end{align}
+
+Die Winkelgeschwindigkeit $\omega$ bestimmten wir über die Umlaufdauer, $\omega=\frac{2\pi}{T}$. Für die Umlaufdauer nahmen wir einen relativen Fehler $s_t/T$ von 1\% an. Also ergibt sich für den Fehler von $\omega$: $s_{\omega}=0,01\omega$
+
+Aus den einzelnen Werten für $\alpha$ berechneten wir wieder das gewichtete Mittel und erhielten:
+\begin{align}
+ \alpha= 0,465 \pm 0,013
+\end{align}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/5V_11.eps}
+\caption{erste Messreihe bei 5V Motorspannung}
+\label{versuchsaufbau}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/5V_21.eps}
+\caption{zweite Messreihe bei 5V Motorspannung}
+\label{versuchsaufbau}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/6V2.eps}
+\caption{Messreihe bei 6V Motorspannung}
+\label{versuchsaufbau}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/7,5V1.eps}
+\caption{erste Messreihe bei 7,5V Motorspannung}
+\label{versuchsaufbau}
+\end{figure}
 
 \subsection{Variation der Drehzahl}
 Bei den Messreihen mit Variation der Drehzahl haben wir jeweils die Schwebungsfrequenz $\Delta\nu_{exp}$ gegen die Winkelgeschwindigkeit $\omega$
