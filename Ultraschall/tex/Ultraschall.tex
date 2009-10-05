@@ -17,7 +17,7 @@
 \lfoot{}
 \rfoot{Paul Kremser, Tobias Grussenmeyer}
 \cfoot{\thepage}
-\fancyhead[L]{FPI Versuch: Ringlaser}
+\fancyhead[L]{FPI Versuch: Ultraschall}
 \renewcommand{\headrulewidth}{0.6pt}
 \renewcommand{\footrulewidth}{0.6pt}
 \setlength{\headheight}{16pt}
@@ -75,8 +75,12 @@
 \section{Theoretische Grundlagen}
 
 \subsection{Beugung}
-Unter Beugung versteht man eine Richtungsänderung elektromagnetischer Wellen an einem Hinderniss welche nicht von Reflexion oder Brechung herrührt.
-Hier wird Beugung an Amplituden und Phasengittern betrachtet.
+Unter Beugung versteht man eine Richtungsänderung elektromagnetischer Wellen an einem Hinderniss welche nicht von Reflexion oder Brechung herrührt. Dabei unterscheidet man zwischen zwei unterschiedlichen Versuchsanordnungen:
+\begin{itemize}
+ \item Fresnel’sche Anordnung: Bei dieser Anordnung ist der Abstand Lichtquelle-Apertur oder Schirm - Apertur klein, d.h. die Form der Wellenfront des einfallenden Lichts ist nicht vernachlässigbar.
+ \item Frauenhofer Anordnung: Im Gegensatz zur Fresnelschen Anordnung sind hier die Abstände groß, d.h. die Wellenfront des einfallenden Lichts kann als eben angenommen werden. Zusätzlich wird gefordert, daß die Beugungsöffnung groß gegen die Wellenlänge des einfallenden Lichtes ist.
+\end{itemize}
+Hier wird Beugung an Amplituden und Phasengittern an einer Frauenhofer Anordnung betrachtet.
 
 \subsection{Amplitudengitter}
 Jedes Gitter wird durch seine Gitterkonstante $K$ charakterisiert. Die Gitterkonstante gibt den Abstand zweier benachbarter Spaltmitten an.
@@ -86,7 +90,7 @@ Bei bekannter Wellenlänge $\lambda$ lässt sich die Gitterkonstante aus dem Win
 \end{align}
 
 \subsection{Aperturfunktion}
-Jedem Objekt, an dem Beugung stattfindet, lässt sich eine Aperturfunktion zuordnen. Die Aperturfunktion beschreibt die Eigenschaften des Objekts indem
+Jedem Objekt, an dem Beugung stattfindet, lässt sich eine Aperturfunktion $g$ zuordnen. Die Aperturfunktion beschreibt die Eigenschaften des Objekts indem
 sie jedem Punkt in der Blendenebene einen Wert zuorndet. Mit Hilfe des Kirchhoffschen Integraltheorems und der daraus erhaltenen Integralformel für die
 Amplitude einer Kugelwelle auf dem Rand ihres Ausbreitungsgebietes kann man zeigen, dass die Fouriertransformierte der Aperturfunktion $g$ des
 Beugungsobjekts gerade die Intensitätsverteilung $I$ des Beugungsbildes ist.
@@ -127,7 +131,8 @@ unterscheiden lässt. Zudem gilt:
 mit der Anzahl der augeleuchteten Gitterlinien $N$ und der größten beobachteten Beugungsordnung $m$.
 
 \subsection{Phasengitter}
-Die Beugung am Phasengitter ist in unserem Fall vernachlässigbar. Stattdessen wird der strahl am Phasengitter unterschiedlich stark gebrochen.
+%VORHER: Die Beugung am Phasengitter ist in unserem Fall vernachlässigbar. Stattdessen wird der Strahl am Phasengitter unterschiedlich stark gebrochen.
+Hier ist - im Gegensatz zum Amplitudengitter - die Transmission konstant, moduliert wird die Phase.
 Eine Ultraschallwelle erzeugt in Isooktan Bereiche unterschiedlicher Dichte und somit unterschiedlicher Brechungsindizes.
 Somit treten ehmals gleichphasige Wellen phasenverschoben aus dem Gitter aus und können miteinander interferieren. Für den brechungsindex $n$ in der 
 Flüssigkeit gilt:
