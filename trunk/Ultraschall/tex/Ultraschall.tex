@@ -52,8 +52,106 @@
 \section{Überblick}
 
 \section{Aufgabestellung}
+\textbf{Amplitudengitter}
+\begin{itemize}
+ \item Bestimmung der Gitterkonstante eines Sinusgitters aus dem Abstand des 1. Beugungsordnung
+ \item Bestimmung der Gitterkonstanten von 5 Amplitudengittern
+ \item Berechnung der Aperturfunktion für Gitter Nr. 1 (größte Gitterkonstante, höchste Dichte an Beugungsmaxima) aus den ermittelten Intensitäten
+ der Beugungsordnungen und Zeichnen einer Periode der Aperturfunktion
+ \item Bestimmung des Verhältnisses der Spaltbreite zum Spaltabstand aus der Aperturfunktion
+ \item Bestimmung des Auflösevermögens der Gitter bei ihrer vollen Ausleuchtung
+\end{itemize}
+
+\textbf{Phasengitter}
+\begin{itemize}
+ \item Messung der Intensitätsverteilung der Beugungsfigur eines Ultraschallwellengitters (Phasengitter) in Abhängigkeit von der Spannung am
+ Ultraschallschwingquarz
+ \item Vergleich der Messergebnisse mit der Raman-Nath-Theorie
+ \item Bestimmung der Schallwellenlänge in Isooktan durch Ausmessen der Beugungsordnungen un Vergleich mit dem rechnerischen Wert
+\end{itemize}
+
+
 
 \section{Theoretische Grundlagen}
+
+\subsection{Beugung}
+Unter Beugung versteht man eine Richtungsänderung elektromagnetischer Wellen an einem Hinderniss welche nicht von Reflexion oder Brechung herrührt.
+Hier wird Beugung an Amplituden und Phasengittern betrachtet.
+
+\subsection{Amplitudengitter}
+Jedes Gitter wird durch seine Gitterkonstante $K$ charakterisiert. Die Gitterkonstante gibt den Abstand zweier benachbarter Spaltmitten an.
+Bei bekannter Wellenlänge $\lambda$ lässt sich die Gitterkonstante aus dem Winkel des $m$-ten Intensitätsmaximum gegenüber dem 0-ten Maximum berechnen:
+\begin{align}
+ K = \frac{m \ \lambda}{\sin{\theta}}
+\end{align}
+
+\subsection{Aperturfunktion}
+Jedem Objekt, an dem Beugung stattfindet, lässt sich eine Aperturfunktion zuordnen. Die Aperturfunktion beschreibt die Eigenschaften des Objekts indem
+sie jedem Punkt in der Blendenebene einen Wert zuorndet. Mit Hilfe des Kirchhoffschen Integraltheorems und der daraus erhaltenen Integralformel für die
+Amplitude einer Kugelwelle auf dem Rand ihres Ausbreitungsgebietes kann man zeigen, dass die Fouriertransformierte der Aperturfunktion $g$ des
+Beugungsobjekts gerade die Intensitätsverteilung $I$ des Beugungsbildes ist.
+\begin{align}
+ I = \lvert \Psi(x,y) \rvert^2 = \left\lvert \int_{Blende}{g \ e^{-ikr} \ dA} \right\rvert
+\end{align}
+
+Umgekehrt lässt sich durch Fouriertransformation aber auch die Aperturfunktion aus der Intensitätsverteilung gewinnen.
+Die Fouriertransformierte einer Funktion ist wie folgt definiert:
+\begin{align}
+ F(g) = \int\limits_{-\infty}^{\infty}g(x)~e^{-ikx}~dx
+\end{align}
+
+Ist die genaue Intensitätsverteilung nicht vollständig bekannt so kann man die Aperturfunktion ersatzweise in einer Fourierreihe nähern.
+Hierzu werden die Wurzeln der Intensitätsmaxima als Koeffizienten genommen:
+\begin{align}
+ g(x) = \sum_{j=0}^{\infty}{\pm \sqrt{I_j} \ \cos \left( \frac{x}{K} \ 2 \ \pi \ j \right) }
+\end{align}
+
+Bei einem Sinusgitter (hier treten nur Maxima 0-ter und 1-ter Ordnung auf) ergibt sich z.B.:
+\begin{align*}
+ g(x) = \sqrt{I_0} \ + \ \sqrt{I_1} \ \cos\left( \frac{x}{K} \ 2 \ \pi \right)
+\end{align*}
+
+Aus dem erhaltenen Graph die Aperturfunktion kann man dann die Spaltbreite und den Spaltabstand ablessen.
+
+\subsection{Auflösungsvermögen}
+Die Definition des Auflösungsvermögen $a$ ist:
+\begin{align}
+ a = \frac{\lambda}{\Delta\lambda}
+\end{align}
+
+mit der Wellenlänge $\lambda$ und dem Wellenlängenabstand $\Delta\lambda$ bei dem eine von $\lambda$ verschiedene Wellenlänge bei Beugung gerade noch
+unterscheiden lässt. Zudem gilt:
+\begin{align}
+ a = N \ m
+\end{align}
+mit der Anzahl der augeleuchteten Gitterlinien $N$ und der größten beobachteten Beugungsordnung $m$.
+
+\subsection{Phasengitter}
+Die Beugung am Phasengitter ist in unserem Fall vernachlässigbar. Stattdessen wird der strahl am Phasengitter unterschiedlich stark gebrochen.
+Eine Ultraschallwelle erzeugt in Isooktan Bereiche unterschiedlicher Dichte und somit unterschiedlicher Brechungsindizes.
+Somit treten ehmals gleichphasige Wellen phasenverschoben aus dem Gitter aus und können miteinander interferieren. Für den brechungsindex $n$ in der 
+Flüssigkeit gilt:
+\begin{align}
+ n(x) = n_0 + \Delta n \ sin\left(\frac{2\ \pi}{\Lambda}\ x\right)
+\end{align}
+mit $\Lambda$ der Schallwellenlänge, welche das Analogon dur Gitterkonstante beim Amplitudengitter ist.
+Da $\Delta n$ proportional zur Schallintensität $S$ ist können wir den Brechungsindex mit der Amplitude der Schallwelle ändern.
+
+\subsection{Raman-Nath-Theorie}
+Für die Winkel der Intensitätsmaxima des Beugungsbildes gilt in $m$-ter Ordnung:
+\begin{align}
+ \sin~\theta = \pm~\frac{\lambda}{\Lambda}~m
+\end{align}
+
+Die Intensitäten der Maxima $m$-ter Ordnung verhalten sich zu denen $m'$-ter Ordnung wie die Besselfunktion der $m$-ten zu denen der $m'$-ten Ordnung.
+\begin{align}
+ \frac{I_m}{I_{m'}} = \frac{J^2_m(\Delta n~D \times 2~\pi~/~\lambda)}{J^2_{m'}(\Delta n \times 2~\pi~/~\lambda)}
+\end{align}
+
+
+
+
+
 
 \section{Versuchsaufbau}
 
