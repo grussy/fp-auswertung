@@ -86,7 +86,7 @@ Hier wird Beugung an Amplituden und Phasengittern an einer Frauenhofer Anordnung
 Jedes Gitter wird durch seine Gitterkonstante $K$ charakterisiert. Die Gitterkonstante gibt den Abstand zweier benachbarter Spaltmitten an.
 Bei bekannter Wellenlänge $\lambda$ lässt sich die Gitterkonstante aus dem Winkel des $m$-ten Intensitätsmaximum gegenüber dem 0-ten Maximum berechnen:
 \begin{align}
- K = \frac{m \ \lambda}{\sin{\theta}}
+\label{gitterkonstante} K = \frac{m \ \lambda}{\sin{\theta}}
 \end{align}
 
 \subsection{Aperturfunktion}
@@ -153,16 +153,31 @@ Die Intensitäten der Maxima $m$-ter Ordnung verhalten sich zu denen $m'$-ter Or
  \frac{I_m}{I_{m'}} = \frac{J^2_m(\Delta n~D \times 2~\pi~/~\lambda)}{J^2_{m'}(\Delta n \times 2~\pi~/~\lambda)}
 \end{align}
 
-
-
-
-
-
 \section{Versuchsaufbau}
 
 \section{Durchführung}
 
 \section{Auswertung}
+\subsection{Gitterkonstante des Sinusgitters}
+Bei der Beugung am Sinusgitter masen wir als Abstand zwischen den Beugungsordnungen $a=(4,7 \pm 0,1)cm$ und zwischen Gitter und Schirm masen wir $b=(5,7\pm0,2)cm$. Der Sinus ergibt sich aus a und der Hypothenuse des durch durchtrittspunkt auf dem Gitter, nullter und erster Ordnung auf dem Schirm gebildeten Dreiecks. Diese Hypothenuse ergibt sich zu $c=\sqrt{a^2+^2}$. Also folgt für den Winkel:
+\begin{align}
+ sin(\vartheta)=\frac{a}{c}=\frac{a}{\sqrt{a^2+b^2}}
+\end{align}
+
+nach Gleichung \ref{gitterkonstante} folgt also für Gitterkonstante K
+\begin{align}
+ K=\frac{\lambda}{sin(\vartheta)}=\frac{\lambda}{a}\sqrt{a^2+b^2}= \lambda\sqrt{\frac{b^2}{a^2}+1}
+\end{align}
+
+und für den Fehler $s_K$:
+\begin{align}
+ s_K=\sqrt{\frac{\partial K}{\partial a}s_a^2+\frac{\partial K}{\partial b}s_b^2}=\frac{b\lambda}{a^2}\sqrt{\frac{a^2s_b^2+b^2s_a^2}{a^2+b^2}}
+\end{align}
+
+Hiermit erhielten wir als Ergebnis die Gitterkonstante des Sinusgitters:
+\begin{align}
+ K=(9,95\pm0,24)\times10^{-7}m
+\end{align}
 
 \section{Zusammenfassung}
 
