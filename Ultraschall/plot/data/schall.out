@@ -1,0 +1,9 @@
+Eichung, Gitter R:
+sin(theta) = a * t + b
+a: 57.71485 +- 0.20809
+b: -3.4629e-06 +- 2.8859e-05
+
+Phasengitter:
+a: 1.11440e-03 +- 1.01700e-05, b: -7.0893e-07 +- 2.5309e-05
+Schallwellenlaenge Ls [m]: 5.67840e-04 +- 5.18211e-06
+Ultraschallfrequenz nu [MHz]: 1.956537 +- 0.017855

@@ -14,7 +14,7 @@ gROOT.SetStyle("Plain")
 # -------------------------------------------------------------------
 
 L = 6.328e-7  # Wellenlaenge des Lasers [m]
-sd = 0.4      # Ablesefehler Zeitachse [us]
+sd = 0.3      # Ablesefehler Zeitachse [us]
 
 # Eichung der Zeitachse mit Gitter R --------------------------------
 
@@ -25,11 +25,11 @@ rd = [ -324.25, -244.5, -163.8, -81.650, 81.650, 163.550, 243.875, 325.5 ]
 rm = [  -4,       -3,      -2,     -1,      1,       2,      3,       4 ]
 rcount = len(rd)
 
-# Flehler der Zeitachse in us
-srd = [ 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ]
+# Flehler der Zeitachse in s
+srt = [sd / 1000. /1000. ]*rcount
 
 #rt_pro_cm = 5e-5
-#rt = [z * rt_pro_cm for z in rd]  # Umrechnung von cm nach s
+rt = [z / 1000. / 1000. for z in rd]  # Umrechnung von us nach s
 #srt = [sd * rt_pro_cm] * rcount   # Fehler auf die Zeit
 
 # sin(theta) aus den Ordnungen und der Gitterkonstante berechnen
@@ -41,9 +41,9 @@ srsinth = [1e-10] * rcount
 # Plotte sin(theta) nach t
 cr = TCanvas('cr', 'Eichung der Zeitachse')
 cr.SetGrid()
-gr = TGraphErrors(rcount, array('d',rd), array('d',rsinth),
-                  array('d',srd), array('d',srsinth))
-gr.SetTitle(';Zeit t [us];sin #theta')
+gr = TGraphErrors(rcount, array('d',rt), array('d',rsinth),
+                  array('d',srt), array('d',srsinth))
+gr.SetTitle(';Zeit t [s];sin #theta')
 gr.GetYaxis().CenterTitle()
 gr.SetMarkerColor(2)
 gr.SetMarkerStyle(3)
@@ -90,7 +90,7 @@ m4 = [    -3,    -1,    1,    3 ]
 d08534 = [ -152.125, -76.0, 76.125, 151.5 ]
 m08534 = [    -2,    -1,    1,    2 ]
 
-# Gitter 5: Abstand zur 0.Ordnung in cm bei 100us/cm (-2..+2)
+# Gitter 5: Abstand zur 0.Ordnung in us (-2..+2)
 d08540 = [ -376.0, -283.5, -191.0, -95.5, 94.25, 187.375, 286.0, 382.250 ]
 m08540 = [  -4,   -3,    -2,    -1,    1,    2 ,   3,   4 ]
 
@@ -118,12 +118,12 @@ for i in range(len(d)):
     smi = [0]*count
 
     # Zeit und Fehler in s
-    #ti = [z * tpcm for z in di]
-    #sti = tpcm * sd
+    ti = [z / 1000. / 1000. for z in di]
+    sti = sd / 1000. / 1000.
 
     # sin(theta) und Fehler anhand der Eichung berechnen
-    sinth = [ar*z+br for z in di]
-    ssinth = [sqrt((z*sar)**2 + (ar*sd)**2 + sbr**2) for z in di]
+    sinth = [ar*z+br for z in ti]
+    ssinth = [sqrt((z*sar)**2 + (ar*sti)**2 + sbr**2) for z in ti]
 
     # Plotte sin(theta) nach m
     ci = TCanvas('c%d' % (i+1), 'Gitter %s' % names[i])
