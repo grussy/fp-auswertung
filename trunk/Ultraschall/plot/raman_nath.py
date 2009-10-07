@@ -196,8 +196,8 @@ xg1max = 5.0   # Erstes Maximum der 1.Ordnung
 xj1max = 1.8412 # Erstes Maximum von J1
 
 # Umrechungsfaktor
-b = (xj0min/xg0min + xj1max/xg1max) / 2.
-
+#b = (xj0min/xg0min + xj1max/xg1max) / 2.
+b = xj1max/xg1max
 print 'Erstes Minimum der 0.Ordnung: %.1f' % xg0min
 print 'Erstes Minimum von J0: %.4f' % xj0min
 print 'Erstes Maximum der 1.Ordnung: %.1f' % xg1max
