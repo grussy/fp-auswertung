@@ -126,7 +126,7 @@ Die Definition des Auflösungsvermögen $a$ ist:
 mit der Wellenlänge $\lambda$ und dem Wellenlängenabstand $\Delta\lambda$ bei dem eine von $\lambda$ verschiedene Wellenlänge bei Beugung gerade noch
 unterscheiden lässt. Zudem gilt:
 \begin{align}
- a = N \ m
+\label{auflösevermögen} a = N \ m
 \end{align}
 mit der Anzahl der augeleuchteten Gitterlinien $N$ und der größten beobachteten Beugungsordnung $m$.
 
@@ -182,10 +182,132 @@ Hiermit erhielten wir als Ergebnis die Gitterkonstante des Sinusgitters:
 \notag
  K=(9,95\pm0,24)\times10^{-7}m
 \end{align}
+\subsection{Gitterkonstanten der fünf Amplitudengitter}
+Um die Gitterkonstante der 5 Amplitudengitter zu bestimmen musste zunächst die Zeitachse des Osziloskops in den Sinus des Ablenkwinkels umgerechnet werden. Hierfür wurde eine Eichmessung mit einem Referenzgitter R, dessen Gitterkonstante bekannt war durchgeführt. Die Angabe lautete 80 Linien pro cm, was einer Gitterkonstanten von $K_R=0,0125cm$ entspricht. Also lies sich mit Gleichung \ref{gitterkonstante} die Werte von $sin(\vartheta)$ zu den verschiedenen Ordnungen m berechnen. Diese trugen wir dann gegen die von uns gemessenen Zeitwerte auf und ermittelten, aus dem so entstehenden linearen Zusammenhang $sin(\vartheta)$, durch Geradenanpassung die Werte für a und b.
 
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/r.eps}
+\caption{Eichung der Zeitachse durch Referenzgitter}
+\end{figure}
 
+Aus diesem Fit erhält man also direkt die Umrechnung $sin(\vartheta)=at+b$ mit $a=(62,22\pm 0,03)s{-1}$ und $b=(2,92\pm 6,7)\times 10^{-6}$. Wir können also nun Anhand der Zeitskala auf den Sinus des Beugungswinkels der Gitter mit unbekanntem K rückschliessen. Der Fehler hierfür ergibt sich zu:
+\begin{align}
+ s_{sin(\vartheta)} = \sqrt{\frac{\partial sin(\vartheta)}{\partial t}^2s_t^2 + \frac{\partial sin(\vartheta)}{\partial a}^2s_a^2 + \frac{\partial sin(\vartheta)}{\partial b}^2s_b^2} = \sqrt{a^2s_t^2+t^2s_a^2+s_b^2}
+\end{align}
 
+Weiter lassen sich also nun auch über Gleichung \ref{gitterkonstante} die Gitterkonstanten $K_i$ für die fünf Amplitudengitter bestimmen. Dabei wird der lineare Zusammenhang 
+\begin{align}
+ sin(\vartheta) = \frac{\lambda}{K_i}m = a_im
+\end{align}
+ausgenutzt und $K_i$ aus der durch die Geradenanpassung ermittelten Steigung $a_i$ berechnet. Der Fehler von $K_i = \frac{\lambda}{a_i}$ beträgt:
+\begin{align}
+ s_{K_i}=K_i\frac{s_{a_i}}{a_i}
+\end{align}
 
+Wir erhielten also als Ergebnis für die Gitterkonstanten der Gitter:
+\begin{align}
+ \notag
+K_1 &= ( 137,17 \pm 0,08)\mu m \\
+ \notag
+K_3 &= ( 109,2\pm 0,12)\mu m \\
+ \notag
+K_4 &= ( 107,45\pm 0,09)\mu m \\
+ \notag
+K_{PHYWE08534} &= ( 133,9 \pm 0,18)\mu m \\
+ \notag
+K_{PHYWE08540} &= ( 107,29 \pm 0,05)\mu m
+\end{align}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/gitter1.eps}
+\caption{linerare Regresion der Daten zu Gitter 1}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/gitter3.eps}
+\caption{linerare Regresion der Daten zu Gitter 3}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/gitter4.eps}
+\caption{linerare Regresion der Daten zu Gitter 4}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/phywe08534.eps}
+\caption{linerare Regresion der Daten zu Gitter PHYWE08534}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/phywe08540.eps}
+\caption{linerare Regresion der Daten zu Gitter PHYWE08540}
+\end{figure}
+
+\subsection{Aperturfunktion und Verhältnis Spaltbreite zu -abstand von Gitter 1}
+
+Wie in der Vorbereitung beschrieben nutzen wir zur Aproximation der Aperturfunktion $g$ die Fourierreihe:
+\begin{align}
+ g(x) = \sum_{j=0}^{m}{\sqrt{i_j}cos \left( \frac{x}{K} 2 \pi j \right)}
+\end{align}
+
+Die Intensitäten massen wir für jede Ordnung der Beugungsmaxima auf beiden Seiten und verwendeten den Mittelwert. Dabei schätzten wir einen Ablesefehler von $5mV$. 
+\begin{align}
+ \notag
+I_0 &= (6585 \pm 5) mV \\
+ \notag
+I_1 &= (226 \pm 5) mV \\
+ \notag
+I_2 &= (178 \pm 5) mV \\
+ \notag
+I_3 &= (118 \pm 5) mV \\
+ \notag
+I_4 &= (58 \pm 5) mV
+\end{align}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.7\linewidth]{pictures/apertur.eps}
+\caption{Aproximation der Aperturfunktion für Gitter 1}
+\end{figure}
+
+Für das Verhältnis von Spaltbreite zu Spaltabstand benutzten wir den Wert der vollen Breite des halben Maximums (FWHM) als Wert für die Spaltbreite $w$. Der Spaltabstand $d$ berechnete sich dann mit Hilfe der Gitterkonstante $K$ aus $d= K - w$. Damit folgt direkt das Verhältnis $v=\frac{w}{d}$, mit dem Fehler $s_v=v\frac{s_d}{d}$:
+\begin{align}
+ \notag
+v=0.19837 \pm 0,00019
+\end{align}
+
+\subsection{Auflösungsvermögen der Gitter}
+Für den Durchmesser massen wir einen Wert von $d=(3 \pm 0,5)mm$. Die Anzahl der ausgeleuchteten Gitterlinien beträgt
+$N=\frac{K}{d}$. Das Auflösungsvermögen folgt dann nach Gleichung \ref{auflösevermögen} 
+\begin{align}
+ a=Nm=\frac{K}{d}m
+\end{align}
+
+mit dem Fehler 
+\begin{align}
+ s_a=a\frac{s_N}{N}=a\sqrt{\left( \frac{s_d}{d}^2 \right) + \left( \frac{s_K}{K}^2 \right) }
+\end{align}
+
+Wir erhielten als Auflösungsvermögen:
+
+\begin{align}
+ \notag
+a_1 &=  109 \pm  18\\
+ \notag
+a_3 &=  55,0 \pm  9,2\\
+ \notag
+a_4 &=  27,9 \pm  4,7\\
+ \notag
+a_{PHYWE08534} &= 90 \pm 15\\
+ \notag
+a_{PHYWE08540} &= 84 \pm 14
+\end{align}
 
 \subsection{Vergleich der Messung am Ultraschallphasengitter mit der Raman-Nath-Theorie}
 Bei der Messung hatten wir leider einen nicht wegzubekommenden Peak neben dem Maximum der 0. Ordnung. Dieser wurde vermutlich von einer Reflexion
@@ -275,7 +397,6 @@ Mit der Schallgeschwindigkeit in Isooktan von $c = 1111 \frac{m}{s}$ lässt sich
 \includegraphics[width=0.9\linewidth]{pictures/phasengitter.eps}
 \caption{Ultraschallphasengitter}
 \end{figure}
-
 
 \section{Zusammenfassung}
 
