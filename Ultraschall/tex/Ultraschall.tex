@@ -183,6 +183,100 @@ Hiermit erhielten wir als Ergebnis die Gitterkonstante des Sinusgitters:
  K=(9,95\pm0,24)\times10^{-7}m
 \end{align}
 
+
+
+
+
+\subsection{Vergleich der Messung am Ultraschallphasengitter mit der Raman-Nath-Theorie}
+Bei der Messung hatten wir leider einen nicht wegzubekommenden Peak neben dem Maximum der 0. Ordnung. Dieser wurde vermutlich von einer Reflexion
+verursacht. Aus diesem Grund verwendeten wir nur die Positionsdaten der Maxima links von der 0. Ordnung.
+
+Gemessen wurde der Spannungsabhängige Verlauf der einzelnen Beugungsordnungen. Um einen Vergleich mit der Raman-Nath-Theorie anstellen zu können müssen
+die gemessenen Intensitätswerte auf $I_0(0) = J_0(0) = 1$ normiert werden. Um den Umrechnungsfaktor $b$ der die Generatorspannung in das passende Argument
+der Besselfunktion zu erhalten nimmt man normalerweise den Spannungswert des erstem Minimums der 0. Ordnung und teilt ihn durch den $x$-Wert des ersten
+Minimums der Besselfunktion selbiger Ordnung. Entsprechend verfährt man mit dem erstem Maximum der 1.Ordnung. 
+
+Da sich in unserer Messung das erste Minimum der 0. Ordnung nicht bestimmen ließ basiert unsere Umrechnung nur auf den Daten der 1. Ordnung.
+Als Umrechnungsfakor haben wir $b = 0,36824$ erhalten. Somit konnten wir die Quadrierten Besselfunktionen in die Graphen der einzelnen Ordnungen mit 
+einfügen.
+
+Für den Fehler auf die normierten Intensitäten erhält man:
+\begin{align}
+ s_{I/I_0} = \lvert I/I_0 \rvert ~ \sqrt{\left(\frac{s_I}{I}\right)^2 + \left(\frac{s_{I_0}}{I_0}\right)^2}
+\end{align}
+
+Für den Ablesefehler der Generatorspannung haben wir $0,1V$ angenommen.
+
+Die Besselfunktionen wurden mittels der $J_n$ Implementierung aus dem Pythonpaket SciPy berechnet.
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/raman0+1o.eps}
+\caption{Verlauf der 0. und 1.Ordnung mit der Generatorspannung}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/raman0o.eps}
+\caption{0.Ordnung und Besselfunktion $J^2_0$}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/raman1o.eps}
+\caption{1.Ordnung und Besselfunktion $J^2_1$}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/raman2o.eps}
+\caption{2.Ordnung und Besselfunktion $J^2_2$}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/raman3o.eps}
+\caption{3.Ordnung und Besselfunktion $J^2_3$}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/raman4o.eps}
+\caption{4.Ordnung und Besselfunktion $J^2_4$}
+\end{figure}
+
+
+\subsection{Bestimmung der Schallwellenlänge}
+Durch die Veränderung des Versuchsaufbaus (Einsetzen der Ultraschallzelle) musste die Eichung der Zeitachse aufs neue durchgeführt werden.
+Hierzu setzten wir das Gitter $R$ (80 Striche/cm) hinter die Ultraschallzelle in der Strahlengang und bestimmten wieder
+die Zeitunterschiede zw. 0. und $m$-ter Ordnung.
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/schall_r.eps}
+\caption{Eichung der Zeitachse mit Gitter R}
+\end{figure}
+
+Durch lineare Regression erhält man den Zusammenhang zw. Zeit und $\sin\theta$ : $\sin\theta = a~t + b$ mit $a = (57,7 \pm 0,2) \frac{1}{s}$
+und $b = (0,4 \pm 2,9)\times 10^{-5}$.
+
+Die Schallwellenlänge lässt sich dann analog zur Gitterkonstante mit linearer Regression aus dem Graph $\sin\theta$ gegen $m$ berechnen:
+\begin{align}
+ \Lambda = \frac{\lambda}{a} = (5.678 \pm 0,052)*10^{-4} m
+\end{align}
+
+Mit der Schallgeschwindigkeit in Isooktan von $c = 1111 \frac{m}{s}$ lässt sich die Ultraschallfrequenz berechnen zu:
+\begin{align}
+ f = \frac{c}{\Lambda} = (1.957 \pm 0.018) MHz
+\end{align}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/phasengitter.eps}
+\caption{Ultraschallphasengitter}
+\end{figure}
+
+
 \section{Zusammenfassung}
 
 \end{document}
