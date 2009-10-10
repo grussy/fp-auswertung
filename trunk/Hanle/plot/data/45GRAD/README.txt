@@ -1,0 +1,1 @@
+Dateinamen entsprechen Temperaturen in Fahrenheit.
