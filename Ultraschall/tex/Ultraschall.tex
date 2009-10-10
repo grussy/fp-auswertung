@@ -154,7 +154,7 @@ Für die Winkel der Intensitätsmaxima des Beugungsbildes gilt in $m$-ter Ordnun
 
 Die Intensitäten der Maxima $m$-ter Ordnung verhalten sich zu denen $m'$-ter Ordnung wie die Besselfunktion der $m$-ten zu denen der $m'$-ten Ordnung.
 \begin{align}
- \frac{I_m}{I_{m'}} = \frac{J^2_m(\Delta n~D \times 2~\pi~/~\lambda)}{J^2_{m'}(\Delta n \times 2~\pi~/~\lambda)}
+ \frac{I_m}{I_{m'}} = \frac{J^2_m(\Delta n~D \cdot 2~\pi~/~\lambda)}{J^2_{m'}(\Delta n \cdot 2~\pi~/~\lambda)}
 \end{align}
 
 \newpage
@@ -173,12 +173,11 @@ Das Beugungsbild wird mittels einer dritten Linse $L_3(300mm)$ focussiert und ü
 \caption{Versuchsaufbau mit Quarztank und Eichgitter}
 \end{figure}
 
+\newpage
 
 \section{Durchführung}
 Zuerst nahmen wir alles aus dem Strahlengang um den Laserstrahl möglichst waagerecht und gerade auszurichten. Danach ordneten wir die optischen Elemente wie in obiger Abbildung an. Wir nahmen die Beugungsbilder von 5 verschiedenen Gittern sowie einem Eichungsgitter mit bekannter Gitterkonstante auf indem wir die Bilder des Osziloskops auswerteten. Zur Ermittlung des Auflösungsvermögens versuchten wir den Durchmesser des Lichtstrahls zu bestimmen, dann zählten wir die Anzahl der Beugungsordnungen bei den verschiedenen Gittern. Daraufhin setzten wir die mit Isooktan gefüllte Ultraschallzelle ein und nahmen eine Serie von Beugungsbildern in Abhängigkeit zur angelegten Spannung auf. Um die Schallwellenlänge zu bestimmen nahmen wir nochmals ein Bild des Eichgitters auf, diesmal aber mit dem vorgesetzten Isooktantank.  Zuletzt entnahmen wir wieder alle Linsen und brachten das Sinusgitter ein um den
 Abstand zwischen der nullten und ersten Beugungsordnung, sowie den Abstand zwischen Schirm und Gitter zu messen.
-
-\newpage
 
 \section{Auswertung}
 \subsection{Gitterkonstante des Sinusgitters}
@@ -203,7 +202,7 @@ und für den Fehler $s_K$:
 Hiermit erhielten wir als Ergebnis die Gitterkonstante des Sinusgitters:
 \begin{align}
 \notag
- K=(9,95\pm0,24)\times10^{-7}m
+ K=(9,95\pm0,24)\cdot10^{-7}m
 \end{align}
 \subsection{Gitterkonstanten der fünf Amplitudengitter}
 Um die Gitterkonstante der 5 Amplitudengitter zu bestimmen musste zunächst die Zeitachse des Osziloskops in den Sinus des Ablenkwinkels umgerechnet werden. Hierfür wurde eine Eichmessung mit einem Referenzgitter R, dessen Gitterkonstante bekannt war durchgeführt. Die Angabe lautete 80 Linien pro cm, was einer Gitterkonstanten von $K_R=0,0125cm$ entspricht. Also lies sich mit Gleichung \ref{gitterkonstante} die Werte von $sin(\vartheta)$ zu den verschiedenen Ordnungen m berechnen. Diese trugen wir dann gegen die von uns gemessenen Zeitwerte auf und ermittelten, aus dem so entstehenden linearen Zusammenhang $sin(\vartheta)$, durch Geradenanpassung die Werte für a und b.
@@ -214,7 +213,7 @@ Um die Gitterkonstante der 5 Amplitudengitter zu bestimmen musste zunächst die 
 \caption{Eichung der Zeitachse durch Referenzgitter}
 \end{figure}
 
-Aus diesem Fit erhält man also direkt die Umrechnung $sin(\vartheta)=at+b$ mit $a=(62,22\pm 0,03)s{-1}$ und $b=(2,92\pm 6,7)\times 10^{-6}$. Wir können also nun Anhand der Zeitskala auf den Sinus des Beugungswinkels der Gitter mit unbekanntem K rückschliessen. Der Fehler hierfür ergibt sich zu:
+Aus diesem Fit erhält man also direkt die Umrechnung $sin(\vartheta)=at+b$ mit $a=(62,22\pm 0,03)s{-1}$ und $b=(2,92\pm 6,7)\cdot 10^{-6}$. Wir können also nun Anhand der Zeitskala auf den Sinus des Beugungswinkels der Gitter mit unbekanntem K rückschliessen. Der Fehler hierfür ergibt sich zu:
 \begin{align}
  s_{sin(\vartheta)} = \sqrt{\frac{\partial sin(\vartheta)}{\partial t}^2s_t^2 + \frac{\partial sin(\vartheta)}{\partial a}^2s_a^2 + \frac{\partial sin(\vartheta)}{\partial b}^2s_b^2} = \sqrt{a^2s_t^2+t^2s_a^2+s_b^2}
 \end{align}
@@ -276,7 +275,7 @@ K_{PHYWE08540} &= ( 107,29 \pm 0,05)\mu m
 
 Wie in der Vorbereitung beschrieben nutzen wir zur Aproximation der Aperturfunktion $g$ die Fourierreihe:
 \begin{align}
- g(x) = \sum_{j=0}^{m}{\sqrt{i_j}cos \left( \frac{x}{K} 2 \pi j \right)}
+ g(x) = \sum_{j=0}^{m}{\sqrt{I_j} ~ cos \left( \frac{x}{K} 2 \pi j \right)}
 \end{align}
 
 Die Intensitäten massen wir für jede Ordnung der Beugungsmaxima auf beiden Seiten und verwendeten den Mittelwert. Dabei schätzten wir einen Ablesefehler von $5mV$. 
@@ -403,11 +402,11 @@ die Zeitunterschiede zw. 0. und $m$-ter Ordnung.
 \end{figure}
 
 Durch lineare Regression erhält man den Zusammenhang zw. Zeit und $\sin\theta$ : $\sin\theta = a~t + b$ mit $a = (57,7 \pm 0,2) \frac{1}{s}$
-und $b = (0,4 \pm 2,9)\times 10^{-5}$.
+und $b = (0,4 \pm 2,9)\cdot 10^{-5}$.
 
 Die Schallwellenlänge lässt sich dann analog zur Gitterkonstante mit linearer Regression aus dem Graph $\sin\theta$ gegen $m$ berechnen:
 \begin{align}
- \Lambda = \frac{\lambda}{a} = (5.678 \pm 0,052)*10^{-4} m
+ \Lambda = \frac{\lambda}{a} = (5.678 \pm 0,052) \cdot 10^{-4} m
 \end{align}
 
 Mit der Schallgeschwindigkeit in Isooktan von $c = 1111 \frac{m}{s}$ lässt sich die Ultraschallfrequenz berechnen zu:
@@ -421,8 +420,69 @@ Mit der Schallgeschwindigkeit in Isooktan von $c = 1111 \frac{m}{s}$ lässt sich
 \caption{Ultraschallphasengitter}
 \end{figure}
 
+\large{\textbf{Fazit}}
+Leider konnten wir die Raman Nath Theorie nur teilweise verfifizieren, und die Auflösungsvermögen liessen sich nur bis auf einen zu grossen Fehler bestimmen.
+Letzteres lag an der schlechten Messmöglichkeit des Strahldurchmessers. Alle anderen Versuchsteile erzielten befriedigende Ergebnisse.
+
+
 \newpage
 
 \section{Zusammenfassung}
+\begin{itemize}
+\item Als Gitterkonstante des Sinusgitters erhielten wir 
+\begin{align}
+ \notag
+ K=(9,95\pm0,24)\cdot 10^{-7}m .
+\end{align}
+
+\item Als Gitterkonstanten der fünf Amplitudengitter erhielten wir
+\begin{align}
+ \notag
+K_1 &= ( 137,17 \pm 0,08)\mu m \\
+ \notag
+K_3 &= ( 109,2\pm 0,12)\mu m \\
+ \notag
+K_4 &= ( 107,45\pm 0,09)\mu m \\
+ \notag
+K_{PHYWE08534} &= ( 133,9 \pm 0,18)\mu m \\
+ \notag
+K_{PHYWE08540} &= ( 107,29 \pm 0,05)\mu m
+\end{align}
+
+\item Für Gitter 1 erhielten wir über die Aperturfunktion den Abstand von Spaltbreite zu Spaltabsand zu
+\begin{align}
+ \notag
+v=0.19837 \pm 0,00019
+\end{align}
+
+\item Als maximal Auflösevermögen der Gitter erhielten wir
+\begin{align}
+ \notag
+a_1 &=  109 \pm  18\\
+ \notag
+a_3 &=  55,0 \pm  9,2\\
+ \notag
+a_4 &=  27,9 \pm  4,7\\
+ \notag
+a_{PHYWE08534} &= 90 \pm 15\\
+ \notag
+a_{PHYWE08540} &= 84 \pm 14
+\end{align}
+
+\item Durch die Messergebnisse am Phasengitter lies sich die Raman-Nath-Theorie nur teilweise verifizieren, 
+für die erste Beugungsordnung stimmt der Kurvenverlauf der Messergebnisse recht gut mit dem erwarteten überein.
+Für die zweite stimmt der Verlauf qualitativ auch noch ungefär, für alle anderen erkannten wir leider keine Übereinstimmung 
+unserer Messungen mit der jeweiligen quatrierten Besselfunktion. Dies deutet auf auf einen systematischen Fehler 
+unserer Messung hin, zB könnte aufgrund der geringen Füllhöhe des Isooktantanks die Korellation zwischen angelegter Spannung und dadurch entstehender 
+Amplitude der Ultraschallwelle verändert worden sein.
+
+\item Als Schallwellenlänge erhielten wir
+\begin{align}
+\notag
+ \Lambda = (5.678 \pm 0,052) \cdot 10^{-4} m
+\end{align}
+
+
+\end{itemize}
 
 \end{document}
