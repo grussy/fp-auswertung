@@ -61,6 +61,68 @@ des Quecksilbers für verschiedene Polarisationsrichtungen des einstrahlenden Li
 
 \section{Theoretische Grundlagen}
 
+Wir nutzen den Hanle-Effekt zur bestimmung der Lebensdauer angeregter  Zustände im Hg-Atom. Dazu bestrahlen wir die Atome mit linear polarisiertem Licht dessen Wellenlänge dem Übergang des zu untersuchenden Zustands entspricht bestrahlt. Die bestrahlten Atome werden dadurch angeregt und strahlen ebenfalls Lichtdieser Wellenlänge und polarisation aus (Resonsnzfluoreszenz). Beobachtet man die Atome nun aus der zur polarisation parallelen Richtung so sieht man zunächst keine Strahlung. Legt man senkrecht zur Polarisationsrichtung ein äusseres Magnetfeld an so sieht man bei Variation dieses Feldes auch eine Variation der Intensität. Dies wird als Hanle Effekt bezeichnet.
+
+\subsection{klassische Deutung}
+Bei klassischer Betrachtungsweise schwingt das angeregte Atom als Dipol entlang der Polarisationsachse. Es handelt sichalso um einen gedämpften Oszilator, das Atom schwingt bis es durch die Strahlungsdämpfung wieder zur Ruhe kommt. Betrachtet man nun diesen Dipol parallel zur Schwingunsachse so sieht man keine Strahlung da ein Dipol nie in dieser Richtung abstrahlt. Legt man nun senkrecht zur Schwingung ein Magnetfeld an so beginnt das elektron aufgrund der Lorentzkraft mit der Lamorfrequenz um die Feldrichtung zu präzedieren. Diese Frequenz berechnet sich zu:
+\begin{align}
+ \omega_L=\frac{g_j \mu_B H}{\hbar}
+\end{align}
+wobei $g_j$ der Landesche Faktor und $\mu_B$ das Bohrsche Magneton ist. In einer zur Feldachse senkrechten Ebene kommt es dadurch zu einer rosettenartigen Figur der Elektronenbahn.
+\\
+Die Intensitätsverteilung des Dipols ist im wesentlichen eine $sin^2(\vartheta)$ Verteilung ($\vartheta$ ist der
+Winkel zwischen Dipolachse und Beobachtungsrichtung). Setzt man nun $\vartheta = \omega_L t$ und beschreibtdie Dämpfung mittels den Term $e^{-t/\tau}$, mit $\tau$ als mittlerer Lebensdauer des angeregten Zustands so folgt die Strahlungsintensität zu:
+\begin{align}
+ I = C \int \limits_{0} \limits^{\infty} e^{-\frac{t}{\tau}}sin^2(\omega_L t) dt
+\end{align}
+
+Dieses Integral ergibt augewerteteine inverse Lorentzkurve, $C$ ist eine Proportionalitätskonstante. Ist die Polarisationsrichtung um $\pi/2$ zur Beobachtungsrichtung gedreht so ergibt sich eine normal Lorentzkurve. In beiden Fällen gilt für die Halbwertsbreite $\omega_{\frac{1}{2}}$:
+\begin{align}
+ \omega_{\frac{1}{2}}= \frac{\hbar}{g_j \mu_B\tau}
+\end{align}
+
+Daraus folgt dann für die Lebensdauer, wenn $H_{\frac{1}{2}}$ die Feldstärke bei halber Höhe der vollen Intensität ist:
+\begin{align}
+ \tau = \frac{\hbar}{2 g_j \mu_B H_{\frac{1}{2}}}
+\end{align}
+
+\subsection{quantenmechanische Deutung}
+Der Hanle Effekt ist ein spezialfall des sogenanten \textit{level-crossing}. Unter level-crossing versteht man folgendes:
+
+Liegt eine Feinstrukturaufspaltung in verschiedene Zeeman-Niveaus bereits ohne äußeres Magnetfeld vor, so können die verschiedenen Niveaus durch Anlegen eines Feldes zur Überkreuzung gebracht werden, d. h. bei einer bestimmten Feldstärke können zwei Niveaus energetisch zusammenfallen. In diesem Bereich findet man eine merkliche Änderung der Intensität der Fluoreszenzstrahlung.
+
+Der Hanle Effekt tritt beiFeldstärke null auf, dh die Energien der Feinstrukturauflösung fallen bei Feldstärke Null zusammen. Der Intensitätsverlauf kann quantenmechanisch hergeleitet werden, dazu kann man bei diesem Versuch die Breit-Formel verwenden, eine Ratengleichung, welche die Absorption und Reemission von Photonen (mit der Polarisation von $f$ bzw. $g$) in der Resonanzzelle beschreibt. Für ein System mit Grundzustand a und zwei sich kreuzenden Zuständen b und c lässt sich die Rate aufspalten, mit $\nu(b,c)$ als Frequenzdifferenz der angeregten Zustände.
+\begin{align}
+ R(f,g)=c\left[ R_0+\frac{A}{1-2\pi i \tau \nu (b,c)}+\frac{A^*}{1-2\pi i \tau \nu (b,c)}\right]
+\end{align}
+
+Man erhält für ein imaginäres A einen Intensitätsverlauf in Form einer Dispersionskurve und für ein reelles A eine Lorentzkurve. Von den drei Komponenten in die sich ein $3_P^1$-Term aufspaltet, nämlich $m = 0$ und $m = \pm 1$, beobachten wir nur die Strahlung der $m = \pm1$-Komponenten. A ist in diesem Fall reell und die Energieaufspaltung im Magnetfeld beträgt:
+\begin{align}
+ \Delta \nu = \frac{2 g_j \mu_B H}{h}
+\end{align}
+
+Für die Halbwertsbreite der Lorentzkurve erhält man:
+\begin{align}
+ \Delta \nu_{\frac{1}{2}} = \frac{1}{\pi \tau} = \frac{2 g_j \mu_B 2 H_{\frac{1}{2}}}{h}
+\end{align}
+
+und somit erhält man für die mittlere Lebensdauer wieder:
+\begin{align}
+ \tau = \frac{h}{4 g_j \mu_B \pi H_{\frac{1}{2}}} = \frac{\hbar}{2 g_j \mu_B H_{\frac{1}{2}}}
+\end{align}
+
+\subsection{Coherence Narrowing}
+Hierbei handelt es sich um einen Effekt der die mittlere Lebensdauer länger erscheinen lässt. Dabei wird ein Atom in der Nähe des angeregten durch die Strahlung des ersteren selbst angeregt. Dieses Schwingt unter Beibehaltung der Präzession, Phase und Raumorientierung der Dipolschwingung des ersten Atoms. Dieser Prozess kann mehrfach auftreten, seine Wahrscheinlichkeit hängt vom Dampfdruck der beobachteten Substanz ab. Der Dampdruck steigt mit der Temperatur, wesshalb wir Messungen bei verschiedenen Temperatur durchführen um dann auf den Wert $T=0K$ zu extrapolieren.
+
+
+
+
+
+
+
+
+
+
 \section{Versuchsaufbau}
 
 \section{Durchführung}
