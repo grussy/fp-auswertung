@@ -63,7 +63,7 @@ des Quecksilbers für verschiedene Polarisationsrichtungen des einstrahlenden Li
 
 Wir nutzen den Hanle-Effekt zur bestimmung der Lebensdauer angeregter  Zustände im Hg-Atom. Dazu bestrahlen wir die Atome mit linear polarisiertem Licht dessen Wellenlänge dem Übergang des zu untersuchenden Zustands entspricht bestrahlt. Die bestrahlten Atome werden dadurch angeregt und strahlen ebenfalls Lichtdieser Wellenlänge und polarisation aus (Resonsnzfluoreszenz). Beobachtet man die Atome nun aus der zur polarisation parallelen Richtung so sieht man zunächst keine Strahlung. Legt man senkrecht zur Polarisationsrichtung ein äusseres Magnetfeld an so sieht man bei Variation dieses Feldes auch eine Variation der Intensität. Dies wird als Hanle Effekt bezeichnet.
 
-\subsection{klassische Deutung}
+\subsection{Klassische Deutung}
 Bei klassischer Betrachtungsweise schwingt das angeregte Atom als Dipol entlang der Polarisationsachse. Es handelt sichalso um einen gedämpften Oszilator, das Atom schwingt bis es durch die Strahlungsdämpfung wieder zur Ruhe kommt. Betrachtet man nun diesen Dipol parallel zur Schwingunsachse so sieht man keine Strahlung da ein Dipol nie in dieser Richtung abstrahlt. Legt man nun senkrecht zur Schwingung ein Magnetfeld an so beginnt das elektron aufgrund der Lorentzkraft mit der Lamorfrequenz um die Feldrichtung zu präzedieren. Diese Frequenz berechnet sich zu:
 \begin{align}
  \omega_L=\frac{g_j \mu_B H}{\hbar}
@@ -83,10 +83,10 @@ Dieses Integral ergibt augewerteteine inverse Lorentzkurve, $C$ ist eine Proport
 
 Daraus folgt dann für die Lebensdauer, wenn $H_{\frac{1}{2}}$ die Feldstärke bei halber Höhe der vollen Intensität ist:
 \begin{align}
- \tau = \frac{\hbar}{2 g_j \mu_B H_{\frac{1}{2}}}
+ \label{livetime_classic} \tau = \frac{\hbar}{2 g_j \mu_B H_{\frac{1}{2}}}
 \end{align}
 
-\subsection{quantenmechanische Deutung}
+\subsection{Quantenmechanische Deutung}
 Der Hanle Effekt ist ein spezialfall des sogenanten \textit{level-crossing}. Unter level-crossing versteht man folgendes:
 
 Liegt eine Feinstrukturaufspaltung in verschiedene Zeeman-Niveaus bereits ohne äußeres Magnetfeld vor, so können die verschiedenen Niveaus durch Anlegen eines Feldes zur Überkreuzung gebracht werden, d. h. bei einer bestimmten Feldstärke können zwei Niveaus energetisch zusammenfallen. In diesem Bereich findet man eine merkliche Änderung der Intensität der Fluoreszenzstrahlung.
@@ -108,7 +108,7 @@ Für die Halbwertsbreite der Lorentzkurve erhält man:
 
 und somit erhält man für die mittlere Lebensdauer wieder:
 \begin{align}
- \tau = \frac{h}{4 g_j \mu_B \pi H_{\frac{1}{2}}} = \frac{\hbar}{2 g_j \mu_B H_{\frac{1}{2}}}
+ \label{livetime_quantum} \tau = \frac{h}{4 g_j \mu_B \pi H_{\frac{1}{2}}} = \frac{\hbar}{2 g_j \mu_B H_{\frac{1}{2}}}
 \end{align}
 
 \subsection{Coherence Narrowing}
@@ -126,8 +126,39 @@ Als Lichtquelle dient eine HF-induzierte Gasentladung in einer Quecksilberdampfl
 \newpage
 
 \section{Durchführung}
-Zunächst Stellten wir die Kompensierenden Magnetfelder ein und justierten den Polarisator auf $90^\circ C$. Wir erhielten ein sauberes symetrisches Hanle Signal. Dann kühlten wir Die Resonanzzelle auf die minimal ereichbare Temperatur (zunächst $-11^\circ C$) und nahmen Messungen bis $10^\circ C$ auf. Danach justierten wir den Polarisator auf $\pm 45^\circ C$ und nahmen je eine Dispersionskurve auf. Zuletzt kühlten wir wieder (über 3 Stunden, laut Anleitung wird nach einer Stunde die minmale Temperatur erreicht) um die $0^\circ C$-Polarisationrichtung zu vermessen. Leider erreichten wir hier nur noch eine Temperatur von $-5^\circ C$. 
+Zunächst Stellten wir die Kompensierenden Magnetfelder ein und justierten den Polarisator auf $90^\circ C$. Wir erhielten ein sauberes symetrisches Hanle Signal. Dann kühlten wir Die Resonanzzelle auf die minimal ereichbare Temperatur (zunächst $-11^\circ C$) und nahmen wärend des Aufwärmens Messungen bis $10^\circ C$ auf. Danach justierten wir den Polarisator auf $\pm 45^\circ C$ und nahmen je eine Dispersionskurve auf. Zuletzt kühlten wir wieder (über 3 Stunden, laut Anleitung wird nach einer Stunde die minmale Temperatur erreicht) um die $0^\circ C$-Polarisationrichtung zu vermessen. Leider erreichten wir hier nur noch eine Temperatur von $-5^\circ C$. 
+
 \section{Auswertung}
+Die genutzte Formel zum fitten der Lorentzkurve lautet:
+\begin{align}
+ y(x) &= y_0+\frac{2A}{\pi}\frac{\omega}{4(x-x_c)^2+\omega^2}+b_x \\
+\notag \textnormal{ mit }~~~~ y_0 &\widehat{=} \textnormal{ Y-Achsenoffset } \\
+\notag A &\widehat{=} \textnormal{ Fläche } \\
+\notag x_0 &\widehat{=} \textnormal{ X-Koordinate des Peaks } \\
+\notag \omega &\widehat{=} \textnormal{ Halbwertsbreite der Kurve } \\
+\notag b &\widehat{=} \textnormal{ Steigung des linearen Terms zur berücksichtigung der Temperatur}
+\end{align}
+
+Bei den zum Fitten verwendeten Messpunkten beschränkten wir uns auf einen Bereich von $0,7A$ um den Peak der Kurve, um Unregelmässigkeiten am Rand der Messung auszufiltern. Der Parameter $\omega$ dieser Kurve liefert uns direkt die Halbwertsbreite in Ampère. Aus dieser können wir die Magnetfeldstärke $H_{\frac{1}{2}}$ in Tesla bei halber Intensität bestimmen:
+\begin{align}
+ 2H_{\frac{1}{2}}= 3,363\cdot 10^{-4} \omega
+\end{align}
+
+Also folgt mit Gleichung \ref{livetime_classic} oder \ref{livetime_quantum} die Lebensdauer in Sekunden:
+\begin{align}
+ \tau = \frac{\hbar}{2g_j \mu_B H_{\frac{1}{2}}} = \frac{\hbar}{g_j \mu_B\cdot 3,363\cdot 10^{-4} \omega}
+\end{align}
+
+mit dem Fehler:
+\begin{align}
+ s_{\tau}=\tau \frac{s_{\omega}}{\omega}
+\end{align}
+
+
+
+
+
+
 
 \section{Zusammenfassung}
 
