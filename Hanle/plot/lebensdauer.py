@@ -33,7 +33,8 @@ def schreibe_tabelle(name, mess, rchisq, w, sw, tau, stau):
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
 Messung&$\chi^2/ndf$&$w\;/A$&$s_w\;/A$&$\tau\;/10^{-7}s$&$s_{\tau}\;/10^{-7}s$\\
-\hline''')
+\hline
+''')
     for i in range(len(mess)):
         f.write('%s&%f&%f&%f&%f&%f \\\\\n' % (
             mess[i], rchisq[i], w[i], sw[i], tau[i]*1e7, stau[i]*1e7))
