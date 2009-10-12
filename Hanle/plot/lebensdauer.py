@@ -66,12 +66,16 @@ def erzeuge_graphen(name, color=2, style=23):
     
     # Fehler der Temperatureinzelmessung: 1°C
     #sT = array('d', [1.0/sqrt(2)]*len(T))
-    sT = array('d', [5./9.]*len(T))
+    sT = array('d', [1.]*len(T))
 
     # Fehler auf den Druck: C*log(10)*p*sT/T^2
     sp = array('d')
+    C = -3340.
+    B = 0.
+    A = 8.86
     for pi,Ti,sTi in zip(p,T,sT):
-        spi = abs(-3440*log(10)*pi*sTi/(Ti+273)**2)
+        #spi = abs(-3440*log(10)*pi*sTi/(Ti+273)**2)
+	spi = abs(   sqrt(   ( log(10)*((1/((Ti+273)*log(10)))*B - C/(Ti+273)**2)*10**(C/(Ti+273)+(log(Ti+273)/log(10))*B + A) )**2   * sTi**2)   )
         sp.append(spi)
 
     # Schreibe Ergebnisse in Form einer TeX-Tabelle
