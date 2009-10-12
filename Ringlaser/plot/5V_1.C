@@ -7,7 +7,7 @@ gStyle->SetOptFit();
 //Load Data
 #include "Riostream.h"
 ifstream in;
-in.open("data/5V_1.dat");
+in.open("/home/paule/Desktop/FP/Ringlaser/plot/data/5V_1.dat");
 const Int_t ndata = 11;
 Float_t x[ndata];
 Float_t y[ndata];
