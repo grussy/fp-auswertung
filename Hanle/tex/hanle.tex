@@ -201,28 +201,60 @@ mit dem Fehler:
  s_{\tau}=\tau \frac{s_{\omega}}{\omega}
 \end{align}
 
+Für die Fits haben wir jeweils nur eine Beispielgrafik angeführt. Die ergebnisse der 74 einzelnen Fits sind im Anhang in zwei Tabellen zusammengefasst.
+
 \begin{figure}[H]  
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/9017eps.eps}
-\caption{Versuchsaufbau des Hanle-Effekts}
+\caption{Beispiel eines Fits für die $90^\circ$ Messung}
 \end{figure}
 
 \begin{figure}[H]  
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/023eps.eps}
-\caption{Versuchsaufbau des Hanle-Effekts}
+\caption{Beispiel eines Fits für die $0^\circ$ Messung}
 \end{figure}
 
 \begin{figure}[H]  
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/lebensdauer_temp.eps}
-\caption{Versuchsaufbau des Hanle-Effekts}
+\caption{Lebensdauer nach Temperatur}
+\label{leben_temp}
 \end{figure}
+
+Die in Fahrenheit gemessenen Temperaturen haben wir zu beginn in Celsius umgerechnet:
+\begin{align}
+ T_{^\circ C} = (T_{^\circ F} - 36) \cdot 5 / 9
+\end{align}
+
+Den Fehler auf die in Fahrenheit gemessene Temperatur haben wir mit $1^\circ F$ angenommen. Somit ergibt sich für den Fehler auf die Temperatur in
+$^\circ C$: $s_{T_{^\circ C}} = 5 / 9 ^\circ C$.
+
+Nun trugen wir die errechneten Lebensdauern gegen die Temperatur auf (siehe Abb.\ref{leben_temp}). In der Grafik kann man schön das 
+\textit{coherence narrowing} beobachten.
+
+Um aus der Temperatur (in Kelvin) den Dampfdruck $p$ (in $Torr$) zu bestimmen verwendeten wir die in der Anleitung angegebene Formel:
+\begin{align}
+ log_{10}(p/Torr) = A + B ~ log_{10}(T/K) + \frac{C}{T}
+\end{align}
+
+Verwendete Konstanten:
+\begin{tabular}{|c|c|c|c|}
+ \hline
+ Temperaturbereich&$A$&$B$&$C$\\
+ \hline
+ $T = -30^\circ C \cdots +3^\circ C$&$8,86$&$0$&$-3340K$ \\
+ $T = +3^\circ C \cdots +25^\circ C$&$10,5724$&$-0,847$&$-3342,26K$ \\
+\end{tabular}
+
+
+
+
 
 \begin{figure}[H]  
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/lebensdauer_druck.eps}
-\caption{Versuchsaufbau des Hanle-Effekts}
+\caption{Lebensdauer nach Druck}
 \end{figure}
 
 

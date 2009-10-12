@@ -17,6 +17,16 @@ hq  = 1.05457266e-34  # Planksches Wirkungsquantum
 muB = 9.2740154e-24   # Bohrsches Magneton
 gj  = 1.5             # Landscher Faktor
 
+# Umrechnung der Temperatur [°C] in Druck [Torr]
+def druck_falsch(T):
+    if T >= -30 and T < 3.: A = 8.86; B = 0; C = -3440.
+    elif T >= 3. and T <= 25: A = 10.6724; B = -0.847; C = -3342.26
+    T += 273  # Temperatur von Celsius nach Kelvin
+    return 10**A * 10**(C/T) * T**B
+
+def druck(T):
+    return 10**(8.86 - 3440/(T+273))
+
 def schreibe_tabelle(name, mess, rchisq, w, sw, tau, stau):
     f = open(name+'.tex', 'w')
     f.write(r'''
@@ -44,7 +54,8 @@ def erzeuge_graphen(name, color=2, style=23):
         staui = taui * swi/wi
 
         # berechne Druck aus Temperatur
-        pi = 10**(8.86-3440/(Ti+273))
+        #pi = 10**(8.86-3440/(Ti+273))
+	pi = druck_falsch(Ti)
         
         T.append(Ti)
         p.append(pi)
@@ -53,7 +64,8 @@ def erzeuge_graphen(name, color=2, style=23):
         w += [wi]; sw += [swi]
     
     # Fehler der Temperatureinzelmessung: 1°C
-    sT = array('d', [1.0/sqrt(2)]*len(T))
+    #sT = array('d', [1.0/sqrt(2)]*len(T))
+    sT = array('d', [5./9.]*len(T))
 
     # Fehler auf den Druck: C*log(10)*p*sT/T^2
     sp = array('d')

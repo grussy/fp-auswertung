@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: iso-8859-1 -*-
-
+import sys
 from array import array
 from math import sqrt
 from ROOT import gROOT, TCanvas, TGraphErrors, TF1, TLegend, TGraph
@@ -52,4 +52,4 @@ gf.Draw('AP')
 gx.Draw('P')
 g.Draw('P')
 c.Update()
-
+line = sys.stdin.readline()

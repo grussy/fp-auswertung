@@ -73,9 +73,11 @@ class Messung:
         f.GetParameters(params)
         self.y0, self.A, self.w, self.xc, self.b = float(params[0]),float(params[1]),float(params[2]),float(params[3]),float(params[4])
         p = f.GetParErrors()
-        self.sy0, self.sA = p[0], p[1]
+        self.sy0 = f.GetParError(0)
+	self.sA = f.GetParError(1)
 	self.sw = f.GetParError(2)
-        self.sxc,self.sb = p[3], p[4]
+        self.sxc = f.GetParError(3)
+	self.sb = f.GetParError(4)
         self.rchisq = f.GetChisquare() / float(f.GetNDF())
         self.fwhm = abs(self.w)
         self.sfwhm = self.sw
@@ -94,10 +96,10 @@ class Messung:
         l.SetFillColor(0)
         l.AddEntry(self.graph,'Messreihe '+self.name, 'p')
         l.AddEntry(self.fcn,'Fit: Lorenzkurve', 'l')
-        l.AddEntry(self.fcn,'y_{0} = %.4g #pm %s.4g' % (self.y0,self.sy0),'')
-        l.AddEntry(self.fcn,'A = %.4g #pm %s.4g' % (self.A,self.sA),'')
-        l.AddEntry(self.fcn,'w = %.4g #pm %s.4g' % (self.w,self.sw),'')
-        l.AddEntry(self.fcn,'x_{c} = %.4g #pm %s.4g' % (self.xc,self.sxc),'')
+        l.AddEntry(self.fcn,'y_{0} = %.4g #pm %.4g' % (self.y0,self.sy0),'')
+        l.AddEntry(self.fcn,'A = %.4g #pm %.4g' % (self.A,self.sA),'')
+        l.AddEntry(self.fcn,'w = %.4g #pm %.4g' % (self.w,self.sw),'')
+        l.AddEntry(self.fcn,'x_{c} = %.4g #pm %.4g' % (self.xc,self.sxc),'')
         l.AddEntry(self.fcn,'#chi^{2}/ndf = %.4g' % self.rchisq,'')
         l.Draw()
         self.legend = l
@@ -119,15 +121,19 @@ params90 = [0.85, -0.14, 0.2, -0.06, 0.02]
 # Fitte die Messwerte der 90° Messreihe an die Lorentzverteilung und
 # sichere Temperatur und Halbwertsbreite in einer Datei
 f = open('fwhm90.dat', 'w')
+mmm = 1
 for m in m90:
     m.fit(params90)
-    #m.draw()
+    if mmm == 1 :
+	mmm = 0
+	m.draw()
+
     if m.rchisq < 10:
         tm = m.temperatur
         print '%s: chisq/ndf=%.2f, t=%.2f, fwhm=%.3f' % (
             m.name, m.rchisq, tm, m.fwhm)
         f.write(m.name)
-        f.write(' %f %f %s %f\n' % (tm, m.fwhm, m.sfwhm, m.rchisq))
+        f.write(' %f %f %f %f\n' % (tm, m.fwhm, m.sfwhm, m.rchisq))
     else:
         print '%s: Fit nicht möglich!' % m.name
 f.close()
@@ -135,14 +141,18 @@ f.close()
 # Fitte die Messwerte der 0° Messreihe an die Lorentzverteilung und
 # sichere Temperatur und Halbwertsbreite in einer Datei
 f = open('fwhm0.dat', 'w')
+mmm = 1
 for m in m0:
     m.fit(params0)
+    if mmm == 1 :
+	mmm = 0
+	m.draw()
     if m.rchisq < 10:
         tm = float(m.temperatur)
         print '%s: chisq/ndf=%.2f, tm%.2f, fwhm=%.3f' % (
             m.name, m.rchisq, tm, m.fwhm)
         f.write(m.name)
-        f.write(' %f %f %s %f\n' % (tm, m.fwhm, m.sfwhm, m.rchisq))
+        f.write(' %f %f %f %f\n' % (tm, m.fwhm, m.sfwhm, m.rchisq))
     else:
         print '%s: Fit nicht möglich!' % m.name
 f.close()
