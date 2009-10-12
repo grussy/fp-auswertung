@@ -43,7 +43,7 @@ class Messung:
 		linenew = line.replace(',', '.')
             	tl, yl, xl = map(float, linenew.split())
             	x.append(xl); y.append(yl); t.append(tl)
-        sx = array('d', [0.00001]*len(x))
+        sx = array('d', [0.0001]*len(x))
         sy = array('d', [0.01]*len(x))
 
         # Erzeuge Graphen aus den Messdaten

@@ -238,7 +238,9 @@ Um aus der Temperatur (in Kelvin) den Dampfdruck $p$ (in $Torr$) zu bestimmen ve
  log_{10}(p/Torr) = A + B ~ log_{10}(T/K) + \frac{C}{T}
 \end{align}
 
+\begin{center}
 Verwendete Konstanten: \\
+\vspace{20pt}
 \begin{tabular}{|c|c|c|c|}
  \hline
  Temperaturbereich&$A$&$B$&$C$\\
@@ -248,6 +250,8 @@ Verwendete Konstanten: \\
  \hline
 \end{tabular}
 
+ \vspace{20pt}
+\end{center}
 Für den Fehler ergibt sich : fehlt noch
 
 Schliesslich konnten wir die Lebensdauern gegen den Dampfdruck auftragen und mit linearer Regression auf die natürliche Lebensdauer extrapolieren.
@@ -271,7 +275,7 @@ und für $0^\circ$:
 
 \begin{figure}[H]  
 \centering
-\includegraphics[width=0.9\linewidth]{pictures/lebensdauer_druck.eps}
+\includegraphics[width=0.9\linewidth]{pictures/dispersion.eps}
 \caption{Dispersionskurve bei $45^\circ$}
 \end{figure}
 
@@ -287,6 +291,7 @@ Die Grafik von einer der Messungen bei $45^\circ$ zeigt den Typischen Verlauf ei
 \section{Anhang}
 \singlespacing
 \centering
+\newpage
 \textbf{$90^\circ$} \\
 \input{fwhm90.dat.tex}
 \newpage
