@@ -238,18 +238,19 @@ Um aus der Temperatur (in Kelvin) den Dampfdruck $p$ (in $Torr$) zu bestimmen ve
  log_{10}(p/Torr) = A + B ~ log_{10}(T/K) + \frac{C}{T}
 \end{align}
 
-Verwendete Konstanten:
+Verwendete Konstanten: \\
 \begin{tabular}{|c|c|c|c|}
  \hline
  Temperaturbereich&$A$&$B$&$C$\\
  \hline
  $T = -30^\circ C \cdots +3^\circ C$&$8,86$&$0$&$-3340K$ \\
  $T = +3^\circ C \cdots +25^\circ C$&$10,5724$&$-0,847$&$-3342,26K$ \\
+ \hline
 \end{tabular}
 
+Für den Fehler ergibt sich : fehlt noch
 
-
-
+Schliesslich konnten wir die Lebensdauern gegen den Dampfdruck auftragen und mit linearer Regression auf die natürliche Lebensdauer extrapolieren.
 
 \begin{figure}[H]  
 \centering
@@ -257,11 +258,32 @@ Verwendete Konstanten:
 \caption{Lebensdauer nach Druck}
 \end{figure}
 
+Für die Messung bei $90^\circ$ erhielten wir so:
+\begin{align}
+ \tau_{90^\circ} = (0,9772 \pm 0,0024) \cdot 10^{-7}
+\end{align}
+
+und für $0^\circ$:
+\begin{align}
+ \tau_{0^\circ} = (0,9552 \pm 0,0025) \cdot 10^{-7}
+\end{align}
+
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/lebensdauer_druck.eps}
+\caption{Dispersionskurve bei $45^\circ$}
+\end{figure}
+
+Die Grafik von einer der Messungen bei $45^\circ$ zeigt den Typischen Verlauf einer Dispersionskurve.
+
+
 
 
 
 
 \section{Zusammenfassung}
+
 \section{Anhang}
 \singlespacing
 \centering
