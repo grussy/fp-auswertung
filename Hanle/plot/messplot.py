@@ -11,7 +11,8 @@ gROOT.SetStyle("Plain")
 # Plotten der Messdaten
 # -------------------------------------------------------------------
 
-messreihen = [('90', range(17, 57)), ('0', range(23, 57)), ('45', range(1,3))]
+#messreihen = [('90', range(17, 57)), ('0', range(23, 57)), ('45', range(1,3))]
+messreihen = [('45', range(1,3))]
 
 temp, namen = [], []
 for m in messreihen:
@@ -56,7 +57,7 @@ for i in range(anzahl):
     if i%4 == 0:
         titel = 'messung_%.2d-%.2d' % (i,i+3)
         ci = TCanvas(titel, titel)
-        ci.Divide(2,2)
+        #ci.Divide(2,2)
         c += [ci]
 
     ci.cd(i%4 + 1)
