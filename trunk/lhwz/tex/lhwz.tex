@@ -50,10 +50,65 @@
 \newpage
 \pagenumbering{arabic}
 \section{Überblick}
+In diesem Versuch werden die Halbwertszeiten des $\alpha$-Strahlers $ _{147}Sm$ und des $\beta$- Strahlers $_{40}K$ bestimmt. Da es sich um extrem langlebige Nuklide handelt $(T_{\frac{1}{2}} =1.06 \cdot 10^{11}$s  bzw.$1.28 \cdot 10^9$ Jahre) ist eine Beobachtung der Änderung der Impulsrate in Abhängigkeit von der Zeit nicht mehr möglich. Die Halbwertszeit $T_{\frac{1}{2}}$ lässt sich jedoch aus der spezifischen Aktivität $A_s$ bestimmen. Zur experimentellen Durchführung wird ein Methan-Durchflußzählrohr verwendet. Die radioaktiven Präparate (mit Aktivitäten < $200 Bq$) werden in ein direkt unter dem Zählrohr befindliches Probenrad eingebracht. Bei jeweils fest gewählter Hochspannung in den Plateaubereichen des Zählrohres werden die Aktivitäten der Präparate gemessen. Aus dem Zerfallsgesetz $A = ln(2) \frac{N}{T_{\frac{1}{2}}}$ kann bei bekannter Zahl der zerfallenden Atome N und nach einer Bestimmung der Aktivität A die Halbwertszeit $T_{\frac{1}{2}}$ berechnet werden. Zur Bestimmung der absoluten, d.h. durch Effekte wie Selbstabsorption und Rückstreuung nicht verfälschten, Aktivität aus den tatsächlich gemessenen Aktivitäten werden verschiedenen Methoden verwendet: Die Aktivität des $\alpha$-Strahlers Samarium wird
+unter Ausnutzung der konstanten Reichweite der Strahlung und der bekannten Oberfläche des Präparats korrigiert. Beim $\beta$-Strahler Kalium wird die Massenabhängigkeit der beobachteten Aktivität ausgenutzt.
 
-\section{Aufgabestellung}
+
+\section{Aufgabenstellung}
+In diesem Versuch werden die Halbwertszeiten des $\alpha$-Strahlers $_{147}Sm$ und des $\beta$-Strahlers $_{40}K$ bestimmt. Da es sich dabei um sehr langlebige Nuklide handelt, ist eine direkte Bestimmung der Halbwertszeit aus der Beobachtung der Zeitabhängigkeit der Impulsrate nicht mehr möglich. Stattdessen werden die Halbwertszeiten aus der Aktivität der Präparate bestimmt. Bestimmung der Halbwertszeit von $_{147}Sm$ ($\alpha$-Zerfall)
+\begin{enumerate}
+ \item Bestimmung der Halbwertszeit von $_{147}Sm$ ($\alpha$-Zerfall)
+\begin{itemize}
+ \item Aufnahme der Zählrohrcharakteristik mit einem Natururan-Präparat
+ \item Wahl des Arbeitspunktes auf dem $\alpha$-Plateau
+ \item Messung des Nulleffekts
+ \item Ermittlung der Aktivität des Samarium-Präparats (raumwinkelabhängige Messung)
+\end{itemize}
+\item Bestimmung der Halbwertszeit von $_{40}K$ ($\beta ^-$-Zerfall, EC)
+\begin{itemize}
+\item Aufnahme des $\beta$-Plateaus mit dem Kalium Präparat
+\item Wahl des Arbeitspunktes auf dem $\beta$-Plateau
+\item Messung des Nulleffekts
+\item Ermittlung der spezifischen Aktivität des Kalium-Präparats (massenabhängige Messung)
+\end{itemize}
+\end{enumerate}
 
 \section{Theoretische Grundlagen}
+\subsection{Zerfallsgesetz und Aktivität}
+Beim radioaktiven Zerfall ist die Wahrscheinlichkeit das ein Teilchen in einem Zeitintervall $dt$ zerfällt bestimmt durch die \textit{Zerfallskonstente} $\lambda$. Diese Wahrscheinlichkeit beträgt $\lambda dt$, bei $N$ Teilchen die zerfallen können zerfallen also im nächsten Zeitintervall $N\lambda dt$ Teilchen. Daraus ergibt sich das Zerfallsgesetz zu
+\begin{align}
+ N(t) = \int \limits_{0} \limits^{t} dN = \int \limits_{0} \limits^{t} - \lambda N dt = N_0 e^{-\lambda t}
+\end{align}
+
+wobei $N_0$ die zerfallsfähigen Teilchen zur Zeit $t=0$ angibt.\\
+Die \textit{Halbwertszeit} $T_{\frac{1}{2}}$ eines Stoffes gibt an wie lange es dauert bis die Hälfte der Teilchen zerfallen sind. Es folgt also
+\begin{align}
+N(T_{\frac{1}{2}} = \frac{1}{2} N_0 = N_0 e^{ -\lambda T_{\frac{1}{2}}} \Rightarrow T_{\frac{1}{2}} = \frac{ln(2)}{\lambda}
+\end{align}
+
+Unter der \textit{Aktivität} $A$ versteht man die Anzahl der zerfallenden Teiclhen pro Zeit also 
+\begin{align}
+ A = -\frac{dN}{dt} = \lambda N
+\end{align}
+Unsere Stoffe haben im Überblick beschrieben sehr Lange Halbwertszeiten, so dass man die Aktivität hier durchaus als konstant annehmen kann. Somit folgt für unsere Halbwertszeit:
+\begin{align}
+ T_{\frac{1}{2}} = \frac{N ln(2)}{A}
+\end{align}
+
+\subsection{Zerfallsarten}
+
+Beim Radioaktiven Zerfall gibt es unterschiedliche Prozesse bei der verschiedene Zerfälle stattfinden. Dabei werden auch unterschiedliche Arten Radioaktiver Strahlung emittiert.
+
+\begin{itemize}
+ \item $\alpha$ Zerfall
+Ein angeregte Atom geht unter aussendung eines Helium-Kerns in einen stabileren Zustand über. Alle $\alpha$-Teilchen eines bestimmten Übergangs weisen dieselbe Energie auf, da die beteiligten Niveaus diskret sind und nur ein Teilchen emittiert wird. Die Zerfallsgleichung für $_{147}Sm$ lautet:
+\begin{align}
+ \notag ^{148}_{62}Sm \longrightarrow ^{144}_{60}Nd + ^4_2He
+\end{align}
+
+
+\end{itemize}
+
 
 \section{Versuchsaufbau}
 
