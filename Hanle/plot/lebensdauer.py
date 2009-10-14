@@ -66,7 +66,7 @@ def erzeuge_graphen(name, color=2, style=23):
     
     # Fehler der Temperatureinzelmessung: 1°C
     #sT = array('d', [1.0/sqrt(2)]*len(T))
-    sT = array('d', [1.]*len(T))
+    sT = array('d', [0.25]*len(T))
 
     # Fehler auf den Druck: C*log(10)*p*sT/T^2
     sp = array('d')
