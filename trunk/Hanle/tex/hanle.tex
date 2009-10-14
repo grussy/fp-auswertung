@@ -252,9 +252,15 @@ Verwendete Konstanten: \\
 
  \vspace{20pt}
 \end{center}
-Für den Fehler ergibt sich : fehlt noch
+Für den Fehler ergibt sich:
+\begin{align}
+ s_p = \sqrt{(\frac{\partial p}{\partial T})^2\cdot s^2_T} = \sqrt{\left(ln(10)\left(\left(\frac{1}{T~ln(10)}\right)\cdot B - \frac{C}{T^2}
+ \right)~10^{C / T + 
+ log_{10}(T)\cdot B + A}\right) \cdot s^2_T}
+\end{align}
 
-Schliesslich konnten wir die Lebensdauern gegen den Dampfdruck auftragen und mit linearer Regression auf die natürliche Lebensdauer extrapolieren.
+
+Schließlich konnten wir die Lebensdauern gegen den Dampfdruck auftragen und mit linearer Regression auf die natürliche Lebensdauer extrapolieren.
 
 \begin{figure}[H]  
 \centering
@@ -264,12 +270,12 @@ Schliesslich konnten wir die Lebensdauern gegen den Dampfdruck auftragen und mit
 
 Für die Messung bei $90^\circ$ erhielten wir so:
 \begin{align}
- \tau_{90^\circ} = (0,9772 \pm 0,0024) \cdot 10^{-7}
+ \tau_{90^\circ} &= (0,9536 \pm 0,0054) \cdot 10^{-7}s
 \end{align}
 
 und für $0^\circ$:
 \begin{align}
- \tau_{0^\circ} = (0,9552 \pm 0,0025) \cdot 10^{-7}
+ \tau_{0^\circ} &= (0,9455 \pm 0,0042) \cdot 10^{-7}s
 \end{align}
 
 
@@ -284,14 +290,17 @@ Die Grafik von einer der Messungen bei $45^\circ$ zeigt den Typischen Verlauf ei
 \section{Zusammenfassung}
 Mit unseren beiden Messreihen erhielten wir für die Lebensdauer des $^3P_1$ Zustands von Quecksilber:
 \begin{align*}
- \tau_{90^\circ} &= (0,9772 \pm 0,0024) \cdot 10^{-7} \\
- \tau_{0^\circ} &= (0,9552 \pm 0,0025) \cdot 10^{-7}
+ \tau_{90^\circ} &= (0,9536 \pm 0,0054) \cdot 10^{-7}s \\
+ \tau_{0^\circ} &= (0,9455 \pm 0,0042) \cdot 10^{-7}s
 \end{align*}
-
+Mit einer Differenz von $0,0081 \cdot 10^{-7}$ stimmen die beiden Werte innerhalb des doppelten Fehlers überein. Vom Literaturwert
+$\tau_{Lit} = 1,18 \cdot 10^{-7}s$ allerdings sind wir weit entfernt. Ursache hierfür ist wohl bei der Umrechnung von Strom in magnetische Flussdichte
+zu suchen. Eine geringe Änderung des Faktors hebt den gemessenen Wert schnell zum Literaturwert hin. Möglicherweise könnte eine erneute Eichung der
+Magnetfelder hier helfen. Der große Fehler auf die Temperatur spielt hier auch eine Rolle. Mit kleinerem Fehler wird auch der Fit präziser und kommt näher
+an den Literaturwert.
 \section{Anhang}
 \singlespacing
 \centering
-\newpage
 \textbf{$90^\circ$} \\
 \input{fwhm90.dat.tex}
 \newpage
