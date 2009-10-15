@@ -42,22 +42,23 @@ count = len(nm)               # Anzahl der Messungen
 
 m0 = 1.795                   # Schälchenmasse
 m = map(lambda mi: mi-m0, m)  # Korrigiere Massenwerte
+n = map(lambda ni: ni-u, n)  # Korrigiere Rate
 
 sm = [sqrt(2)/1000. for mi in m]          # Fehler der Massewerte
 sn = [sqrt((ni+u)/t + u/tu) for ni in n]  # Fehler der Raten
 
 
 # Aufteilen in zu fittende (1) und zu verwerfende (2) Messungen
-m1 = m[2:4] + m[6:7] + m[9:]
-n1 = n[2:4] + n[6:7] + n[9:]
-sm1 = sm[2:4] + sm[6:7] + sm[9:]
-sn1 = sn[2:4] + sn[6:7] + sn[9:]
+m1 = [m[1],m[2],m[3],m[5],m[7],m[6]]
+n1 = [n[1],n[2],n[3],n[5],n[7],n[6]]
+sm1 = [sm[1],sm[2],sm[3],sm[5],sm[7],sm[6]]
+sn1 = [sn[1],sn[2],sn[3],sn[5],sn[7],sn[6]]
 count1 = len(m1)
 
-m2 = [m[1]]+[m[5]]+[m[8]]
-n2 = [n[1]]+[n[5]]+[n[8]]
-sm2 = [sm[1]]+[sm[5]]+[sm[8]]
-sn2 = [sn[1]]+[sn[5]]+[sn[8]]
+m2 = [m[0],m[4],m[8],m[9]]
+n2 = [n[0],n[4],n[8],n[9]]
+sm2 = [sm[0],sm[4],sm[8],sm[9]]
+sn2 = [sn[0],sn[4],sn[8],sn[9]]
 count2 = len(m2)
 
 
@@ -65,17 +66,17 @@ count2 = len(m2)
 
 g = TGraphErrors(count1, array('d',m1), array('d',n1),
                  array('d',sm1), array('d',sn1))
-g.SetTitle('title')
+g.SetTitle('Kalium')
 g.GetXaxis().SetTitle('Masse m [g]')
-#g.GetXaxis().SetLimits(0.4,1.8)
+g.GetXaxis().SetLimits(0.2,1.2)
 g.GetYaxis().SetTitle('Messrate n [1/s]')
 g.SetMarkerColor(4)
 g.SetMarkerStyle(21)
 g.SetMarkerSize(0.8)
-#g.SetMinimum(1)
-#g.SetMaximum(4.5)
+g.SetMinimum(1)
+g.SetMaximum(6)
 g.Draw('AP')
-c.Update()
+#c.Update()
 
 # Extra-Graph für die nicht zu fittenden Messungen
 g2 = TGraphErrors(count2, array('d',m2), array('d',n2),
@@ -90,10 +91,10 @@ c.Update()
 
 # Kurvenanpassung
 #i0 = 0
-#f = TF1('f', '[0]*(1-exp(-[1]*x))', 0, 2)#, 0, x[i0]+0.02)
-f = TF1('f', '[0]*x+[1]', 0, 2)
-f.SetParameter(0, 0.1)
-f.SetParameter(1, 0.1)
+f = TF1('f', '[0]*(1-exp(-[1]*x))', 0, 1.2)#, 0, x[i0]+0.02)
+#f = TF1('f', '[0]*x+[1]', 0, 2)
+f.SetParameter(0, 0.001)
+f.SetParameter(1, 0.5)
 g.Fit(f, 'QR')
 
 c.Update()
