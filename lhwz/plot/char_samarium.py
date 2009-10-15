@@ -61,7 +61,7 @@ c.SetGrid()
 c.SetLogy()
 
 g = TGraphErrors(count, x, y, array('d', sx), array('d', sny))
-g.SetTitle('; Zaehlrohrspannung / V; Zaehlrate')
+g.SetTitle('; Zaehlrohrspannung / V; Zaehlrate / 1/s')
 g.GetYaxis().CenterTitle()
 g.SetMarkerColor(2)
 g.SetMarkerStyle(21)
