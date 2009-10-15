@@ -115,6 +115,62 @@ Ein angeregte Atom geht unter aussendung eines Helium-Kerns in einen stabileren 
 \section{Durchführung}
 
 \section{Auswertung}
+\subsection{Zählrohrcharakteristik mit Uran}
+Anfangs versuchten wir Einstellungen der Elektronik zu finden bei denen die Zählrate maximal ist, jedoch war darauf zu achten dass keine Teilchen doppelt
+gezählt werden. Wir entschieden uns für folgende Einstellungen:
+\begin{itemize}
+ \item Verstärker: Gain 7,20; Coarse Gain 20; Shaping Time 1$\mu s$
+ \item Timing SCA: low level 3,0; high level 10,0; delay 1,0
+ \item Gate: delay 1,0 $\cdot$ 1,1$\mu s$
+\end{itemize}
+
+Zu Begin machten wir eine Messung mit einem Uranpräparat um die Charakteristik des Zählrohrs kennen zu lernen.
+Hierzu gingen wir in 100$V$ Schritten von 1000$V$ bis 4000$V$ mit einer jeweiligen Messdauer von 50$s$.
+Außerdem machten wir mit den selben Einstellungen eine Untergrundmessung von von 1600 bis 4000$V$ mit jeweils 100$s$
+Messdauer und verwendeten diese um die Zählrohrcharakteristik zu korrigieren.
+
+Der Fehler auf die Zählrate berechnet sich dann wie folgt:
+\begin{align}
+ s_n = \frac{s_N}{t} = \frac{\sqrt{N}}{t} = \frac{\sqrt{n~t}}{t} = \sqrt{\frac{n}{t}}
+\end{align}
+
+Mit Gesamtanzahl der Counts $N$, Fehler auf diese $s_N$, Zählrate $n$ und jeweilige Messdauer $t$. Wobei wir den Fehler auf die Messdauer
+vernachlässigen.
+
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/char_uran.eps}
+\caption{Zählrohrcharakteristik mit Uran}
+\end{figure}
+
+
+\subsection{Halbwertszeit von Samarium}
+Zuerst nahmen wir das $\alpha$-Plateau auf. Hierfür orientierten wir uns an der mit Uran aufgenommenen Charakteristik (1800-3400$V$).
+Diese Messung geschah mit den selben Einstellungen wie die mit Uran und kann daher mit der selben Untergrundmessung korrigiert werden.
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/char_sam.eps}
+\caption{Zählrohrcharakteristik mit Samarium}
+\end{figure}
+
+Aus der Messung bestimmten wir demn Arbeitspunkt bei 2600$V$ und konnten mit der dort gemessenen Rate die benötigte Messzeit um den Messfehler unter
+2\% zu bekommen berechnen (4300$s$). Ebenso konnten wir die Messzeit für die Untergrundmessung berechnen um einen Beitrag zum Fehler auf die Rate
+von $1/3$ zu erhalten (3000$s$).
+
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/char_kalium.eps}
+\caption{Zählrohrcharakteristik mit Kalium}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/kalium.eps}
+\caption{Massenabhängigkeit mit Kalium}
+\end{figure}
 
 \section{Zusammenfassung}
 
