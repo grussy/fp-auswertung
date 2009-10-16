@@ -159,10 +159,10 @@ Aus der Messung bestimmten wir demn Arbeitspunkt bei 2600$V$ und konnten mit der
 2\% zu bekommen berechnen (4300$s$). Ebenso konnten wir die Messzeit für die Untergrundmessung berechnen um einen Beitrag zum Fehler auf die Rate
 von $1/3$ zu erhalten (3000$s$).
 
-Die tatsächliche Rate $n$ setzt sich dann aus gemessener Rate $n*$ und Untergrund $u$ zusammen: $n = n* - u$. Wenn man auch hier wieder den Fehler auf
+Die tatsächliche Rate $n$ setzt sich dann aus gemessener Rate $n^*$ und Untergrund $u$ zusammen: $n = n^* - u$. Wenn man auch hier wieder den Fehler auf
 die Zeit vernachlässigt, erhält man für den Fehler:
 \begin{align}
- s_n = \sqrt{s_{n*}^2 + s_u^2} = \sqrt{\frac{n*}{t} + \frac{u}{t}} = 0,01 s^{-1}
+ s_n = \sqrt{s_{n^*}^2 + s_u^2} = \sqrt{\frac{n*}{t} + \frac{u}{t}} = 0,01 s^{-1}
 \end{align}
 
 Um den durchmesser der Probe zu bestimmen maßen wir diesen abwechselnd mit einer Schiebelehre und erhielten dabei zweimal 2,905 und achtmal 2,900.
@@ -188,6 +188,20 @@ Als Ergebins für die Halbwertszeit von $^{147}Sm$ erhielten wir:
  t_{\frac{1}{2}} = (2,1518~\pm~0,0643)~\cdot~10^11~a
 \end{align*}
 
+Für die Berechnungen der Werte siehe Abschnitt %\ref{samarium}
+
+\subsection{Zählrohrcharakteristik mit Kalium}
+Da wir für sie Halbwertszeit von Samarium einen Wert erhielten der ungefähr das doppelte des Literaturwertes ist, entschieden wir uns die Einstellungen der Elektronik noch einmal zu verändern. Wir gingen davon aus, dass wir nicht alle Counts gezählt hatten und mussten daher die untere Schrankte des Timing SCA tiefer stellen. Außerdem veränderten wir die Shaping time. Wir arbeiteten also nun mit folgenden Werten:
+
+\begin{itemize}
+ \item Verstärker: Gain 14,35; Coarse Gain 20; Shaping Time 3$\mu s$
+ \item Timing SCA: low level 0,3; high level 10,0; delay 1,0
+ \item Gate: delay 1,0 $\cdot$ 1,1$\mu s$
+\end{itemize}
+
+Zu Begin nahmen wir die Charakteristik des $\beta$-Plateaus mit Kaliumchlorid auf. Hierfür fuhren wir von 2600 bis 4000$V$ in 100$V$ Schritten mit einer jeweiligen
+Messdauer von jeweils 100$s$.
+Da wir die Einstellungen verändert hatten mussten wir auch eine erneute Untergrundmessung durchführen. Wir nahmen die gleichen Spannungs und Zeiteinstellungen wie für die Messung.
 
 \begin{figure}[H]  
 \centering
@@ -195,12 +209,48 @@ Als Ergebins für die Halbwertszeit von $^{147}Sm$ erhielten wir:
 \caption{Zählrohrcharakteristik mit Kalium}
 \end{figure}
 
+Nach Betrachtung der Grafik entschieden wir uns für einen Arbeitspunkt von 3400$V$.
+
+\subsection{Bestimmumg der Halbwertszeit von Kalium}
+Wir füllten ein Schälchen bis zum Rand mit Kaliumchlorid. Aus der gefüllten Schälchenmasse und der des leeren Schälchens berechneten wir die Massenschrittweite um äquidistante Punkte auf der x-Achse zu bekommen zu 0,1$g$ für 10 Messungen.
+
+Wir begannen also mit der Messung mit vollständig gefülltem Schälchen und entfernten nach jeder Messung 0,1$g$ $KCl$. Die jeweilige Messdauer berechneten wir wieder aus Überlegungen zur Fehlergröße zu 460$s$. Am Schluss führten wir noch eine Untergrundmessung mit 865$s$ durch. Die Untergrundmessung wurde von den jeweiligen Messungen abgezogen.
+
 \begin{figure}[H]  
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/kalium.eps}
 \caption{Massenabhängigkeit mit Kalium}
 \end{figure}
 
+Um die Kurve an die Messung anpassen zu können mussten wir einige Messpunkte verwerfen (hier rot gekennzeichnet).
+Mit den Parametern aus dem Fit ($a = 4~8789~\pm~0,1050$ und $b = 3,7128~\pm~0,3566$) lässt sich die spezifische Aktivität des $\beta$-Zerfalls bestimmen zu:
+\begin{align*}
+ D = 28,0842~\pm~2,7640
+\end{align*}
+und damit die Halbwertszeit zu:
+\begin{align*}
+ t_{\frac{1}{2}} = (0,6602~\pm~0,0650)~\cdot~10^9~a
+\end{align*}
+Für die Berechnungen der Werte siehe Abschnitt %\ref{kalium}
+\newpage
 \section{Zusammenfassung}
+\textbf{Samariumoxid:} \\
+\begin{itemize}
+ \item Zählrate: $n = (0,349~\pm~0,010)~s^{-1}$
+ \item Halbwertszeit: $t_{\frac{1}{2}} = (2,1518~\pm~0,0643)~\cdot~10^{11}~a$
+\end{itemize}
+
+\textbf{Kaliumchlorid:} \\
+Halbwertszeit: $t_{\frac{1}{2}} = (0,6602~\pm~0,0650)~\cdot~10^9~a$\\
+
+Wenn man die von uns erhaltenen Werte mit den Literaturwerten vergleicht:
+Samarium Halbwertszeit: $t_{\frac{1}{2}, Lit}^{Sm} = 1,06~\cdot~10^{11}~a$\\
+Kalium Halbwertszeit: $t_{\frac{1}{2}, Lit}^K = 1,28~\cdot~10^{9}~a$\\
+so stellt man fest, dass wir mit der ersten Einstellung der Elektronik wohl wie vermutet nicht alle Zerfälle registriert haben. Bei der folgenden Änderung der Einstellungen haben wir es dann aber wohl wieder etwas übertrieben, scheinbar haben sich hier einige Zerfälle ereignet die doppelt gezählt wurden.
+Das doppeltzählen einzelner Zerfälle ist ein Vorgang der wohl auch schon von anderen Studenten beobachtet wurde. Verursacht wird er durch das Überschwingen des Verstärkers welches, wenn stark genug, auch als Zerfall gezählt wird. Um dies zu vermeiden wurde am Versuchsaufbau der Gate Generator hinzugefügt, er soll den Pegel des ersten Ausschlags so lange oben halten, dass der zweite verdeckt wird. Als wir die Einstellungen vornahmen beobachteten wir die verschiedenen Signale auf dem Oszilloskop und konnten dort keine Doppelausschläge sehen. Und das obwol wir eine Speichereinstellung gewählt hatten mit der man bei geringer Rate jeden Zerfall beobachten konnte. Wir gingen also nicht davon aus dass Doppelzählungen vorkommen würden.
+
+Wenn man die von uns gemessenen Raten durch 1,6 teilt so kommt man direkt auf den Literaturwert. Scheinbar haben wir also in 37,5\% der gemessenen Zerfälle diese doppelt gemessen. 
+Dies erscheint allerdigs sehr hoch dafür, dass wir nie einen Doppelausschlag auf dem Oszilloskop beobachten konnten. Möglicherweise liegen noch andere statistische Fehler vor.
+
 
 \end{document}
