@@ -16,14 +16,14 @@ n = 0.349           # Zählrate [cps]
 tu = 3000.          # Messzeit fuer den Untergrund [s]
 u = 0.046           # Untergrundrate [cps]
 
-d = 2.9            # Durchmesser [cm]
+d = 2.901            # Durchmesser [cm]
 F = pi * (d/2.)**2  # Fläche des Präparats [cm**2]
 
 
 # Messfehler --------------------------------------------------------
 
 sn = sqrt((n+u)/t + u/tu)  # Fehler der Zählrate [s]
-sd = 0.01                  # Fehler des Durchmessers [cm]
+sd = 0.005                  # Fehler des Durchmessers [cm]
 sF = pi/2 * d * sd         # Fehler der Fläche [cm**2]
 
 print "\nMesswerte:"
