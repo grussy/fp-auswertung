@@ -100,14 +100,71 @@ Unsere Stoffe haben im Überblick beschrieben sehr Lange Halbwertszeiten, so das
 Beim Radioaktiven Zerfall gibt es unterschiedliche Prozesse bei der verschiedene Zerfälle stattfinden. Dabei werden auch unterschiedliche Arten Radioaktiver Strahlung emittiert.
 
 \begin{itemize}
- \item $\alpha$ Zerfall
+ \item $\alpha$ Zerfall \\
 Ein angeregte Atom geht unter aussendung eines Helium-Kerns in einen stabileren Zustand über. Alle $\alpha$-Teilchen eines bestimmten Übergangs weisen dieselbe Energie auf, da die beteiligten Niveaus diskret sind und nur ein Teilchen emittiert wird. Die Zerfallsgleichung für $^{147}Sm$ lautet:
 \begin{align}
  \notag ^{148}_{62}Sm \longrightarrow ^{144}_{60}Nd + ^4_2He
 \end{align}
 
+\item $\beta^-$ Zerfall \\
+Ein Neutron geht im Kern unter aussendung eines Elektrons und eines Antineutrinos in ein Proton über. Für den von uns verwendeten Beta Strahler $^{40}K$ lautet die Zerfallsgleichung:
+\begin{align}
+ \notag ^{40}_{19}K \longrightarrow ^{40}_{20}Ca + e^- + \overline{\nu_e}
+\end{align}
 
+\item $\beta^+$ Zerfall \\
+Ein Proton geht im Kern unter aussendung eines Positrons und eines Neutrinos in ein Neutron über. Dieser Prozess kommt in der Natur nur sehr selten vor. Das Positron kann hier in Gegenwartvon Materie nicht existieren, es vereint sich mit einem Elektron zu einem Positronium-Atom, welches innerhalb kürzester Zeit unter aussendung zweier Photonen zerfällt. Also lautet die Zerfallsgleichung für unseren Strahler:
+\begin{align}
+ \notag ^{40}_{19}K \longrightarrow ^{40}_{18}Ar + e^+ + \nu_e
+\end{align}
+
+\item Elektroneneinfang (\dq EC = electron capture\dq ~oder auch  \dq$\epsilon$ Zerfall\dq) \\
+Ein Elektron aus der Hülle wird vom Kern eingefangen, wodurch ein Proton unter aussendung eines Neutrinos zu einem Neutron umgewandelt wird. Die Zerfallsgleichung für $^{40}K$ lautet:
+\begin{align}
+ \notag ^{40}_{19}K + e^- \longrightarrow ^{40}_{18}Ar + \nu_e
+\end{align}
 \end{itemize}
+
+\subsection{Reichweite}
+
+Beim Durchgang von $\alpha$-Teilchen durch Materie wechselwirken diese mit den Atomhüllen, also den Elektronen. Da die Heliumkerne viel schwerer sind als Elektronen, werden $\alpha$-Strahlen beim Durchgang durch Materie nicht abgelenkt. Desweiteren wird bei einem Ionisationsprozess nur relativ wenig Energie abgegeben, es sind also sehr viele solche Ionisationen notwendig um ein Teilchen zu bremsen. Daher haben $\alpha$-Teilchen gleicher Energie auch annähernd die gleiche Reichweite, wesshalb man aus der Reichweite hier auf die Energie schliessen kann.
+\\
+Für $\beta$ Strahlung gilt dies nicht mehr, da Elektronen viel leichter sind verlieren sie durch Ionisation bzw Anregen eies anderen Elektrons relativ viel Energie, und werden zusätzlich stark gestreut. Daher kann man die Reichweite nicht genau angeben, sondern nur einen Maximalwert (der Elektronen die doch geradlinig, ohne Energieverlust durch die Materie kamen). \\ TODO Näherung rein
+\newpage
+
+\subsection{Gasionisationsdetektoren}
+
+Bei dieser Messaperatur wird die Ionisierende Wirkung radioaktiver Strahlung ausgenutzt um diese zu messen. Sie besteht aus einer gasgefüllten Kammer deren Wand als Kathode genutzt wird und einem Zähldraht, der Anode. Die Gasionen ereugen einen Spannungsimpuls der zur detektion genutzt wird. Die Impulsgrösse (die Anzahl der Elektronen die die Anode ereichen) ist dabei abhängig von der angelegten Spannung. Hier gibt es für verschiedene Anwendungen verschieden Arbeitsbereiche, in unserem Versuch verwenden wir ein Propotionalitätszählrohr, dh die Impulsgrösse ist verstärkt, aber proportional zur Anfangsionisation. Eine andere Anwendung, welche im sogenanten Auslösebereich arbeitet ist das Geiger-Müller-Zählrohr. Hier findet eine lawinenartige Entladung statt, so das jede Ionisation einen sehr grossen Impuls auslöst. Da sich das Gas durch Ionisation auch verbraucht, verwenden wir win Durchflusszählrohr, dh das Gas wird ständig erneuert.
+
+\subsection{Berechnung der Halbwertszeit von Samarium}
+Da die $\alpha$-Teilchen in Samarium eine maximale Reichweite R haben, können nur die austreten, deren Weglänge r in Samarium kürzer als R ist. Der Zusammenhang zwischen Raumwinkel $\theta_{max}(z)$ den das Teilchen noch haben darf um die Probe zu verlassen und der Tiefe z des zerfallenen Teilchens ist dabei aus Abbildung \ref{winkel} ersichtlich.
+Da $\theta = arccos(\frac{z}{r})$ wird dies maximal für $r=R$ also:
+\begin{align}
+ \theta_{max}(z) = arccos\left( \frac{z}{R} \right)
+\end{align}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/winkel.eps}
+\label{winkel}\caption{Austrittswinkel}
+\end{figure}
+
+Also gilt für den maximalen Raumwinkel in abhängigkeit der Tiefe:
+\begin{align}
+ \omega(z)= \int \limits^{2\pi} \limits_{0} d\phi = \int \limits^{\theta_{max}(z)} \limits_{0} sin(\theta)d\theta = 2\pi \left( 1 - \frac{z}{R} \right) 
+\end{align}
+
+Für die Zählrate n gilt:
+\begin{align}
+ n = \frac{a_V F}{4 \pi} \int \limits_0 \limits^R \omega (z) dz = \frac{A_V F R }{4}
+\end{align}
+wobei $A_V$ die Aktivität pro Volumen und $F$ die Oberfläche der Probe ist. Berücksichtigt man $A=A_V V = A_V F h$ wobei $h$ die höhe der Probe ist so folgt für die Halbwertszeit $T_{\frac{1}{2}}$:
+\begin{align}
+ T_{\frac{1}{2}} = \frac{N ln(2)}{A} = \frac{N ln(2)}{A_V F h} = \frac{R N ln(2)}{4 n h}
+\end{align}
+
+
+\subsection{Berechnung der Halbwertszeit von Kalium}
 
 
 \section{Versuchsaufbau}
