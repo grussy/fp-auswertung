@@ -198,7 +198,11 @@ und schliesslich erhält man also für die Halbwertszeit von $^{147}Sm$:
 
 \subsection{Berechnung der Halbwertszeit von Kalium}
 
-Beim Kalium kommt es neben dem von uns messbaren $\beta^-$ Zerfall noch zu $\beta^+$ Zerfall und Elektroneneinfang, beide Effekte werden bei unserer Messung nicht berücksichtigt. Desweiteren kommt es zu Selbstabsorbtion und Rückstreuung am Probenbehälter. Das Verhältniss der Wahrscheinlichkeiten von $\Beta^-$ Zerfall zu der von $\Beta^+$ und Elektroneneinfang ist bekannt und beträgt:
+Beim Kalium kommt es neben dem von uns messbaren $\beta^-$ Zerfall noch
+ zu $\beta^+$ Zerfall und Elektroneneinfang, beide Effekte werden bei unserer
+ Messung nicht berücksichtigt. Desweiteren kommt es zu Selbstabsorbtion und Rückstreuung 
+am Probenbehälter. Das Verhältniss der Wahrscheinlichkeiten von $\beta^-$ Zerfall zu der
+ von $\beta^+$ und Elektroneneinfang ist bekannt und beträgt:
 \begin{align}
  \frac{P(\beta^-)}{P(\beta^+ \bigcup EC)} = \frac{100}{13}
 \end{align}
@@ -207,10 +211,22 @@ Also gilt
 
 \section{Versuchsaufbau}
 
-\section{Durchführung}
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/aufbau.eps}
+\caption{Durchflusszählrohr}
+\label{aufbau}
+\end{figure}
 
-\section{Auswertung}
-\subsection{Zählrohrcharakteristik mit Uran}
+Für die Messung steht ein Methandurchflusszählrohr (Abb. \ref{aufbau}) zur Verfügung.
+Dieses wird im Proportionalbereich betrieben. Zwischen Zähldraht und Gehäuse liegt eine Hochspannung von bis zu 4$kV$ an.
+Um das zu vermessende Präparat in die Zählkammer zu bekommen wird dieses auf einen Drehteller gesetzt und dieser in die Kammer gedreht.
+Das entstehende Signal wird über einen Kondensator ausgekoppelt und mittels Verstärker auf einen Eingang am PC getriggert. Außerdem kann
+es auf dem Oszilloskop beobachtet werden.
+
+\section{Durchführung}
+Zu Beginn arbeiteten wir mit einer Uranprobe um die Zählrohrcharakteristik aufzunehmen und überhaupt die Aperatur kennen zu lernen.
+
 Anfangs versuchten wir Einstellungen der Elektronik zu finden bei denen die Zählrate maximal ist, jedoch war darauf zu achten dass keine Teilchen doppelt
 gezählt werden. Wir entschieden uns für folgende Einstellungen:
 \begin{itemize}
@@ -218,6 +234,15 @@ gezählt werden. Wir entschieden uns für folgende Einstellungen:
  \item Timing SCA: low level 3,0; high level 10,0; delay 1,0
  \item Gate: delay 1,0 $\cdot$ 1,1$\mu s$
 \end{itemize}
+
+Mit diesen Einstellungen nahmen wir die Uran-messung vor.
+Anschließend wurde ebenfalls mit diesen Einstellungen die Samariummessung durchgeführt.
+
+Für die Messung mit Kalium verwendeten wir andere Einstellungen aber hierzu später.
+
+\section{Auswertung}
+\subsection{Zählrohrcharakteristik mit Uran}
+
 
 Zu Begin machten wir eine Messung mit einem Uranpräparat um die Charakteristik des Zählrohrs kennen zu lernen.
 Hierzu gingen wir in 100$V$ Schritten von 1000$V$ bis 4000$V$ mit einer jeweiligen Messdauer von 50$s$.
