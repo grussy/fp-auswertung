@@ -88,11 +88,11 @@ N(T_{\frac{1}{2}} = \frac{1}{2} N_0 = N_0 e^{ -\lambda T_{\frac{1}{2}}} \Rightar
 
 Unter der \textit{Aktivität} $A$ versteht man die Anzahl der zerfallenden Teiclhen pro Zeit also 
 \begin{align}
- A = -\frac{dN}{dt} = \lambda N
+ \label{Aktivität} A = -\frac{dN}{dt} = \lambda N
 \end{align}
 Unsere Stoffe haben im Überblick beschrieben sehr Lange Halbwertszeiten, so dass man die Aktivität hier durchaus als konstant annehmen kann. Somit folgt für unsere Halbwertszeit:
 \begin{align}
- T_{\frac{1}{2}} = \frac{N ln(2)}{A}
+ \label{Halbzeit} T_{\frac{1}{2}} = \frac{N ln(2)}{A}
 \end{align}
 
 \subsection{Zerfallsarten}
@@ -131,7 +131,7 @@ Beim Durchgang von $\alpha$-Teilchen durch Materie wechselwirken diese mit den A
 
 Für die maximal Reichweite existiert eine Näherungsformel von Bragg und Cleeman: 
 \begin{align}
- R \rho=c\sqrt{m_A}
+ \label{cleeman} R \rho=c\sqrt{m_A}
 \end{align}
 wobei $\rho$ die Dichte, $m_A$ das effektive Atomgewicht und $c$ eine Proportionalitätskonstante ist.
 \\ \\
@@ -169,7 +169,7 @@ wobei $A_V$ die Aktivität pro Volumen und $F$ die Oberfläche der Probe ist. Be
  T_{\frac{1}{2}} = \frac{N ln(2)}{A} = \frac{N ln(2)}{A_V F h} = \frac{R N ln(2)}{4 n h}
 \end{align}
 
-Die maximal Reichweite ist uns hierbei nicht bekannt, wir können aber die Beziehung von Bragg und Cleeman ausnutzen. Die Proportionalitätskonstante lässt sich durch die bekannten Werte für Luft eliminieren, und es folgt für Samariumoxyd:
+Die maximal Reichweite ist uns hierbei nicht bekannt, wir können aber die Beziehung (Gleichung \ref{cleeman}) von Bragg und Cleeman ausnutzen. Die Proportionalitätskonstante lässt sich durch die bekannten Werte für Luft eliminieren, und es folgt für Samariumoxyd:
 \begin{align}
  R_{Sm_2O_3} \rho_{Sm_2O_3} = R_{Luft} \rho_{Luft} \sqrt{\frac{m_{A,Sm_2O_3}}{m_{A,Luft}}}
 \end{align}
@@ -188,12 +188,12 @@ Als letztes fehlt uns noch die Anzahl $N$ der zerfallsfähigen $^{147}Sm$ Kerne.
 wobei m die Masse des Präparats, $m_{r,Sm_2O_3}$ die relative Molekülmasse von Samariumoxyd in $g/maol$ und $N_A$ die Avogadrozahl ist.
 Berücksichtigt man die relative Häufigkeit $h_{rel} = 0.1487$ von $^{147}Sm$ in Samarium und $m = \rho V = \rho F h$ erhält man für die gesuchte Anzahl $N$:
 \begin{align}
- N=2N_{Sm_2O_3} h_{rel}= 2 \frac{m N_A}{m_{r,Sm_2O_3}} h_{rel}=2 \frac{\rho f h N_A}{m_{r,Sm_2O_3}}h_{rel}
+ N=2N_{Sm_2O_3} h_{rel}= 2 \frac{m N_A}{m_{r,Sm_2O_3}} h_{rel}=2 \frac{\rho F h N_A}{m_{r,Sm_2O_3}}h_{rel}
 \end{align}
 
 und schliesslich erhält man also für die Halbwertszeit von $^{147}Sm$:
 \begin{align}
- T_{\frac{1}{2}} = \frac{R N ln(2)}{4 n h} = \frac{R \rho ln (2) N_A h_{rel}}{2n m_{r,sm_2O_3}} F
+ T_{\frac{1}{2}} = \frac{R N ln(2)}{4 n h} = \frac{R \rho  N_A h_{rel} ~ ln (2)}{2n m_{r,sm_2O_3}} F
 \end{align}
 
 \subsection{Berechnung der Halbwertszeit von Kalium}
@@ -207,7 +207,49 @@ am Probenbehälter. Das Verhältniss der Wahrscheinlichkeiten von $\beta^-$ Zerf
  \frac{P(\beta^-)}{P(\beta^+ \bigcup EC)} = \frac{100}{13}
 \end{align}
 
-Also gilt 
+Also gilt für die Zerfallskonstante $\lambda_K$ von Kalium:
+\begin{align}
+ \lambda_K=\lambda_{\beta^-} + \lambda_{\beta^+,EC}=1,13\lambda_{\beta^-}
+\end{align}
+
+Es wird nur die Anzahl der $\beta^-$ Zerfälle gemässen, also die Aktivität $A_{\beta^-}$. Mit Gleichungen \ref{Aktivität} und \ref{Halbzeit} folgt also für die Halbwertszeit:
+\begin{align}
+\label{zeit} T_{\frac{1}{2}} = \frac{ln(2)}{\lambda_K} = \frac{ln(2)}{1,13 \lambda_{\beta^-}} = \frac{1}{1,13} \frac{ln(2) N}{A_{\beta^-}} = \frac{T_{\frac{1}{2}, \beta^-}}{1,13}
+\end{align}
+
+Selbstabsoption bedeutet das die emitierten Elektronen im innern der Probe reabsorbiert werden bevor sie diese veralssen können. Dabei lässt sich über die Zählrate $n$ sagen:
+\begin{align}
+ dn=\rho F D e^{-\mu x} dx
+\end{align}
+dabei ist $\rho$ die Dichte, $F$ die Oberfläche der Probe, D die spezifische Aktivität (pro Masse) und $\mu$ der Absorptionskoeffizient. Integriert bis zur Höhe $h$ der Probe, die wir über die Masse ausdrücken können mittels $h = \frac{m}{F \rho}$ ergibt sich:
+\begin{align}
+  \label{zählrate} n(m) = \int \limits_{0} \limits^{\frac{m}{F \rho}} \rho F D e^{-\mu x} dx = \frac{\rho F D}{\mu} \left( 1- e^{-\frac{\mu}{F \rho} m} \right) = a \left( 1 - e^{-bm} \right)
+\end{align}
+
+Nun kann man die Masse $m$ bei der Messung variieren und über eienen Fit an obige Funktion die Parameter $a$ und $b$ bestimmen. Nun muss noch die Rückstreuung am Aluminiumbehälter berücksichtigt werden. Dazu nutzt man eine folgende Beziehung die für die Tangente an $n(m)$ im Punkt $M=0$ gelten muss:
+\begin{align}
+ \left. \frac{dn}{dm}  \right|_{m=0} = D f_B \frac{\omega}{4\pi}
+\end{align}
+
+wobei für uns der Rückstreufaktor $f_B$ für Aluminium $1,29$ beträgt und der Raumwinkel $\Omega=2\pi$ ist. Leitet man Gleichung \ref{Zählrate} ab und nutzt diese Beziehung so folgt:
+\begin{align}
+  \left. \frac{dn}{dm}  \right|_{m=0} = ab =  D f_B \frac{\Omega}{4\pi}
+\end{align}
+
+also folgt für die Aktivität
+\begin{align}
+ A_{\beta^-}=m D=\frac{2ab}{f_B}m
+\end{align}
+
+Zuletzt fehlt noch die Anzahl $N$ der ${40}^K$ Kerne in unserer Probe. Diese haben in natürlichem Kalium eine relative Häufigkeit von $h_{rel}=0,0118\%$§. Mit der relativen molekülmasse $m_{KCl}$ von Kaliumoxyd in $g/maol$ und der Avogadrozahl $N_A$ ergibt sich die gesuchte Anzahl zu:
+\begin{align}
+ N=\frac{m N_A}{m_{KCl}} h_{rel}
+\end{align}
+
+Nun kennen wir alle Grössen und Korekturen zur berechnung der Halbwertszeit. Sie beträgt nach Gleichung \ref{zeit}:
+\begin{align}
+ T_{\frac{1}{2}} = \frac{N_A h_{rel} ~ ln(2)}{1,13 D m_{KCl}}
+\end{align}
 
 \section{Versuchsaufbau}
 
