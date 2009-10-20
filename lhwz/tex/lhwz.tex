@@ -127,9 +127,14 @@ Ein Elektron aus der Hülle wird vom Kern eingefangen, wodurch ein Proton unter 
 
 \subsection{Reichweite}
 
-Beim Durchgang von $\alpha$-Teilchen durch Materie wechselwirken diese mit den Atomhüllen, also den Elektronen. Da die Heliumkerne viel schwerer sind als Elektronen, werden $\alpha$-Strahlen beim Durchgang durch Materie nicht abgelenkt. Desweiteren wird bei einem Ionisationsprozess nur relativ wenig Energie abgegeben, es sind also sehr viele solche Ionisationen notwendig um ein Teilchen zu bremsen. Daher haben $\alpha$-Teilchen gleicher Energie auch annähernd die gleiche Reichweite, wesshalb man aus der Reichweite hier auf die Energie schliessen kann.
-\\
-Für $\beta$ Strahlung gilt dies nicht mehr, da Elektronen viel leichter sind verlieren sie durch Ionisation bzw Anregen eies anderen Elektrons relativ viel Energie, und werden zusätzlich stark gestreut. Daher kann man die Reichweite nicht genau angeben, sondern nur einen Maximalwert (der Elektronen die doch geradlinig, ohne Energieverlust durch die Materie kamen). \\ TODO Näherung rein
+Beim Durchgang von $\alpha$-Teilchen durch Materie wechselwirken diese mit den Atomhüllen, also den Elektronen. Da die Heliumkerne viel schwerer sind als Elektronen, werden $\alpha$-Strahlen beim Durchgang durch Materie nicht abgelenkt. Desweiteren wird bei einem Ionisationsprozess nur relativ wenig Energie abgegeben, es sind also sehr viele solche Ionisationen notwendig um ein Teilchen zu bremsen. Daher haben $\alpha$-Teilchen gleicher Energie auch annähernd die gleiche Reichweite, wesshalb man aus der Reichweite hier auf die Energie schliessen kann. 
+
+Für die maximal Reichweite existiert eine Näherungsformel von Bragg und Cleeman: 
+\begin{align}
+ R \rho=c\sqrt{m_A}
+\end{align}
+wobei $\rho$ die Dichte, $m_A$ das effektive Atomgewicht und $c$ eine Proportionalitätskonstante ist.\\
+Für $\beta$ Strahlung gilt dies nicht mehr, da Elektronen viel leichter sind verlieren sie durch Ionisation bzw Anregen eies anderen Elektrons relativ viel Energie, und werden zusätzlich stark gestreut. Daher kann man die Reichweite nicht genau angeben, sondern nur einen Maximalwert (der Elektronen die doch geradlinig, ohne Energieverlust durch die Materie kamen).
 \newpage
 
 \subsection{Gasionisationsdetektoren}
@@ -162,6 +167,34 @@ wobei $A_V$ die Aktivität pro Volumen und $F$ die Oberfläche der Probe ist. Be
 \begin{align}
  T_{\frac{1}{2}} = \frac{N ln(2)}{A} = \frac{N ln(2)}{A_V F h} = \frac{R N ln(2)}{4 n h}
 \end{align}
+
+Die maximal Reichweite ist uns hierbei nicht bekannt, wir können aber die Beziehung von Bragg und Cleeman ausnutzen. Die Proportionalitätskonstante lässt sich durch die bekannten Werte für Luft eliminieren, und es folgt für Samariumoxyd:
+\begin{align}
+ R_{Sm_2O_3} \rho_{Sm_2O_3} = R_{Luft} \rho_{Luft} \sqrt{\frac{m_{A,Sm_2O_3}}{m_{A,Luft}}}
+\end{align}
+wobei sich $m_A$ folgendermassen berechnet:
+\begin{align}
+ \sqrt{m_A}=\sum \limits_i p_i \sqrt{m_{A_i}}
+\end{align}
+$m_{A_i}$ bezeichnet das Atomgewicht eines Elements und $p_i$ der relative Anteil dieser Atome an der Substanz
+
+Als letztes fehlt uns noch die Anzahl $N$ der zerfallsfähigen $^{147}Sm$ Kerne. Die Anzahl $N_{Sm_2O_3}$ der Samariumoxydmoleküle erhält man durch:
+
+\begin{align}
+ N_{Sm_2O_3} = \frac{m N_A}{m_{r,Sm_2O_3}}
+\end{align}
+
+wobei m die Masse des Präparats, $m_{r,Sm_2O_3}$ die relative Molekülmasse von Samariumoxyd in $g/maol$ und $N_A$ die Avogadrozahl ist.
+Berücksichtigt man die relative Häufigkeit $h_{rel} = 0.1487$ von $^{147}Sm$ in Samarium und $m = \rho V = \rho F h$ erhält man für die gesuchte Anzahl $N$:
+\begin{align}
+ N=2N_{Sm_2O_3} h_{rel}= 2 \frac{m N_A}{m_{r,Sm_2O_3}} h_{rel}=2 \frac{\rho f h N_A}{m_{r,Sm_2O_3}}h_{rel}
+\end{align}
+
+und schliesslich erhält man also für die Halbwertszeit von $^{147}Sm$:
+\begin{align}
+ T_{\frac{1}{2}} = \frac{R N ln(2)}{4 n h} = \frac{R \rho ln (2) N_A h_{rel}}{2n m_{r,sm_2O_3}} F
+\end{align}
+
 
 
 \subsection{Berechnung der Halbwertszeit von Kalium}
