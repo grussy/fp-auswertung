@@ -133,9 +133,10 @@ Für die maximal Reichweite existiert eine Näherungsformel von Bragg und Cleema
 \begin{align}
  R \rho=c\sqrt{m_A}
 \end{align}
-wobei $\rho$ die Dichte, $m_A$ das effektive Atomgewicht und $c$ eine Proportionalitätskonstante ist.\\
+wobei $\rho$ die Dichte, $m_A$ das effektive Atomgewicht und $c$ eine Proportionalitätskonstante ist.
+\\ \\
 Für $\beta$ Strahlung gilt dies nicht mehr, da Elektronen viel leichter sind verlieren sie durch Ionisation bzw Anregen eies anderen Elektrons relativ viel Energie, und werden zusätzlich stark gestreut. Daher kann man die Reichweite nicht genau angeben, sondern nur einen Maximalwert (der Elektronen die doch geradlinig, ohne Energieverlust durch die Materie kamen).
-\newpage
+
 
 \subsection{Gasionisationsdetektoren}
 
@@ -150,8 +151,8 @@ Da $\theta = arccos(\frac{z}{r})$ wird dies maximal für $r=R$ also:
 
 \begin{figure}[H]  
 \centering
-\includegraphics[width=0.9\linewidth]{pictures/winkel.eps}
-\label{winkel}\caption{Austrittswinkel}
+\label{winkel} \includegraphics[width=0.5\linewidth]{pictures/winkel.ps}
+\caption{Austrittswinkel}
 \end{figure}
 
 Also gilt für den maximalen Raumwinkel in abhängigkeit der Tiefe:
@@ -195,10 +196,14 @@ und schliesslich erhält man also für die Halbwertszeit von $^{147}Sm$:
  T_{\frac{1}{2}} = \frac{R N ln(2)}{4 n h} = \frac{R \rho ln (2) N_A h_{rel}}{2n m_{r,sm_2O_3}} F
 \end{align}
 
-
-
 \subsection{Berechnung der Halbwertszeit von Kalium}
 
+Beim Kalium kommt es neben dem von uns messbaren $\beta^-$ Zerfall noch zu $\beta^+$ Zerfall und Elektroneneinfang, beide Effekte werden bei unserer Messung nicht berücksichtigt. Desweiteren kommt es zu Selbstabsorbtion und Rückstreuung am Probenbehälter. Das Verhältniss der Wahrscheinlichkeiten von $\Beta^-$ Zerfall zu der von $\Beta^+$ und Elektroneneinfang ist bekannt und beträgt:
+\begin{align}
+ \frac{P(\beta^-)}{P(\beta^+ \bigcup EC)} = \frac{100}{13}
+\end{align}
+
+Also gilt 
 
 \section{Versuchsaufbau}
 
