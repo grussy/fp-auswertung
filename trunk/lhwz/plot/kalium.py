@@ -2,7 +2,7 @@
 # -*- coding: iso-8859-1 -*-
 
 import sys
-from ROOT import gROOT, TCanvas, TGraphErrors, TF1
+from ROOT import gROOT, TCanvas, TGraphErrors, TF1, TVirtualFitter
 from array import array
 from math import sqrt, log
 
@@ -13,6 +13,7 @@ from math import sqrt, log
 gROOT.SetStyle("Plain")
 c = TCanvas('c', 'Massenabhängige Zählrate bei Kalium')
 c.SetGrid()
+
 
 
 # Messung -----------------------------------------------------------
@@ -108,13 +109,22 @@ print "\nKurvenanpassung:"
 print "a: %.4f +- %.4f" % (a,sa)
 print "b: %.4f +- %.4f" % (b,sb)
 
-
+fitter = TVirtualFitter.GetFitter();
+caa = fitter.GetCovarianceMatrixElement(0, 0)
+cab = fitter.GetCovarianceMatrixElement(0, 1)
+cba = fitter.GetCovarianceMatrixElement(1, 0)
+cbb = fitter.GetCovarianceMatrixElement(1, 1)
+print caa
+print cab
+print cba
+print cbb
 # Spezifische Beta-Aktivität ----------------------------------------
 
 fb = 1.29      # Rückstreufaktor
 D = 2.*a*b/fb  # spez. Aktivität
-sD = sqrt((sa/a)**2 + (sb/b)**2) * D  # Fehler der spez. Aktivität
-
+#sD = sqrt((sa/a)**2 + (sb/b)**2) * D  # Fehler der spez. Aktivität
+#da korreliert:
+sD = sqrt((2.*b/fb)**2 * caa + (2.*a/fb)**2 * cbb + 2*(2.*b/fb)*(2.*a/fb)*cab)
 print "\nSpezifische Beta-Aktivität:"
 print "D: %f +- %f" % (D,sD)
 
@@ -144,4 +154,6 @@ print "Beta-Halbwertszeit [s]: %g +- %g" % (t12_beta, st12_beta)
 print "Beta-Halbwertszeit [a]: %g +- %g" % (t12a_beta, st12a_beta)
 print "Halbwertszeit von K-40 [s]: %g +- %g" % (t12, st12)
 print "Halbwertszeit von K-40 [a]: %g +- %g" % (t12a,st12a)
+
+
 line = sys.stdin.readline()
