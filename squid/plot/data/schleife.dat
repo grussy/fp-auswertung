@@ -1,0 +1,6 @@
+Messung	Datei	Time/Div	Volts/Div	Getriebe
+R1	R1_10_HM1508-2.csv	1s	100	10
+R2	R2_10_HM1508-2.csv	1s	100	10
+R3	R3_10_HM1508-2.csv	1s	50	10
+R4	R4_10_HM1508-2.csv	1s	50	10
+R5	R5_10_HM1508-2.csv	1s	50	10
