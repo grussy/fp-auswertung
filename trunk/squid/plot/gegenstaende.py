@@ -13,57 +13,41 @@ gROOT.SetStyle("Plain")
 # -------------------------------------------------------------------
 
 # Abstand z [m], in schleife.py bestimmt
-z, sz = (0.030922471837111904, 0.0026243745469483252)
+zm, szm = (0.044, 0.01)
 
 # Abgeschaetzter Fehler der Spannungsdifferenz durch den Untergrund [V]
 sUunt = 0.02
 
 # Lade Messdaten
-mg = lade_gegenstaende()
-mgf = filter(lambda mi: mi.fitable, mg)
+mgf = lade_gegenstaende()
 
 # Fuehre Fits durch
 print 'Sinus-Fit'
-for m in mg:
-    if m.fitable:
-        m.fit()
+for m in mgf:
+        m.fito()
         print '%s: rchisq = %.5f, dU = %.4f +- %.4f' % (
             m.name, m.rchisq, m.dU, m.sdU)
-    #m.draw()
-    #m.vdraw()
-
+    	m.draw()
+	m.vdraw()
+zm, szm = (0.044, 0.01)
 # Berechne Dipolmomente und Magnetfelder
 print '\nBerechnung der Dipolmomente und Magnetfelder'
 for m in mgf:
     # Berechne Bz und seinen Fehler
-    Bz = m.dU/(2 * m.si * Feff)
+    Bz = (Ffl*m.dU)/m.si
     sBz = Bz * (m.sdU+sUunt)/m.dU
     m.Bz, m.sBz = Bz, sBz
 
     # Berechne Dipolmoment
-    pm = 2*pi * z**3 * Bz / mu0
-    spm = pm * sqrt( (sBz/Bz)**2 + (3.*sz/z)**2 )
+    pm = 2*pi * zm**3 * Bz / mu0
+    spm = pm * sqrt( (sBz/Bz)**2 + (3.*szm/zm)**2 )
     m.pm, m.spm = pm, spm
 
     print '%s: Bz = %g +- %g (%.1f%%), pm = %g +- %g (%.1f%%)' % (
         m.name, Bz, sBz, sBz/Bz*100, pm, spm, spm/pm*100)
-
-
-# Berechne Magnetfelder der Nicht-Dipole
-print '\nBerechnung der Magnetfelder der Nicht-Dipole'
-si = 10./phi0
-sdU = 0.05
-md = [('zyl_b.dat', 0.63), ('tina_1', 0.23), ('korken', 1.68), ('1cent', 1.23)]
-
-for m in md:
-    name, dU = m
     
-    # Berechne Bz und seinen Fehler
-    Bz = dU/(2 * si * Feff)
-    sBz = Bz * (sdU+sUunt)/dU
-    print '%s: Bz = %g +- %g (%.1f%%)' % (name, Bz, sBz, sBz/Bz*100)
-    
-
+print '\nfür unsere SimKarte mit wechselnder Amplitude muss wohl noch ein anderer Fit gemacht werden, \n hier wird auch das Dipolmoment nicht mehr stimmen da wir eine andere als nur eine einfache \n Sinusabhängikeit haben. Ansonsten finde ich auch hier keine Fehler mehr. '
+raw_input();
 # Erzeuge TeX Tabellen
 #import texgen
 #texgen.write_table_gegenstaende(mg)

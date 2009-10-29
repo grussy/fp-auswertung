@@ -111,23 +111,16 @@ class MessungSchleife(Messung):
 	self.speed = speed
 	self.Ubat = 2.92
 	self.omega = 0.8741
-        self.R = {'R1':100, 'R2':510, 'R3':1000, 'R4':5100, 'R5':10000}[bez]
-        self.si = 1 / phi0 # former :{'x1':10., 'x10':1., 'x100':0.1}[sens]
+        self.R = {'R1':51.47, 'R2':100.8, 'R3':300.8, 'R4':510.6, 'R5':1000}[bez]
+        self.si = 1900e-3 # former :{'x1':10., 'x10':1., 'x100':0.1}[sens] They did Bullshit!! We used 100kOhm = 1900 mV/Phi_0
         self.Ibat = self.Ubat/self.R
 
 # Spezialisierung fuer die Gegenstaende
 class MessungGegenstand(Messung):
-    def __init__(self, name, bez, mode, nrot, fitable,
-                 filt='-', geschw=10, sens='x1'):
+    def __init__(self, name, bez, FeedbR):
         Messung.__init__(self, name)
         self.bez = bez
-        self.sens = sens
-        self.mode = mode
-        self.fitable = fitable
-        self.filt = filt
-        self.geschw = geschw
-        self.nrot = nrot
-        self.si = {'x1':10., 'x10':1., 'x100':0.1}[sens] / phi0
+        self.si = {'1':21., '3':60., '6':120., '10':195., '15':290., '20':380., '50':950., '100':1900. }[FeedbR] / (phi0*1e3)
         
 # Hilfsroutine zum Einlesen aller Schleifenmessungen
 def lade_schleife(dateiname='data/schleife.dat'):
@@ -146,16 +139,14 @@ def lade_schleife(dateiname='data/schleife.dat'):
     return m
             
 # Hilfsroutine zum Einlesung aller Gegenstandsmessungen
-def lade_gegenstaende(dateiname='gegenstaende.dat'):
+def lade_gegenstaende(dateiname='data/gegenstaende.dat'):
     m = []
     for line in open(dateiname, 'r').readlines()[1:]:
         if not line.strip() or line.strip()[0] == '#': continue
         v = line.split()
         mi = MessungGegenstand(
-            bez = v[0].replace('_',' '),
-            mode = v[1],
-            nrot = v[2],
-            name = v[3],
-            fitable = int(v[4]))
+            bez = v[0],
+            name = v[1] + '.csv',
+            FeedbR = v[2])
         m += [mi]
     return m
