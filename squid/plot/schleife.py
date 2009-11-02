@@ -48,7 +48,10 @@ for m in msf:
     print '%s: Bz = (%f * Ffl)/%f = %g +- %g (%.1f%%)' % (
         m.bez,m.dU,m.si, Bz, sBz, sBz/Bz*100)
 
-zm, szm = (0.044, 0.01)
+#zm = 0.044
+zm = 0.0515
+szm =  0.01
+
 print '\nAbstand Squid - Probe z: %f +- %f (%f%%)' % (
     zm, szm,float((szm/zm)*100))
 
@@ -64,6 +67,7 @@ for m in msf:
     # Bestimme Dipolmoment aus Bz und dem Abstand
     pm = 2*pi * zm**3 * m.Bz / mu0
     spm = pm * sqrt( (m.sBz/m.Bz)**2 + (3.*(szm)/zm)**2 )
+    #spm = m.sBz
     m.pm, m.spm = pm, spm
     
     print '%s: pt = %g +- %g (%f%%), pm = %g +- %g (%f%%) Verhältniss Theo/Messung: %f' % (
