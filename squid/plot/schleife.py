@@ -48,13 +48,11 @@ for m in msf:
     print '%s: Bz = (%f * Ffl)/%f = %g +- %g (%.1f%%)' % (
         m.bez,m.dU,m.si, Bz, sBz, sBz/Bz*100)
 
-#zm = 0.044
-zm = 0.0515
-szm =  0.01
 
+zm, szm = (0.044, 0.005)
 print '\nAbstand Squid - Probe z: %f +- %f (%f%%)' % (
     zm, szm,float((szm/zm)*100))
-
+print '\nFläche der Schleife:%g'%(r)
 
 # Berechne Dipolmomente -----------------
 print '\nBerechnung der Dipolmomente'
