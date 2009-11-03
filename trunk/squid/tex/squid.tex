@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage[paper=a4paper,left=20mm,right=20mm,top=30mm,bottom =30mm]{geometry}
+\usepackage[paper=a4paper,left=25mm,right=25mm,top=30mm,bottom =30mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{stmaryrd}
@@ -55,6 +55,9 @@
 \newpage
 \pagenumbering{arabic}
 \section{Überblick}
+<<<<<<< .mine
+In diesem Versuch soll mittels eines \textit{SQUID} das Magnetfeld verschiedener Proben sowie einer Stromdurchflossenen Leiterschleife gemessen und deren Dipolmoment bestimmt werden. Ein SQUID (\textbf{S}uper\-conducting \textbf{Qu}antum \textbf{I}nterference \textbf{D}evice) ist ein sehr kleiner, höchst empfindlicher Magnetfelddetektor, mit dem sich äußerst geringe Magnetfeldschwankungen registrieren lassen. Da die Nachweisgenauigkeit nur durch Quanteneffekte begrenzt ist, wird die Messgenauigkeit von keinem anderen Magnetfelddetektor übertroffen. Im wesentlichen besteht ein SQUID nur aus einem supraleitendem Ring der an einer sehr schmalen Stelle durch einen Isolator unterbrochen ist. Mit Hilfe geeigneter Elektronik können so kleinste Flussänderungen im Innern des Rings erkannt werden.
+=======
 In diesem Versuch soll mittels eines \textit{SQUID} das Magnetfeld verschiedener Proben sowie einer stromdurchflossenen
  Leiterschleife gemessen und das Dipolmoment bestimmt werden. Ein SQUID (\textbf{S}uper\-conducting \textbf{Qu}antum
  \textbf{I}nterference \textbf{D}evice) ist ein sehr kleiner, höchst empfindlicher Magnetfelddetektor, mit dem sich äußerst
@@ -62,12 +65,13 @@ In diesem Versuch soll mittels eines \textit{SQUID} das Magnetfeld verschiedener
  wird die Messgenauigkeit von keinem anderen Magnetfelddetektor übertroffen. Im wesentlichen besteht ein SQUID nur aus
  einem supraleitendem Ring der an einer sehr schmalen Stelle durch einen Isolator unterbrochen ist. Mit Hilfe geeigneter
  Elektronik können so kleinste Flussänderungen im Innern des Rings erkannt werden.
+>>>>>>> .r131
 
 \section{Aufgabenstellung}
 \begin{enumerate}
  \item Kalibration das SQUID durch Variation der Einstellungen. Es soll eine möglichst große Amplitude des SQUID-Patterns bei möglichst kleinem Rauschen gefunden werden.
 \item Vermessung der Magnetfelder einer rotierender Leiterschleife welche von fünf verschiedenen Stromstärken durchflossen wird.  Bestimmung der Dipolmomente und Vergleich mit berechnetem Wert.
-\item Vermessung der Magnetfelder und Diplomomente verschiedener Proben (Magnetspan, Stabmagnet, Geldstück, SIM-Karte)
+\item Vermessung der Magnetfelder und Dipolmomente verschiedener Proben (Magnetspan, Stabmagnet, Geldstück, SIM-Karte)
 \item (optional) polare Darstellung der Stärke des Magnetfeldes in Abhängigkeit des Drehwinkels
 \end{enumerate}
 \newpage
@@ -80,12 +84,12 @@ Es sind zwei Arten von Supraleitern bekannt: Typ-I und Typ-II. \\
 Bei Typ-I-Supraleitern wird die Supraleitung durch eine Paarbildung von Elektronen (Cooper-Paare) im Leiter erklärt.
 Metalle werden als Kristalle betrachtet, in denen sich Leitungselektronen praktisch frei zwischen den Atomen bewegen können. Dieses „Elektronengas“ besteht aus Fermionen und unterliegt deshalb der Fermi-Verteilung welche die Besetzung der Energiezustände angibt. Wird das Material gekühlt, verringert sich die Atombewegung. Bei ausreichend tiefen Temperaturen bewegen sich die Elektronen so langsam, dass ein Elektron aufgrund seiner Ladung Gitteratome anzieht. Die Bewegung der angezogenen Atome zieht sich als Welle durch das ganze Medium und wird als Phonon bezeichnet. Die Gegenbewegung der Atome erfolgt aufgrund ihrer höheren Masse zeitlich stark verzögert und daraus resultiert eine Polarisation des Gitters, die die Coulombabstoßung überkompensiert. Ein zweites Elektron kann nun in dieser Polarisationsspur seine Energie absenken, d.h. es wird gebunden. Es entsteht, vermittelt über die Gitterbewegung, ein Cooper-Paar.\\
 
-Da sich die beiden beteiligten Elektronen in entgegengesetzter Richtung bewegen, ist der Gesamtimpuls annährend Null.
-Mit der Unschärferelation folgt somit eine sehr große Ortsausdehnung. Ein Cooper-Paar hat eine Ausdehnung in der Größenordnung von 1000\AA. Die Wellenfunktionen der einzelnen Cooper-Paare überlappen also mehrfach, wodurch alle Cooper-Paare durch eine gemeinsame Gesamtwellenfunktion beschrieben werden kann.\\
+Da sich die beiden beteiligten Elektronen in entgegengesetzter Richtung bewegen, ist der Gesamtimpuls annähernd Null.
+Mit der Unschärferelation folgt somit eine sehr große Ortsausdehnung. Ein Cooper-Paar hat eine Ausdehnung in der Größenordnung von 1000\AA. Die Wellenfunktionen der einzelnen Cooper-Paare überlappen also mehrfach, wodurch alle Cooper-Paare durch eine gemeinsame Gesamtwellenfunktion beschrieben werden können.\\
 
 Bei der normalen elektrischen Leitung entsteht der elektrische Widerstand durch Wechselwirkungen der Elektronen mit Gitterfehlern des Kristallgitters und Gitterschwingungen. Darüber hinaus können auch Streuprozesse der Elektronen untereinander eine wichtige Rolle spielen. Durch die Kopplung der Elektronen im Supraleiter zu Cooper-Paaren wird die Energieabgabe an das Kristallgitter unterdrückt und so der widerstandslose elektrische Stromfluss ermöglicht. Die beiden einzelnen Elektronen sind Fermionen, die sich zu einem bosonischen Cooper-Paar zusammenschließen. (Siehe dazu \ref{bcs})\\
 
-Supraleiter sind ideale Diamagneten, im supraleitenden Zustand vermag ein Supraleiter bis zu einer oberen kritischen Grenze ein äußeres Magnetfeld (bis auf eine expotentiell abfallende Eindringtiefe an der Oberfläche, siehe \ref{london}) vollständig aus seinem Inneren zu verdrängen. Unterhalb des kritischen äußeren Magnetfelds befindet sich der Supraleiter in der Meißner-Phase, überschreitet das Magnetfeld diese Grenze so bricht die Supraleitung beim Typ I zusammen.
+Supraleiter sind ideale Diamagneten, im supraleitenden Zustand vermag ein Supraleiter bis zu einer oberen kritischen Grenze ein äußeres Magnetfeld (bis auf eine exponentiell abfallende Eindringtiefe an der Oberfläche, siehe \ref{london}) vollständig aus seinem Inneren zu verdrängen. Unterhalb des kritischen äußeren Magnetfelds befindet sich der Supraleiter in der Meißner-Phase, überschreitet das Magnetfeld diese Grenze so bricht die Supraleitung beim Typ I zusammen.
 
 Bei Typ II Supraleitern gibt es zwei kritische äußere Magnetfelder, bis zum ersten kritischen Feld verhält sich der Supraleiter wie Typ I, darüber können magnetische Feldlinien in Form so genannter Flussschläuche in das Material eindringen, ehe der supraleitende Zustand bei dem oberen kritischen Magnetfeld vollständig zerstört wird. Der magnetische Fluss in den Flussschläuchen beträgt immer ein ganzzahliges Vielfaches des magnetischen Flussquants (siehe \ref{flussquantisierung})
 
@@ -95,27 +99,36 @@ Beispiele für Typ - II- Supraleiter sind die keramischen Hochtemperatursupralei
 \label{bcs}
 Ein erstes Elektron verändert das Gitter durch Energieabgabe (Phonon) derart, dass ein zweites Elektron (z.B. durch Veränderung seiner Bahn oder Aufnahme eines Phonons) einen gleichgroßen Energiegewinn erzielt. Dies ist nur möglich, falls die Gitterbausteine und die Elektronen sich langsam genug (geringe  Temperatur, Stromdichte) bewegen.\\
 
-Die Idee der BCS-Theorie besteht darin, die Bildung sogenannter Cooper-Paare aus je zwei Elektronen durch eine schwache anziehende Wechselwirkung zu postulieren. Elektronen sind aufgrund ihres Spins (se=1/2) Fermionen und können als solche nicht den gleichen Zustand besetzen (Pauli-Prinzip). Im Gegensatz dazu sind die Cooper-Paare mit Spin s=0 (antiparallele Anordnung der Elektronenspins) Bosonen und können daher gleichzeitig den gleichen Zustand, und somit auch alle den Grundzustand annehmen. Dies ist nicht nur energetisch günstiger, sondern äußert sich auch in einer, den ganzen Festkörper überspannenden, Bose-Einstein-Wellenfunktion.\\
+Die Idee der BCS-Theorie besteht darin, die Bildung sogenannter Cooper-Paare aus je zwei Elektronen durch eine schwache anziehende Wechselwirkung zu postulieren. Elektronen sind aufgrund ihres Spins ($s_e=\pm \frac{1}{2}$) Fermionen (Teilchen mit Halbzahligen Spin) und können als solche nicht den gleichen Zustand besetzen (Pauli-Prinzip). Im Gegensatz dazu sind die Cooper-Paare mit Spin $s=0$ (antiparallele Anordnung der Elektronenspins) Bosonen und können daher gleichzeitig den gleichen Zustand, und somit auch alle den Grundzustand annehmen. Dies ist nicht nur energetisch günstiger, sondern äußert sich auch in einer, den ganzen Festkörper überspannenden, Bose-Einstein-Wellenfunktion.\\
 
 Diese Wellenfunktion kann von lokalen Hindernissen wie Atomkernen und Störstellen des Gitters allgemein nicht mehr beeinflusst werden und garantiert somit einen widerstandslosen Ladungstransport.
 
 \subsection{Flussquantisierung}
 \label{flussquantisierung}
 
-Bei einem Supraleiter in Form eines Ringes darf sich die Phase der Wellenfunktion $\psi$ bei einem Umlauf nur um ganzzahlige Vielfache von 2$\pi$ ändern. Dies folgt mit dem Stokes'schen Satz, berechnet man den Kreisstrom im Ring als geschossenes Wegintegral
-$\oint \vec j~d\vec l = 0$ über die Stromdichte muss dies Null ergeben. Nach Stokes ergibt das geschlossene Integral über das Vektorfeld $\vec A$ den magnetischen Fluss $\Phi_B$ durch den Ring. Dadurch dass $\psi$ ein eindeutiger Parameter ist, darf dise sich bei einem Umlauf nur um ganzzahlige Vielfache von $2\pi$ ändern. Es gilt somit:
+Bei einem SQUID handelt es sich um einen kreisförmigen Supraleiter, der Kreisstrom im Innern lässt sich also als Wegintegral über die Stromdichte $\vec{j}$ berechnen. Da dieser natürlich Null sein muss, folgt
 \begin{align}
- \oint\vec A~d\vec l = \Phi_B \textnormal{\quad und \quad} \oint \vec\nabla~\theta~d\vec l = \Delta~\theta = 2~\pi~n
-\end{align}
-Für die Flussquantisierung erhält man somit:
-\begin{align}
- \left|\Phi_B\right| = n~\frac{\hbar~c}{2~e} = n~\Phi_0
-\end{align}
-wobei $\Phi_0$ das Flussquant oder Fluxoid ist.
-\begin{align}
- \Phi_0 = 2,067833667(52)~\cdot~10^{-15} ~ Wb \quad \quad (1[Wb] = 1[Tm^2])
+ \label{kreisstrom} \oint_C \vec j ~ d\vec l = 0
 \end{align}
 
+wobei $C$ der Weg entlang des SQUID's ist. Mit dem Stoke'schen Satz folgt das das geschlossene Integral über das Vektorfeld $\vec A$ den magnetischen Fluss $\Phi_B$ durch den Ring ergibt:
+\begin{align}
+ \oint\vec A~d\vec l = \Phi_B
+\end{align}
+
+Die Cooper-Paare liegen wie oben beschrieben alle im gleichen Zustand vor, weshalb sie durch eine gemeinsame Wellenfunktion beschrieben werden können. Die Phase $\theta$ dieser Wellenfunktion ist ein eindeutiger Parameter, daher kann sie sich beim Umlauf um den Ring nur um Vielfache von $2\pi$ ändern:
+\begin{align}
+\label{phase}\oint \vec\nabla~\theta~d\vec l = \Delta~\theta = 2~\pi~n
+\end{align}
+
+Aus Gleichungen \ref{kreisstrom} - \ref{phase} folgt somit eine Quantisierung des magnetischen Flusses in Vielfache von $\Phi_0$, Fluxoide genannt:
+\begin{align}
+  \left|\Phi_B\right| &= n~\frac{\hbar~c}{2~e} = n~\Phi_0 \\
+\notag \\
+\notag \textnormal{mit}~~\Phi_0 &= 2,067833667(52)~\cdot~10^{-15} ~ Wb \quad \quad (1[Wb] = 1[Tm^2])
+\end{align}
+
+\newpage
 
 \subsection{London-Gleichungen}
 \label{london}
@@ -141,7 +154,7 @@ aus der sich die beiden Gleichungen:
 \begin{align}
  \nabla^2~\vec B = \frac{4~\pi~n_e~e^2}{m~c^2}~\vec B \textnormal{\quad und \quad} \nabla^2~\vec j = \frac{4~\pi~n_e~e^2}{m~c^2}~\vec j
 \end{align}
-ableiten lassen. Lösungen für diese sind expotentiell abfallende Funktionen mit einer Reichweite von $\Lambda =\sqrt{\frac{m~c^2}{4~\pi~n_e~e^2}}$. Folglich kann ein äußeres Magnetfeld eine gewisse Länge in einen Supraleiter eindringen. In der vom Magnetfeld durchdrungenen Schicht fließt außerdem ein Abschirmstrom senkrecht zum Magnetfeld.
+ableiten lassen. Lösungen für diese sind exponentiell abfallende Funktionen mit einer Reichweite von $\Lambda =\sqrt{\frac{m~c^2}{4~\pi~n_e~e^2}}$. Folglich kann ein äußeres Magnetfeld eine gewisse Länge in einen Supraleiter eindringen. In der vom Magnetfeld durchdrungenen Schicht fließt außerdem ein Abschirmstrom senkrecht zum Magnetfeld.
 
 \subsection{Josephson-Effekt}
 
