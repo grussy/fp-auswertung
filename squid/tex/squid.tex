@@ -96,7 +96,20 @@ Diese Wellenfunktion kann von lokalen Hindernissen wie Atomkernen und Störstell
 \subsection{Flussquantisierung}
 \label{flussquantisierung}
 
-Bei einem Supraleiter in Form eines Ringes darf sich die Phase der Wellenfunktion bei einem Umlauf nur um ganzzahlige Vielfache von 2$\pi$ ändern
+Bei einem Supraleiter in Form eines Ringes darf sich die Phase der Wellenfunktion $\psi$ bei einem Umlauf nur um ganzzahlige Vielfache von 2$\pi$ ändern. Dies folgt mit dem Stokes'schen Satz, berechnet man den Kreisstrom im Ring als geschossenes Wegintegral
+$\oint \vec j~d\vec l = 0$ über die Stromdichte muss dies Null ergeben. Nach Stokes ergibt das geschlossene Integral über das Vektorfeld $\vec A$ den magnetischen Fluss $\Phi_B$ durch den Ring. Dadurch dass $\psi$ ein eindeutiger Parameter ist, darf dise sich bei einem Umlauf nur um ganzzahlige Vielfache von $2\pi$ ändern. Es gilt somit:
+\begin{align}
+ \oint\vec A~d\vec l = \Phi_B \textnormal{\quad und \quad} \oint \vec\nabla~\theta~d\vec l = \Delta~\theta = 2~\pi~n
+\end{align}
+Für die Flussquantisierung erhält man somit:
+\begin{align}
+ \left|\Phi_B\right| = n~\frac{\hbar~c}{2~e} = n~\Phi_0
+\end{align}
+wobei $\Phi_0$ das Flussquant oder Fluxoid ist.
+\begin{align}
+ \Phi_0 = 2,067833667(52)~\cdot~10^{-15} ~ Wb \quad \quad (1[Wb] = 1[Tm^2])
+\end{align}
+
 
 \subsection{London-Gleichungen}
 \label{london}
@@ -122,7 +135,7 @@ aus der sich die beiden Gleichungen:
 \begin{align}
  \nabla^2~\vec B = \frac{4~\pi~n_e~e^2}{m~c^2}~\vec B \textnormal{\quad und \quad} \nabla^2~\vec j = \frac{4~\pi~n_e~e^2}{m~c^2}~\vec j
 \end{align}
-ableiten lassen. Lösungen für diese sind expotentiell abfallende Funktionen mit einer Reichweite von $\Lambda =\sqrt{\frac{m~c^2}{4~\pi~n_e~e^2}}$. Folglich kann ein äußeres Magnetfeld eine gewisse Länge in einen Supraleiter eindringen. In der vom Magnetfeld durchdrungenen Schicht flißt außerdem ein Abschirmstrom senkrecht zum Magnetfeld.
+ableiten lassen. Lösungen für diese sind expotentiell abfallende Funktionen mit einer Reichweite von $\Lambda =\sqrt{\frac{m~c^2}{4~\pi~n_e~e^2}}$. Folglich kann ein äußeres Magnetfeld eine gewisse Länge in einen Supraleiter eindringen. In der vom Magnetfeld durchdrungenen Schicht fließt außerdem ein Abschirmstrom senkrecht zum Magnetfeld.
 
 
 \section{Versuchsaufbau}
