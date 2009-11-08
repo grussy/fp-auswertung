@@ -224,8 +224,27 @@ Die  kritische Temperatur wird durch eintauchen des SQUIDS in Stickstoff erreich
 
 Ändert sich der externe Fluss um Werte die kleiner als das Flussquant $\Phi_0$ sind,  so ändert sich der der interne Fluss nicht. Es tritt dann in einer dünnen Schicht unterhalb der Oberfläche ein Abschirmstrom auf (hierbei 
 \subsection{Arbeitspunkt des SQUIDs}
+Die Amplitude des Stromes im Schwingkreis wird sehr klein gewählt wird, so klein, dass die damit verbundene Flussänderung gegenüber dem Flussquant 
+$\Phi_0$ verschwindend gering ist. Hierbei wird gebrauch davon gemacht, dass bei konstanter Stomapmplitude die Amplitude der Spannung im Schwingkreis abhängig vom anliegenden äußeren Feld variiert. Dies bedeutet, dass $V_{rf}$ dem Strom $I_{rf}$ folgt, solange der externe Fluss
+nicht größer als der kritische Fluss ist (linearer Bereich). Bei kleinerem externen Fluss als ein Flussquant aber größer
+als der kritische Fluss ergibt sich keine Änderung von $V_{rf}$ (Plateau). 
+
+\begin{itemize}
+ \item Falls $\Phi_{ext} = n \Phi_0$ , so entspricht die Amplitude der Spannung der Höhe des ersten Plateaus.
+ \item Für ansteigendes $\Phi_{ext}$ wird der Hub der Spannung geringer, da das Plateau schon früher einsetzt.
+       Das Minimum des Hubes wird erreicht, sofern der externe Fluss $\Phi_{ext} = (n + 1/2) \Phi_0$.
+ \item Falls das externe Feld weiter anwächst, so steigt auch die Amplitude der Spannung, da der Strom eine Amplitude besitzt, welche bereits
+       wieder über das Ende des Plateaus hinausgeht.
+ \item Bei $\Phi_{ext} = (n + 1) \Phi_0$ wird schließlich das Maximum wieder erreicht.
+\end{itemize}
+
+Steigt der externe Fluss gleichmäßig an, so ändert sich die maximale Spannung im Schwingkreis periodisch. Die Periodendauer ist gekoppelt mit einer Änderung des externen Flusses um ganze Flussquanten $\Phi_0$.
+
+
 
 \subsection{Lock-In Verstärker}
+
+
 
 \section{Versuchsaufbau}
 
