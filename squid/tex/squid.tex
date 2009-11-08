@@ -222,7 +222,32 @@ Die  kritische Temperatur wird durch eintauchen des SQUIDS in Stickstoff erreich
  \theta_2-\theta_1=2\pi n - 2 \pi \frac{\Phi_{tot}}{\Phi_0}
 \end{align}
 
-Ändert sich der externe Fluss um Werte die kleiner als das Flussquant $\Phi_0$ sind,  so ändert sich der der interne Fluss nicht. Es tritt dann in einer dünnen Schicht unterhalb der Oberfläche ein Abschirmstrom auf (hierbei 
+Ändert sich der externe Fluss um Werte die kleiner als das Flussquant $\Phi_0$ sind,  so ändert sich der der interne Fluss nicht. Es tritt dann in einer dünnen Schicht unterhalb der Oberfläche ein Abschirmstrom $I_s$ auf (kein Suprastrom), so
+dass der Fluss im innern dennoch ein vielfaches von  $\Phi_0$ ist. Dieser erzeugt seinerseits einen Fluss $\Phi_s=L I_s$(L ist durch Abmessung und Material bestimmt) so dass:
+\begin{align}
+ \Phi{tot}=\Phi_{ext}-L I_s
+\end{align}
+
+Der Fluss im innern wird also solange der reine Supraleiter supraleitend ist immer konstant aufeinem bestimmten Vielfachen von $\Phi_0$ gehalten. Wenn der externe Fluss um mehr als ein ganzes Flussquant verändert wird, bricht die Supraleitung kurz zusammen. Sie tritt dann sofort wieder ein wobei sich der interne Fluss nun entsprechend der Veränderung des externen auf einen neuen Wert (der wieder ein vielfaches von  $\Phi_0$ ist) eingestellt hat. Dies liegt  daran das der Abschirmstrom bei erhöhung des externen Flusses um mehr als ein Flussquant den kritischen Strom übersteigt, sich dann ein neuer Flussschlauch ausbildet (somit erhöht sich der innere Fluss um $\Phi_0$) und damit der Abschirmstrom wieder unter den kritischen sinkt.
+Für den durch den Josephsonkontakt unterbrochenen Supraleiter gilt dies gleichermassen allerdings gilt hier für den inneren Fluss wegen $I_s=I_{s,max} sin(\theta_2-\theta_1)$:
+\begin{align}
+ \Phi{tot}=\Phi_{ext}-L I_{s,max} sin(\theta_2-\theta_1)
+\end{align}
+
+Der Verlauf bei Anlegen eines äusseren Feldes is in Abbildung \ref{verlauf} dargestellt. Die grauen Linien stellen die Zustände entsprechend der rechtsstehenden vielfachen von $\Phi_0$ dar. Die gestrichelte Linie den Verlauf ohne erreichen der kritischen Stromstärke. Der eckige hystereseförmige Verlauf mit Pfeilen soll idealisiert verdeutlichen wie sich das SQUID bei Variation des Magnetfeldes verhält. \begin{figure}[H]
+\centering
+\label{verlauf} \includegraphics[width=0.9\linewidth]{pictures/squid_feld_verlauf.eps}
+\caption{Verhalten des Flusses im SQUID bei Variation des äusseren Feldes.}
+\end{figure}
+
+In dem treibenden Schwingkreis (tank circuit) fliesst ein Strom $I_{rf}$ der einen Fluss $\Phi_{rf}$ erzeugt. Q ist hierbei der Qualitätsfaktor, der Übertragungsverluste berücksichtigt und M die Kopplung zwischen treibender Spule und Supraleiter.
+\begin{align}
+ \Phi_{rf}=MQI_{rf}
+\end{align}
+
+
+
+
 \subsection{Arbeitspunkt des SQUIDs}
 Die Amplitude des Stromes im Schwingkreis wird sehr klein gewählt wird, so klein, dass die damit verbundene Flussänderung gegenüber dem Flussquant 
 $\Phi_0$ verschwindend gering ist. Hierbei wird gebrauch davon gemacht, dass bei konstanter Stomapmplitude die Amplitude der Spannung im Schwingkreis abhängig vom anliegenden äußeren Feld variiert. Dies bedeutet, dass $V_{rf}$ dem Strom $I_{rf}$ folgt, solange der externe Fluss
