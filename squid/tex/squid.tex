@@ -284,14 +284,14 @@ Die Komponenten des SQUID-Versuchs:
  \item JSQ-Magnetometer, bestehend aus der SQUID-Sonde, deren Signalverarbeitungselektronik und Spannungsversorgung
  \item Oszilloskop zur Darstellung des SQUID-Signals
  \item Computer zur Auslese des Oszilloskopes und Steuerung des Regelkreises des SQUIDs
- \item Widerstände zwischen 50 Ω und 1000 Ω, sowie diverse Proben mit unbekanntem Dipolmoment
+ \item Widerstände zwischen $50\Omega$ und $1000\Omega$, sowie diverse Proben mit unbekanntem Dipolmoment
 \end{itemize}
 
 \subsection{JSQ-Magnetometer}
 Das SQUID lässt sich uber die Software ’JSQ Duo Sensor Control’ bedienen. Hier lässt sich folgendes einstellen:
 \begin{itemize}
  \item \textbf{VCA} - Die Stromamplitude des Schwingkreises. Die komplette Skala deckt, nicht ganz linear, einen
-       Bereich von $-115~dBm ~(1, 8 ⋅ 10^{-9} W)$ bei einem eingestellten Wert von $0$ bis $-75~ dBm ~(1,8 ⋅ 10^{-7} W)$ bei einem Wert von $4095$.
+       Bereich von $-115~dBm ~(1, 8 \cdot 10^{-9} W)$ bei einem eingestellten Wert von $0$ bis $-75~ dBm ~(1,8 \cdot 10^{-7} W)$ bei einem Wert von $4095$.
  \item \textbf{VCO} - Regelung der Frequenz des Schwingkreises. Es können Werte von $630~MHz~(0)$ bis $970~MHz~(4095)$ eingestellt werden. Eine genaue
        Zuordnung findet sich im Benutzerhandbuch auf Seite 9.
  \item \textbf{OFF} - Dient zur Skalierung der Gesamtspannungsamplitude, dies wird hier dazu verwendet, das Signal um den Nullpunkt herum zu zentrieren.
@@ -300,9 +300,12 @@ Das SQUID lässt sich uber die Software ’JSQ Duo Sensor Control’ bedienen. H
        diesem Fall die Verstärkung der Schaltung definiert. Je nach Einstellung gelten unterschiedliche Verhältnisse für die Relation von Spannung
        zur Anzahl der Flussquanten. Es sind folgende Werte des Transfer-Koeffizienten $s_i$ wählbar (Siehe auch Benutzerhandbuch Seite 25):
        \begin{center}
-\begin{tabular}{lllllllll}
+\begin{tabular}{|l|llllllll|}
+\hline 
 $R / k\Omega$ & 1 & 3 & 6 & 10 & 15 & 20 & 50 & 100\\
-$s_i / mV / \Phi_0$ & 21 & 60 & 120 & 195 & 290 & 380 & 950 & 1900
+\hline 
+$s_i / mV / \Phi_0$ & 21 & 60 & 120 & 195 & 290 & 380 & 950 & 1900\\
+\hline 
        \end{tabular}
        \end{center}
 
