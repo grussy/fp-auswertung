@@ -86,7 +86,7 @@ Bei unserem SQUID handelt es sich um einen Typ II Supraleiter. Beispiele für so
 
 \subsection{BCS-Theorie}
 \label{bcs}
-Nach der BCS-Thorie sind die Elektronen bei tiefer Temperatur gepaart. Die Kopplung beruht auf einer Wechselwirkung zwischen den Elektronen und dem Kristallgitter. Ein Elektron wechselwirkt mit dem Gitter und deformiert es. Das gestörte Gitter wechselwirkt, seinerseits mit einem anderen Elektron in der Weise, dass zwischen den beiden Elektronen eine Anziehung besteht, die bei niedrigen Temperaturen stärker als die Coulomb-Abstoßung ist. Die beiden Elektronen gehen in einen gebundenen Zustand über und bilden ein so genanntes Cooper-Paar. Die beiden Elektronen in einem Cooper-Paar haben entgegengesetzte Spins, so dass das Cooper-Paar als Ganzes den Spin null hat. Jedes Cooper-Paar verhält sich also wie ein Boson. Bosonen unterliegen nich dem Pauli-Verbot, so dass sich belibig viele Cooper-Paare im gleichen Quantenzustand befinden und die gleiche Energie besitzen können. Im Grundzustand des Supraleiters bei $T = 0K$ sind alle Elektronen in Cooper-Paaren gebunden, und alle Cooper-Paare haben diselbe Energie. Im supraleitenden Zustand sind die Cooper-Paare stark korreliert und verhalten sich immer alle gleich. Der Stromfluss im Supraleiter wird dabei so realisiert, dass sich alle Elektronen in diesem Kollektiv gemeinsam bewegen. Dagegen kann Energiesissipation, die auf Stößen einzelner Elektronen mit den Gitterionen beruht, nicht stattfinden, es sei denn, die Temperatur ist so hoch, dass die Bindung der Cooper-Paare aufgebrochen wird. Die Energie, die dazu nötig ist, bezeichnet man
+Nach der BCS-Thorie sind die Elektronen bei tiefer Temperatur gepaart. Die Kopplung beruht auf einer Wechselwirkung zwischen den Elektronen und dem Kristallgitter. Ein Elektron wechselwirkt mit dem Gitter und deformiert es. Das gestörte Gitter wechselwirkt, seinerseits mit einem anderen Elektron in der Weise, dass zwischen den beiden Elektronen eine Anziehung besteht, die bei niedrigen Temperaturen stärker als die Coulomb-Abstoßung ist. Die beiden Elektronen gehen in einen gebundenen Zustand über und bilden ein so genanntes Cooper-Paar. Die beiden Elektronen in einem Cooper-Paar haben entgegengesetzte Spins, so dass das Cooper-Paar als Ganzes den Spin null hat. Jedes Cooper-Paar verhält sich also wie ein Boson. Bosonen unterliegen nich dem Pauli-Verbot, so dass sich belibig viele Cooper-Paare im gleichen Quantenzustand befinden und die gleiche Energie besitzen können. Im Grundzustand des Supraleiters bei $T = 0K$ sind alle Elektronen in Cooper-Paaren gebunden, und alle Cooper-Paare haben dieselbe Energie. Im supraleitenden Zustand sind die Cooper-Paare stark korreliert und verhalten sich immer alle gleich. Der Stromfluss im Supraleiter wird dabei so realisiert, dass sich alle Elektronen in diesem Kollektiv gemeinsam bewegen. Dagegen kann Energiesissipation, die auf Stößen einzelner Elektronen mit den Gitterionen beruht, nicht stattfinden, es sei denn, die Temperatur ist so hoch, dass die Bindung der Cooper-Paare aufgebrochen wird.
 
 \subsection{Flussquantisierung}
 \label{flussquantisierung}
@@ -142,7 +142,14 @@ aus der sich die beiden Gleichungen:
 ableiten lassen. Lösungen für diese sind exponentiell abfallende Funktionen mit einer Reichweite von $\Lambda =\sqrt{\frac{m~c^2}{4~\pi~n_e~e^2}}$. Folglich kann ein äußeres Magnetfeld eine gewisse Länge in einen Supraleiter eindringen. In der vom Magnetfeld durchdrungenen Schicht fließt außerdem ein Abschirmstrom senkrecht zum Magnetfeld.
 
 \subsection{Josephson-Effekt}
+\label{josephson}
 
+Der Josephson-Effekt besagt, dass Cooper-Paare widerstandsfrei zwischen zwei Supraleitern tunneln, die durch eine dünne, nichtsupraleitende Schicht voneinander getrennt sind. Eine solche Anordnung nennt man \textbf{Josephson-Kontakt}. Der Tunnelstrom tritt auf, ohne dass eine Spannung über dem Kontakt angelegt wird. Der Strom hängt von der Phasendifferenz der Wellenfunktion der Cooper-Paare in den beiden Supraleitern ab. Sei $\phi_1$ die Phase der Wellenfunktion eines Cooper-Paars in dem einen Supraleiter. Dann haben auch alle anderen Cooper-Paare in diesem Supraleiter die Phase $\phi_1$, da sich alle Cooper-Paare in einem Supraleiter kohärent verhalten. Ist $\phi_2$ die Phase der Wellenfunktionen aller Cooper-Paare im zweiten Supraleiter, so beträgt der Strom durch die Übergangsschicht:
+\begin{align}
+\label{jos-gleichstrom}
+ I = I_{max}~sin(\phi_2 - \phi_1)
+\end{align}
+Darin ist $I_{max}$ der maximale Strom. Dieser ist von der Dicke der Kontaktschicht abhängig. Die Gleichung \ref{jos-gleichstrom} beschreibt die Abhängigkeit die als \textbf{Josephson-Gleichstrom-Effekt} bezeichnet wird.
 
 \subsection{Das SQUID}
 
@@ -158,16 +165,5 @@ ableiten lassen. Lösungen für diese sind exponentiell abfallende Funktionen mi
 
 \section{Zusammenfassung}
 
-\begin{figure}[H]  %Gotische Kathedrale Kap. 4.1
-\begin{minipage}{0.5\linewidth}
-\centering
-\scalebox{0.25}{\includegraphics{pictures/Ostportal_Liebfrauenkirche_Mainz.jpg}}
-\end{minipage}
-\begin{minipage}{0.5\linewidth}
-\caption{\textit{Das Ostportals der Liebfrauenkirche} in Mainz.}
-\label{gotische-kathedrale}
-Die Zeichnung des Ostportals der Liebfrauenkirche in Mainz ist ein Beispiel für den Aufbau einer gotischen Kathedrale.
-\end{minipage}
-\end{figure}
 
 \end{document}
