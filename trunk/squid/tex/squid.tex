@@ -4,6 +4,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{stmaryrd}
 \usepackage{extarrows}
+%\usepackage{ccc-arrows}
 \usepackage{setspace}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
@@ -98,7 +99,44 @@ Bei unserem SQUID handelt es sich um einen Typ II Supraleiter. Beispiele für so
 
 \subsection{BCS-Theorie}
 \label{bcs}
-Nach der BCS-Thorie sind die Elektronen bei tiefer Temperatur gepaart. Die Kopplung beruht auf einer Wechselwirkung zwischen den Elektronen und dem Kristallgitter. Ein Elektron wechselwirkt mit dem Gitter und deformiert es. Das gestörte Gitter wechselwirkt, seinerseits mit einem anderen Elektron in der Weise, dass zwischen den beiden Elektronen eine Anziehung besteht, die bei niedrigen Temperaturen stärker als die Coulomb-Abstoßung ist. Die beiden Elektronen gehen in einen gebundenen Zustand über und bilden ein so genanntes Cooper-Paar. Die beiden Elektronen in einem Cooper-Paar haben entgegengesetzte Spins, so dass das Cooper-Paar als Ganzes den Spin null hat. Jedes Cooper-Paar verhält sich also wie ein Boson. Bosonen unterliegen nich dem Pauli-Verbot, so dass sich belibig viele Cooper-Paare im gleichen Quantenzustand befinden und die gleiche Energie besitzen können. Im Grundzustand des Supraleiters bei $T = 0K$ sind alle Elektronen in Cooper-Paaren gebunden, und alle Cooper-Paare haben dieselbe Energie. Im supraleitenden Zustand sind die Cooper-Paare stark korreliert und verhalten sich immer alle gleich. Der Stromfluss im Supraleiter wird dabei so realisiert, dass sich alle Elektronen in diesem Kollektiv gemeinsam bewegen. Dagegen kann Energiesissipation, die auf Stößen einzelner Elektronen mit den Gitterionen beruht, nicht stattfinden, es sei denn, die Temperatur ist so hoch, dass die Bindung der Cooper-Paare aufgebrochen wird.
+Nach der BCS-Thorie sind die Elektronen bei tiefer Temperatur gepaart. Die Kopplung beruht auf einer Wechselwirkung zwischen den Elektronen und dem Kristallgitter. Ein Elektron wechselwirkt mit dem Gitter und deformiert es. Das gestörte Gitter wechselwirkt, seinerseits mit einem anderen Elektron in der Weise, dass zwischen den beiden Elektronen eine Anziehung besteht, die bei niedrigen Temperaturen stärker als die Coulomb-Abstoßung ist. Die beiden Elektronen gehen in einen gebundenen Zustand über und bilden ein so genanntes Cooper-Paar. Die beiden Elektronen in einem Cooper-Paar haben entgegengesetzte Spins, so dass das Cooper-Paar als Ganzes den Spin null hat. Jedes Cooper-Paar verhält sich also wie ein Boson. Bosonen unterliegen nich dem Pauli-Verbot, so dass sich belibig viele Cooper-Paare im gleichen Quantenzustand befinden und die gleiche Energie besitzen können. Im Grundzustand des Supraleiters bei $T = 0K$ sind alle Elektronen in Cooper-Paaren gebunden, und alle Cooper-Paare haben dieselbe Energie. Im supraleitenden Zustand sind die Cooper-Paare stark korreliert und verhalten sich immer alle gleich. Der Stromfluss im Supraleiter wird dabei so realisiert, dass sich alle Elektronen in diesem Kollektiv gemeinsam bewegen. Dagegen kann Energiesissipation, die auf Stößen einzelner Elektronen mit den Gitterionen beruht, nicht stattfinden, es sei denn, die Temperatur ist so hoch, dass die Bindung der Cooper-Paare aufgebrochen wird. \\
+
+\textbf{Ergebnisse der BCS-Theorie:} \\
+
+Die Reichweite $r_0$ bzw. die Ausdehnung der Elektronen-Paarwellenfunktion berechnet sich zu:
+\begin{align}
+r_0 \propto \frac{\hbar}{\partial p} \propto \frac{\hbar v_F}{\Delta E} \propto \frac{E_F}{k_F \Delta E}
+\end{align}
+
+Mit $E_F \approx (10^3 ~\textnormal{bis}~ 10^4) \cdot \Delta E$ und $k_F \approx 10^8~ cm^{-1}$ erhält man für $r_0$ Ergebnisse in der Ordnung von $10^3$ \AA
+
+Dieses Resultat, wenn auch nur abgeschätzt, ist wichtig, denn es impliziert zwei Sachverhalte: Erstens
+ist der Bereich der Aufenthaltswahrscheinlichkeiten der beiden Elektronen so groß, dass die Wellenfunk-
+tionen der Paare sich mehrfach uberlappen, was zur Bildung eines kohärenten Gesamtzustandes führt.
+Zweitens wird dies, siehe unten, zu Tunnelphänomenen durch dünne Schichten führen.
+Die kritische Temperatur $T_C$, welche angibt, wann das Material ohne Einfluss eines äußeren Magnetfeldes 
+in den supraleitenden Zustand übergeht, berechnet sich zu:
+\begin{align}
+ T_C = \frac{1,13}{k_B} \hbar \omega e^{-1/D_0 V_0}
+\end{align}
+
+$k_B$ steht für die Boltzmann-Konstante, $D_0$ die Zustandsdichte des (noch) normalleitenden Materials und
+$V_0$ sowie $\hbar \omega$ sind definiert durch den ursprünglichen Hamiltonoperator. Der Exponent der e-Funktion
+liegt etwa in dem Bereich [-2, ... , -10].
+Für die Energielücke bei $T = 0 K$ erhält man:
+\begin{align}
+ \Delta E(0) = 2\hbar\omega e^{-1 / D_0 V_0}
+\end{align}
+
+Die Energielücke ist allerdings temperaturabhängig. Sie wird schmaler, wenn sich die Temperatur in
+Größenordnung der Sprungtemperatur befindet. Dort verhält sie sich nach
+\begin{align}
+ \frac{\Delta E(T)}{\Delta E(0)} = 1,74 \sqrt{ 1 - \frac{T}{T_C}}
+\end{align}
+In ähnlicher Weise ergibt sich das temperaturabhängige Verhalten des kritischen Feldes Hc :
+\begin{align}
+ \frac{H_C(T)}{H_C} \approx 1 - \left( \frac{T}{T_C} \right)^2
+\end{align}
 
 \subsection{Flussquantisierung}
 \label{flussquantisierung}
