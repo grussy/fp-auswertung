@@ -234,7 +234,8 @@ Für den durch den Josephsonkontakt unterbrochenen Supraleiter gilt dies gleiche
  \Phi{tot}=\Phi_{ext}-L I_{s,max} sin(\theta_2-\theta_1)
 \end{align}
 
-Der Verlauf bei Anlegen eines äusseren Feldes is in Abbildung \ref{verlauf} dargestellt. Die grauen Linien stellen die Zustände entsprechend der rechtsstehenden vielfachen von $\Phi_0$ dar. Die gestrichelte Linie den Verlauf ohne erreichen der kritischen Stromstärke. Der eckige hystereseförmige Verlauf mit Pfeilen soll idealisiert verdeutlichen wie sich das SQUID bei Variation des Magnetfeldes verhält. \begin{figure}[H]
+Der Verlauf bei Anlegen eines äusseren Feldes is in Abbildung \ref{verlauf} dargestellt. Die grauen Linien stellen die Zustände entsprechend der rechtsstehenden vielfachen von $\Phi_0$ dar. Die gestrichelte Linie den Verlauf ohne erreichen der kritischen Stromstärke. Der eckige hystereseförmige Verlauf mit Pfeilen soll idealisiert verdeutlichen wie sich das SQUID bei Variation des Magnetfeldes verhält. 
+\begin{figure}[H]
 \centering
 \label{verlauf} \includegraphics[width=0.9\linewidth]{pictures/squid_feld_verlauf.eps}
 \caption{Verhalten des Flusses im SQUID bei Variation des äusseren Feldes.}
@@ -242,11 +243,30 @@ Der Verlauf bei Anlegen eines äusseren Feldes is in Abbildung \ref{verlauf} dar
 
 In dem treibenden Schwingkreis (tank circuit) fliesst ein Strom $I_{rf}$ der einen Fluss $\Phi_{rf}$ erzeugt. Q ist hierbei der Qualitätsfaktor, der Übertragungsverluste berücksichtigt und M die Kopplung zwischen treibender Spule und Supraleiter.
 \begin{align}
+<<<<<<< .mine
+ \Phi_{rf}&=MQI_{rf}
+=======
  \Phi_{rf}=MQI_{rf}
+>>>>>>> .r146
 \end{align}
 
+Dadurch wird der Gesamtfluss $\Phi$ im SQUID beschrieben durch den Fluss $\Phi_{rf}$ welcher  durch den Schwingkreis erzeugt wird  und einen externen Fluss $\Phi_{ext}$:
+\begin{align}
+ \Phi=\Phi_{rf}+\Phi_{ext}
+\end{align}
 
+Anhand zweier Fälle soll die Signalerzeugung verdeutlicht werden (siehe Abbildung 5)
+\begin{itemize}
+ \item \textbf{1.Fall: $\Phi_{ext} = n \cdot \Phi_0$} \\
+Es gilt $\Phi_{tot}=\Phi_{ext}$. Erhöht man den Strom im Schwingkreis, so steigt die Spannung (und der Abschirmstrom) linear bis zu Punkt A.
+Erreicht der Abschirmstrom den kritischen Wert (Punkt A) Die Supraleitung wird unterbrochen, der Ring ist normalleitend und schwächt durch entzug von Energie das äussere Feld.
+\end{itemize}
 
+\begin{figure}[H]
+\centering
+\label{stromVerlauf} \includegraphics[width=0.9\linewidth]{pictures/squid_strom_verlauf.eps}
+\caption{Verhältniss von Spannung zu Strom im Schwingkreis links Fall 1 rechts Fall 2.}
+\end{figure}
 
 \subsection{Arbeitspunkt des SQUIDs}
 Die Amplitude des Stromes im Schwingkreis wird sehr klein gewählt wird, so klein, dass die damit verbundene Flussänderung gegenüber dem Flussquant 
