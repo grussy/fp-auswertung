@@ -206,7 +206,7 @@ Darin ist $I_{max}$ der maximale Strom. Dieser ist von der Dicke der Kontaktschi
 \subsection{Das SQUID}
 
 Das SQUID kann also kleinste magnetische Flussänderungen in der grössenordnung eines Flussquants registrieren. Es gibt verschiedene technische Umsetzungen, hier im Praktikum  nutzen wir ein sogenanntes RF-SQUID (RF = Radio Frequency),  ein vergleichsweise einfacher und günstiger Aufbau.
-
+\newpage
 \subsubsection{Aufbau des RF-SQUID}
 
 Das RF-SQUID besteht im wesentlichen aus einem ringförmigen Hochtemperatursupraleiter, der an einer Stelle durch eine sehr dünne Isolatorschicht unterbrochen ist und einem LC-Schwingkreis. Die Isolatorschicht ist nur wenige nm dick  und erfüllt die Funktion eines Josephson-Kontaktes.
@@ -222,15 +222,13 @@ Die  kritische Temperatur wird durch eintauchen des SQUIDS in Stickstoff erreich
  \theta_2-\theta_1=2\pi n - 2 \pi \frac{\Phi_{tot}}{\Phi_0}
 \end{align}
 
-\subsubsection{Funktion des RF-SQUID}
-
 Ändert sich der externe Fluss um Werte die kleiner als das Flussquant $\Phi_0$ sind,  so ändert sich der der interne Fluss nicht. Es tritt dann in einer dünnen Schicht unterhalb der Oberfläche ein Abschirmstrom $I_s$ auf (kein Suprastrom), so
 dass der Fluss im innern dennoch ein vielfaches von  $\Phi_0$ ist. Dieser erzeugt seinerseits einen Fluss $\Phi_s=L I_s$(L ist durch Abmessung und Material bestimmt) so dass:
 \begin{align}
- \Phi_{tot}=\Phi_{ext}-L I_s
+ \Phi{tot}=\Phi_{ext}-L I_s
 \end{align}
 
-Der Fluss im innern wird also solange das SQUID supraleitend ist immer konstant auf einem bestimmten Vielfachen von $\Phi_0$ gehalten. Wenn der externe Fluss um mehr als ein ganzes Flussquant verändert wird, bricht die Supraleitung kurz zusammen. Sie tritt dann sofort wieder ein wobei sich der interne Fluss nun entsprechend der Veränderung des externen auf einen neuen Wert (der wieder ein vielfaches von  $\Phi_0$ ist) eingestellt hat. Dies liegt  daran das der Abschirmstrom bei erhöhung des externen Flusses um mehr als ein Flussquant den kritischen Strom übersteigt, sich dann ein neuer Flussschlauch ausbildet (somit erhöht sich der innere Fluss um $\Phi_0$) und damit der Abschirmstrom wieder unter den kritischen sinkt.
+Der Fluss im innern wird also solange der reine Supraleiter supraleitend ist immer konstant aufeinem bestimmten Vielfachen von $\Phi_0$ gehalten. Wenn der externe Fluss um mehr als ein ganzes Flussquant verändert wird, bricht die Supraleitung kurz zusammen. Sie tritt dann sofort wieder ein wobei sich der interne Fluss nun entsprechend der Veränderung des externen auf einen neuen Wert (der wieder ein vielfaches von  $\Phi_0$ ist) eingestellt hat. Dies liegt  daran das der Abschirmstrom bei erhöhung des externen Flusses um mehr als ein Flussquant den kritischen Strom übersteigt, sich dann ein neuer Flussschlauch ausbildet (somit erhöht sich der innere Fluss um $\Phi_0$) und damit der Abschirmstrom wieder unter den kritischen sinkt.
 Für den durch den Josephsonkontakt unterbrochenen Supraleiter gilt dies gleichermassen allerdings gilt hier für den inneren Fluss wegen $I_s=I_{s,max} sin(\theta_2-\theta_1)$:
 \begin{align}
  \Phi{tot}=\Phi_{ext}-L I_{s,max} sin(\theta_2-\theta_1)
@@ -244,8 +242,7 @@ Der Verlauf bei Anlegen eines äusseren Feldes is in Abbildung \ref{verlauf} dar
 
 In dem treibenden Schwingkreis (tank circuit) fliesst ein Strom $I_{rf}$ der einen Fluss $\Phi_{rf}$ erzeugt. Q ist hierbei der Qualitätsfaktor, der Übertragungsverluste berücksichtigt und M die Kopplung zwischen treibender Spule und Supraleiter.
 \begin{align}
- \Phi_{rf}&=MQI_{rf}\\
-\notag \textnormal{mit~~} M &= K
+ \Phi_{rf}=MQI_{rf}
 \end{align}
 
 
@@ -279,6 +276,40 @@ Wichtig ist das die Phasenverschiebung genau 90Grad beträgt. Im SQUID-Versuch i
 
 
 \section{Versuchsaufbau}
+Die Komponenten des SQUID-Versuchs:
+\begin{itemize}
+ \item Isoliertes Gefäß zur Aufnahme von flüssigem Stickstoff (Kryostat)
+ \item Probenschlitten inklusive Aufsatz für zwei verschiedene Probenhalterungen - eine stromdurchflossene Leiterschleife und eine Mehrzweckhalterung
+ \item Motor samt Spannungsversorgung und auf verschiedene Umdrehungsgeschwindigkeiten einstellbares Getriebe
+ \item JSQ-Magnetometer, bestehend aus der SQUID-Sonde, deren Signalverarbeitungselektronik und Spannungsversorgung
+ \item Oszilloskop zur Darstellung des SQUID-Signals
+ \item Computer zur Auslese des Oszilloskopes und Steuerung des Regelkreises des SQUIDs
+ \item Widerstände zwischen 50 Ω und 1000 Ω, sowie diverse Proben mit unbekanntem Dipolmoment
+\end{itemize}
+
+\subsection{JSQ-Magnetometer}
+Das SQUID lässt sich uber die Software ’JSQ Duo Sensor Control’ bedienen. Hier lässt sich folgendes einstellen:
+\begin{itemize}
+ \item \textbf{VCA} - Die Stromamplitude des Schwingkreises. Die komplette Skala deckt, nicht ganz linear, einen
+       Bereich von $-115~dBm ~(1, 8 ⋅ 10^{-9} W)$ bei einem eingestellten Wert von $0$ bis $-75~ dBm ~(1,8 ⋅ 10^{-7} W)$ bei einem Wert von $4095$.
+ \item \textbf{VCO} - Regelung der Frequenz des Schwingkreises. Es können Werte von $630~MHz~(0)$ bis $970~MHz~(4095)$ eingestellt werden. Eine genaue
+       Zuordnung findet sich im Benutzerhandbuch auf Seite 9.
+ \item \textbf{OFF} - Dient zur Skalierung der Gesamtspannungsamplitude, dies wird hier dazu verwendet, das Signal um den Nullpunkt herum zu zentrieren.
+ \item \textbf{Integr.C} - Kapazität des des Kondensators, welcher die Shaping-Zeit bestimmt. Größere Werte glätten das Signal mehr als kleine.
+ \item \textbf{FB-R} Widerstandswert des sogenannten Feedback-Resistors. Durch seinen Wert wird die Spannung des Stromkreises festgelegt, was in
+       diesem Fall die Verstärkung der Schaltung definiert. Je nach Einstellung gelten unterschiedliche Verhältnisse für die Relation von Spannung
+       zur Anzahl der Flussquanten. Es sind folgende Werte des Transfer-Koeffizienten $s_i$ wählbar (Siehe auch Benutzerhandbuch Seite 25):
+       \begin{center}
+\begin{tabular}{lllllllll}
+$R / k\Omega$ & 1 & 3 & 6 & 10 & 15 & 20 & 50 & 100\\
+$s_i / mV / \Phi_0$ & 21 & 60 & 120 & 195 & 290 & 380 & 950 & 1900
+       \end{tabular}
+       \end{center}
+
+
+\end{itemize}
+
+
 
 \section{Durchführung}
 
