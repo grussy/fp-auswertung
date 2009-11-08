@@ -189,7 +189,9 @@ aus der sich die beiden Gleichungen:
 \begin{align}
  \nabla^2~\vec B = \frac{4~\pi~n_e~e^2}{m~c^2}~\vec B \textnormal{\quad und \quad} \nabla^2~\vec j = \frac{4~\pi~n_e~e^2}{m~c^2}~\vec j
 \end{align}
-ableiten lassen. Lösungen für diese sind exponentiell abfallende Funktionen mit einer Reichweite von $\Lambda =\sqrt{\frac{m~c^2}{4~\pi~n_e~e^2}}$. Folglich kann ein äußeres Magnetfeld eine gewisse Länge in einen Supraleiter eindringen. In der vom Magnetfeld durchdrungenen Schicht fließt außerdem ein Abschirmstrom senkrecht zum Magnetfeld.
+ableiten lassen. Lösungen für diese sind exponentiell abfallende Funktionen mit einer Reichweite von $\Lambda =\sqrt{\frac{m~c^2}{4~\pi~n_e~e^2}}$. Folglich kann ein äußeres Magnetfeld eine gewisse Länge in einen Supraleiter eindringen. In der vom Magnetfeld durchdrun\centering
+\includegraphics[width=0.9\linewidth]{pictures/wiederstandTemp.eps}
+\caption{Elektrischen Widerstandes bei tiefen Temperaturen. Vorstellungen um 1900.}genen Schicht fließt außerdem ein Abschirmstrom senkrecht zum Magnetfeld.
 
 \subsection{Josephson-Effekt}
 \label{josephson}
@@ -203,9 +205,23 @@ Darin ist $I_{max}$ der maximale Strom. Dieser ist von der Dicke der Kontaktschi
 
 \subsection{Das SQUID}
 
-Das SQUID kann also kleinste magnetische Flussänderungen in der grössenordnung eines Flussquants registrieren. Es gibt verschiedene technische Umsetzungen, hier im Praktikum  nutzen wir ein sogenanntes RF-SQUID(RF = Radio Frequency),  ein vergleichsweise einfacher und günstiger Aufbau.
+Das SQUID kann also kleinste magnetische Flussänderungen in der grössenordnung eines Flussquants registrieren. Es gibt verschiedene technische Umsetzungen, hier im Praktikum  nutzen wir ein sogenanntes RF-SQUID (RF = Radio Frequency),  ein vergleichsweise einfacher und günstiger Aufbau.
 
 \subsection{Aufbau des RF-SQUID}
+
+Das RF-SQUID besteht im wesentlichen aus einem ringförmigen Hochtemperatursupraleiter, der an einer Stelle durch eine sehr dünne Isolatorschicht unterbrochen ist und einem LC-Schwingkreis. Die Isolatorschicht ist nur wenige nm dick  und erfüllt die Funktion eines Josephson-Kontaktes.
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/wiederstandTemp.eps}
+\caption{Elektrischen Widerstandes bei tiefen Temperaturen. Vorstellungen um 1900.}
+\end{figure}
+
+Die  kritische Temperatur wird durch eintauchen des SQUIDS in Stickstoff erreicht. Der Schwingkreis wird mit einer Frequenz von einigen hundert Megahertz betrieben und so ein externer magnetischer Fluss $\Phi_{ext}$ erzeugt. Dieser erzeugt einen Suprastrom der das Feld welches das SQUID zu durchdringen sucht kompensiert. Durch den Josephsonkontakt wird die Phase der Gesamtwellenfunktion der den Strom tragenden Cooperpaare verschoben:
+\begin{align}
+ \theta_2-\theta_1=2\pi n - 2 \pi \frac{\Phi_{tot}}{\Phi_0}
+\end{align}
+
+Ändert sich der externe Fluss um Werte die kleiner als das Flussquant $Phi_0$ sind,  so 
 \subsection{Arbeitspunkt des SQUIDs}
 
 \subsection{Lock-In Verstärker}
