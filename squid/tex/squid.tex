@@ -268,7 +268,11 @@ Steigt der externe Fluss gleichmäßig an, so ändert sich die maximale Spannung
 
 
 \subsection{Lock-In Verstärker}
+Bei der Methode des Lock-In Verstärkers wird dem zu messenden Signal ein Referenzsignal bekammter frequenz aufmoduliert.
+Das somit erhaltene Signal und das Referenzsignal werden um 90Grad phasenverschoben auf einen Integrator gegeben. Hierbei wird die Orthogonalität von
+sinus und cosinus ausgenutzt. Durch den Integrator werden somit alle Frequenzen die nicht dem Referenzsignal entsprechen, und somit jegliches Rauschen, herausgefiltert. \\
 
+Wichtig ist das die Phasenverschiebung genau 90Grad beträgt. Im SQUID-Versuch ist dies durch die Elektronik fest eingestellt und muss daher vom Praktikanten nicht beachtet werden. Die einzige Einstellung die vorgenommen werden kann ist die größe des Kondensators im Integrator welche die Integrationszeit bestimmt und somit die Glättung des Signals beeinflusst.
 
 
 \section{Versuchsaufbau}
