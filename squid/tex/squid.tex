@@ -251,7 +251,6 @@ als dem kritischen Fluss ergibt sich keine Änderung von $V_{rf}$.
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/squid_strom_verlauf.eps}
 \caption{Verhältniss zwischen Strom und Spannung im Schwingkreis.}
-\label{verlauf}
 \end{figure}
 
 \begin{itemize}
@@ -319,7 +318,9 @@ $s_i / mV / \Phi_0$ & 21 & 60 & 120 & 195 & 290 & 380 & 950 & 1900\\
 
 \end{itemize}
 
+Im Betriebsmodus "`Test"' wird eine zusätzliche Dreieckspannung in den Schwingkreis eingekoppelt, welche für eine kontrollierte Flussänderung von mehreren Flussquanten $\Phi_0$ sorgt. Hierdurch lässt sich die Spannungsantwort des SQUID welche am Oszilloskop beobachtet werden kann maximieren und somit der Arbeitspunkt wählen.\\
 
+Die Betriebsart "`Messung"' wird wie der Name schon sagt für die Vermessung des magnetischen Feldes einer Probe verwendet.
 
 \section{Durchführung}
 \subsection{Kalibration des SQUID}
@@ -333,7 +334,25 @@ VCA & VCO & OFF \\
 \end{center}
 
 \subsection{Messung der Magnetfelder}
+Als erstes haben wir die Leiterschleife mit verschiedenen Stromstärken vermessen.
+Hierzu wählten wir in der Software die "`measure"' Einstellung und plazierten die Leiterschleife, welche sich an der Spitze eine Aluminiumstange befand, so in der SQUID-Aperatur dass sie sich mittig unter dem Surpaleitenden Ring befand. Um das Magnetfeld der Leiterschleife in Abbhängigkeit des Winkels betrachten zu können wird die Stange mit der Leiterschleife auf einen Schrittmotor mit Getriebe variabler Übersetztung geschoben. An der Stange befinden sich auch zwei Mignon-Zellen und eine kleine Platine mit verschiedenen Widerständen, welche über einen Jumper einzeln gewählt werden können. Über die Widerstände lässt sich der Strom durch die Leiterschleife gemäß des Ohmschen Gesetzes wählen. Die zur Verfügung stehenden Widerstände waren:
+\begin{center}
+\begin{tabular}{|l|lllll|}
+\hline 
+Bezeichnung & R1 & R2 & R3 & R4 & R5\\
+\hline 
+$R / \Omega$ & 51,47 & 100,8 & 300,8 & 510,6 & 1000\\
+\hline 
+\end{tabular}
+\end{center}
+Bevor wir mit Messung begannen maßen wir die Batteriespannung $(2,92V)$, den Abstand der Probendrehachse zum SQUID $(4,4 \pm 0,5 cm)$ und den Durchmesser der Leiterschleife $(\textnormal{Aussen: }4mm~\textnormal{ Innen: }2mm)$. Dann maßen wir die Spannungsantwort des SQUID am Oszilloskop für jeden Widerstand über eine Umdrehung der Leiterschleife bei 10facher Übersetzung des Motors. Wir entschieden uns für die größte Übersetzung des Motors da das Oszilloskop beim Speichern der Messdaten immer die gleiche Anzahl an Messpunkten schrieb. Eine langsamere drehung der Probe würde somit nicht zu einer besseren Messgenauigkeit führen sonder nur Zeit verschwenden.\\
 
+Als nächstes nahmen wir uns den Stabmagneten vor. Für die anbringung einer Probe am Motor stand eine Probenhalterung zur Verfügung. Diese bestand aus einer Aluminiumstange mit einem Drehbaren Ring am Ende. Durch den Ring ließ sich mittels vier Plastikschrauben eine Probe von vier Seiten fixieren. Die vom Versuch aus zur Verfügung stehenden Proben waren jedoch großteils auf ein rundes Plastikschälchen geklebt welches sich in den Ring klemmen ließ und ohne Fixierung durch Schrauben hielt.
+
+Als wir mit den Messungen der Leiterschleife und des Stabmagneten durch waren wurden wir von unserem Assistenten auf eine Anomalie in der Grunlinie des SQUID Signals hingewiesen: Beobachtet man das SQUID-Signal auf dem Oszilloskop wenn sich keine Probe in der Apperatur befindet, über mehrere Sekunen (10-20), so stellt man ein leichtes Ansteigen und Abfallen des Signals fest. Dieser Verlauf hat die Form einer Kondensatoraufladung und scheint daher durch die Elektronik bedingt zu sein. Aus diesem Grund ist es günstiger das Signal über mehrere Umdrehungen der Probe aufzunehmen. In der Auswertung entschieden wir uns deshalb auch bei dem Fit für die Messung der Leiterschleife noche einen Steigungsterm zur Fitfunktion hinzuzufügen um die Änderung der "`Nulllinie"', welche man im Zeitraum einer Umdrehung als linear ansehen kann, auszugleichen.
+
+Anschließend haben wir noch den Magnetspan und eine Simkarte vermessen. Hierzu nahmen wir das Signal nun jeweils über mehrere Umdrehungen der Probe auf.
+Die Simkarte haben wir jeweils entlang einer der Hauptachsen rotieren lassen und so das Magnetfeld bezüglich 3-Achsen vermessen.
 \section{Auswertung}
 \subsection{Berechnung der Magnetfelder}
 Zur Berechnung der Magnetfelder aus dem gemessenen Spannungunterschied $\varDelta V$ benutzten wir den vom Hersteller angegebenen Feld-Fluss-Koeffiezienten $F=9,3 \frac{nT}{\Phi_0}$. Das Magnetfeld ergibt sich hiermit zu:
