@@ -4,7 +4,7 @@
 from konst import phi0, omega, somega
 from math import pi, cos, sin
 from array import array
-from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph
+from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph
 
 gROOT.SetStyle("Plain")
 
@@ -22,24 +22,27 @@ class Messung:
 	for l in open('data/'+name,'r'):
 		data.append(map(float,[float(l.strip().strip(',').split(',')[0])*omega*360./(2.*pi),l.strip().strip(',').split(',')[1]]))
         count = len(data)
-        deg = [z[0] for z in data]
-        U = [z[1] for z in data]
+        self.deg = [z[0] for z in data]
+        self.U = [z[1] for z in data]
 
         # Erzeuge Graphen
-        g = TGraph(count, array('d',deg) ,array('d',U))
+        g = TGraph(count, array('d',self.deg) ,array('d',self.U))
         g.SetTitle(';Winkel [#circ];Spannung U [V]')
         g.GetHistogram().SetTitleOffset(1.3, 'Y')
         g.SetMarkerStyle(1)
+	g.SetMarkerColor(2)
         g.SetMarkerSize(3.0)
         self.graph = g
 
         # Erzeuge Vektordiagramm
-        Um = 1./len(U) * sum(U)
-        x = [abs(Ui - Um)*cos(pi/180.*degi) for Ui,degi in zip(U,deg)]
-        y = [abs(Ui - Um)*sin(pi/180.*degi) for Ui,degi in zip(U,deg)]
-        vg = TGraph(count, array('d',x), array('d',y))
+        self.Um = 1./len(self.U) * sum(self.U)
+        self.x = [abs(Ui - self.Um)*cos(pi/180.*degi) for Ui,degi in zip(self.U,self.deg)]
+        y = [abs(Ui - self.Um)*sin(pi/180.*degi) for Ui,degi in zip(self.U,self.deg)]
+	mg = TMultiGraph()
+        vg = TGraph(count, array('d',self.x), array('d',y))
+	mg.Add(vg)
         vg.SetTitle('')
-        self.vgraph = vg
+        self.vgraph = mg
 
         # Auf beiden Achsen den selben Wertebereich für das Vektordiagramm
         xa = vg.GetXaxis()
@@ -81,6 +84,21 @@ class Messung:
         self.dU = 2.*abs(self.b)
         self.sdU = 2.*self.sb
 
+    # Sinusfit ohne Steigung an die Messdaten
+    def fits(self):
+        f = TF1('f_'+self.name, '[0] + [1]*sin([3]*x+[4])*sin(pi/180*x + [2])')
+        f.SetParameters(array('d', [0.1,1000,0,5,0]))
+        self.fcn = f
+        self.graph.Fit(f, 'Q')
+        self.a, self.sa = f.GetParameter(0), f.GetParError(0)
+        self.b, self.sb = f.GetParameter(1), f.GetParError(1)
+        self.c, self.sc = f.GetParameter(2), f.GetParError(2)
+        self.chisq = f.GetChisquare()
+        self.ndf = f.GetNDF()
+        self.rchisq = self.chisq/self.ndf
+        self.dU = 2.*abs(self.b)
+        self.sdU = 2.*self.sb
+
     # Zeichnen des 'normalen Graphen'
     def draw(self):
         c = TCanvas('c_'+self.name, self.name)
@@ -93,6 +111,10 @@ class Messung:
     def vdraw(self):
         cv = TCanvas('cv_'+self.name, self.name+' (Vektordiagramm)',600,600)
         self.vcanvas = cv
+	ytheo = [self.a + self.d * xi + self.b*sin(pi/180*xi + self.c) for xi in self.x]
+	vf = TGraph(len(self.x), array('d',self.x), array('d',ytheo))
+	vf.SetMarkerColor(2)
+	#self.vgraph.Add(vf)
         self.vgraph.Draw('AL')
         cv.Update()
 

@@ -24,11 +24,16 @@ mgf = lade_gegenstaende()
 # Fuehre Fits durch
 print 'Sinus-Fit'
 for m in mgf:
-        m.fito()
+	if (m.bez == 'SIMachse1') | (m.bez == 'SIMachse2'):
+		m.fitm()
+		m.draw()
+		m.vdraw()
+        else :
+		m.fito()
         print '%s: rchisq = %.5f, dU = %.4f +- %.4f' % (
             m.name, m.rchisq, m.dU, m.sdU)
-    	m.draw()
-	m.vdraw()
+#    	m.draw()
+#	m.vdraw()
 zm, szm = (0.044, 0.01)
 # Berechne Dipolmomente und Magnetfelder
 print '\nBerechnung der Dipolmomente und Magnetfelder'

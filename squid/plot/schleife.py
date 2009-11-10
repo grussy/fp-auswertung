@@ -26,6 +26,7 @@ print '\nAus einem ersten Fit an R1...R4 wurde das gewichtete Mittel von omega z
 #        print 'rchisq = %.5f, dU = %.4f +- %.4f' % (
 #        	m.rchisq, m.dU, m.sdU)
 
+
 print '\nSinus-Fits mit Steigung:'
 for m in msf:
         m.fitm()
@@ -68,8 +69,8 @@ for m in msf:
     #spm = m.sBz
     m.pm, m.spm = pm, spm
     
-    print '%s: pt = %g +- %g (%f%%), pm = %g +- %g (%f%%) Verhältniss Theo/Messung: %f' % (
-        m.bez, pt, spt, (spt/pt)*100, pm, spm, (spm/pm)*100, pt/pm)
+    print '%s & %.2g & %.2g & %.2g & %.2g & %.2g & %.2g & %.2f \\\\' % (
+        m.bez, m.Bz, m.sBz, pm, spm, pt, spt, pt/pm)
    
 print '\n --> Wie du siehst stimmen die Werte um den Faktor 1,6 nicht. Fehler viel zu gross. Finde aber keine Fehler im Code mehr'
 raw_input();
