@@ -70,6 +70,12 @@ Man kann zu den genannten Geschwindigkeiten Brechzahlen definieren: $n_{ao} = \f
 
 In einem positiven einachsigen Kristall, bei dem die Brechzahl des außerordentlichen Strahl $n_{ao}$ größer als die des ordentlichen Strahls $n_o$ ist, bewegt sich der außerordentliche Strahl langsamer als der ordentliche Strahl. Dabei wird die schnelle Achse als die Richtung definiert, in der sich der schneller bewegende Strahl schwingt. Das heißt, in einem positiven einachsigen Kristall ist die „schnelle Achse“ (ordentlicher Strahl) senkrecht zu optischen Achse des Kristalls, während die „langsame Achse“ (außerordentlicher Strahl) mit der optischen Achse übereinstimmt. Für einen negativen einachsigen Kristall stimmt die „schnelle Achse“ mit der optischen Achse überein. \\
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{pictures/doppelbrechung.eps}
+\caption{Doppelbrechung an einem Kristall}
+\end{figure}
+
 \subsubsection[Berechnung des linearen elektrooptischen Koeffizienten]{Berechnung des linearen elekrooptischen Koeffizienten für eine ADP-Pockelszelle in $45^\circ$-Y-Cut}
 Das Indexellipsoid für einen ADP-Kristall bei einem angelegten elektrischen Feld ist bis zur ersten Ordunung:
 \begin{align}
@@ -78,14 +84,17 @@ Das Indexellipsoid für einen ADP-Kristall bei einem angelegten elektrischen Fel
 \end{align}
 
 Die optische Achse im feldfreien Fall ist hier die $x_3$-Achse. Bei Anlegen des elektrischen Feldes entlang der $x_1$-Achse wird (\ref{indexellips}) zu:
+\begin{align}
+ \frac{x_1^2}{n_1^2} + 2 r_{41} x_2 E_1 x_3 + \frac{x_2^2}{n_1^2} + \frac{x_3^2}{n_3^2} = 1
+\end{align}
 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\linewidth]{pictures/doppelbrechung.eps}
-\caption{Doppelbrechung an einem Kristall}
-\end{figure}
-
+der Y-Cut: Koordinatenwechsel durch Drehung um $45^\circ$ um die $x_1$-Achse:
+\begin{align}
+ \notag x_2 = \frac{1}{\sqrt{2}} (x'_2 + x'_3) \quad x_3 = \frac{1}{\sqrt{2}} (x'_2 - x'_3) \\[10pt] 
+ \frac{x_1^2}{n_1^2} + r_{41} ( {x'_2}^2 - {x'_3}^2) E_1 + \frac{(x'_2 + x'_3)^2}{2 n_1^2} + \frac{(x'_2 - x'_3)^2}{2 n_3^2} = 1\\[10pt]
+ \Leftrightarrow \frac{x_1^2}{n_1^2} + \frac{{x'_2}^2}{2} \left(\frac{1}{n_1^2} + \frac{1}{n_3^2}\right) + \frac{{x'_3}^2}{2} \left(\frac{1}{n_1^2} + \frac{1}{n_3^2}\right) + x'_2 x'_3 \left(\frac{1}{n_1^2} - \frac{1}{n_3^2}\right) + r_{41} E_1 ({x'_2}^2 - {x'_3}^2) = 1 \\[10pt]
+ \textnormal{mit} \quad \frac{1}{n_x^2} = \frac{1}{2}\left(\frac{1}{n_1^2} + \frac{1}{n_3^2}\right)
+\end{align}
 
 \section{Versuchsaufbau}
 
