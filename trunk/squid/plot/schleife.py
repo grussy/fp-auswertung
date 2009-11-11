@@ -34,8 +34,8 @@ for m in msf:
 #		m.name,m.a,m.d,m.b,m.c)
         print 'rchisq = %.5f, dU = %.4f +- %.4f' % (
         	m.rchisq, m.dU, m.sdU)
-	m.draw()
-	m.vdraw()
+#	m.draw()
+#	m.vdraw()
 
 
 # Berechne Magnetfeld Bz -----------------
@@ -53,14 +53,16 @@ for m in msf:
 zm, szm = (0.044, 0.005)
 print '\nAbstand Squid - Probe z: %f +- %f (%f%%)' % (
     zm, szm,float((szm/zm)*100))
-print '\nFläche der Schleife:%g'%(r)
+print '\na, b:%g  %g'%(r_a, r_b_innen+d)
+print '\nFläche der Schleife:%g +- %g'%(A, sA)
+print '\nalte Fläche der Schleife:%g +- %g'%(A_alt, sA_alt)
 
 # Berechne Dipolmomente -----------------
 print '\nBerechnung der Dipolmomente'
 for m in msf:
     # Berechne theoretischen Wert aus der Schleifenflaeche und dem Strom
     pt = m.Ibat * A
-    spt = pt * sr
+    spt = (sA/A)*pt
     m.pt, m.spt = pt, spt
 
     # Bestimme Dipolmoment aus Bz und dem Abstand

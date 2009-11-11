@@ -98,7 +98,6 @@ class Messung:
         self.rchisq = self.chisq/self.ndf
         self.dU = 2.*abs(self.b)
         self.sdU = 2.*self.sb
-
     # Zeichnen des 'normalen Graphen'
     def draw(self):
         c = TCanvas('c_'+self.name, self.name)
