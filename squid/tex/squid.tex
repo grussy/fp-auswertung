@@ -348,7 +348,7 @@ $R / \Omega$ & 51,47 & 100,8 & 300,8 & 510,6 & 1000\\
 \hline 
 \end{tabular}
 \end{center}
-Bevor wir mit Messung begannen maßen wir die Batteriespannung $(2,92V)$, den Abstand der Probendrehachse zum SQUID $(4,4 \pm 0,5 cm)$ und den Durchmesser der Leiterschleife $(\textnormal{Aussen: }4mm~\textnormal{ Innen: }2mm)$. Dann maßen wir die Spannungsantwort des SQUID am Oszilloskop für jeden Widerstand über eine Umdrehung der Leiterschleife bei 10facher Übersetzung des Motors. Wir entschieden uns für die größte Übersetzung des Motors da das Oszilloskop beim Speichern der Messdaten immer die gleiche Anzahl an Messpunkten schrieb. Eine langsamere drehung der Probe würde somit nicht zu einer besseren Messgenauigkeit führen sonder nur Zeit verschwenden.\\
+Bevor wir mit Messung begannen maßen wir die Batteriespannung $(2,92V)$, den Abstand der Probendrehachse zum SQUID $(4,4 \pm 0,5 cm)$ und die Halbachsen der Leiterschleife $(\textnormal{a: }1,85mm~\textnormal{ b: }2,55mm)$. Dann maßen wir die Spannungsantwort des SQUID am Oszilloskop für jeden Widerstand über eine Umdrehung der Leiterschleife bei 10facher Übersetzung des Motors. Wir entschieden uns für die größte Übersetzung des Motors da das Oszilloskop beim Speichern der Messdaten immer die gleiche Anzahl an Messpunkten schrieb. Eine langsamere drehung der Probe würde somit nicht zu einer besseren Messgenauigkeit führen sonder nur Zeit verschwenden.\\
 
 Als nächstes nahmen wir uns den Stabmagneten vor. Für die anbringung einer Probe am Motor stand eine Probenhalterung zur Verfügung. Diese bestand aus einer Aluminiumstange mit einem Drehbaren Ring am Ende. Durch den Ring ließ sich mittels vier Plastikschrauben eine Probe von vier Seiten fixieren. Die vom Versuch aus zur Verfügung stehenden Proben waren jedoch großteils auf ein rundes Plastikschälchen geklebt welches sich in den Ring klemmen ließ und ohne Fixierung durch Schrauben hielt.
 
@@ -375,14 +375,24 @@ Für eine stromdurchflossene Leiterschleife ist das Dipolmoment definiert durch
  \vec{p_m}=I \vec{A}
 \end{align}
 
-mit Strom I und Flächennormale $\vec{A}$. Für unsere Leiterschleife nehmen wir einen Kreis als Fläche an, auch wenn dies der Realität nur Näherungsweise entspricht, da es sich eher um eine Elipse handelt. Leider kamen wir nicht dazu die Achsen dieser nochmal zu vermessen. Mit dieser Vereinfachung gilt für die Leiterschleife:
+mit Strom I und Flächennormale $\vec{A}$. Während der Auswertung viel uns auf das unsere Messung für den Schleifenraduis sehr ungenau war, wesshalb wir nach absprache mit dem Assistenten diese wiederholten. Wir gingen dabei von einer Elipsenförmigen Schleife aus. Wir maßen also Innen- ($2a_{innen}$) und Aussendurchmesser ($2a_{aussen}$) der kleinen Halbachse sowie Innenduchmeser $b_{innen}$ der grossen (da hier ein messen des äusseren Radius nicht möglich war). Wir berechneten so die Dicke $d$ der Schleife und mittelten auf die Halbachsen $a$ und $b$. Als Fläche $A$ erhielten wir also:
 \begin{align}
- p_{theo}=\pi r^2 I
+ A = \pi a b = \pi \frac{a_{innen} a_{aussen}}{2} (b_{innen} + d) = \pi \frac{a_{innen} a_{aussen}}{2} (b_{innen} + (a_{aussen} - a_{innen})
 \end{align}
 
-Da der Fehler des Radius viel grösser als der des Bateriestroms ist kann man letzteren vernachläsigen und der Fehler des theoretischen Dipolmoments berechnet sich dann zu:
+da alle Messungen denselben absoluten Fehler $s_{mes}$ haben (wir schätzten 0.1mm, mit Schiebelehre gemessen) erhielten wir als Fehler der Fläche:
 \begin{align}
- s_{p_{theo}}= \frac{\partial p_{theo}}{\partial r} s_r=2\pi r I s_r
+ s_A = A \left( \frac{s_a}{a} + \frac{s_b}{b} \right) = A \left( \left( \frac{s_{mes}}{a_{innen}} + \frac{s_{mes}}{a_{aussen}}\right) + \frac{3 s_{mes}}{b} \right)
+\end{align}
+
+damit wird der Betrag des theoretischen Dipolmoments zu:
+\begin{align}
+ p_{theo}=A I
+\end{align}
+
+Da der Fehler der Fläche viel grösser als der des Bateriestroms ist kann man letzteren vernachläsigen und der Fehler des theoretischen Dipolmoments berechnet sich dann zu:
+\begin{align}
+ s_{p_{theo}}= \frac{s_A}{A} p_{theo}
 \end{align}
 
 Gleichzeitig gibt es die Möglichkeit das Dipolmoment aus der Messung des Magnetfeldes B auf der Dipolachse zu bestimmen:
@@ -435,11 +445,11 @@ Für die verschiedenen Widerstände erhielten wir durch unsere Messung folgende 
 \hline
 Widerstand & $B_z$ & $s_{B_z}$ & $p_{mes}$ & $s_{p_{mes}}$ & $p_{theo}$ & $s_{p_{theo}}$ & $\frac{p_{theo}}{p_{mes}}$ \\
 \hline
-R1 & 2.1e-09 & 3.1e-12 & 9.1e-07 & 3.1e-07 & 1.6e-06 & 8e-10 & 1.77 \\
-R2 & 1.1e-09 & 3e-12 & 4.7e-07 & 1.6e-07 & 8.2e-07 & 4.1e-10 & 1.74 \\
-R3 & 3.7e-10 & 2.4e-12 & 1.6e-07 & 5.3e-08 & 2.7e-07 & 1.4e-10 & 1.76 \\
-R4 & 2.1e-10 & 2.2e-12 & 9.1e-08 & 3.1e-08 & 1.6e-07 & 8.1e-11 & 1.77 \\
-R5 & 1.2e-10 & 2.2e-12 & 4.9e-08 & 1.7e-08 & 8.3e-08 & 4.1e-11 & 1.68 \\
+R1 & 2.1e-09 & 3.1e-12 & 9.1e-07 & 3.1e-07 & 8.4e-07 & 1.1e-07 & 0.93 \\
+R2 & 1.1e-09 & 3e-12 & 4.7e-07 & 1.6e-07 & 4.3e-07 & 5.7e-08 & 0.91 \\
+R3 & 3.7e-10 & 2.4e-12 & 1.6e-07 & 5.3e-08 & 1.4e-07 & 1.9e-08 & 0.92 \\
+R4 & 2.1e-10 & 2.2e-12 & 9.1e-08 & 3.1e-08 & 8.5e-08 & 1.1e-08 & 0.93 \\
+R5 & 1.2e-10 & 2.2e-12 & 4.9e-08 & 1.7e-08 & 4.3e-08 & 5.7e-09 & 0.88 \\
 \hline
 \end{tabular}
 \end{center}
