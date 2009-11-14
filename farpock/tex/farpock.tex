@@ -89,12 +89,54 @@ Die optische Achse im feldfreien Fall ist hier die $x_3$-Achse. Bei Anlegen des 
 \end{align}
 
 der Y-Cut: Koordinatenwechsel durch Drehung um $45^\circ$ um die $x_1$-Achse:
-\begin{align}
+\begin{align*}
  \notag x_2 = \frac{1}{\sqrt{2}} (x'_2 + x'_3) \quad x_3 = \frac{1}{\sqrt{2}} (x'_2 - x'_3) \\[10pt] 
  \frac{x_1^2}{n_1^2} + r_{41} ( {x'_2}^2 - {x'_3}^2) E_1 + \frac{(x'_2 + x'_3)^2}{2 n_1^2} + \frac{(x'_2 - x'_3)^2}{2 n_3^2} = 1\\[10pt]
- \Leftrightarrow \frac{x_1^2}{n_1^2} + \frac{{x'_2}^2}{2} \left(\frac{1}{n_1^2} + \frac{1}{n_3^2}\right) + \frac{{x'_3}^2}{2} \left(\frac{1}{n_1^2} + \frac{1}{n_3^2}\right) + x'_2 x'_3 \left(\frac{1}{n_1^2} - \frac{1}{n_3^2}\right) + r_{41} E_1 ({x'_2}^2 - {x'_3}^2) = 1 \\[10pt]
- \textnormal{mit} \quad \frac{1}{n_x^2} = \frac{1}{2}\left(\frac{1}{n_1^2} + \frac{1}{n_3^2}\right)
+\notag \Leftrightarrow \frac{x_1^2}{n_1^2} + \frac{{x'_2}^2}{2} \left(\frac{1}{n_1^2} + \frac{1}{n_3^2}\right) + \frac{{x'_3}^2}{2} \left(\frac{1}{n_1^2} + \frac{1}{n_3^2}\right) + x'_2 x'_3 \left(\frac{1}{n_1^2} - \frac{1}{n_3^2}\right) + r_{41} E_1 ({x'_2}^2 - {x'_3}^2) = 1 \\[10pt]
+\notag \textnormal{mit} \quad \frac{1}{n_x^2} = \frac{1}{2}\left(\frac{1}{n_1^2} + \frac{1}{n_3^2}\right) \\[10pt]
+\notag \Leftrightarrow \frac{x_1^2}{n_1^2} + \frac{{x'_2}^2}{n_x^2} + \frac{{x'_3}^2}{n_x^2} + x'_3 x'_3 \left(\frac{1}{n_1^2} - \frac{1}{n_3^2} \right) + r_{41} E_1 ({x'_2}^2 - {x'_3}^2) = 1 \\[10pt]
+\notag \Leftrightarrow \frac{x_1^2}{n_1^2} + \frac{{x'_2}^2}{n_x^2} (1 + r_{41} E_1 n_x^2) + \frac{{x'_3}^2}{n_x^2} (1 - r_{41} E_1 n_x^2) + x'_2 x'_3 \left(\frac{1}{n_1^2} - \frac{1}{n_3^2}\right) = 1
+\end{align*}
+
+Für den Brechungsindex der jeweiligen Polarisationskomponente bei Lichteinfall entlang der $x'_2 (x'_3)$-Richtung, polarisiert entlang der Winkelhalbierenden zu $x_1$, $x'_3 (x'_2)$, gilt dann:
+\begin{align}
+ n_{x'_2} = \frac{n_x}{\sqrt{1 + r_{41} E_1 n_x^2}} \approx n_x + \frac{1}{2} r_{41} E_1 n_x^3 \\[10pt]
+\notag \left( n_{x'_3} = \frac{n_x}{\sqrt{1 - r_{41} E_1 n_x^2}} \approx n_x - \frac{1}{2} r_{41} E_1 n_x^3 \right)
 \end{align}
+
+Die Phasenverschiebung nach Durchlauf durch einen Kristall der Länge $l$ ist dann:
+\begin{align}
+ \omega~t = \frac{2~\pi}{\lambda}~(n_1 - n_{x'_2})~l
+\end{align}
+
+In dem hier verwendeten Aufbau wird wie schon erwähnt unter einem Winkel von $45^\circ$ in den Kristall eingestahlt. Hierdurch werden natürlich außerordentlicher und ordentlicher Strahl räumlich aufgespalten. Um dies zu kompensieren wird ein Zweiter Kristall nachgeschaltet welcher gerade umgekehrt orientiert ist (also um $180^\circ$ gedreht ist).
+
+Außerdem möchte man nur die durch das Elektrische Feld induzierte Doppelbrechung beobachten, da bei dem Kristall aber auch die natürliche Doppelbrechung auftritt wird ein weiteres Kristallpaar welches um $900^\circ$ gedreht ist nachgeschaltet. Bei diesem Paar ist außerdem das Elektrische Feld gegenüber dem des ersten Paars invertiert um nicht auch den Pockelseffekt zu kompensieren. Die Phasenverschiebung nach diesen vier Kristallen beträgt:
+\begin{align}
+ \omega~t = \frac{4~\pi}{\lambda}~r_{41}~E_1~n_x^3~l
+\end{align}
+
+Und für den elektrooptischen Koeffizienten gilt dann (Phasenverschiebung $= \pi$ und $E = U/d$:
+\begin{align}
+ r_{41} = \frac{\lambda d}{4 l U_{\frac{\lambda}{2}}} \sqrt{\frac{1}{2} \left( \frac{1}{n_1^2} + \frac{1}{n_3^2}\right)^3}
+\end{align}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{pictures/adp-zelle.eps}
+\caption{ADP-Pockelszelle mit vier Kristallen}
+\end{figure}
+
+Einige Daten über die beim Versuch verwendete Zelle:
+\begin{itemize}
+ \item Kantenlänge $d \approx 2,4 mm$
+ \item Länge $l \approx 20 mm$
+ \item $r_{41} = 23,4 \frac{pm}{V}$ bei $21^\circ$C
+ \item $n_1 = 1,522$
+ \item $n_3 = 1,477$
+ \item Laserwellenlänge $\lambda = 632,8 nm$
+\end{itemize}
+
 
 \section{Versuchsaufbau}
 
