@@ -111,7 +111,7 @@ Die Phasenverschiebung nach Durchlauf durch einen Kristall der Länge $l$ ist da
 
 In dem hier verwendeten Aufbau wird wie schon erwähnt unter einem Winkel von $45^\circ$ in den Kristall eingestahlt. Hierdurch werden natürlich außerordentlicher und ordentlicher Strahl räumlich aufgespalten. Um dies zu kompensieren wird ein Zweiter Kristall nachgeschaltet welcher gerade umgekehrt orientiert ist (also um $180^\circ$ gedreht ist).
 
-Außerdem möchte man nur die durch das Elektrische Feld induzierte Doppelbrechung beobachten, da bei dem Kristall aber auch die natürliche Doppelbrechung auftritt wird ein weiteres Kristallpaar welches um $900^\circ$ gedreht ist nachgeschaltet. Bei diesem Paar ist außerdem das Elektrische Feld gegenüber dem des ersten Paars invertiert um nicht auch den Pockelseffekt zu kompensieren. Die Phasenverschiebung nach diesen vier Kristallen beträgt:
+Außerdem möchte man nur die durch das Elektrische Feld induzierte Doppelbrechung beobachten, da bei dem Kristall aber auch die natürliche Doppelbrechung auftritt wird ein weiteres Kristallpaar welches um $90^\circ$ gedreht ist nachgeschaltet. Bei diesem Paar ist außerdem das Elektrische Feld gegenüber dem des ersten Paars invertiert um nicht auch den Pockelseffekt zu kompensieren. Die Phasenverschiebung nach diesen vier Kristallen beträgt:
 \begin{align}
  \omega~t = \frac{4~\pi}{\lambda}~r_{41}~E_1~n_x^3~l
 \end{align}
@@ -137,11 +137,66 @@ Einige Daten über die beim Versuch verwendete Zelle:
  \item Laserwellenlänge $\lambda = 632,8 nm$
 \end{itemize}
 
+\subsection{Faraday-Effekt}
+Der \textbf{Faraday-Effekt} ist ein magneto-optischer Effekt. Er beschreibt die Drehung der Polarisationsebene von polarisiertem Licht beim Durchgang durch ein transparentes Medium, an das ein Magnetfeld parallel zur Ausbreitungsrichtung der Lichtwelle angelegt wurde. Er tritt in den meisten dielektrischen Materialien (einschließlich Flüssigkeiten) auf, wenn sie einem starken magnetischen Feld ausgesetzt werden. Die Drehung der Polarisationsebene ist umso größer, je stärker das angelegte Feld ist.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{pictures/faraday-effect.eps}
+\caption{Faradayeffekt}
+\end{figure}
+
+Die Drehrichtung hängt von der Richtung des Magnetfelds ab. Die Drehung folgt dem Gesetzt:
+\begin{align}
+ \alpha = V ~ l ~ B
+\end{align}
+
+wobei $V$ eine Materialkonstante, die sogenannte Verdetkonstante, $l$ die Länge und $B$ die magnetische Feldstärke ist.
+Die Verdetkonstante hängt von der Wellenlänge des verwendeten Lichts ab.
+
+Im Gegensatz zu natürlich drehenden Substanzen hängt der Faraday-Effekt nicht von der Ausbreitungsrichtung im Material ab.
+Wenn ein Strahl also das Medium vor und nach Refelxtion an einem Spiegel durchläuft wird die Polarisationsrichtung nicht verändert (es wird hin und wieder zurück gedreht).\\
+
+Begründet wird der Faradayeffekt durch die zirkulare Doppelbrechung: Eine einfallende Welle wird in zwei entgegengesetzt zirkular polarisierte Wellen zerlegt. Durch das anliegende Magnetfeld erfahren die beiden Wellen verschiedene Ausbreitungsgeschwindigkeiten. Hierbei ist im Allgemeinen die Welle deren Polarisation mit der Stromrichtung des magnetisierenden Stroms zirkuliert, die mit der schnelleren Ausbreitungsrichtung.
+Für die Drehung der Polaristationsebene folgt aus geometrischen Überlegungen:
+\begin{align}
+ \alpha = \frac{\omega l}{2} \left( \frac{1}{v_-} - \frac{1}{v_+} \right) = \frac{\omega l}{2 c} ( n_- - n_+)
+\end{align}
+
+mit $\omega$ Winkelgeschwindigkeit der Welle, $l$ Länge des Mediums, $v_-$ Ausbreitungsgeschwindigkeit der negativ (entgegen $I_B$) zirkulierenden Welle, $v_+$ Ausbreitungsgeschwindigkeit der positiv zirkulierenden Welle und den Brechungsindizes $n_\pm = \frac{c}{v_\pm}$.
+
+
+
 
 \section{Versuchsaufbau}
 
-\section{Durchführung}
+\subsection{Pockels-Effekt}
 
+Als Lichtquelle dient ein HeNe-Laser. Der Laserstrahl wird durch einen Polarisationsfilter polarisiert bevor diese auf die Pockelszelle trifft. Nach der Pockelszelle folgt ein weiterer Polaristationsfilter der als Analysator dient. Zur Singalaufnahme trifft der Strahl nach dem Analysator auf eine Photodiode. Das Signal der Photodiode wird nach Verstärkung auf eiem Oszilloskop angezeigt.
+
+Für die Spannung an der Pockelszelle steht entweder eine Sägezahnspannung ($0 - 500V$) oder eine Sinusspannung (ca. $40V_{pp}$), welcher eine Gleichspannung ($-300~-~+300V$) überlagert werden kann, zur Verfügung. Die Spannung kann jeweils auch auf dem Oszilloskop beobachtet werden (Bei Sägezahn über Spannungsteiler).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/aufbau-pockels.eps}
+\caption{Schema Versuchsaufbau Pockelseffekt}
+\end{figure}
+
+\subsection{Faraday-Effekt}
+
+Das für den Faraday verwendete Schwerflintglas befindet sich in einem Halbschattenpolarimeter welches von einer Spule umwickelt ist. Als Lichtquelle dient eine Natriumdampflampe. Zum Betrieb der Spule steht ein Netzteil zur Verfügung ( $-5~-~+5A$ durch Umpolen).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{pictures/halbschattenpolarimeter.eps}
+\caption{Schema Halbschattenpolarimeter}
+\end{figure}
+
+
+\section{Durchführung}
+\subsection{Faraday-Effekt}
+Nachdem wir uns vergewissert hatten, dass die Optik korrekt justiert war, begannen wir mit der Sägezahnmethode.
+Wir stellten die Schalterstelltung am auswahlschalter auf Sägezahn und ...
 \section{Auswertung}
 
 \section{Zusammenfassung}
