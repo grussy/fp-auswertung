@@ -52,14 +52,104 @@
 \section{Überblick}
 
 \section{Aufgabestellung}
+\subsection{Vermessung der Bandlücke}
+\begin{itemize}
+ \item Optimieren Sie den Strahlengang für das Licht des Spektrometers. Beachten
+Sie dabei, dass das optische Gitter und der verwendete Filter zu der
+ausgewählten Halbleiterprobe passen.
+ \item Verwenden Sie die Software “LoggerPro”, um bei jeder der beiden zu
+Verfügung stehenden Halbleiterproben (Silizium, Germanium ) ein
+Absorptionsspektrum und ein Transmissionsspektrum aufzunehmen.
+ \item Führen Sie für beide Spektren eine Untergrundmessung durch.
+ \item Vermessen Sie die Strahlungsleistung der Lampe + Filter.
+ \item Überlegen Sie sich eine Möglichkeit, um Fehlerbalken auf die Messungen der
+Spektren zu errechnen.
+ \item Bestimmen Sie den Wert der Bandlückenenergie von Germanium und
+Silizium aus dem Transmissionsspektrum.
+ \item Bestimmen Sie den Wert der Bandlückenenergie von Germanium und
+Silizium aus dem Absorptionsspektrum.
+\end{itemize}
+
+\subsection{Haynes- und Shockley-Experiment}
+\begin{itemize}
+ \item Beobachten Sie die zeitliche und räumliche Entwicklung einer
+Ladungsträgerwolke, die von einem Laserpuls in einer Germaniumprobe
+erzeugt wurde.
+ \item Vermessen Sie diese Entwicklung: Die Ladungsträgerwolke wird von einer
+Treiberspannung von dem Auftreffpunkt des Lasers zu der Prüfnadel des
+Oszilloskops bewegt. Variieren Sie in zwei Messreihen zum einen den
+Abstand
+Nadel-Laserpunkt und zum anderen den Wert der Treiberspannung.
+ \item Berechnen Sie aus der zeitlichen Entwicklung des Schwerpunkts der
+Ladungsträgerwolke die Beweglichkeit $\mu_e$ freier Elektronen in $p$-Germanium.
+ \item Berechnen Sie aus der zeitlichen Entwicklung der Signalstärke der
+Ladungsträgerwolke die mittlere Lebensdauer $\tau_e$ freier Elektronen in
+$p$-Germanium.
+ \item Berechnen Sie aus der zeitlichen Entwicklung der Ladungsträgerwolke
+(Standardabweichung einer Gaußkurve) die Diffusionskonstante $D_e$ für freie
+Elektronen in $p$-Germanium.
+\end{itemize}
+
+\subsection{Halbleiterdetektor}
+\begin{itemize}
+ \item Machen Sie sich mit dem Aufbau des Detektors und der dazugehörigen
+Elektronik vertraut
+ \item Vermessen Sie das Spektrum von $^{57}Co$ und $^{241}Am$ mit einer Silizium-Diode
+ \item Vermessen Sie das Spektrum von $^{57}Co$ und $^{241}Am$ mit einem CdTe-Kristall
+(Cadmiumtellurid und Gold: Ohmscher Kontakt)
+ \item Berechnen Sie aus dem Verhältnis der Peakhöhen das Verhältnis der
+Absorptionswahrscheinlichkeiten von Silizium und $CdTe$
+ \item Berechnen Sie aus Lage und Breite der Peaks die relative
+Energieauflösung
+\end{itemize}
 
 \section{Theoretische Grundlagen}
+\subsection{Vermessung der Bandlücke}
+\subsubsection{Lock-In Verstärker}
+Bei der Methode des Lock-In Verstärkers wird dem zu messenden Signal ein Referenzsignal bekannter Frequenz aufmoduliert.
+Dies geschieht durch das zerhacken des Lichtstrahls (Chopper). Hierbei wird die Orthogonalität von
+sinus und cosinus ausgenutzt:
+\begin{align}
+ \int \limits_{-\pi} \limits^{\pi} sin(\omega_1 t)sin(\omega_2 t) dt = \begin{cases} 0 \textnormal{ für } \omega_1\neq\omega_2\\ \pi \textnormal{ für } \omega_1 = \omega_2\end{cases}
+\end{align}
+
+
+Durch den Lock-In Verstärker werden alle Frequenzen die nicht dem Referenzsignal entsprechen, und somit jegliches Rauschen, herausgefiltert. \\
+
+Wichtig ist das Messignal und Referenz genau in Phase sind da sonst die Amplitude des Integrals sinkt oder verschwindet.
+\subsection{Haynes- und Shockley-Experiment}
+\subsection{Halbleiterdetektor}
 
 \section{Versuchsaufbau}
+\subsection{Vermessung der Bandlücke}
+Der Aufbau besteht aus einem Spektrometer, dem Halbleiter und einem Pyrodetektor.
+Das Spektrometer liefert Licht mit definierter Wellenlänge welches auf den Halbleiter fällt. Durch Messung des Stroms der im Halbleiter bei angelegter Spannung fließt soll die Absorption gemessenwerden. Mit dem Pyrodetektor soll die Transmission gemessen werden.\\
+
+Das \textbf{Spektrometer} besteht aus einer Lampe die weisses Licht erzeugt, dieses wird mittels eines Choppers zerhackt (Lock-in Methode). Anschließend wird es, nach durchlauf einer Linse ($F = 100mm$) zur paralellisierung, an einem drehbaren optischen Gitter reflektiert um schließlich durch eine Blende auf den Halbleiter zu treffen. Zur Drehung wird ein Motor verwendet. Geschwindigkeit und Drehsinn sind wählbar. Der Drehwinkel wird vom Computer erfasst.\\
+
+Der \textbf{Pyrodetektor} besteht aus einem Plattenkondensator, in den als Dielektrikum ein Lithium-Tantalat-Blättchen eingebracht wurde. Durch die vom Chopper erzeugten Lichtpulse ändert sich die Dielektrizität des Kondensators was in einer wechselnden Spannung resultiert welche gemessen werden kann.\\
+
+Um ein möglichst "`sauberes"' Signal zu erhalten wird ein Lock-In Verstärker werwendet.
+Die verwendete Referenzfrequenz ist die des Choppers (ca. $70Hz$). Die Phasenbeziehung ist fest eingesetellt und lässt sich nicht verändern.
+
+\subsection{Haynes- und Shockley-Experiment}
+Durch einen Lichtleiter, welcher verschiebbar über einer Germaniumprobe monitert ist, wird ein Laserpuls auf die Probe geführt.
+Der Laserpuls erzeugt eine konzentrierte Ladungsträgerwolke in der Probe. Durch anlegen einer Spannung an die Probe bewegt sich die Wolke. Mit eine Tastspize die auf der Probe plaziert wird lässt sich auf dem Oszilloskop beobachten wie die Wolke "`vorbeizieht"'. Alle Elektronik zur Laserregelung und Spannungserzeugung befindet sich in einem Gehäuse. An diesem lässt sich Laserintensität und Spannung einstellen. Die Spannung liegt nur gepulst an der Probe an um dieser Zeit zum abkühlen zu lassen.\\
+
+Das zur Verfügung stehende Oszilloskop hat einen USB anschluss über welchen die Messdaten auf einem USB-Stick gespeichert werden können.
+
+\subsection{Halbleiterdetektor}
+Zur auswahl stehen eine Siliziumdiode und ein $CdTe$-Kristall zur Verfügung. Der Kristall liegt frei vor, d.h. er muss vor dem Umgebungslicht geschützt werden. Die Detektroren sind beide jeweils mit Elektronik zur Vorverstärkung auf austauschbaren Platinen montiert. Im Gehäuse in dem die jeweilige Platine plaziert wird befindet sich ebenfalls ein weiterer Vorverstärker und ein Shaping Amplifier. Das vom letzterem ausgehende Signal gelangt über einen Vielkanalanalysator MCA8000A in den Computer.
 
 \section{Durchführung}
+\subsection{Vermessung der Bandlücke}
+\subsection{Haynes- und Shockley-Experiment}
+\subsection{Halbleiterdetektor}
 
 \section{Auswertung}
+\subsection{Vermessung der Bandlücke}
+\subsection{Haynes- und Shockley-Experiment}
+\subsection{Halbleiterdetektor}
 
 \section{Zusammenfassung}
 
