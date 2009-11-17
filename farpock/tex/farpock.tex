@@ -12,6 +12,7 @@
 \usepackage[dvips,unicode,colorlinks,linkcolor=black]{hyperref} 
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{listings}
 
 \pagestyle{fancy}
 \lfoot{}
@@ -25,6 +26,25 @@
 % Für die Wahl der Schriftart
 \newcommand{\changefont}[3]{
 \fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+\lstset{
+	basicstyle=\ttfamily\scriptsize\mdseries,
+	keywordstyle=\bfseries\color{black},
+	identifierstyle=,
+	commentstyle=\color{black},	
+	stringstyle=\itshape\color{black},
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=1,
+	breaklines=true,
+	frame=none,
+	showstringspaces=false,
+	tabsize=4,
+	backgroundcolor=\color{white},
+	captionpos=b,
+	float=htbp,
+	frame=tlrb
+}
 
 \begin{document}
 % keine Hurenkinder und Schusterjungen
@@ -208,16 +228,106 @@ Das für den Faraday verwendete Schwerflintglas befindet sich in einem Halbschat
 \section{Durchführung}
 \subsection{Pockels-Effekt}
 Nachdem wir uns vergewissert hatten, dass die Optik korrekt justiert war, begannen wir mit der Sägezahnmethode.
-Wir stellten die Schalterstelltung am auswahlschalter auf Sägezahn und ...
+Wir stellten die Schalterstelltung am Auswahlschalter auf Sägezahn und führten 4 Messungen Durch. Die Spannungswerte wurden am PC mit der Oszilloskopsoftware abgelesen.
+
+Wir bestimmten den Teilungsfaktor des Spannungsteilers durch Anschluss der Sinusspannung direkt ans Oszilloskop und mit Spannungsteiler.
+
+Im Sinus-Gleichspannungsmodus nahmen wir jeweis abwechselnd Maximum und Minimum auf. Wir nahmen jeweils 15 Messpunkte auf.
 
 \subsection{Faraday-Effekt}
+Nach einschalten der Spulenkühlung und der Lampe begannen wir mit der Messung.
+Wir führten zwei Messreihen von jeweils $-5$ bis $+5A$ in $0,5A$ Schritten durch. Hierbei haben wir den Winkel stets auf beiden Seiten der Anzeig abgelesen. Außerdem bestimmten wir den $2\epsilon$-Winkel des Polarimeters (Winkel zwischen den beiden Polarisationsrichtungen).
+
 
 \section{Auswertung}
+Für die genauen Berechnungen siehe Anhang.
 
 \subsection{Pockels-Effekt}
+Für den Teilungsfaktor des Spannungsteilers erhielten wir $108,64$.
+Bei der Messung mit Sägezahnmethode Berechnet sich der Mittelwert für die Halbwellenspannung $U_{\lambda / 2}$ zu: $(248,79 \pm 3,89)V$. Für die Messung mit der Sinus-Gleichspannungs-Überlagerung erhält man im Mittel $U_{\lambda /2} = (246,93 \pm 1,20)V$.\\
+
+Das Gewichtete Mittel aus diesen Beiden Messreihen ergibt sich somit zu: 
+\begin{align*}
+ U_{\lambda / 2} = (247,37 \pm 0,92)V
+\end{align*}
+
+Somit errechnet sich der elektrooptische Koeffizient zu:
+\begin{align*}
+ r_{41} = (32,22 \pm 0,19) \frac{pm}{V}
+\end{align*}
+
 
 \subsection{Faraday-Effekt}
+Wir müssen die Abhängigkeit zwischen Magnetfeldstärke und Spule berechnen. Die Berechnung erfolgt mittels Biot-Savart und lässt sich in der Staatsexamensarbeit nachlesen. Hier nur soviel:
+Das Magnetfeld auf der $z$-Achse berechnet sich durch Integration von
+\begin{align}
+ dH = \frac{1}{4\pi}\frac{I~dl}{r^2} \sin(\phi)
+\end{align}
+zu
+\begin{align}
+ H(z) = \frac{NI}{2L(x_2-x_1}\left((L-z)\ln\frac{x_2 + \sqrt{(L-z)^2 + x_2^2}}{x_1 + \sqrt{(L-z)^2 + x_1^2}} + z \ln \frac{x_2 + \sqrt{z^2 + x_2^2}}{x_1 + \sqrt{z^2 + x_1^2}}\right)
+\end{align}
+
+Setzt man z.B. $1A$ ein so erhält man in der Mitte der Spule:
+\begin{align}
+ H\left(\frac{L}{2}\right) = 8212 \frac{A}{m}
+\end{align}
+
+Würde man mit der Näherung für eine undenlich lange Spule rechnen so erhielte man:
+\begin{align}
+ H\left(\frac{L}{2}\right) = 20571 \frac{A}{m}
+\end{align}
+
+Wir rechnen also mit der exakten Formel.
+
+Um den Rotationswinkel zu erhalten muss man erneut Integrieren, auch hier sei wieder auf die Staatsexamensarbeit verwiesen.
+\begin{align}
+ d\alpha = V H(z) dz \Leftrightarrow \alpha = V \int\limits_{\frac{L-l}{2}}^{\frac{L-l}{2}} H(z) dz
+\end{align}
+wird zu:
+\begin{align}
+ \alpha = V I 2556 \quad \textnormal{bzw.} \quad V = \frac{\alpha}{I 2556}
+\end{align}
+
+Wir teilen also die aus dem Fit erhaltene Steigung durch $2556$ um die Verdettkonstante zu erhalten.
+\begin{align}
+ V =  1,02 \cdot 10^-3 \frac{^\circ}{A}
+\end{align}
+
+Dies lässt sich umrechnen um mit den Herstellerangaben vergleichen zu können:
+\begin{align}
+ V = 1,02 \cdot 10^{-3} \frac{60min}{1,2564Oe~cm} = 0,485 \frac{min}{Oe~cm}
+\end{align}
+
+Ohne das Magnetfeld im inneren der Spule tatsächlich zu vermessen ist sicherlich der Fehler auf das Magnetfeld der führende.
+Eine Fehlerabschätzung macht in diesem Versuchsteil also wenig Sinn weshalb auch auf eine solche Verzichtet wurde.
+
+Für den $2\epsilon$-Winkel des Polarimeters haben wir $13,4 \pm 0,15^\circ$
 
 \section{Zusammenfassung}
+Für den elektrooptischen Koeffizienten beim Pockelseffekt erhielten wir:
+\begin{align*}
+ r_{41} = (32,22 \pm 0,19) \frac{pm}{V}
+\end{align*}
+
+Der angegebene Literaturwert beträgt $24,4 \frac{pm}{V}$ bei $21^\circ$. Eine Temperaturmessung stand uns leider nicht zur Verfügung, auch die Literaturangabe zur Temperaturabhängigkeit steht nicht zur Verfügung. Es lässt sich somit nur sagen das der von uns gemessene Wert in der richtigen Größenordnung liegt.\\
+
+Bei Faradayeffekt erhielten wir für die Verdettkonstante:
+\begin{align}
+ V =  1,02 \cdot 10^-3 \frac{^\circ}{A}
+\end{align}
+bzw.
+\begin{align}
+ V = 0,485 \frac{min}{Oe~cm}
+\end{align}
+
+Der Literaturwert liegt bei $0,05 \frac{min}{Oe~cm}$. Da wie schon erwähnt keine Fehlerabschätzung durchgeführt wurde lässt sich hier ebenso nur die Aussage über die richtige Größenordnung treffen.
+
+\section{Anhang}
+\subsection{Programmausgabe}
+\lstinputlisting[language=python]{../plot/farpock.out}
+\subsection{Quelltext}
+
+\lstinputlisting[language=python]{../plot/farpock.py}
 
 \end{document}
