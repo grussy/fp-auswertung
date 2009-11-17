@@ -138,14 +138,14 @@ print 'a: %.5e +- %.5e,' % (ar,sar),
 print 'b: %.5g +- %.5g' % (br,sbr)
 print "Chisquare: %.2f" % chisqr
 
-#Berechnung der Verdettkonstanten
+#Berechnung der Verdetkonstanten
 V = ar * (1./2556)
-print "Verdettkonstante V = %.2e" % V
+print "Verdetkonstante V = %.2e" % V
 
 #Umrechnung
 print "Nach Umrechnung:"
 uV = V * 60. / 1.2564
-print "Verdettkonstante V = %.2e" %uV
+print "Verdetkonstante V = %.2e" %uV
 
 
 

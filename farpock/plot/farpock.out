@@ -61,6 +61,6 @@ I = 5.00 -- -- Phimittel = -12.27
 Fitparameter Phi = ax + b
 a: -2.59445e+00 +- 9.52317e-03, b: 0.70227 +- 0.028166
 Chisquare: 22.23
-Verdettkonstante V = -1.02e-03
+Verdetkonstante V = -1.02e-03
 Nach Umrechnung:
-Verdettkonstante V = -4.85e-02
+Verdetkonstante V = -4.85e-02
