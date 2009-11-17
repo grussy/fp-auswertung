@@ -1,0 +1,66 @@
+-----------------Pockelszelle Saegezahn--------------------
+Umrechnungsfaktor fuer Spannungsteiler: 108.64
+Messdaten
+ 2.32 +- 0.08
+ 2.28 +- 0.08
+ 2.24 +- 0.08
+ 2.28 +- 0.08
+ 2.33 +- 0.08
+Spannung an der Pockelzelle (Umgerechnet)
+ 252.05 +- 8.69
+ 247.70 +- 8.69
+ 243.36 +- 8.69
+ 247.70 +- 8.69
+ 253.14 +- 8.69
+Mittelwert
+248.79 +- 3.89
+-----------------------Pockelszelle Sinus-------------------------
+Umax = -128.20 , Umin = 118.60 , Umax - Umin = -246.80
+Umax = -127.10 , Umin = 119.00 , Umax - Umin = -246.10
+Umax = -127.40 , Umin = 119.70 , Umax - Umin = -247.10
+Umax = -127.40 , Umin = 119.70 , Umax - Umin = -247.10
+Umax = -126.10 , Umin = 119.90 , Umax - Umin = -246.00
+Umax = -126.50 , Umin = 120.20 , Umax - Umin = -246.70
+Umax = -126.50 , Umin = 120.10 , Umax - Umin = -246.60
+Umax = -127.10 , Umin = 120.80 , Umax - Umin = -247.90
+Umax = -126.30 , Umin = 121.10 , Umax - Umin = -247.40
+Umax = -126.20 , Umin = 121.30 , Umax - Umin = -247.50
+Umax = -125.90 , Umin = 121.70 , Umax - Umin = -247.60
+Umax = -125.60 , Umin = 121.30 , Umax - Umin = -246.90
+Umax = -125.10 , Umin = 121.60 , Umax - Umin = -246.70
+Umax = -125.40 , Umin = 121.70 , Umax - Umin = -247.10
+Umax = -124.80 , Umin = 121.70 , Umax - Umin = -246.50
+Mittelwert
+246.93 +- 1.20
+-------------------Gewichtetes Mittel aus Beiden Messreihen----------------------
+Ulambdahalbe = 247.37 +- 0.92
+r41 = 3.222e-11 +- 1.194e-13
+-------------------Faradayeffekt----------------------
+I = -5.00 -- -- Phimittel = 13.74
+I = -4.50 -- -- Phimittel = 12.33
+I = -4.00 -- -- Phimittel = 11.17
+I = -3.50 -- -- Phimittel = 9.95
+I = -3.00 -- -- Phimittel = 8.50
+I = -2.50 -- -- Phimittel = 7.10
+I = -2.00 -- -- Phimittel = 5.77
+I = -1.50 -- -- Phimittel = 4.60
+I = -1.00 -- -- Phimittel = 3.10
+I = -0.50 -- -- Phimittel = 1.82
+I = -0.00 -- -- Phimittel = 0.58
+I = 0.00 -- -- Phimittel = 0.73
+I = 0.50 -- -- Phimittel = -0.49
+I = 1.00 -- -- Phimittel = -1.64
+I = 1.50 -- -- Phimittel = -3.24
+I = 2.00 -- -- Phimittel = -4.30
+I = 2.50 -- -- Phimittel = -5.99
+I = 3.00 -- -- Phimittel = -7.16
+I = 3.50 -- -- Phimittel = -8.39
+I = 4.00 -- -- Phimittel = -9.41
+I = 4.50 -- -- Phimittel = -11.05
+I = 5.00 -- -- Phimittel = -12.27
+Fitparameter Phi = ax + b
+a: -2.59445e+00 +- 9.52317e-03, b: 0.70227 +- 0.028166
+Chisquare: 22.23
+Verdettkonstante V = -1.02e-03
+Nach Umrechnung:
+Verdettkonstante V = -4.85e-02
