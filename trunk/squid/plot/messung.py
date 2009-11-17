@@ -56,7 +56,7 @@ class Messung:
     # Sinusfit mit Steigung an die Messdaten
     def fitm(self):
         f = TF1('f_'+self.name, '[0] + [3] * x + [1]*sin(pi/180*x + [2])')
-        f.SetParameters(array('d', [0,0,0,0]))
+        f.SetParameters(array('d', [0,0,0,0,0]))
         self.fcn = f
         self.graph.Fit(f, 'Q')
         self.a, self.sa = f.GetParameter(0), f.GetParError(0)
@@ -86,8 +86,8 @@ class Messung:
 
     # Sinusfit ohne Steigung an die Messdaten
     def fits(self):
-        f = TF1('f_'+self.name, '[0] + [1]*sin([3]*x+[4])*sin(pi/180*x + [2])')
-        f.SetParameters(array('d', [0.1,1000,0,5,0]))
+        f = TF1('f_'+self.name, '[0] + [1]*sin([2]*x+[3])+[4]*sin([5]*x + [6])')
+        f.SetParameters(array('d', [0.1,1000,0,5,0,0,0]))
         self.fcn = f
         self.graph.Fit(f, 'Q')
         self.a, self.sa = f.GetParameter(0), f.GetParError(0)
@@ -110,10 +110,10 @@ class Messung:
     def vdraw(self):
         cv = TCanvas('cv_'+self.name, self.name+' (Vektordiagramm)',600,600)
         self.vcanvas = cv
-	ytheo = [self.a + self.d * xi + self.b*sin(pi/180*xi + self.c) for xi in self.x]
-	vf = TGraph(len(self.x), array('d',self.x), array('d',ytheo))
-	vf.SetMarkerColor(2)
-	#self.vgraph.Add(vf)
+	#ytheo = [self.a + self.d * xi + self.b*sin(pi/180*xi + self.c) for xi in self.x]
+	#vf = TGraph(len(self.x), array('d',self.x), array('d',ytheo))
+	#vf.SetMarkerColor(2)
+	#bself.vgraph.Add(vf)
         self.vgraph.Draw('AL')
         cv.Update()
 
