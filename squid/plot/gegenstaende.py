@@ -25,31 +25,33 @@ mgf = lade_gegenstaende()
 print 'Sinus-Fit'
 for m in mgf:
 	if (m.bez == 'SIMachse1') | (m.bez == 'SIMachse2'):
+		print 'No fit'
+        else:
 		m.fitm()
-		m.draw()
-		m.vdraw()
-        else :
-		m.fito()
-        print '%s: rchisq = %.5f, dU = %.4f +- %.4f' % (
-            m.name, m.rchisq, m.dU, m.sdU)
-#    	m.draw()
-#	m.vdraw()
+        	print '%s: rchisq = %.5f, dU = %.4f +- %.4f' % (
+            		m.name, m.rchisq, m.dU, m.sdU)
+   	#m.draw()
+	#m.vdraw()
 zm, szm = (0.044, 0.01)
 # Berechne Dipolmomente und Magnetfelder
 print '\nBerechnung der Dipolmomente und Magnetfelder'
 for m in mgf:
-    # Berechne Bz und seinen Fehler
-    Bz = (Ffl*m.dU)/m.si
-    sBz = Bz * (m.sdU+sUunt)/m.dU
-    m.Bz, m.sBz = Bz, sBz
+	if (m.bez == 'SIMachse1') | (m.bez == 'SIMachse2'):
+		print 'No momentum'
+	else:
+		# Berechne Bz und seinen Fehler
+		Bz = (Ffl*m.dU)/m.si
+		sBz = Bz * (m.sdU+sUunt)/m.dU
+		m.Bz, m.sBz = Bz, sBz
 
-    # Berechne Dipolmoment
-    pm = 2*pi * zm**3 * Bz / mu0
-    spm = pm * sqrt( (sBz/Bz)**2 + (3.*szm/zm)**2 )
-    m.pm, m.spm = pm, spm
+		# Berechne Dipolmoment
+		pm = 2*pi * zm**3 * Bz / mu0
+		spm = pm * sqrt( (sBz/Bz)**2 + (3.*szm/zm)**2 )
+		m.pm, m.spm = pm, spm
 
-    print '%s: Bz = %g +- %g (%.1f%%), pm = %g +- %g (%.1f%%)' % (
-        m.name, Bz, sBz, sBz/Bz*100, pm, spm, spm/pm*100)
+		print '%s & %.2g & %.2g & %.2g & %.2g \\\\' % (
+        		m.bez, m.Bz, m.sBz, pm, spm)
+
     
 print '\nfür unsere SimKarte mit wechselnder Amplitude muss wohl noch ein anderer Fit gemacht werden, \n hier wird auch das Dipolmoment nicht mehr stimmen da wir eine andere als nur eine einfache \n Sinusabhängikeit haben. Ansonsten finde ich auch hier keine Fehler mehr. '
 raw_input();
