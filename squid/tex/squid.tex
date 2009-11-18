@@ -72,7 +72,7 @@ In diesem Versuch soll mittels eines \textit{SQUID} das Magnetfeld verschiedener
 \subsection{Supraleitung}
 Bei der normalen elektrischen Leitung entsteht der elektrische Widerstand durch Wechselwirkungen der Elektronen mit Gitterfehlern des Kristallgitters und Gitterschwingungen. Darüber hinaus können auch Streuprozesse der Elektronen untereinander eine wichtige Rolle spielen. Vor der  Entdeckung der Supraleitung nahm man an, dass der elektrische Widerstand bei sinkender Temperatur asymptotisch gegen einen konstanten Wert (der nun nur noch aus der Wechselwirkung der Elektronen mit den Gitterfehlern resultiert) ginge. Anders als erwartet stellte sich jedoch heraus, dass für einige Stoffe der Wiederstand unterhalb einer kritischen Temperatur schlagartig einen nicht messbaren Wert annimmt. Dieses Phänomen bezeichnet man als Supraleitung. Unter Supraleitung versteht man also elektrische Leitung ohne messbaren Widerstand, man spricht auch von einem Suprastrom. \\
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/wiederstandTemp.eps}
 \caption{Elektrischen Widerstandes bei tiefen Temperaturen. Vorstellungen um 1900.}
@@ -204,11 +204,11 @@ Darin ist $I_{max}$ der maximale Strom. Dieser ist von der Dicke der Kontaktschi
 
 \subsection{Das SQUID}
 
-Das SQUID kann also kleinste magnetische Flussänderungen in der Größenordnung eines Flussquants registrieren. Es gibt verschiedene technische Umsetzungen, hier im Praktikum  nutzen wir ein sogenanntes RF-SQUID (RF = Radio Frequency),  ein vergleichsweise einfacher und günstiger Aufbau.
+Das SQUID kann also sehr kleine magnetische Flussänderungen in der Größenordnung eines Flussquants registrieren. Es gibt verschiedene technische Umsetzungen, hier im Praktikum  nutzen wir ein sogenanntes RF-SQUID (RF = Radio Frequency),  ein vergleichsweise einfacher und günstiger Aufbau.
 
 \subsubsection{Aufbau des RF-SQUID}
 
-Das RF-SQUID besteht im wesentlichen aus einem ringförmigen Hochtemperatursupraleiter, der an einer Stelle durch eine sehr dünne Isolatorschicht unterbrochen ist und einem LC-Schwingkreis. Die Isolatorschicht ist nur wenige nm dick  und erfüllt die Funktion eines Josephson-Kontakts.
+Das RF - SQUID besteht im wesentlichen aus einem ringförmigen Hochtemperatursupraleiter, der an einer Stelle durch eine sehr dünne Isolatorschicht unterbrochen ist und einem LC - Schwingkreis. Die Isolatorschicht ist nur wenige nm dick  und erfüllt die Funktion eines Josephson-Kontakts.
 
 \begin{figure}[H]
 \centering
@@ -216,7 +216,11 @@ Das RF-SQUID besteht im wesentlichen aus einem ringförmigen Hochtemperatursupra
 \caption{Aufbau unseres Radio Frequency SQUID.}
 \end{figure}
 
-Die  kritische Temperatur wird durch eintauchen des SQUIDS in Stickstoff erreicht. Der Schwingkreis wird mit einer Frequenz von einigen hundert Megahertz betrieben und so ein externer magnetischer Fluss $\Phi_{ext}$ erzeugt. Dieser erzeugt einen Suprastrom der das Feld welches das SQUID zu durchdringen sucht kompensiert. Durch den Josephsonkontakt wird die Phase der Gesamtwellenfunktion der den Strom tragenden Cooperpaare verschoben:
+Durch Eintauchen des SQUIDS in flüssigen Stickstoff wird dieses unter die kritische Temperatur gebracht. Der Schwingkreis 
+wird mit einer
+ Frequenz von einigen hundert Megahertz betrieben und so ein externer magnetischer Fluss $\Phi_{ext}$ erzeugt. Dieser
+ erzeugt einen Suprastrom der das Feld welches das SQUID zu durchdringen sucht kompensiert. Durch den Josephsonkontakt
+ wird die Phase der Gesamtwellenfunktion der den Strom tragenden Cooperpaare verschoben:
 \begin{align}
  \theta_2-\theta_1=2\pi n - 2 \pi \frac{\Phi_{tot}}{\Phi_0}
 \end{align}
@@ -347,9 +351,21 @@ $R / \Omega$ & 51,47 & 100,8 & 300,8 & 510,6 & 1000\\
 \hline 
 \end{tabular}
 \end{center}
-Bevor wir mit Messung begannen maßen wir die Batteriespannung $(2,92V)$, den Abstand der Probendrehachse zum SQUID $(4,4 \pm 0,5 cm)$ und die Halbachsen der Leiterschleife $(\textnormal{a: }1,85mm~\textnormal{ b: }2,55mm)$. Dann maßen wir die Spannungsantwort des SQUID am Oszilloskop für jeden Widerstand über eine Umdrehung der Leiterschleife bei 10facher Übersetzung des Motors. Wir entschieden uns für die größte Übersetzung des Motors da das Oszilloskop beim Speichern der Messdaten immer die gleiche Anzahl an Messpunkten schrieb. Eine langsamere Drehung der Probe würde somit nicht zu einer besseren Messgenauigkeit führen sonder nur Zeit verschwenden.\\
+Bevor wir mit Messung begannen maßen wir die Batteriespannung $(2,92V)$, den Abstand der Probendrehachse
+ zum SQUID $(4,4 \pm 0,5 cm)$ und die Halbachsen der Leiterschleife
 
-Als nächstes nahmen wir uns den Stabmagneten vor. Für die Anbringung einer Probe am Motor stand eine Probenhalterung zur Verfügung. Diese bestand aus einer Aluminiumstange mit einem Drehbaren Ring am Ende. Durch den Ring ließ sich mittels vier Plastikschrauben eine Probe von vier Seiten fixieren. Die vom Versuch aus zur Verfügung stehenden Proben waren jedoch großteils auf ein rundes Plastikschälchen geklebt welches sich in den Ring klemmen ließ und ohne Fixierung durch Schrauben hielt.
+ $(\textnormal{a: }1,85mm~\textnormal{ b: }2,55mm)$. 
+Dann maßen wir die Spannungsantwort des SQUID am Oszilloskop für jeden Widerstand über eine Umdrehung der 
+Leiterschleife bei 10facher Übersetzung des Motors. Wir entschieden uns für die größte Übersetzung des Motors 
+da das Oszilloskop beim Speichern der Messdaten immer die gleiche Anzahl an Messpunkten schrieb. 
+Eine langsamere Drehung der Probe würde somit nicht zu einer besseren Messgenauigkeit führen sonder nur
+ Zeit verschwenden.\\
+
+Als nächstes nahmen wir uns den Stabmagneten vor. Für die Anbringung einer Probe am Motor stand eine Probenhalterung 
+zur Verfügung. Diese bestand aus einer Aluminiumstange mit einem Drehbaren Ring am Ende. Durch den Ring ließ sich
+ mittels vier Plastikschrauben eine Probe von vier Seiten fixieren. Die vom Versuch aus zur Verfügung stehenden
+ Proben waren jedoch großteils auf ein rundes Plastikschälchen geklebt welches sich in den Ring klemmen ließ und 
+ohne Fixierung durch Schrauben hielt.
 
 Als wir mit den Messungen der Leiterschleife und des Stabmagneten durch waren wurden wir von unserem Assistenten auf eine Anomalie in der Grundlinie des SQUID Signals hingewiesen: Beobachtet man das SQUID-Signal auf dem Oszilloskop wenn sich keine Probe in der Apparatur befindet, über mehrere Sekunden (10-20), so stellt man ein leichtes Ansteigen und Abfallen des Signals fest. Dieser Verlauf hat die Form einer Kondensatoraufladung und scheint daher durch die Elektronik bedingt zu sein. Aus diesem Grund ist es günstiger das Signal über mehrere Umdrehungen der Probe aufzunehmen. In der Auswertung entschieden wir uns deshalb auch bei dem Fit für die Messung der Leiterschleife noch einen Steigungsterm zur Fitfunktion hinzuzufügen um die Änderung der "`Nulllinie"', welche man im Zeitraum einer Umdrehung als linear ansehen kann, auszugleichen.
 
@@ -374,14 +390,14 @@ Für eine stromdurchflossene Leiterschleife ist das Dipolmoment definiert durch
  \vec{p_m}=I \vec{A}
 \end{align}
 
-mit Strom I und Flächennormale $\vec{A}$. Während der Auswertung fiel uns auf das unsere Messung für den Schleifenradius sehr ungenau war, weshalb wir nach Absprache mit dem Assistenten diese wiederholten. Wir gingen dabei von einer Elipsenförmigen Schleife aus. Wir maßen also Innen- ($2a_{innen}$) und Aussendurchmesser ($2a_{außen}$) der kleinen Halbachse sowie Innenduchmeser $b_{innen}$ der großen (da hier ein messen des äußeren Radius nicht möglich war). Wir berechneten so die Dicke $d$ der Schleife und mittelten auf die Halbachsen $a$ und $b$. Als Fläche $A$ erhielten wir also:
+mit Strom I und Flächennormale $\vec{A}$. Während der Auswertung fiel uns auf das unsere Messung für den Schleifenradius sehr ungenau war, weshalb wir nach Absprache mit dem Assistenten diese wiederholten. Wir gingen dabei von einer Elipsenförmigen Schleife aus. Wir maßen also Innen- ($2a_{innen}$) und Aussendurchmesser ($2a_{aussen}$) der kleinen Halbachse sowie Innenduchmeser $b_{innen}$ der großen (da hier ein messen des äußeren Radius nicht möglich war). Wir berechneten so die Dicke $d$ der Schleife und mittelten auf die Halbachsen $a$ und $b$. Als Fläche $A$ erhielten wir also:
 \begin{align}
- A = \pi a b = \pi \frac{a_{innen} a_{außen}}{2} (b_{innen} + d) = \pi \frac{a_{innen} a_{außen}}{2} (b_{innen} + (a_{außen} - a_{innen})
+ A = \pi a b = \pi \frac{a_{innen} a_{aussen}}{2} (b_{innen} + d) = \pi \frac{a_{innen} a_{aussen}}{2} (b_{innen} + (a_{aussen} - a_{innen})
 \end{align}
 
 da alle Messungen denselben absoluten Fehler $s_{mes}$ haben (wir schätzten 0.1mm, mit Schiebelehre gemessen) erhielten wir als Fehler der Fläche:
 \begin{align}
- s_A = A \left( \frac{s_a}{a} + \frac{s_b}{b} \right) = A \left( \left( \frac{s_{mes}}{a_{innen}} + \frac{s_{mes}}{a_{außen}}\right) + \frac{3 s_{mes}}{b} \right)
+ s_A = A \left( \frac{s_a}{a} + \frac{s_b}{b} \right) = A \left( \left( \frac{s_{mes}}{a_{innen}} + \frac{s_{mes}}{a_{aussen}}\right) + \frac{3 s_{mes}}{b} \right)
 \end{align}
 
 damit wird der Betrag des theoretischen Dipolmoments zu:
@@ -425,7 +441,7 @@ R5 & $6 \cdot 10^{-5}$ & $5 \cdot 10^{-5}$ \\
 \end{center}
 
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/R5_ohne.eps}
 \caption{Fit an R5 ohne Steigungsterm.}
@@ -473,7 +489,7 @@ Die verwendete Fitfunktion ist:
 Wir erhielten aus unseren Daten folgende Fits sowie Darstellungen in Polarkoordinaten:
 
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/R1.eps}
 \caption{Fit an R1.}
@@ -486,7 +502,7 @@ Wir erhielten aus unseren Daten folgende Fits sowie Darstellungen in Polarkoordi
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/R2.eps}
 \caption{Fit an R2.}
@@ -499,7 +515,7 @@ Wir erhielten aus unseren Daten folgende Fits sowie Darstellungen in Polarkoordi
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/R3.eps}
 \caption{Fit an R3.}
@@ -512,7 +528,7 @@ Wir erhielten aus unseren Daten folgende Fits sowie Darstellungen in Polarkoordi
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/R4.eps}
 \caption{Fit an R4.}
@@ -525,7 +541,7 @@ Wir erhielten aus unseren Daten folgende Fits sowie Darstellungen in Polarkoordi
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/R5.eps}
 \caption{Fit an R5.}
@@ -557,7 +573,7 @@ SIM Achse3 & 1.1e-22 & 1.8e-24 & 4.9e-20 & 3.3e-20 \\
 
 Als Fits Und Polardarstellung erhielten wir:
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/magnet.eps}
 \caption{Fit an Stabmagnet.}
@@ -570,7 +586,7 @@ Als Fits Und Polardarstellung erhielten wir:
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/magnetspan.eps}
 \caption{Fit an Magnetspan.}
@@ -583,7 +599,7 @@ Als Fits Und Polardarstellung erhielten wir:
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/5cent.eps}
 \caption{Fit an 5 cent.}
@@ -596,7 +612,7 @@ Als Fits Und Polardarstellung erhielten wir:
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/sim1.eps}
 \caption{Fit an SIM Achse 1.}
@@ -610,7 +626,7 @@ Als Fits Und Polardarstellung erhielten wir:
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/sim2.eps}
 \caption{Fit an SIM Achse 2.}
@@ -624,7 +640,7 @@ Als Fits Und Polardarstellung erhielten wir:
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/sim3.eps}
 \caption{Fit an SIM Achse 3.}
