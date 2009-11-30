@@ -197,26 +197,118 @@ Wichtig ist das Messignal und Referenz genau in Phase sind da sonst die Amplitud
 In diesem Experiment soll die Beweglichkeit $\mu$, die Lebensdauer $\tau$ sowie die Diffusions-Konstante positiver Ladungen in Germanium gemessen werden. Historisch handelt es sich um das erste Experiment welches die Bewegung freier Ladungsträger in Halbleitern direkt sichtbar macht. Alle vorherigen Experimente diesbezüglich nutzten den Halleffekt um die Beweglichkeit dieser zu bestimmen.
 Durch einen Laserpuls wird in einer Germaniumprobe eine Ladungsträger-Wolke erzeugt. Die Fortbewegung dieser Wolke in einem elektrischen Feld wird mit einem Osziloskop beobachtet.
 
-\subsubsection{Herleitung der Ladungsverteilung}
-
-%In einem elektrischen Feld $\vec{E}$ erfährt jede Ladung $q$ eine Kraft $\vec{F_e}= q \vec{E}$. Diese führt bei freien Ladungen zu einem Strom $\vec{j}$. 
-
-Wir bezeichnen zur Herleitung der Zeitentwicklung der Ladungsträgerwolke die Konzentrationen der Elektronen mit $n$ und
- die der Löcher mit $p$. Weiter setzen sich diese Konzentrationen aus einer Grundkonzentration $n_o / p_0$ sowie der vom
- Laser lokal erzeugten Ladungskonzentration %$\={n(x)} / \={p(x)}$
- zusammen.
+\subsubsection{Ladungsträger in Halbleitern}
+Betrachtet wird ein Halbleiter im Gleichgewicht, hieraus folgt, dass die Rate an Elektronen-Loch-Paarbildungen gleich der Rate an Rekombinationen von Elektronen und Löchern ist. Einem Elektronen-Loch-Paar kann eine mittlere Lebensdauer $\tau$ zugeschrieben werden. Während dieser Lebenszeit bewegen sich die quasi-freien Teilchen mit der kinetischen Energie $E_{kin}= \frac{3}{2} k T$, so dass der Rekombinationspartner im Allgemeinen nicht der Partner bei der Erzeugung ist. Beim Anlegen eines elektrischen Feldes $\vec{E}$ wird diese Lebenszeit als Beschleunigungszeit wichtig, und es gilt für die mittleren Geschwindigkeiten der Ladungen:
 \begin{align}
-% n(x) = n_0 + \={n(x)}, ~~~~~~p(x) = p_0 + \={p(x)}
+ \vec{v_n}= \frac{e \vec{E} \tau}{m_n} = -\mu_n \vec{E} ~ ~ \vec{v_p}= \frac{e \vec{E} \tau}{m_p}= -\mu_p \vec{E}
 \end{align}
 
-Der Unterschied zwischen zusatzlichen Löchern und Elektronen gleicht sich, sollte er existieren, nach einer sehr kurzen
- Zeit (größenordnung der dielektrischen Relaxationszeit $\tau_{dr}=\epsilon/\sigma \approx 10^{-12}s$) aus. Daher werden
- wir für unsere Beobachtung (die erst nach dieser Zeit stattfindet) annehmen das diese zusätzlichen Ladungen für
- Elektronen und Löcher gleich sind, also% $\={n}=\={p}$
- %TODO WTF?? n(x) und p(x) sind auf keinen Fall die gleichen Funktionen vll Integral gleich sehr schlecht in arbeit alter vadder was hat der typ da nur geschrieben ...
-\subsubsection{Ladungsträger in Halbleitern}
+Hier bezeichnen $\mu_n$ und $\mu_p$ die Beweglichkeit der Ladungsträger. Es ist klar, dass die thermische Bewegung nicht zur mittleren Geschwindigkeit beiträgt, da sich diese im Durchschnitt zu Null addiert. Auch die Diffusion kann Einfluss auf den Ladungstransport in Halbleitern nehmen. Die Idee ist, sich die Ladungsträger zunächst neutral vorzustellen. Auch ohne elektrische Abstoÿung würde ein Konzentrationsgebiet von Ladungsträgern aufgrund von Stößen auseinander fließen. Führt man die Elektronenkonzentration $n(\vec{x})$, die Loch-Konzentration $p(\vec{x})$ und eine Diffusionskonstante $D_n$ bzw $D_p$ ein, so kann der Ladungsfluss durch Diffusion beschrieben werden als:
+\begin{align}
+ \vec{j}_{n,diff}=-D_n \vec{\nabla} n ~~~~~~~~~ \vec{j}_{p,diff}=-D_p \vec{\nabla} p
+\end{align}
 
-\subsubsection{Expotentieller Zerfall}
+Hiermit kann eine Gleichung für die Elektronen-Stromdichte $\vec{j}_n$ und eine für die Loch-Stromdichte $\vec{j}_p$ gefunden werden:
+\begin{align}
+\label{Stromdichten}
+ \vec{j}_n=- \mu_n n \vec{E} -  D_n \vec{\nabla} n ~~~~~~~~ \vec{j}_p=- \mu_p p \vec{E} -  D_p \vec{\nabla} p
+\end{align}
+
+Es ist noch zu erwähnen, dass die Beweglichkeit und die Diffusionskonstante durch die Einstein-Gleichung korreliert sind:
+\begin{align}
+ D_{n/p}=\frac{kT}{e}\mu_{n/p}
+\end{align}
+
+\subsubsection{Herleitung der Ladungsverteilung}
+
+Wir bezeichnen zur Herleitung der Zeitentwicklung der Ladungsträgerwolke die Konzentrationen der Elektronen mit $n$ und die der Löcher mit $p$. Weiter setzen sich diese Konzentrationen aus einer Grundkonzentration $n_o / p_0$ sowie der vom  Laser lokal erzeugten La\-dungs\-kon\-zen\-tra\-tion $\overline{n}(\vec{x})$ bzw $\overline{n}(\vec{x})$ zusammen.
+\begin{align}
+ n(\vec{x}) = n_0 + \overline{n(\vec{x})}, ~~~~~~p(\vec{x}) = p_0 + \overline{p(\vec{x})}
+\end{align}
+
+Der Unterschied zwischen zusätzlichen Löchern und Elektronen gleicht sich, sollte er existieren, nach einer sehr kurzen Zeit (größenordnung der dielektrischen Relaxationszeit $\tau_{dr}=\epsilon/\sigma \approx 10^{-12}s$) aus. Daher werden wir für unsere Beobachtung (die erst nach dieser Zeit stattfindet) annehmen das diese zusätzlichen Ladungen für Elektronen und Löcher gleich sind, also $\overline{n}=\overline{p}$
+ %alter vadder was hat der typ da nur geschrieben ... staatsarbeit fürn arsch mach damit trotzdem weiter
+Aus Überlegungen zum thermischen Gleichgewicht wissen wir, dass im Gleichgewicht Erzeugung $G=\frac{n_0}{\tau_0}$ und Rekombination $R=-\frac{n_0}{\tau_0}$ ausgeglichen sind (p analog). Daher wird hier nur die zeitliche Veränderung zusätzlicher Ladungsträger betrachtet (zunächst noch ohne Fluss $\vec{j_{\overline{n}}}$ bzw. $\vec{j_{\overline{p}}}$)
+\begin{align}
+ \frac{d\overline{n}}{dt}=-\frac{\overline{n}}{\tau_n}~~~~~~~ \frac{d\overline{p}}{dt}=-\frac{\overline{p}}{\tau_p}
+\end{align}
+
+Dabei sind $\tau_n$ und $\tau_p$ vorerst nicht als Konstanten zu betrachten, da die Rekombinationszeit des einen Ladungsträgers auch von der verfügbaren Konzentration des jeweils anderen Ladungsträger abhängig ist. Bei dem hier verwendeten p-dotierten Germaniumblock gilt aufgrund der Dotierung $p(\vec{x}) \approx p_0$, somit wird $\tau_p$ hier nun doch zu einer Konstanten. Da sich die Veränderung der zusätzlicher Ladung des einen Ladungsträgers nahezu instantan ($\tau_{dr}$) auf den jeweils andern Ladungsträger überträgt, überträgt sich auch die konstante Rekombinationszeit und es gilt:
+\begin{align}
+\label{rekombination}
+ -\frac{\overline{n}(\vec{x})}{\tau_n}=-\frac{\overline{p}(\vec{x})}{\tau_p},~wenn~~~~~~~~p\gg n
+\end{align}
+
+Für die Stromdichten der Ladungsträger folgt mit Gleichung \ref{Stromdichten}:
+\begin{align}
+ \vec{j}_n=- \mu_n n \vec{E} -  D_n \vec{\nabla} n ~~~~~~~~ \vec{j}_p=- \mu_p p \vec{E} -  D_p \vec{\nabla} p
+\end{align}
+
+Weiterhin gilt die Kontinuitätsgleichung. Diese besagt im Normalfall, dass der Massenstrom durch den Rand eines Gebietes gleich der Massenveränderung im Inneren dieses Gebietes ist. Im Fall der hier vorhandenen Ladungsträger muss noch der mögliche Zerfall durch die zusätzliche Rekombinationsrate $-\frac{\overline{n}}{\tau_n}$ bzw. $-\frac{\overline{p}}{\tau_p}$ im Inneren des Gebietes berücksichtigt werden. Damit ergibt die Kontinuitätsgleichung für Elektronen:
+\begin{align}
+ \frac{\partial n}{\partial t} = - \vec{\nabla} \vec{j_n}- \frac{n-n_0}{\tau_n}=\vec{E}\mu_n \vec{\nabla} n +D_n \Delta n - \frac{n-n_0}{\tau_n}
+\end{align}
+
+Dabei haben wir das elektrische Feld innerhalb der Probe als konstant angenommen. Analog gilt für die Löcher:
+\begin{align}
+ \frac{\partial p}{\partial t} = - \vec{\nabla} \vec{j_p}- \frac{p-p_0}{\tau_p}=-\vec{E}\mu_p \vec{\nabla} p +D_p \Delta p - \frac{p-p_0}{\tau_p}
+\end{align}
+
+Diese beiden partiellen Differentialgleichungen sind gekoppelt durch die Notwendigkeit, dass die Rekombinationsrate der zusätzlichen Elektronen und Löcher identisch sein muss (Gleichung \ref{rekombination}). Diese beiden gekoppelten Differentialgleichungen können nach geschickter Addition durch eine Einzige beschrieben und somit gelöst werden. Auch werden zu dieser Beschreibung durch eine einzige Gleichung eine reduzierte Diffusionskonstante $\tilde{D}$ und eine reduzierte Beweglichkeit$\tilde{\mu}$ definiert:
+\begin{align}
+\tilde{D}&= \frac{\mu_p D_n p + \mu_n D_p n}{n \mu_n + p\mu_p} \\
+\tilde{\mu} &= \frac{\mu_n \mu_p (n-p)}{n\mu_n + p\mu_p}
+\end{align}
+
+Hier sehen wir die bei dem verwendeten p-dotierten Germanium zulässigen Näherungen nämlich:
+\begin{align}
+\tilde{D}\rightarrow D_n,~~~ \tilde{\mu}\rightarrow -\mu_n,~\textnormal{wenn} ~~~~~~~~~~p\gg n
+\end{align}
+
+Damit kann die Differentialgleichung für diese Ladungsträgerwolke formuliert werden:
+\begin{align}
+\frac{\partial c}{\partial t} = \tilde{\mu}\vec{E}\vec{\nabla}c + \tilde{D}\Delta c -\frac{c-c_0}{\tau_n}
+\end{align}
+
+Diese wird in einer Dimension (unser Fall, da wir nur in einer messen) durch folgende Funktion gelöst:
+\begin{align}
+c(t,x) = C e^{\frac{t}{\tau_n}} \frac{1}{\sqrt{4\pi\tilde{D}t}} e^{-\frac{(x+\tilde{\mu}Et)^2}{4\tilde{D}t}+C_0}
+\end{align}
+
+Diese errinnert stark an eine Gauß-Funktion:
+\begin{align}
+y(x)=A \frac{1}{2\pi\sigma^2}e^{-\frac{1}{2}(\frac{x-x_c}{\sigma})^2}
+\end{align}
+
+Ein direkter Vergleich liefert, dass die Amplitude bzw. Fläche des Signals exponentiell abnimmt, und dieser Zerfall durch die mittlere Lebensdauer der Ladungsträger bestimmt wird.
+\begin{align}
+A(t)=Ce^{-\frac{t}{\tau_n}}
+\end{align}
+
+Desweiteren erkennt man das der Schwerpunkt der Gaußkurve 
+\begin{align}
+x_c(t)=-E\tilde{\mu} \cdot t
+\end{align}
+
+mit konstanter Geschwindigkeit $E\tilde{\mu}$ durch dden Halbleiter bewegt. Ausserdem lässt die Diffusion die Gaußkurve zerfließen und man sieht leicht:
+\begin{align}
+\sigma(t)= \sqrt{2\tilde{D}t}
+\end{align}
+
+Damit haben wir alles was nötig ist um aus einem Gaußfit die zu messenden Größen Beweglichkeit $\mu_n$, Lebenszeit $\tau_n$ und Diffusionskonstante $D_n$ zu bestimmen.
+
+\subsubsection{Die McKelvey-Korrektur}
+
+Aufgrund der Tatsache das auch wärend des vorbeifliegens an der Prüfnadel Diffusion stattfindet wird die mittlere Lebensdauer etwas zu groß gemessen. Dieser Effekt ist zwar klein aber relevant. McKelvey erkannte dies wenige Jahre nach der ersten Durchführung des Experiments und führte folgende Korrektur ein. Werden in einer Messreihe mehrere Werte für $\tilde{mu}$ errechnet, so können diese durch
+\begin{align}
+ \tilde{\mu_0}=\frac{\tilde{\mu}}{\sqrt{x^2+1}-x} \textnormal{mit} ~~~~~x=\frac{2kT}{eEd}(\frac{t}{\tau_n}+\frac{1}{2})
+\end{align}
+
+dem wahren Wert $\tilde{\mu_0}$ angepasst werden. d bezeichnet den Abstand zwischen
+Laserinjektion und Nadel.Will man diese Korrektur zur Bestimmung der Diffusionskonstanten $D_n$ mit einbeziehen, kann die McKelvey-Korrektur nicht verwendet werden. Hier empfiehlt es sich eine modifizierte Gauß-Funktion zu verwenden:
+\begin{align}
+y(x)=A e^{-\frac{x}{\tau}}\frac{1}{2\pi\sigma^2}e^{-\frac{1}{2}(\frac{x-x_c}{\sigma})^2}
+\end{align}
 
 \subsection{Halbleiterdetektor}
 %???????????????????????? hier muss noch was hin wie mit diode oder kristall detektiert wird die eigentliche Theorie eben
@@ -260,6 +352,12 @@ Die verwendete Referenzfrequenz ist die des Choppers (ca. $70Hz$). Die Phasenbez
 Durch einen Lichtleiter, welcher verschiebbar über einer Germaniumprobe monitert ist, wird ein Laserpuls auf die Probe geführt.
 Der Laserpuls erzeugt eine konzentrierte Ladungsträgerwolke in der Probe. Durch anlegen einer Spannung an die Probe bewegt sich die Wolke. Mit eine Tastspize die auf der Probe plaziert wird lässt sich auf dem Oszilloskop beobachten wie die Wolke "`vorbeizieht"'. Alle Elektronik zur Laserregelung und Spannungserzeugung befindet sich in einem Gehäuse. An diesem lässt sich Laserintensität und Spannung einstellen. Die Spannung liegt nur gepulst an der Probe an um dieser Zeit zum abkühlen zu lassen.\\
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/haynesAufbau.eps}
+\caption{Versuchsablauf, dargestellt zu 3 Zeitpunkten}
+\end{figure}
+
 Das zur Verfügung stehende Oszilloskop hat einen USB anschluss über welchen die Messdaten auf einem USB-Stick gespeichert werden können.
 
 \subsection{Halbleiterdetektor}
@@ -282,6 +380,9 @@ Folgende Messreihen haben wir durchgefüht:
 \end{itemize}
 
 \subsection{Haynes- und Shockley-Experiment}
+Nachdem wir ein vernünftiges Signal erhalten hatten namen wir zunächst bei konstantem Abstand und variabler Treiberspannung und dann bei konstanter Treiberspannung und variablem Abstand jeweils zehn Messungen auf.
+Die Messung des Abstandes zwischen Nadel und Laser sellte sich dabei als schwierig heraus, warscheinlich wird dieser Fehler alle anderen dominieren.
+
 \subsection{Halbleiterdetektor}
 
 \section{Auswertung}
