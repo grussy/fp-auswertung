@@ -11,9 +11,9 @@ gROOT.SetStyle("Plain")
 # Plotten und Fitten der Messungen mit Leiterschleife
 # -------------------------------------------------------------------
 
-# Lade Messdaten
+# Lade Messdaten, in Liste: Amplitude Sigma Schwerpunkt Offset
 print '\nLoading Data ...'
-msf = lade_varDist('data/haynes_shockley/varDistance/table.dat')
+msf = lade_varDist('data/haynes_shockley/varDistance/table.dat', [1e-5,1e-05,1e-5,0])
 #Fitte alles, zeichnen speichern ... 
 print '\nFitting now ... '
 amps = []
@@ -27,7 +27,7 @@ for m in msf :
     sigs.append(float(m.sigma))
     means.append(float(m.ort))
     dists.append(float(m.dist))
-  #  m.draw()
+    m.draw()
 
 #Berechne Physik
 
