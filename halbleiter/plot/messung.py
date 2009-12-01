@@ -13,12 +13,13 @@ gROOT.SetStyle("Plain")
 
 # Klasse zum Einlesen, Fitten und Plotten der Messungen
 class Messung:
-    def __init__(self, name, distance, voltage, lowerFitrange, upperFitrange):
+    def __init__(self, name, distance, voltage, lowerFitrange, upperFitrange, initParams):
         self.name = name
         self.dist = distance
         self.volts = voltage
         self.lower = float(lowerFitrange)
         self.upper = float(upperFitrange)
+        self.initParams = initParams
 
     # Lese Messdaten ein	
         data = []
@@ -33,15 +34,15 @@ class Messung:
         g = TGraph(count, array('d',self.time) ,array('d',self.U))
         g.SetTitle(';Zeit t [s];Spannung U [V]')
         g.GetHistogram().SetTitleOffset(1.3, 'Y')
-        g.SetMarkerStyle(1)
+        g.SetMarkerStyle(20)
         g.SetMarkerColor(2)
-        g.SetMarkerSize(3.0)
+        g.SetMarkerSize(0.2)
         self.graph = g
 
     # Gaussfit ohne Korrektur
     def fit(self):
         f = TF1('f_'+self.name, '[0]/sqrt(2*pi*[1]) * exp(-0.5*((x-[2])/[1])^2) + [3]', self.lower, self.upper)
-        f.SetParameters(array('d', [1e-5,1e-05,1e-5,0]))
+        f.SetParameters(array('d', self.initParams))
         self.graph.Fit(f, 'QR')
         self.amp, self.samp = f.GetParameter(0), f.GetParError(0)
         self.sigma, self.ssigma = f.GetParameter(1), f.GetParError(1)
@@ -50,7 +51,7 @@ class Messung:
         self.chisq = f.GetChisquare()
         self.ndf = f.GetNDF()
         self.rchisq = self.chisq/self.ndf
-        #print 'Amplitude: %g, sigma: %g, ort: %g, off: %g'%(self.amp, self.sigma, self.ort, self.off)
+        print 'Amplitude: %g, sigma: %g, ort: %g, off: %g'%(self.amp, self.sigma, self.ort, self.off)
 
 
     def draw(self):
@@ -68,7 +69,7 @@ class Messung:
 
             
 # Hilfsroutine zum Einlesung der Daten bei Messung variablen Abstandes
-def lade_varDist(dateiname):
+def lade_varDist(dateiname, initParams):
     m = []
     for line in open(dateiname, 'r').readlines()[1:]:
         if not line.strip() or line.strip()[0] == '#': continue
@@ -78,6 +79,7 @@ def lade_varDist(dateiname):
             distance = v[3],
             voltage = v[4],
             lowerFitrange = v[5],
-            upperFitrange = v[6])
+            upperFitrange = v[6],
+            initParams = initParams)
         m += [mi]
     return m
