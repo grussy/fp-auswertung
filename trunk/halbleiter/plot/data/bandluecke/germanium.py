@@ -16,7 +16,10 @@ gROOT.SetStyle("Plain")
 class Messung:
     def __init__(self, name):
         self.name = name
-
+	self.ugrund = 0
+    	self.lampe = 0
+	self.xmin = 0.5
+	self.xmax = 1.
         # Lese Messdaten ein	
 	self.time = []
 	self.winkel = []
@@ -44,14 +47,11 @@ class Messung:
         g = TGraph(count, array('d',self.energie) ,array('d',self.absor))
         g.SetTitle(';Energie [eV];Spannung [V]')
         g.GetHistogram().SetTitleOffset(1.3, 'Y')
-        g.SetMarkerStyle(2)
+        g.SetMarkerStyle(3)
 	g.SetMarkerColor(2)
-        g.SetMarkerSize(3.0)
+        g.SetMarkerSize(1.0)
         self.graph = g
-	xa = g.GetXaxis()
-        xa.SetLimits(0.64, 0.74)
-	ya = g.GetYaxis()
-        ya.SetLimits(0, 2)
+	
 
  	# Erzeuge Graphen
         g2 = TGraph(count, array('d',self.energie) ,array('d',self.trans))
@@ -59,130 +59,139 @@ class Messung:
         g2.GetHistogram().SetTitleOffset(1.3, 'Y')
         g2.SetMarkerStyle(2)
 	g2.SetMarkerColor(4)
-        g2.SetMarkerSize(3.0)
+        g2.SetMarkerSize(1.0)
         self.graph2 = g2
-	xa = g2.GetXaxis()
-        xa.SetLimits(-1, 1)
 	h = g.GetHistogram()
 	h.SetMinimum(0)
         h.SetMaximum(1.6)
 
 	# Zeichnen des 'normalen Graphen'
-    def draw(self):
-       	c = TCanvas('c_'+self.name, self.name)
+    def draw(self, title):
+       	c = TCanvas('c_'+title, title)
        	self.canvas = c
        	c.SetGrid()
        	self.graph.Draw('AP')
 	self.graph2.Draw('P')
        	c.Update()
+    
+    def setAxis(self, x,y):
+	xa = self.graph.GetXaxis()
+        xa.SetLimits(x, y)
+
 		
-# Lade Untergrund
-ugrund = Messung("Germanium_Untergrund.txt")
-# Lade Messung	
-test = Messung("grge1.txt")
-# Lade Lampenspektrum
-lampe = Messung("LampeLeistung.txt")
+
 # Untergrund abziehen
-def winkellinks(winkel, grund):
+def winkellinks(winkel, messung):
+	return findWinkel(winkel, "links", messung)
+
+def findWinkel(winkel, richtung, messung):
+	return messung.winkel[iToWinkel(winkel, richtung, messung)]
+
+def iToWinkel(winkel, richtung, messung):
 	i = 0
-	countugrund = len(grund.winkel)
-	while(grund.winkel[i] > winkel and i != countugrund -1):
+	a = 0
+	countmess = len(messung.winkel)
+	while(messung.winkel[i] > winkel and i != countmess -1):
 		i += 1
 	if i == 0:
-		while(grund.winkel[countugrund -1 - i] > winkel and i != countugrund -1):
+		while(messung.winkel[countmess -1 - i] > winkel and i != countmess -1):
 			i += 1
-	return grund.winkel[i]
-
-def winkelrechts(winkel, grund):
-	i = 0
-	countugrund = len(grund.winkel)
-	while(grund.winkel[i] < winkel and i != countugrund -1):
-		i += 1
-	if i == 0:
-		while(grund.winkel[countugrund -1 - i] < winkel and i != countugrund -1):
+		i = countmess -1 -i
+		a = 1
+	if richtung == "rechts":
+		if a == 0 or i == (countmess -1):
+			i -= 1
+		elif a == 1 and i != (countmess -1):
 			i += 1
-	return grund.winkel[i]
+	return i
 
-def translinks(winkel, grund):
-	i = 0
-	countugrund = len(grund.winkel)
-	while(grund.winkel[i] > winkel and i != countugrund -1):
-		i += 1
-	if i == 0:
-		while(grund.winkel[countugrund -1 - i] > winkel and i != countugrund -1):
-			i += 1
-	return grund.trans[i]
+def winkelrechts(winkel, messung):
+	return findWinkel(winkel, "rechts", messung)
 
-def absorrechts(winkel, grund):
-	i = 0
-	countugrund = len(ugrund.winkel)
-	while(grund.winkel[i] < winkel and i != countugrund -1):
-		i += 1
-	if i == 0:
-		while(grund.winkel[countugrund -1 - i] < winkel and i != countugrund -1):
-			i += 1
-	return grund.absor[i]
+def translinks(winkel, messung):
+	return messung.trans[iToWinkel(winkel, "links", messung)]
 
-def absorlinks(winkel, grund):
-	i = 0
-	countugrund = len(grund.winkel)
-	while ( grund.winkel[i] > winkel and i != countugrund -1):
-		i += 1
-	if i == 0:
-		while(grund.winkel[countugrund -1 - i] > winkel and i != countugrund -1):
-			i += 1
-	return grund.absor[i]
+def absorrechts(winkel, messung):
+	return messung.absor[iToWinkel(winkel, "rechts", messung)]
 
-def transrechts(winkel, grund):
-	i = 0
-	countugrund = len(grund.winkel)
-	while(grund.winkel[i] < winkel and i != countugrund -1):
-		i += 1
-	if i == 0:
-		while(grund.winkel[countugrund -1 - i] < winkel and i != countugrund -1):
-			i += 1
-	return grund.trans[i]
+def absorlinks(winkel, messung):
+	return messung.absor[iToWinkel(winkel, "links", messung)]
 
-def tugrund(winkel):
-	xlinks = winkellinks(winkel, ugrund)
-	xrechts = winkelrechts(winkel, ugrund)
-	ylinks = translinks(winkel, ugrund)
-	yrechts = transrechts(winkel, ugrund)
+def transrechts(winkel, messung):
+	return messung.trans[iToWinkel(winkel, "rechts", messung)]
+
+
+
+def tugrund(winkel, grund):
+	xlinks = winkellinks(winkel, grund)
+	xrechts = winkelrechts(winkel, grund)
+	ylinks = translinks(winkel, grund)
+	yrechts = transrechts(winkel, grund)
 	steigung = (yrechts - ylinks) / (xrechts - xlinks)
 	return (winkel - xlinks) * steigung + ylinks
 
-def augrund(winkel):
-	xlinks = winkellinks(winkel, ugrund)
-	xrechts = winkelrechts(winkel, ugrund)
-	ylinks = absorlinks(winkel, ugrund)
-	yrechts = absorrechts(winkel, ugrund)
+def augrund(winkel, grund):
+	xlinks = winkellinks(winkel, grund)
+	xrechts = winkelrechts(winkel, grund)
+	ylinks = absorlinks(winkel, grund)
+	yrechts = absorrechts(winkel, grund)
 	steigung = (yrechts - ylinks) / (xrechts - xlinks)
 	return (winkel - xlinks) * steigung + ylinks
 
-def leistunglampe(winkel):
+def leistunglampe(winkel, lampe):
 	xlinks = winkellinks(winkel, lampe)
 	xrechts = winkelrechts(winkel, lampe)
 	ylinks = translinks(winkel, lampe)
 	yrechts = transrechts(winkel, lampe)
-	steigung = (yrechts - ylinks) / (xrechts - xlinks + 1)
+	steigung = (yrechts - ylinks) / (xrechts - xlinks)
 	return (winkel - xlinks) * steigung + ylinks
 
-for i in range(len(test.time)):
-	winkel = test.winkel[i]
-	trans = (test.trans[i]-tugrund(winkel)) / leistunglampe(winkel)
-	absor = (test.absor[i]-augrund(winkel)) / leistunglampe(winkel)
-	test.trans[i] = trans
-	test.absor[i] = absor
-# normierung auf Lampenstrahlungsleistung
+def ladeMessung(messung, untergrund, spektrum, xmin, xmax):
+	mess1 = Messung(messung)
+	mess1.setAxis(xmin, xmax)
+	
+	# Lade Untergrund
+	mess1.ugrund = Messung(untergrund)
+	# Lade Lampenspektrum
+	mess1.lampe = Messung(spektrum)
+
+	for i in range(len(mess1.time)):
+		winkel = mess1.winkel[i]
+		trans = (mess1.trans[i]-tugrund(winkel, mess1.ugrund)) / leistunglampe(winkel, mess1.lampe)
+		absor = (mess1.absor[i]-augrund(winkel, mess1.ugrund)) / leistunglampe(winkel, mess1.lampe)
+		mess1.trans[i] = trans
+		mess1.absor[i] = absor
+	return mess1
 
 
 
 
 
+grge1 = ladeMessung( "grge1.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", 0.63, 0.75)
+grge1b = ladeMessung( "grge1.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", -0.76, -0.63)
+
+grge2 = ladeMessung("grge2.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", 0.63, 0.76)
+grge2b = ladeMessung("grge2.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", -0.75, -0.63)
+
+grgeb1 = ladeMessung("grgeblende1cm.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", 0.63, 0.74)
+grgeb1b = ladeMessung("grgeblende1cm.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", -0.76, -0.63)
+
+grgeb2 = ladeMessung("grgeblende1cm2.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", 0.62, 0.75)
+grgeb2b = ladeMessung("grgeblende1cm2.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", -0.76, -0.63)
 
 
+grge1.draw("grge1")
 
-test.draw()
+grge1b.draw("grge1b")
+
+grge2.draw("grge2")
+
+grge2b.draw("grge2b")
+grgeb1.draw("grgeb1")
+grgeb1b.draw("grgeb1b")
+grgeb2.draw("grgeb2")
+grgeb2b.draw("grgeb2b")
+
 line = sys.stdin.readline()
      
 
