@@ -387,6 +387,14 @@ Die Messung des Abstandes zwischen Nadel und Laser sellte sich dabei als schwier
 
 \section{Auswertung}
 \subsection{Vermessung der Bandlücke}
+Zuerst wurden die Daten vom Untergrund bereinigt und auf die Strahlungsleistung der Lampe normiert:
+\begin{align}
+ Trans_{real} = \frac{Trans - Untergr_{Trans}}{Lampe} \quad Absorp_{real} = \frac{Absorp - Untergr_{Absorp}}{Lampe}
+\end{align}
+
+Da man bei den Mesungen für den Untergrund und das Lampenspektrum nicht die selben $x$-Werte (Winkel bzw. Energien) hat muss man die Daten interpolieren. Wir haben dazu die Punkte der Untergrund- und Spektrumsmessung linear verbunden.
+
+
 \subsection{Haynes- und Shockley-Experiment}
 \subsection{Halbleiterdetektor}
 
