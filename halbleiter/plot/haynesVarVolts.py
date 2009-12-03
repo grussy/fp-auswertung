@@ -13,7 +13,7 @@ gROOT.SetStyle("Plain")
 
 # Lade Messdaten, in Liste: Amplitude Sigma Schwerpunkt Offset
 print '\nLoading Data ...'
-msf = lade_varDist('data/haynes_shockley/varVolts/table.dat',[1e-6,1e-6,5e-6,1e-6])
+msf = lade_Daten('data/haynes_shockley/varVolts/table.dat')
 #Fitte alles, zeichnen speichern ... 
 print '\nFitting now ... '
 amps = []
@@ -21,7 +21,7 @@ sigs = []
 means = []
 dists = []
 for m in msf :
-    m.fit()
+    m.fit([1e-6,1e-6,5e-6,1e-6])
     print 'Fit on Data %s: Chisquare = %g, Rchisquare= %g '%(m.name, m.chisq, m.rchisq)
     amps.append(float(m.amp))
     sigs.append(float(m.sigma))
