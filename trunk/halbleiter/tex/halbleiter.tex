@@ -51,7 +51,7 @@
 \pagenumbering{arabic}
 \section{Überblick}
 
-\section{Aufgabestellung}
+\section{Aufgabenstellung}
 \subsection{Vermessung der Bandlücke}
 \begin{itemize}
  \item Optimieren Sie den Strahlengang für das Licht des Spektrometers. Beachten
@@ -105,7 +105,7 @@ Energieauflösung
 
 \section{Theoretische Grundlagen}
 \subsection{Vermessung der Bandlücke}
-Für die Vermessung sollen in einem Halbleiter durch photonische Anregung elektronen vom Valenz- ins Leitungband gehoben werden. Durch Variation der Photonenenergie soll mittels Messung der Apsorption im Halbleiter und Transmission durch diesen die Breite der Bandlücke festgestellt werden. Hierbei soll angenommen werden dass die Breite der Bandlücke ungefähr der Energie entspricht welche irgentwo zwischen Einsetzen der Absorprion und aussetzen der Transmission liegt.
+Für die Vermessung sollen in einem Halbleiter durch photonische Anregung Elektronen vom Valenz- ins Leitungsband gehoben werden. Durch Variation der Photonenenergie soll mittels Messung der Absorption im Halbleiter und Transmission durch diesen die Breite der Bandlücke festgestellt werden. Hierbei soll angenommen werden dass die Breite der Bandlücke ungefähr der Energie entspricht welche irgendwo zwischen Einsetzen der Absorption und aussetzen der Transmission liegt.
 
 \subsubsection{Bändermodell}
 Betrachtet man ein einzelnes Atom, liegen die Energieniveaus der Elektronen des Atoms in diskreter Form vor. Dies gilt 
@@ -178,12 +178,12 @@ Bei einer indirekten Bandlücke ist das Minimum des Leitungsbandes gegenüber de
 Von einem extrinsischen Halbleiter spricht man wenn die Leitung im Halbleiter vorwiegend durch die der Dotierung zugehörigen Ladungsträger geschieht. Wird die Ladung dagegen hauptsächlich von den eigenen, also den Ladungsträgern die nicht durch die Dotierung entstanden sind getragen so spricht man von einem intrinsischen Halbleiter.
 
 \subsubsection{Spektrometer}
-Ein Spektrometer ist ein Instrument zur messung eines Spektrums, also der Wellenlängenabhängigen Intensität. In unserem Fall handelt es sich um ein optisches Spektrometer welches mittels der richtungsaufspaltung durch Beugung an einem optischen Gitter arbeitet.
+Ein Spektrometer ist ein Instrument zur Messung eines Spektrums, also der Wellenlängenabhängigen Intensität. In unserem Fall handelt es sich um ein optisches Spektrometer welches mittels der Richtungsaufspaltung durch Beugung an einem optischen Gitter arbeitet.
 
 \subsubsection{Lock-In Verstärker}
 Bei der Methode des Lock-In Verstärkers wird dem zu messenden Signal ein Referenzsignal bekannter Frequenz aufmoduliert.
 Dies geschieht durch das zerhacken des Lichtstrahls (Chopper). Hierbei wird die Orthogonalität von
-sinus und cosinus ausgenutzt:
+Sinus und Kosinus ausgenutzt:
 \begin{align}
  \int \limits_{-\pi} \limits^{\pi} sin(\omega_1 t)sin(\omega_2 t) dt = \begin{cases} 0 \textnormal{ für } \omega_1\neq\omega_2\\ \pi \textnormal{ für } \omega_1 = \omega_2\end{cases}
 \end{align}
@@ -195,7 +195,7 @@ Wichtig ist das Messignal und Referenz genau in Phase sind da sonst die Amplitud
 \subsection{Haynes- und Shockley-Experiment}
 
 In diesem Experiment soll die Beweglichkeit $\mu$, die Lebensdauer $\tau$ sowie die Diffusions-Konstante positiver Ladungen in Germanium gemessen werden. Historisch handelt es sich um das erste Experiment welches die Bewegung freier Ladungsträger in Halbleitern direkt sichtbar macht. Alle vorherigen Experimente diesbezüglich nutzten den Halleffekt um die Beweglichkeit dieser zu bestimmen.
-Durch einen Laserpuls wird in einer Germaniumprobe eine Ladungsträger-Wolke erzeugt. Die Fortbewegung dieser Wolke in einem elektrischen Feld wird mit einem Osziloskop beobachtet.
+Durch einen Laserpuls wird in einer Germaniumprobe eine Ladungsträger-Wolke erzeugt. Die Fortbewegung dieser Wolke in einem elektrischen Feld wird mit einem Oszilloskop beobachtet.
 
 \subsubsection{Ladungsträger in Halbleitern}
 Betrachtet wird ein Halbleiter im Gleichgewicht, hieraus folgt, dass die Rate an Elektronen-Loch-Paarbildungen gleich der Rate an Rekombinationen von Elektronen und Löchern ist. Einem Elektronen-Loch-Paar kann eine mittlere Lebensdauer $\tau$ zugeschrieben werden. Während dieser Lebenszeit bewegen sich die quasi-freien Teilchen mit der kinetischen Energie $E_{kin}= \frac{3}{2} k T$, so dass der Rekombinationspartner im Allgemeinen nicht der Partner bei der Erzeugung ist. Beim Anlegen eines elektrischen Feldes $\vec{E}$ wird diese Lebenszeit als Beschleunigungszeit wichtig, und es gilt für die mittleren Geschwindigkeiten der Ladungen:
@@ -203,7 +203,7 @@ Betrachtet wird ein Halbleiter im Gleichgewicht, hieraus folgt, dass die Rate an
  \vec{v_n}= \frac{e \vec{E} \tau}{m_n} = -\mu_n \vec{E} ~ ~ \vec{v_p}= \frac{e \vec{E} \tau}{m_p}= -\mu_p \vec{E}
 \end{align}
 
-Hier bezeichnen $\mu_n$ und $\mu_p$ die Beweglichkeit der Ladungsträger. Es ist klar, dass die thermische Bewegung nicht zur mittleren Geschwindigkeit beiträgt, da sich diese im Durchschnitt zu Null addiert. Auch die Diffusion kann Einfluss auf den Ladungstransport in Halbleitern nehmen. Die Idee ist, sich die Ladungsträger zunächst neutral vorzustellen. Auch ohne elektrische Abstoÿung würde ein Konzentrationsgebiet von Ladungsträgern aufgrund von Stößen auseinander fließen. Führt man die Elektronenkonzentration $n(\vec{x})$, die Loch-Konzentration $p(\vec{x})$ und eine Diffusionskonstante $D_n$ bzw $D_p$ ein, so kann der Ladungsfluss durch Diffusion beschrieben werden als:
+Hier bezeichnen $\mu_n$ und $\mu_p$ die Beweglichkeit der Ladungsträger. Es ist klar, dass die thermische Bewegung nicht zur mittleren Geschwindigkeit beiträgt, da sich diese im Durchschnitt zu Null addiert. Auch die Diffusion kann Einfluss auf den Ladungstransport in Halbleitern nehmen. Die Idee ist, sich die Ladungsträger zunächst neutral vorzustellen. Auch ohne elektrische Abstoßung würde ein Konzentrationsgebiet von Ladungsträgern aufgrund von Stößen auseinander fließen. Führt man die Elektronenkonzentration $n(\vec{x})$, die Loch-Konzentration $p(\vec{x})$ und eine Diffusionskonstante $D_n$ bzw $D_p$ ein, so kann der Ladungsfluss durch Diffusion beschrieben werden als:
 \begin{align}
  \vec{j}_{n,diff}=-D_n \vec{\nabla} n ~~~~~~~~~ \vec{j}_{p,diff}=-D_p \vec{\nabla} p
 \end{align}
@@ -226,7 +226,7 @@ Wir bezeichnen zur Herleitung der Zeitentwicklung der Ladungsträgerwolke die Ko
  n(\vec{x}) = n_0 + \overline{n(\vec{x})}, ~~~~~~p(\vec{x}) = p_0 + \overline{p(\vec{x})}
 \end{align}
 
-Der Unterschied zwischen zusätzlichen Löchern und Elektronen gleicht sich, sollte er existieren, nach einer sehr kurzen Zeit (größenordnung der dielektrischen Relaxationszeit $\tau_{dr}=\epsilon/\sigma \approx 10^{-12}s$) aus. Daher werden wir für unsere Beobachtung (die erst nach dieser Zeit stattfindet) annehmen das diese zusätzlichen Ladungen für Elektronen und Löcher gleich sind, also $\overline{n}=\overline{p}$
+Der Unterschied zwischen zusätzlichen Löchern und Elektronen gleicht sich, sollte er existieren, nach einer sehr kurzen Zeit (Größenordnung der dielektrischen Relaxationszeit $\tau_{dr}=\epsilon/\sigma \approx 10^{-12}s$) aus. Daher werden wir für unsere Beobachtung (die erst nach dieser Zeit stattfindet) annehmen das diese zusätzlichen Ladungen für Elektronen und Löcher gleich sind, also $\overline{n}=\overline{p}$
  %alter vadder was hat der typ da nur geschrieben ... staatsarbeit fürn arsch mach damit trotzdem weiter
 Aus Überlegungen zum thermischen Gleichgewicht wissen wir, dass im Gleichgewicht Erzeugung $G=\frac{n_0}{\tau_0}$ und Rekombination $R=-\frac{n_0}{\tau_0}$ ausgeglichen sind (p analog). Daher wird hier nur die zeitliche Veränderung zusätzlicher Ladungsträger betrachtet (zunächst noch ohne Fluss $\vec{j_{\overline{n}}}$ bzw. $\vec{j_{\overline{p}}}$)
 \begin{align}
@@ -275,7 +275,7 @@ Diese wird in einer Dimension (unser Fall, da wir nur in einer messen) durch fol
 c(t,x) = C e^{\frac{t}{\tau_n}} \frac{1}{\sqrt{4\pi\tilde{D}t}} e^{-\frac{(x+\tilde{\mu}Et)^2}{4\tilde{D}t}+C_0}
 \end{align}
 
-Diese errinnert stark an eine Gauß-Funktion:
+Diese erinnert stark an eine Gauß-Funktion:
 \begin{align}
 y(x)=A \frac{1}{2\pi\sigma^2}e^{-\frac{1}{2}(\frac{x-x_c}{\sigma})^2}
 \end{align}
@@ -285,12 +285,12 @@ Ein direkter Vergleich liefert, dass die Amplitude bzw. Fläche des Signals expo
 A(t)=Ce^{-\frac{t}{\tau_n}}
 \end{align}
 
-Desweiteren erkennt man das der Schwerpunkt der Gaußkurve 
+Des weiteren erkennt man das der Schwerpunkt der Gaußkurve 
 \begin{align}
 x_c(t)=-E\tilde{\mu} \cdot t
 \end{align}
 
-mit konstanter Geschwindigkeit $E\tilde{\mu}$ durch dden Halbleiter bewegt. Ausserdem lässt die Diffusion die Gaußkurve zerfließen und man sieht leicht:
+mit konstanter Geschwindigkeit $E\tilde{\mu}$ durch dden Halbleiter bewegt. Außerdem lässt die Diffusion die Gaußkurve zerfließen und man sieht leicht:
 \begin{align}
 \sigma(t)= \sqrt{2\tilde{D}t}
 \end{align}
@@ -299,7 +299,7 @@ Damit haben wir alles was nötig ist um aus einem Gaußfit die zu messenden Grö
 
 \subsubsection{Die McKelvey-Korrektur}
 
-Aufgrund der Tatsache das auch wärend des vorbeifliegens an der Prüfnadel Diffusion stattfindet wird die mittlere Lebensdauer etwas zu groß gemessen. Dieser Effekt ist zwar klein aber relevant. McKelvey erkannte dies wenige Jahre nach der ersten Durchführung des Experiments und führte folgende Korrektur ein. Werden in einer Messreihe mehrere Werte für $\tilde{mu}$ errechnet, so können diese durch
+Aufgrund der Tatsache das auch während des vorbeifliegens an der Prüfnadel Diffusion stattfindet wird die mittlere Lebensdauer etwas zu groß gemessen. Dieser Effekt ist zwar klein aber relevant. McKelvey erkannte dies wenige Jahre nach der ersten Durchführung des Experiments und führte folgende Korrektur ein. Werden in einer Messreihe mehrere Werte für $\tilde{mu}$ errechnet, so können diese durch
 \begin{align}
  \tilde{\mu_0}=\frac{\tilde{\mu}}{\sqrt{x^2+1}-x} \textnormal{mit} ~~~~~x=\frac{2kT}{eEd}(\frac{t}{\tau_n}+\frac{1}{2})
 \end{align}
@@ -311,7 +311,7 @@ y(x)=A e^{-\frac{x}{\tau}}\frac{1}{2\pi\sigma^2}e^{-\frac{1}{2}(\frac{x-x_c}{\si
 \end{align}
 
 \subsection{Halbleiterdetektor}
-%???????????????????????? hier muss noch was hin wie mit diode oder kristall detektiert wird die eigentliche Theorie eben
+%???????????????????????? hier muss noch was hin wie mit diode oder Kristall detektiert wird die eigentliche Theorie eben
 \subsubsection{Diode}
 
 \subsubsection{Ohmscher Kontakt}
@@ -322,7 +322,7 @@ Unter dem äußeren photoelektrischen Effekt (auch Photoeffekt), versteht man da
 Metalloberflächen geben im negativ geladenen Zustand Elektronen ab, wenn ihre Oberfläche mit Licht bestrahlt wird. Hierbei hängt die kinetische Energie der freiwerdenden Elektronen von der Frequenz des Lichtes ab, aber nicht von dessen Intensität.
 Die Freisetzung der Elektronen beginnt sofort bei Einfall des Lichtes. Bei einer Erhöhung der Frequenz des einfallenden Lichtes steigt die kinetische Energie der freiwerdenden Elektronen. Der Effekt tritt erst unterhalb einer bestimmten Wellenlänge welche materialspezifisch ist auf. Die Anzahl der ausgelösten Elektronen ist proportional zur Bestrahlungsstärke.\\
 
-Bis auf die letzte Beobachtung stehen alle gefundenen Zusammenhänge im Widerspruch zur klassischen Vorstellung von Licht als Wellenerscheinung. Die Energie einer Welle hängt danach allein von ihrer Amplitude, nicht jedoch von ihrer Frequenz ab. Der Photoeffekt zeigt somit die Teilcheneigenschaft des Lichtes, ist allerdings kein eindeutiger Nachweis dafür. Semi-klassisch lässt sich der Photoeffekt nähmlich auch über die Wechselwirkung einer elektromagnetischen Welle mit einem quantisierten Detektor erklären.
+Bis auf die letzte Beobachtung stehen alle gefundenen Zusammenhänge im Widerspruch zur klassischen Vorstellung von Licht als Wellenerscheinung. Die Energie einer Welle hängt danach allein von ihrer Amplitude, nicht jedoch von ihrer Frequenz ab. Der Photoeffekt zeigt somit die Teilcheneigenschaft des Lichtes, ist allerdings kein eindeutiger Nachweis dafür. Semi-klassisch lässt sich der Photoeffekt nämlich auch über die Wechselwirkung einer elektromagnetischen Welle mit einem quantisierten Detektor erklären.
 
 \subsubsection{Comptoneffekt}
 Als Compton-Effekt bezeichnet man die Vergrößerung der Wellenlänge eines Photons bei der Streuung an einem Elektron oder einem anderen geladenen Teilchen. Dieser Streuprozess ist nach Arthur Compton benannt und heißt Compton-Streuung.
@@ -339,7 +339,7 @@ Der ADC erzeugt zu jedem Eingangsimpuls diejenige ganze Zahl, die dem der Impuls
 \section{Versuchsaufbau}
 \subsection{Vermessung der Bandlücke}
 Der Aufbau besteht aus einem Spektrometer, dem Halbleiter und einem Pyrodetektor.
-Das Spektrometer liefert Licht mit definierter Wellenlänge welches auf den Halbleiter fällt. Durch Messung des Stroms der im Halbleiter bei angelegter Spannung fließt soll die Absorption gemessenwerden. Mit dem Pyrodetektor soll die Transmission gemessen werden.\\
+Das Spektrometer liefert Licht mit definierter Wellenlänge welches auf den Halbleiter fällt. Durch Messung des Stroms der im Halbleiter bei angelegter Spannung fließt soll die Absorption gemessen werden. Mit dem Pyrodetektor soll die Transmission gemessen werden.\\
 
 Das \textbf{Spektrometer} besteht aus einer Lampe die weisses Licht erzeugt, dieses wird mittels eines Choppers zerhackt (Lock-in Methode). Anschließend wird es, nach durchlauf einer Linse ($F = 100mm$) zur paralellisierung, an einem drehbaren optischen Gitter reflektiert um schließlich durch eine Blende auf den Halbleiter zu treffen. Zur Drehung wird ein Motor verwendet. Geschwindigkeit und Drehsinn sind wählbar. Der Drehwinkel wird vom Computer erfasst.\\
 
@@ -393,6 +393,63 @@ Zuerst wurden die Daten vom Untergrund bereinigt und auf die Strahlungsleistung 
 \end{align}
 
 Da man bei den Mesungen für den Untergrund und das Lampenspektrum nicht die selben $x$-Werte (Winkel bzw. Energien) hat muss man die Daten interpolieren. Wir haben dazu die Punkte der Untergrund- und Spektrumsmessung linear verbunden.
+
+Aus jeder Messung erhält man 2 Plots, einen bei positiven Winkeln und einen bei negativen. Die Fehler auf die gemessene Spannung für die Absorption und Transmission stammen aus der Messung bei konstantem winkel (Standartabweichung). Die Fehler auf die Energie haben wir mit ca. $1^\circ$ also $0,0001~eV$ abgeschätzt. An diese wurden dann jeweils eine konstante Gerade an das Maximum der Apsorptionskurve, eine konstante Gerade an das Minimum der Transmission angepasst. Außerdem wurde an den Bereich des Wendepunks jeder Kurve eine Gerade angefittet. Die $x$-(Energie)-Koordinate des Schnittpunktes liefert dann die Bandlückenenergie. Hier haben wir jeweis das Mittel aus den Beiden Punkten (Transmission / Absorption) genommen. Fehler ist der Fehler des Mittelwerts wobei als Fehler auf die Einzelwerte der Fehler der Steigung genommen wurde da dieser überwiegt. \\
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/bandluecke/grge1.eps}
+\caption{grge1}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/bandluecke/grge1b.eps}
+\caption{grge1b}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/bandluecke/grge2.eps}
+\caption{grge2}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/bandluecke/grge2b.eps}
+\caption{grge2b}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/bandluecke/grgeb1.eps}
+\caption{grgeb1}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/bandluecke/grgeb1b.eps}
+\caption{grgeb1b}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/bandluecke/grgeb2.eps}
+\caption{grgeb2}
+\end{figure}
+
+\begin{figure}[H]  
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/bandluecke/grgeb2b.eps}
+\caption{grgeb2b}
+\end{figure}
+
+Mit den von uns durchgeführten Messungen erhält man somit acht Werte für die Bandlückenenergie. Aus diesen haben wir das gewichtete Mittel berechnet zu:
+\begin{align*}
+ E_G = 0,741 \pm 0,045
+\end{align*}
+
+
+
 
 
 \subsection{Haynes- und Shockley-Experiment}
