@@ -2,9 +2,9 @@
 # -*- coding: iso-8859-1 -*-
 
 import sys
-from math import pi, cos, sin
+from math import pi, cos, sin, sqrt
 from array import array
-from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph
+from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraphErrors
 
 gROOT.SetStyle("Plain")
 mid = []
@@ -33,6 +33,7 @@ class Messung:
 	self.absor = []
 	self.wellenl = []
 	self.energie = []
+	
 	z = 0
 	for line in open(name,'r'):
 		if z < 7:
@@ -48,9 +49,12 @@ class Messung:
 			self.energie.append(datarow[5])
 
 	count = len(self.time)
-	
+	self.sabsor = [8.4788e-03]*count
+	self.strans = [6.1214e-03]*count
+	self.senergie = [0.0001]*count
+
  	# Erzeuge Graphen
-        g = TGraph(count, array('d',self.energie) ,array('d',self.absor))
+        g = TGraphErrors(count, array('d',self.energie) ,array('d',self.absor), array('d', self.senergie), array('d', self.sabsor))
         g.SetTitle(';Energie [eV];Spannung [V]')
         g.GetHistogram().SetTitleOffset(1.3, 'Y')
         g.SetMarkerStyle(3)
@@ -77,7 +81,7 @@ class Messung:
 	
 
  	# Erzeuge Graphen
-        g2 = TGraph(count, array('d',self.energie) ,array('d',self.trans))
+        g2 = TGraphErrors(count, array('d',self.energie) ,array('d',self.trans), array('d', self.senergie), array('d', self.strans))
         g2.SetTitle(';Winkel [#circ];Spannung U [V]')
         g2.GetHistogram().SetTitleOffset(1.3, 'Y')
         g2.SetMarkerStyle(2)
@@ -103,12 +107,12 @@ class Messung:
 	e = f4.GetParameter(0)
 	g = f2.GetParameter(0)
 
-	err = f3.GetParError(1)
+	errabsor = f3.GetParError(1)
+	errtrans = f4.GetParError(1)
 
 	if self.haupt:
-		mittel = (abs(Schnittpunkt(a, b, c)) + abs(Schnittpunkt(d, e, g))) / 2
-		print mittel
-		print err
+		mittel, smittel = gew_mittel([abs(Schnittpunkt(a, b, c)), abs(Schnittpunkt(d, e, g))], [errabsor, errtrans])
+		print "Messung %s: %.2f +- %.2f" % (self.name, mittel, smittel)
 		mid += [mittel]
 		
 
@@ -240,6 +244,18 @@ def findMinimum(messreihe, winkel, links, rechts):
 def Schnittpunkt(a, b, c):
 	return (c - b) / a
 
+def gew_mittel(werte, fehler):
+##    gew_mittel(list(float), list(float)) -> (float, float)
+##    werte  : Liste der Messwerte 
+##    fehler : Liste der Fehler
+##    ->   Tupel (gx, sgx) aus gewichtetem Mittel und dessen Fehler
+    suma = sumb = 0.
+    for i in range(len(werte)):
+        suma += werte[i] / fehler[i]**2
+        sumb += 1. / fehler[i]**2
+    return (suma/sumb, 1/sqrt(sumb))
+
+
 
 
 grge1 = ladeMessung( "grge1.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", 0.63, 0.75, 0.68, 0.7)
@@ -252,7 +268,7 @@ grgeb1 = ladeMessung("grgeblende1cm.txt", "Germanium_Untergrund.txt", "grspektru
 grgeb1b = ladeMessung("grgeblende1cm.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", -0.76, -0.63, -0.7, -0.68)
 
 grgeb2 = ladeMessung("grgeblende1cm2.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", 0.62, 0.75, 0.68, 0.7)
-grgeb2b = ladeMessung("grgeblende1cm2.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", -0.76, -0.63, -0.7, -0.68)
+grgeb2b = ladeMessung("grgeblende1cm2.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", -0.76, -0.63, -0.72, -0.68)
 
 
 grge1.draw("grge1")
