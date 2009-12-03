@@ -3,7 +3,7 @@
 
 from math import pi, sqrt, exp
 from array import array
-from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph
+from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TGraphErrors
 
 gROOT.SetStyle("Plain")
 
@@ -20,6 +20,8 @@ class Messung:
         self.lower = float(lowerFitrange)
         self.upper = float(upperFitrange)
         self.sdist = 0.5e-3
+        self.stime = []
+        self.sU = []
 
     # Lese Messdaten ein	
         data = []
@@ -27,21 +29,25 @@ class Messung:
             data.append(line.strip().strip(',').split())
         self.time = [float(z[0].strip(',')) for z in data]
         self.U = [float(z[1]) for z in data]
-        count = len(self.time)
-        print 'Found %i datapoints in %s'%(count, name)
+        self.count = len(self.time)
+        for i in range(self.count):
+            self.stime.append(1e-10)
+            self.sU.append(8.67e-4)
+        print 'Found %i datapoints in %s'%(self.count, name)
         
     # Erzeuge Graphen
-        g = TGraph(count, array('d',self.time) ,array('d',self.U))
+        g = TGraphErrors(self.count, array('d',self.time) ,array('d',self.U), array('d',self.stime) ,array('d',self.sU))
         g.SetTitle(';Zeit t [s];Spannung U [V]')
         g.GetHistogram().SetTitleOffset(1.3, 'Y')
         g.SetMarkerStyle(20)
         g.SetMarkerColor(2)
-        g.SetMarkerSize(0.2)
+        g.SetMarkerSize(0.4)
         self.graph = g
 
     # Gaussfit ohne Korrektur
     def fit(self, initParams):
         f = TF1('f_'+self.name, '[0]/sqrt(2*pi*[1]) * exp(-0.5*((x-[2])/[1])^2) + [3]', self.lower, self.upper)
+        f.SetMarkerColor(2)
         f.SetParameters(array('d', initParams))
         self.graph.Fit(f, 'QR')
         self.amp, self.samp = f.GetParameter(0), f.GetParError(0)
@@ -58,12 +64,13 @@ class Messung:
         c = TCanvas('c_'+self.name, self.name)
         self.canvas = c
         c.SetGrid()
-        self.graph.Draw('AP')
+        self.graph.Draw('APX')
+        #self.f.Draw('SAME')
         c.Update()
 
 
     # Speichere Plots
-    def save_plot(self):
+    def savePlot(self):
         self.canvas.SaveAs('eps/%s.eps' % self.name[:-4])
 
             

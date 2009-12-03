@@ -18,31 +18,51 @@ Es, sEs = [],[]
 
 # Lade Messdaten
 print '\nLoading Data ...'
-msf = lade_Daten('data/haynes_shockley/varDistance/table.dat')
+msf = lade_Daten('data/haynes_shockley/varVolts/table.dat')
+
+#Berechne Fehler auf Spannung, per StAbw eines "linearen" Bereichs
+sx, sy = [], []
 
 #Fitten, zeichnen, rechnen, speichern ... 
 print '\nFitting now ... '
 for m in msf :
-    #doof aber einer brauchte andere initParams sonst gabs keine Glocke:
+    # doof aber einige brauchten andere initParams sonst gabs keine Glocken:
      # in Liste: Amplitude Sigma Schwerpunkt Offset
-    if (m.name == 'varDistance/csv/F0006CH1.CSV'): 
-        m.fit([0.000025,0.7e-6,1.952e-5,-0.0075])
-        m.draw()
+    if (m.name == 'varVolts/csv/F0009CH1.CSV'): 
+        m.fit([1e-5,2e-6,18e-6,-0.0275])
+    elif (m.name == 'varVolts/csv/F0002CH1.CSV'): 
+        m.fit([1.5e-4,1e-6,9.5e-6,-0.02])
+    elif (m.name == 'varVolts/csv/F0008CH1.CSV'): 
+        m.fit([1.5e-5,1e-6,15.5e-6,-0.0454])
+    elif (m.name == 'varVolts/csv/F0010CH1.CSV'): 
+        m.fit([1e-5,1e-6,18.8e-6,0.025])
+    elif (m.name == 'varVolts/csv/F0003CH1.CSV'): 
+        m.fit([1e-5,1e-6,11e-6,0.005])
+    elif (m.name == 'varVolts/csv/F0004CH1.CSV'): 
+        m.fit([1e-5,1e-6,11e-6,0.0065])
     else:
         m.fit( [1e-5,1e-05,1e-5,0])
     print 'Fit on Data %s: Chisquare = %g, Rchisquare= %g '%(m.name, m.chisq, m.rchisq)
-    amps.append(float(m.amp))
-    sigs.append(float(m.sigma))
-    means.append(float(m.ort))
-    dists.append(float(m.dist))
-    samps.append(float(m.samp))
-    ssigs.append(float(m.ssigma))
-    smeans.append(float(m.sort))
-    sdists.append(float(m.sdist))
-    Es.append(float(m.volts)/float(m.dist))
-    sEs.append(Es[len(Es)-1]*((sU/float(m.volts))+(float(m.sdist)/float(m.dist))))
+    if (m.name != 'varVolts/csv/F0011CH1.CSV'):
+        amps.append(float(m.amp))
+        sigs.append(float(m.sigma))
+        means.append(float(m.ort))
+        dists.append(float(m.dist))
+        samps.append(float(m.samp))
+        ssigs.append(float(m.ssigma))
+        smeans.append(float(m.sort))
+        sdists.append(float(m.sdist))
+        Es.append(float(m.volts)/float(m.dist))
+        sEs.append(Es[len(Es)-1]*((sU/float(m.volts))+(float(m.sdist)/float(m.dist))))
     m.draw()
-
+    
+print '\n DEBUG: Fehler:'
+print 'Amps:'
+print samps
+print 'Sigs:'
+print ssigs
+print 'Means:'
+print smeans
 #Berechne Physik
 
 #Fitte die Schwerpunkte
@@ -51,7 +71,7 @@ gMean.SetTitle(';Zeit t [s];Ort des Schwerpunktes[m]')
 gMean.GetHistogram().SetTitleOffset(1.3, 'Y')
 gMean.SetMarkerStyle(20)
 gMean.SetMarkerColor(2)
-gMean.SetMarkerSize(1.0)
+gMean.SetMarkerSize(0.2)
 cMean = TCanvas('MeanFit', 'MeanFit')
 cMean.SetGrid()
 gMean.Draw('AP')
@@ -71,7 +91,7 @@ gAmp.SetTitle(';Zeit t [s];Amplitude der Gauskurve[V]')
 gAmp.GetHistogram().SetTitleOffset(1.3, 'Y')
 gAmp.SetMarkerStyle(20)
 gAmp.SetMarkerColor(2)
-gAmp.SetMarkerSize(1.0)
+gAmp.SetMarkerSize(0.2)
 cAmp = TCanvas('AmpFit', 'AmpFit')
 cAmp.SetGrid()
 gAmp.Draw('AP')
@@ -92,7 +112,7 @@ gsig.SetTitle(';Zeit t [s];Spannung U [V]')
 gsig.GetHistogram().SetTitleOffset(1.3, 'Y')
 gsig.SetMarkerStyle(20)
 gsig.SetMarkerColor(2)
-gsig.SetMarkerSize(1.0)
+gsig.SetMarkerSize(0.2)
 csig = TCanvas('SigFit', 'SigFit')
 csig.SetGrid()
 gsig.Draw('AP')

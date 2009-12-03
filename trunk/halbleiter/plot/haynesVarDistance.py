@@ -27,7 +27,10 @@ for m in msf :
      # in Liste: Amplitude Sigma Schwerpunkt Offset
     if (m.name == 'varDistance/csv/F0006CH1.CSV'): 
         m.fit([0.000025,0.7e-6,1.952e-5,-0.0075])
-        m.draw()
+    elif (m.name == 'varDistance/csv/F0002CH1.CSV'): 
+        m.fit([0.000025,0.7e-6,1.3e-5,-0.0025])
+    elif (m.name == 'varDistance/csv/F0000CH1.CSV'): 
+        m.fit([0.000025,0.7e-6,4.75e-6,0.05])
     else:
         m.fit( [1e-5,1e-05,1e-5,0])
     print 'Fit on Data %s: Chisquare = %g, Rchisquare= %g '%(m.name, m.chisq, m.rchisq)
@@ -43,15 +46,13 @@ for m in msf :
     sEs.append(Es[len(Es)-1]*((sU/float(m.volts))+(float(m.sdist)/float(m.dist))))
     m.draw()
 
-#Berechne Physik
-
 #Fitte die Schwerpunkte
 gMean = TGraphErrors(len(means), array('d',means) ,array('d',dists), array('d',smeans) ,array('d',sdists))
 gMean.SetTitle(';Zeit t [s];Ort des Schwerpunktes[m]')
 gMean.GetHistogram().SetTitleOffset(1.3, 'Y')
 gMean.SetMarkerStyle(20)
 gMean.SetMarkerColor(2)
-gMean.SetMarkerSize(1.0)
+gMean.SetMarkerSize(0.5)
 cMean = TCanvas('MeanFit', 'MeanFit')
 cMean.SetGrid()
 gMean.Draw('AP')
@@ -63,7 +64,7 @@ cMean.Update()
 chisq = flin.GetChisquare()
 ndf = flin.GetNDF()
 rchisq = chisq / ndf
-print '\nFit on Mass Center: Chisquare = %g, Rchisquare= %g '%(chisq, ndf)
+print '\nFit on Mass Center: Chisquare = %g, Rchisquare= %g '%(chisq, rchisq)
 
 #Fitte die Amplituden
 gAmp = TGraphErrors(len(means), array('d',means) ,array('d',amps), array('d',smeans) ,array('d',samps))
@@ -71,7 +72,7 @@ gAmp.SetTitle(';Zeit t [s];Amplitude der Gauskurve[V]')
 gAmp.GetHistogram().SetTitleOffset(1.3, 'Y')
 gAmp.SetMarkerStyle(20)
 gAmp.SetMarkerColor(2)
-gAmp.SetMarkerSize(1.0)
+gAmp.SetMarkerSize(0.5)
 cAmp = TCanvas('AmpFit', 'AmpFit')
 cAmp.SetGrid()
 gAmp.Draw('AP')
@@ -83,7 +84,7 @@ cAmp.Update()
 chisq = fe.GetChisquare()
 ndf = fe.GetNDF()
 rchisq = chisq / ndf
-print 'Fit on Amplitudes: Chisquare = %g, Rchisquare= %g '%(chisq, ndf)
+print 'Fit on Amplitudes: Chisquare = %g, Rchisquare= %g '%(chisq, rchisq)
 
 
 #Fitte die Breiten
@@ -92,23 +93,19 @@ gsig.SetTitle(';Zeit t [s];Spannung U [V]')
 gsig.GetHistogram().SetTitleOffset(1.3, 'Y')
 gsig.SetMarkerStyle(20)
 gsig.SetMarkerColor(2)
-gsig.SetMarkerSize(1.0)
+gsig.SetMarkerSize(0.5)
 csig = TCanvas('SigFit', 'SigFit')
 csig.SetGrid()
 gsig.Draw('AP')
 fs = TF1('MeanFit', 'sqrt(2*[0]*x)')
-fs.SetParameters(array('d', [5e-8]))
+fs.SetParameters(array('d', [5e-9]))
 gsig.Fit(fs, 'Q')
 D, sD = fs.GetParameter(0), fs.GetParError(0)
 csig.Update()
 chisq = fs.GetChisquare()
 ndf = fs.GetNDF()
 rchisq = chisq / ndf
-print 'Fit on Sigmas: Chisquare = %g, Rchisquare= %g '%(chisq, ndf)
-
-#csig.SaveAs('eps/sigmasVarDist.eps' % self.name[:-4])
-#camp.SaveAs('eps/ampsVarDist.eps' % self.name[:-4])
-#cmean.SaveAs('eps/MeansVarDist.eps' % self.name[:-4])
+print 'Fit on Sigmas: Chisquare = %g, Rchisquare= %g '%(chisq, rchisq)
 
 # Endlich: Berechnung der physikalischen Grössen
 print '\nCalculating ...'
