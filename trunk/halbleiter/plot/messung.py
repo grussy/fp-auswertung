@@ -19,7 +19,7 @@ class Messung:
         self.volts = voltage
         self.lower = float(lowerFitrange)
         self.upper = float(upperFitrange)
-        self.sdist = 0.5
+        self.sdist = 0.5e-3
 
     # Lese Messdaten ein	
         data = []
@@ -52,7 +52,6 @@ class Messung:
         self.ndf = f.GetNDF()
         self.rchisq = self.chisq/self.ndf
         self.f = f
-        #print 'Amplitude: %g, sigma: %g, ort: %g, off: %g'%(self.amp, self.sigma, self.ort, self.off)
 
 
     def draw(self):
@@ -60,8 +59,6 @@ class Messung:
         self.canvas = c
         c.SetGrid()
         self.graph.Draw('AP')
-        #self.f.Draw('SAME')
-        #self.test.Draw('AP')
         c.Update()
 
 
@@ -78,29 +75,17 @@ def lade_Daten(dateiname):
         v = line.split()
         mi = Messung(
             name = v[0],
-            distance = v[3],
+            distance = float(v[3])*1e-3,
             voltage = v[4],
             lowerFitrange = v[5],
             upperFitrange = v[6])
         m += [mi]
     return m
 
-def gew_mittel(werte, fehler):
-##    gew_mittel(list(float), list(float)) -> (float, float)
-##    werte  : Liste der Messwerte 
-##    fehler : Liste der Fehler
-##    ->   Tupel (gx, sgx) aus gewichtetem Mittel und dessen Fehler
+# Hilfsroutine zur Berechnung des gewichteten Mittelwerts
+def GewMittel(werte, fehler):
     suma = sumb = 0.
     for i in range(len(werte)):
         suma += werte[i] / fehler[i]**2
         sumb += 1. / fehler[i]**2
     return (suma/sumb, 1/sqrt(sumb))
-
-def arith_mittel(x):
-    '''arith_mittel(list(float)) -> float
-    x  : Liste aus Messwerte
-    ->   arithmetisches Mittel der Messwerte'''
-    sumx = 0.
-    for xi in x:
-        sumx += xi
-    return sumx / len(x)
