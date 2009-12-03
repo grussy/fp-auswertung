@@ -8,6 +8,7 @@ from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraph
 
 gROOT.SetStyle("Plain")
 mid = []
+smid = []
 
 
 # -------------------------------------------------------------------
@@ -18,11 +19,13 @@ mid = []
 class Messung:
     def __init__(self, name, links, rechts, haupt):
 	global mid
+	global smid
         self.name = name
 	self.ugrund = 0
     	self.lampe = 0
 	self.xmin = 0.5
 	self.xmax = 1.
+	self.ymax = 1.6
 	self.links = links
 	self.rechts = rechts
 	self.haupt = haupt
@@ -96,9 +99,7 @@ class Messung:
 
 	self.func4 = f4
         self.graph2 = g2
-	h = g.GetHistogram()
-	h.SetMinimum(0)
-        h.SetMaximum(1.6)
+	
 
 	a = f3.GetParameter(1)
 	b = f3.GetParameter(0)
@@ -114,6 +115,7 @@ class Messung:
 		mittel, smittel = gew_mittel([abs(Schnittpunkt(a, b, c)), abs(Schnittpunkt(d, e, g))], [errabsor, errtrans])
 		print "Messung %s: %.2f +- %.2f" % (self.name, mittel, smittel)
 		mid += [mittel]
+		smid += [smittel]
 		
 
 	# Zeichnen des 'normalen Graphen'
@@ -132,9 +134,12 @@ class Messung:
 	self.func4.Draw('SAME')
        	c.Update()
     
-    def setAxis(self, x,y):
+    def setAxis(self, xmin,xmax,ymax):
 	xa = self.graph.GetXaxis()
-        xa.SetLimits(x, y)
+        xa.SetLimits(xmin, xmax)
+	h = self.graph.GetHistogram()
+	h.SetMinimum(0)
+        h.SetMaximum(ymax)
 
 		
 
@@ -204,9 +209,9 @@ def leistunglampe(winkel, lampe):
 	steigung = (yrechts - ylinks) / (xrechts - xlinks)
 	return (winkel - xlinks) * steigung + ylinks
 
-def ladeMessung(messung, untergrund, spektrum, xmin, xmax, links, rechts):
+def ladeMessung(messung, untergrund, spektrum, xmin, xmax, ymax, links, rechts):
 	mess1 = Messung(messung, links, rechts, 1)
-	mess1.setAxis(xmin, xmax)
+	mess1.setAxis(xmin, xmax, ymax)
 	
 	# Lade Untergrund
 	mess1.ugrund = Messung(untergrund, links, rechts, 0)
@@ -258,17 +263,17 @@ def gew_mittel(werte, fehler):
 
 
 
-grge1 = ladeMessung( "grge1.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", 0.63, 0.75, 0.68, 0.7)
-grge1b = ladeMessung( "grge1.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", -0.76, -0.63, -0.7, -0.68)
+grge1 = ladeMessung( "grge1.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", 0.63, 0.75, 1.6, 0.665, 0.72)
+grge1b = ladeMessung( "grge1.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", -0.76, -0.63, 1.1, -0.725, -0.665)
 
-grge2 = ladeMessung("grge2.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", 0.63, 0.76, 0.68, 0.7)
-grge2b = ladeMessung("grge2.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", -0.75, -0.63, -0.7, -0.68)
+grge2 = ladeMessung("grge2.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", 0.63, 0.76, 1.6, 0.675, 0.72)
+grge2b = ladeMessung("grge2.txt", "Germanium_Untergrund.txt", "LampeLeistung.txt", -0.75, -0.63, 1.1, -0.72, -0.665)
 
-grgeb1 = ladeMessung("grgeblende1cm.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", 0.63, 0.74, 0.68, 0.7)
-grgeb1b = ladeMessung("grgeblende1cm.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", -0.76, -0.63, -0.7, -0.68)
+grgeb1 = ladeMessung("grgeblende1cm.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", 0.63, 0.74, 0.9, 0.67, 0.72)
+grgeb1b = ladeMessung("grgeblende1cm.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", -0.76, -0.63, 0.6, -0.72, -0.665)
 
-grgeb2 = ladeMessung("grgeblende1cm2.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", 0.62, 0.75, 0.68, 0.7)
-grgeb2b = ladeMessung("grgeblende1cm2.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", -0.76, -0.63, -0.72, -0.68)
+grgeb2 = ladeMessung("grgeblende1cm2.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", 0.62, 0.75, 0.9, 0.67, 0.715)
+grgeb2b = ladeMessung("grgeblende1cm2.txt", "Germanium_Untergrund.txt", "grspektrumblende1cm.txt", -0.76, -0.63, 0.6, -0.72, -0.674)
 
 
 grge1.draw("grge1")
@@ -283,8 +288,8 @@ grgeb1b.draw("grgeb1b")
 grgeb2.draw("grgeb2")
 grgeb2b.draw("grgeb2b")
 
-mittelwert = sum(mid) / len(mid)
-print "Mittelwert: %.2f" % mittelwert
+mittelwert, smittelwert = gew_mittel(mid, smid)
+print "Mittelwert: %.3f +- %.3f" % (mittelwert, smittelwert)
 
 line = sys.stdin.readline()
      
