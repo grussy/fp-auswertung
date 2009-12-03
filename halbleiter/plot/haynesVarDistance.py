@@ -4,7 +4,6 @@
 from messung import *
 from math import sqrt, pi, exp
 from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TGraphErrors
-from tools import *
 
 gROOT.SetStyle("Plain")
 sU = 0.1
@@ -89,7 +88,10 @@ csig.Update()
 
 # Endlich:
 print '\nCalculating ...'
-E, sE = gew_mittel()
+E, sE = gew_mittel(Es, sEs)
+mu = vel/E
+smu = mu*((svel/vel)+(sE/E))
+print ' Beweglichkeit der Elektronen: %g +- %g'%(mu, smu)
 
    
 print'\Done. Press any Key.' 
