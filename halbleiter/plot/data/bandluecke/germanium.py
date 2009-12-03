@@ -7,6 +7,8 @@ from array import array
 from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph
 
 gROOT.SetStyle("Plain")
+mid = []
+
 
 # -------------------------------------------------------------------
 # Hilfsroutinen und Klassen zur Handhabung der Messungen
@@ -14,7 +16,8 @@ gROOT.SetStyle("Plain")
 
 # Klasse zum Einlesen, Fitten und Plotten der Messungen
 class Messung:
-    def __init__(self, name, links, rechts):
+    def __init__(self, name, links, rechts, haupt):
+	global mid
         self.name = name
 	self.ugrund = 0
     	self.lampe = 0
@@ -22,6 +25,7 @@ class Messung:
 	self.xmax = 1.
 	self.links = links
 	self.rechts = rechts
+	self.haupt = haupt
         # Lese Messdaten ein	
 	self.time = []
 	self.winkel = []
@@ -91,6 +95,22 @@ class Messung:
 	h = g.GetHistogram()
 	h.SetMinimum(0)
         h.SetMaximum(1.6)
+
+	a = f3.GetParameter(1)
+	b = f3.GetParameter(0)
+	c = f.GetParameter(0)
+	d = f4.GetParameter(1)
+	e = f4.GetParameter(0)
+	g = f2.GetParameter(0)
+
+	err = f3.GetParError(1)
+
+	if self.haupt:
+		mittel = (abs(Schnittpunkt(a, b, c)) + abs(Schnittpunkt(d, e, g))) / 2
+		print mittel
+		print err
+		mid += [mittel]
+		
 
 	# Zeichnen des 'normalen Graphen'
     def draw(self, title):
@@ -181,13 +201,13 @@ def leistunglampe(winkel, lampe):
 	return (winkel - xlinks) * steigung + ylinks
 
 def ladeMessung(messung, untergrund, spektrum, xmin, xmax, links, rechts):
-	mess1 = Messung(messung, links, rechts)
+	mess1 = Messung(messung, links, rechts, 1)
 	mess1.setAxis(xmin, xmax)
 	
 	# Lade Untergrund
-	mess1.ugrund = Messung(untergrund, links, rechts)
+	mess1.ugrund = Messung(untergrund, links, rechts, 0)
 	# Lade Lampenspektrum
-	mess1.lampe = Messung(spektrum, links, rechts)
+	mess1.lampe = Messung(spektrum, links, rechts, 0)
 
 	for i in range(len(mess1.time)):
 		winkel = mess1.winkel[i]
@@ -214,8 +234,11 @@ def findMinimum(messreihe, winkel, links, rechts):
 		if winkel[a] > links and winkel[a] < rechts and actual > i:
 			actual = i
 		a += 1
-	print actual
+	#print actual
 	return actual
+
+def Schnittpunkt(a, b, c):
+	return (c - b) / a
 
 
 
@@ -243,6 +266,9 @@ grgeb1.draw("grgeb1")
 grgeb1b.draw("grgeb1b")
 grgeb2.draw("grgeb2")
 grgeb2b.draw("grgeb2b")
+
+mittelwert = sum(mid) / len(mid)
+print "Mittelwert: %.2f" % mittelwert
 
 line = sys.stdin.readline()
      
