@@ -123,18 +123,37 @@ Auf einem Schlitten befindet sich die Elektronik an welche die Probe angeschloss
 Die Proben sind von einer Schwingkreisspule umgeben über welche ein hochfrequentes Feld eingestrahlt wird. Über die Elektronik wird ein niederfrequentes Signal ausgekoppelt welches auf dem Oszilloskop beobachtet werden kann.
 
 \section{Durchführung}
+Zur bestimmung des Magnetfelds innerhalb der Polschuhe fährt man dieses mit einer Hallsonde ab. Dabei reichen zwei senkrecht zueinander stehende Schnitte (x- und y-Richtung), um einen Eindruck über die Homogenität des Feldes zu bekommen.
+
 
 \section{Auswertung}
+
+\subsection{Vermessung des Magnetfelds mit der Hallsonde}
+Die beiden Schnitte des Feldes mit der Hallsonde sind in Abbildungen \ref{hallx} und \ref{hally} dargestellt. Den Schnitt in x-Richtung führten wir bei y=15,55cm, den in y-Richtung bei x=8,2cm durch. Man erkennt in beiden ein Plateau, in diesem Bereich scheint das Magnetfeld (im Rahmen der Auflösung der Hallsonde) homogen zu sein. In Abbildung \ref{hallxy} haben wir die Schnitte dreidimensional aufgetragen, was uns leider für die Schnitte mit der Wasserstoffprobe nicht gelang. Als Ablesefehler auf die Positionsmessung nahmen wir $s_x = s_y = 0,05cm$ an. Der Fehler der Hallsonde beträgt laut Hersteller $\pm 2\% \pm 1digit$. Wir erhielten als Messwert innerhalb des homogenen Bereichs:
+\begin{align}
+ \notag B=(0,435 \pm 0,02) T
+\end{align}
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/hallsonde_x.eps}
 \caption{Magnetfeldmessung mit Hallsonde x-Richtung}
+\label{hallx}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/hallsonde_y.eps}
 \caption{Magnetfeldmessung mit Hallsonde y-Richtung}
+\label{hally}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+%\includegraphics[width=0.9\linewidth]{pictures/hallxy.eps}
+\caption{Dreidimensionale Darstellung der Schnitte}
+\label{hallxy}
+\label{hally}
 \end{figure}
 
 \begin{figure}[H]
