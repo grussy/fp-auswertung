@@ -145,8 +145,9 @@ Dazu fährt man es mit einer Hallsonde ab. Dabei reichen zwei senkrecht zueinand
  Anschlißend haben wir mit der Vermessung der Proben begonnen. Zu vermessen waren eine Glykol-, eine Wasserstoff- und eine Teflonprobe. Mit der Wasserstoffprobe haben wir nochmals das Magnetfeld vermessen und außerdem haben wir die Wassersoffprobe mit der Lock-in Methode vermessen.\\
 
 
-Die wesentliche Messmethode besteht darin das Magnetfeld welches vom Permanentmagneten stammt durch die Spulen sinusförmig zu modulieren. Die Frequenz der elektromagnetischen Anregung bleibt anfangs konstant. Bei einer Periode der Sinusfunktion durchläuft das Magnetfeld also zweimal den Wert der gerade zum Strahlungsfeld passt. Nun wird die Frequenz der Anregung verändert bis die beiden Durchläufe zusammenfallen. An diesem Punkt ist die Frequenz gerade die die dem Magnetfeld des Permanentmagneten entspricht. Man hat die Resonanzfrequenz gefunden.
+Die wesentliche Messmethode besteht darin das Magnetfeld welches vom Permanentmagneten stammt durch die Spulen sinusförmig zu modulieren. Die Frequenz der elektromagnetischen Anregung bleibt anfangs konstant. Bei einer Periode der Sinusfunktion durchläuft das Magnetfeld also zweimal den Wert der gerade zum Strahlungsfeld passt. Nun wird die Frequenz der Anregung verändert bis die beiden Durchläufe zusammenfallen. An diesem Punkt ist die Frequenz gerade die die dem Magnetfeld des Permanentmagneten entspricht. Man hat die Resonanzfrequenz gefunden.\\
 
+Bei der letzten Messung wurde die Lockin-Methode benutzt. Hierbei wird auf die Modulationsspulen ein Sägezahnsignal gegeben. Man erhält so für verschiedene Frequenzen Resonanzsignale zu verschiedenen Zeitpunkten bzgl der Flanke des Signals. Aufgrund des linearen Zusammenhanges zwischen Resonanzfrequenz und Zeitpunkt des Signals lässt sich auf diese Art ebenfalls sowohl das magnetfeld des permanentmegneten (bei bekantem g-Faktor) oder der g-Faktor (bei bekanntem Magnetfeld) bestimmen.
 
 \section{Auswertung}
 \subsection{Vermessung des Magnetfelds mit der Hallsonde}
@@ -180,13 +181,15 @@ Die beiden Schnitte des Feldes mit der Hallsonde sind in Abbildungen \ref{hallx}
 Verwendet man den Literaturwerte für $g_k$ und $\mu_K$ so lässt sich das Magnetfeld auch mittels der Kernspinresonanz messen, da aus Gleichung \ref{resfreq} folgt:
 
 \begin{align}
- B = \frac{h \nu}{g_K \mu_K}
+ B = \frac{h \nu}{g_K \mu_K}~~~~~\textnormal{mit Fehler}~~~~~s_B= \left| B \frac{s_{\nu}}{\nu} \right|
 \end{align}
 Wir verwendeten als Literaturwerte:
 \begin{align}
  \notag \mu_K &= 5,0507866\cdot 10^{-27} \frac{J}{T} \\
  \notag g_K &= 5.58569
 \end{align}
+
+und schätzten auf alle Frequenzmessungen einen Fehler von 0,001Mhz.
 
 \begin{figure}[H]
 \centering
@@ -227,21 +230,64 @@ Weiter lässt sich auch noch das kernmagnetische Moment $\mu_H$ des Protons best
 Damit erhielten wir:
 \begin{center}
 % use packages: array
-\begin{tabular}{l|llll}
+\begin{tabular}{|l|llll|}
+\hline
 Probe & $\nu_{res}~[Mhz]$ & $g_H$ & $\gamma~[10^8\frac{J}{T}]$ & $\mu_H~[10^{-26}\frac{J}{T}]$ \\ 
+\hline
 Wasserstoff & $18.20\pm0.001$ & $5.49\pm0.25$ & $2.63\pm0.12$ & $1.39\pm0.06$ \\ 
 Glykol & $18.20\pm0.001$ & $5.49\pm0.25$ & $2.63\pm0.12$ & $1.39\pm0.06$ \\ 
-Fluor & $17.12\pm0.001$ & $5.16\pm0.24$ & $2.47\pm0.11$ & $1.30\pm0.06$
-
-
+Fluor & $17.12\pm0.001$ & $5.16\pm0.24$ & $2.47\pm0.11$ & $1.30\pm0.06$ \\
+\hline
 \end{tabular}
 \end{center}
 
+\subsection{Vermessung mit der Lock-in Methode}
+Zur Messung mit der Lockin-Methode verwendeten wir Wasserstoff. Das Magnetfeld zwischen den Polschuhen ist nun also von der Form:
+\begin{align}
+ \notag B_{ges}(t)=B_0+B(t)
+\end{align}
 
+Es setzt sich aus dem Magnetfeld des Permanentmagneten $B_0$ und dem aufmodulierten $B(t)=c t$ zusammen. Dabei herscht ein linearer Zusammenhang zwischen Resonanzfrequenz $\nu$ und Magnetfeld:
+\begin{align}
+ \notag \nu(t)=\frac{g_H\mu_K}{h}B_{ges}(t)=\frac{g_H\mu_K}{h}(B_0+c t)=\frac{g_H\mu_K}{h}B_0 + \frac{g_H\mu_K}{h}c t= b+at
+\end{align}
 
+Es gilt also zur Zeit t=0:
+\begin{align}
+ \notag \nu(t=0) = b = \frac{g_H\mu_K} B_0
+\end{align}
 
+Somit ist es möglich nur über den Achsenabschnitt den g-Faktor des Protons $g_H$ zu bestimmen. Wir verwendeten als Wert für $B_0$ den Messwert aus Messung 1, also den mit der Hallsonde gemessenen Wert. Für $g_H$ gilt also:
+\begin{align}
+ \notag g_H=\frac{b \mu_K}{B_0}~~~~~\textnormal{mit Fehler}~~~~~s_{g_H}=g_H\sqrt{(\frac{s_b}{b})^2+(\frac{s_{B_0}}{B_0})^2}
+\end{align}
 
-\subsection{Vermessung der Wasserstoffprobe mit der Lock-in Methode}
+Unsere Messdaten un der Fit sind in Abbildung \ref{lockin} dargestellt. Die Resonanzfrequenz des Wasserstoffs im Magnetfeld des Permanentmagneten beträgt also:
+\begin{align}
+ \notag \nu_0= (18,1243\pm0,0004)Mhz
+\end{align}
+
+damit erhalten wir als g-Faktor:
+\begin{align}
+ g_H= (5,46599 \pm 0.25131)
+\end{align}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/lockin.eps}
+\caption{Linearer Fit an die Messungen nach der Lock-In Methode}
+\label{lockin}
+\end{figure}
+
+Dieser relativ große Fehler kommt eindeutig aus der Messung der Hallsonde. Wir haben daher mal das gewichtete Mittel aller Magnetfeldmessungen mit der Wasserstoffprobe gebiltet und erhielten:
+\begin{align}
+ B_{wasserstoff}= (0.427407 \pm 5.4e-12) T
+\end{align}
+
+Mit diesem Wert ergibt sich ein g-Faktor von:
+\begin{align}
+ g_H =  (5.56310 \pm 0.00013) T
+\end{align}
 
 \section{Zusammenfassung}
 
