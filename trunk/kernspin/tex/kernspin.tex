@@ -98,7 +98,14 @@ Für Spin $\frac{1}{2}$ Teilchen erhält man zwei unterschiedliche Energieniveau
 Genau diese Energie wird benötigt bzw frei wenn der Spin im Magnetfeld zwischen beiden Niveaus umklappt.
 
 \subsection{Resonanz}
-Bei Einstrahlung elektromagnetischer Strahlung kann, wenn die Energie gerade dem energetischen Abstand $\Delta E$ der beiden Spin Nieveaus entspricht, das Umklappen der Spins angeregt werden. Stimmt die Frequenz so klappen die Spins im energetisch tieferen Niveau in das höhere Niveau um und entziehen dem elektrischen Feld somit Energie. Allerdings bewirkt die Stahlung auch das umgekehrte Umklappen wobei Energie and das Stahlungsfeld abgegeben wird. Hierbei spricht man von der induzierten Emission. Die jeweilige Wahrscheinlichkeit für Absorption bzw. Emission ist proportional zur jeweiligen Besetung der Spinzustände.\\
+Bei Einstrahlung elektromagnetischer Strahlung kann, wenn die Energie $h\nu$ gerade dem energetischen Abstand $\Delta E$ der beiden Spin Nieveaus entspricht, das Umklappen der Spins angeregt werden. Stimmt die Frequenz so klappen die Spins im energetisch tieferen Niveau in das höhere Niveau um und entziehen dem elektrischen Feld somit Energie. Hierfür gilt also:
+\begin{align}
+ \nu = \frac{g_K \mu_K B}{h}
+\label{resfreq}
+\end{align}
+
+
+ Allerdings bewirkt die Stahlung auch das umgekehrte Umklappen wobei Energie and das Stahlungsfeld abgegeben wird. Hierbei spricht man von der induzierten Emission. Die jeweilige Wahrscheinlichkeit für Absorption bzw. Emission ist proportional zur jeweiligen Besetung der Spinzustände.\\
 
 Laut Bolzmann befinden sich im thermischen Gleichgewicht mehr Spins im energetisch tieferen Zustand:
 \begin{align}
@@ -172,6 +179,17 @@ Zusätzlich haben wir das Magnetfeld auch mit der Wasserstoffprobe vermessen hie
 \label{hallxy}
 \label{hally}
 \end{figure}
+
+Verwendet man den Litheraturwerte für $g_k$ und $\mu_K$ so lässt sich das Magnetfeld auch mittels der Kernspinresonanz messen, da aus Gleichung \ref{resfreq} folgt:
+\begin{align}
+ B = \frac{h \nu}{g_K \mu_K}
+\end{align}
+Wir verwendeten als Litheraturwerte:
+\begin{align}
+ \notag \mu_K &= 5,0507866\cdot 10^{-27} \frac{J}{T} \\
+ \notag g_K &= 5.58569
+\end{align}
+
 
 \begin{figure}[H]
 \centering
