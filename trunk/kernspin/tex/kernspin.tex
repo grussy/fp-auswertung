@@ -77,12 +77,13 @@ $m_I$ kann ganzzahlige oder halbzahlige Werte $-I, -I+1, -I+2, ..., I-1, I$ anne
 \subsection{Magnetisches Moment}
 Fasst man den Spin als Rotation eines geladenen Elementarteilchens auf so entsteht ein magnetisches Dipolmoment. Dieses Dipolmoment ist proportional zum Spin. Beschränkt auf dei $z$-Komponente, gilt:
 \begin{align}
+\label{spinmoment}
  \mu_z = g_K \cdot \mu_K \cdot m_I
 \end{align}
 
 Bei Spin Null resultiert kein magnetisches Dipolmoment. Der Betrag von $\vec\mu$ wird vom Kernmagneton $\mu_K$ bestimmt. $g_K$ hängt vom jeweiligen Kern ab.
 \begin{align}
- \mu_K = \frac{e \cdot \hbar}{2 \cdot \mu_p} = 5,05079 \cdot 10^{-27} J \cdot T^{-1}
+ \mu_K = \frac{e \cdot \hbar}{2 \cdot \mu_p} = 5,0507866 \cdot 10^{-27} J \cdot T^{-1}
 \end{align}
 
 \subsection{Spin im Magnetfeld}
@@ -175,6 +176,7 @@ Die beiden Schnitte des Feldes mit der Hallsonde sind in Abbildungen \ref{hallx}
 \label{hallxy}
 \end{figure}
 
+\subsection{Vermessung des Magnetfelds mit Wasserstoffprobe}
 Verwendet man den Litheraturwerte für $g_k$ und $\mu_K$ so lässt sich das Magnetfeld auch mittels der Kernspinresonanz messen, da aus Gleichung \ref{resfreq} folgt:
 \begin{align}
  B = \frac{h \nu}{g_K \mu_K}
@@ -184,7 +186,6 @@ Wir verwendeten als Litheraturwerte:
  \notag \mu_K &= 5,0507866\cdot 10^{-27} \frac{J}{T} \\
  \notag g_K &= 5.58569
 \end{align}
-
 
 \begin{figure}[H]
 \centering
@@ -199,6 +200,47 @@ Wir verwendeten als Litheraturwerte:
 \end{figure}
 
 Mit dieser Methode lässt sich das Magnetfeld wesentlich genauer vermessen. So stellt sich auch heraus, dass das Magnetfeld nicht perfekt homogen ist.
+
+\subsection{Bestimmung der charakteristischen Grössen der Proben}
+
+Zur Bestimmung der gyromagnetischen Verhältnisse der Proben massen wir die Resonanzfrequenz innerhalb der Polschuhe und nahmen als Magnetfeld den in Teil 1 gemessenen Wert an. Aus Gleichung \ref{resfreq} folgt der g-Faktor $g_H$ des Protons:
+\begin{align}
+ g_H = \frac{h\nu}{B \mu_K}
+\end{align}
+
+mit dem Fehler:
+\begin{align}
+ \notag s_{g_H} = g_H \sqrt{(\frac{s_B}{B})^2+(\frac{s_{\nu}}{\nu})^2}
+\end{align}
+
+hieraus lässt sich das gyromagnetische Verhältnis $\gamma$ Berechnen. Es gilt:
+\begin{align}
+ \gamma = \frac{g_H \mu_K}{\hbar}~~~~~\textnormal{mit Fehler}~~~~~s_{\gamma} = \left| \gamma \frac{s_{g_H}}{g_H} \right|
+\end{align}
+
+Weiter lässt sich auch noch das kernmagnetische Moment $\mu_H$ des Protons bestimmen. Da für die magnetische Quantenzahl des Protons sowie des $^{19}F$-Kerns $m_H = \pm1/2$ gilt, lässt sich $\mu_H$ mit Gleichung \ref{spinmoment} aus $g_H$ bestimmen:
+\begin{align}
+ \mu_H = \frac{1}{2} g_H \mu_K~~~~~\textnormal{mit Fehler}~~~~~s_{\mu_H}= \left| \gamma \frac{s_{g_H}}{g_H} \right|
+\end{align}
+
+Damit erhielten wir:
+\begin{center}
+% use packages: array
+\begin{tabular}{l|llll}
+Probe & $\nu_{res}~[Mhz]$ & $g_H$ & $\gamma~[10^8\frac{J}{T}]$ & $\mu_H~[10^{-26}\frac{J}{T}]$ \\ 
+Wasserstoff & $18.20\pm0.001$ & $5.49\pm0.25$ & $2.63\pm0.12$ & $1.39\pm0.06$ \\ 
+Glykol & $18.20\pm0.001$ & $5.49\pm0.25$ & $2.63\pm0.12$ & $1.39\pm0.06$ \\ 
+Fluor & $17.12\pm0.001$ & $5.16\pm0.24$ & $2.47\pm0.11$ & $1.30\pm0.06$
+
+
+\end{tabular}
+\end{center}
+
+
+
+
+
+\subsection{Vermessung der Wasserstoffprobe mit der Lock-in Methode}
 
 \section{Zusammenfassung}
 
