@@ -11,6 +11,10 @@ gROOT.SetStyle("Plain")
 # Hilfsroutinen und Klassen zur Handhabung der Messungen
 # -------------------------------------------------------------------
 
+# Fehler der Treiberspannung
+sU = 0.1
+sDist = 2.08e-3
+
 # Klasse zum Einlesen, Fitten und Plotten der Messungen
 class Messung:
     def __init__(self, name, distance, voltage, lowerFitrange, upperFitrange):
@@ -20,8 +24,6 @@ class Messung:
         self.lower = float(lowerFitrange)
         self.upper = float(upperFitrange)
         self.sdist = 0.5e-3
-        self.stime = []
-        self.sU = []
 
     # Lese Messdaten ein	
         data = []
@@ -30,13 +32,13 @@ class Messung:
         self.time = [float(z[0].strip(',')) for z in data]
         self.U = [float(z[1]) for z in data]
         self.count = len(self.time)
-        for i in range(self.count):
-            self.stime.append(1e-10)
-            self.sU.append(8.67e-4)
         print 'Found %i datapoints in %s'%(self.count, name)
-        
+        xerrors = [1e-20 for i in range(self.count)]
+        yerrors = [8.67e-4 for i in range(self.count)]
+            
     # Erzeuge Graphen
-        g = TGraphErrors(self.count, array('d',self.time) ,array('d',self.U), array('d',self.stime) ,array('d',self.sU))
+        g = TGraphErrors(self.count, array('d',self.time) ,array('d',self.U), 
+            array('d',xerrors), array('d',yerrors))
         g.SetTitle(';Zeit t [s];Spannung U [V]')
         g.GetHistogram().SetTitleOffset(1.3, 'Y')
         g.SetMarkerStyle(20)
@@ -49,6 +51,10 @@ class Messung:
         f = TF1('f_'+self.name, '[0]/sqrt(2*pi*[1]) * exp(-0.5*((x-[2])/[1])^2) + [3]', self.lower, self.upper)
         f.SetMarkerColor(2)
         f.SetParameters(array('d', initParams))
+##        f.SetParLimits(0,5e-6,1e-3);
+##        f.SetParLimits(1,1e-7,5e-4);
+##        f.SetParLimits(2,1e-7,1e-4);
+##        f.SetParLimits(3,-1,1);
         self.graph.Fit(f, 'QR')
         self.amp, self.samp = f.GetParameter(0), f.GetParError(0)
         self.sigma, self.ssigma = f.GetParameter(1), f.GetParError(1)
@@ -71,10 +77,15 @@ class Messung:
 
     # Speichere Plots
     def savePlot(self):
-        self.canvas.SaveAs('eps/%s.eps' % self.name[:-4])
+        self.canvas.SaveAs('eps/%s.eps' % self.name[16:-7])
 
             
 # Hilfsroutine zum Einlesung der Daten bei Messung variablen Abstandes
+# dateiname ist tabelle.dat mit Infos über messungen. Dabei ist der Aufbau:
+# Dateiname der CSV, nicht gelesen, nicht gelesen, Abstand, Treiberspannung, 
+# untere Grenze des Fits, obere Grenze des Fits. initParams sind die
+# Initialparameter des Fits
+
 def lade_Daten(dateiname):
     m = []
     for line in open(dateiname, 'r').readlines()[1:]:

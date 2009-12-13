@@ -7,14 +7,16 @@ from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TGraphErrors
 
 gROOT.SetStyle("Plain")
 
-# Fehler der Treiberspannung
-sU = 0.1
+
 # Listendeklarationen
 amps, samps = [], []
 sigs, ssigs = [] , []
 means, smeans = [], []
 dists, sdists = [], []
-Es, sEs = [],[]
+# Treiberspannung, hier konstant
+Utreib, sUtreib = 51.2,0.1
+# Länge des GermaniumBlocks
+L, sL = 0.3,1e-5
 
 # Lade Messdaten
 print '\nLoading Data ...'
@@ -42,9 +44,8 @@ for m in msf :
     ssigs.append(float(m.ssigma))
     smeans.append(float(m.sort))
     sdists.append(float(m.sdist))
-    Es.append(float(m.volts)/float(m.dist))
-    sEs.append(Es[len(Es)-1]*((sU/float(m.volts))+(float(m.sdist)/float(m.dist))))
     m.draw()
+#    m.savePlot()
 
 #Fitte die Schwerpunkte
 gMean = TGraphErrors(len(means), array('d',means) ,array('d',dists), array('d',smeans) ,array('d',sdists))
@@ -98,8 +99,9 @@ csig = TCanvas('SigFit', 'SigFit')
 csig.SetGrid()
 gsig.Draw('AP')
 fs = TF1('MeanFit', 'sqrt(2*[0]*x)')
-fs.SetParameters(array('d', [5e-9]))
-gsig.Fit(fs, 'Q')
+fs.SetParameters(array('d', [5e-8]))
+fs.Draw('SAME')
+#gsig.Fit(fs, 'Q')
 D, sD = fs.GetParameter(0), fs.GetParError(0)
 csig.Update()
 chisq = fs.GetChisquare()
@@ -109,9 +111,10 @@ print 'Fit on Sigmas: Chisquare = %g, Rchisquare= %g '%(chisq, rchisq)
 
 # Endlich: Berechnung der physikalischen Grössen
 print '\nCalculating ...'
-E, sE = GewMittel(Es, sEs)
+E = Utreib/L
+sE = E*sqrt((sUtreib/Utreib)**2+(sL/L)**2)
 mu = vel/E
-smu = mu*((svel/vel)+(sE/E))
+smu = mu*sqrt((svel/vel)**2+(sE/E)**2)
 print ' Mobility:           (%g +- %g) m^2/(Vs)'%(mu, smu)
 print ' Lifetime:           (%g +- %g) s'%(tau, stau)
 print ' Diffusionconstant:  (%g +- %g)m^2/s'%(D,sD)
