@@ -15,8 +15,6 @@ means, smeans = [], []
 dists, sdists = [], []
 # Treiberspannung, hier konstant
 Utreib, sUtreib = 51.2,0.1
-# Länge des GermaniumBlocks
-L, sL = 30e-3,1e-5
 
 # Lade Messdaten
 print '\nLoading Data ...'
@@ -80,7 +78,7 @@ gAmp.Draw('AP')
 fe = TF1('MeanFit', '[0]*exp(-x/[1])')
 fe.SetParameters(array('d', [5e-4,1e-5]))
 gAmp.Fit(fe, 'Q')
-tau, stau = fe. GetParameter(1), fe.GetParError(1)
+tau, stau = fe. GetParameter(1)*10, fe.GetParError(1)*10
 cAmp.Update()
 chisq = fe.GetChisquare()
 ndf = fe.GetNDF()
@@ -114,11 +112,7 @@ E = Utreib/L
 sE = E*sqrt((sUtreib/Utreib)**2+(sL/L)**2)
 mu = vel/E
 smu = mu*sqrt((svel/vel)**2+(sE/E)**2)
-print ' Mobility:           (%g +- %g) m^2/Vs'%(mu*1e4, smu*1e4)
-print ' Lifetime:           (%g +- %g) s'%(tau, stau)
-print ' Diffusionconstant:  (%g +- %g) m^2/Vs'%(D,sD)
-PrintLith
 
-   
-print'\nDone. Press any Key.' 
+#Last and Least Ergebniss
+PrintSol(mu, smu, tau, stau, D,sD)
 raw_input();

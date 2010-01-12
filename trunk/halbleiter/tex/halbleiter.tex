@@ -454,13 +454,9 @@ Mit den von uns durchgeführten Messungen erhält man somit acht Werte für die 
  E_G = 0,741 \pm 0,045
 \end{align*}
 
-
-
-
-
 \subsection{Haynes- und Shockley-Experiment}
 \captionfont\footnotesize
-Die Mathematik zur Auswertung ist im Kapitel der theoretischen Grundlagen besprochen worden.
+Die Mathematik zur Auswertung ist im Kapitel der theoretischen Grundlagen besprochen worden. Die Fehler ergeben sich hier aus den Fits, dh sie werden von Root direkt angegeben. Wir schätzten nur einen Fehler auf die Messung des Osziloskops indem wir die Daten eines konstanten Spannungsverlaufs analysierten und erhielten $5 \cdot 10^{-3}$ als Fehler auf die Spannung (maximale Schwankung) und $1 \cdot 10^{-10}$ als Fehler auf die Zeitmessung (0,1 Prozent, geschätzt).
 
 \subsubsection{Variabler Abstand}
  Wir nahmen zehn Messungen bei variablem Abstand auf. Dieser Lag zwischen 3,8 und 4,7 $mm$, die Treiberspannung betrug 50V. Wir fitteten an jeden Datansatz eine Gausskurve wobei wir den Bereich und die Initialparameter schätzten. Aus den Fits erhielten wir Verläufe der Fitparameter, die wir wieder analysieren konnten. Hierfür benutzten wir folgende Funktionen:
@@ -504,9 +500,9 @@ Somit erhielten wir also die Beweglichkeit $\mu$, die Lebenszeit $\tau$ und die 
 Aus diesen Fits erhielten wir als Ergebnisse:
 
 \begin{itemize}
- \item Beweglichkeit der Elektronen ~~~~~~$\mu = $ 
- \item Lebensdauer der Elektronen ~~~~~~~~$\tau = $
- \item Diffusionskonstante der Elektronen $D = $
+ \item Beweglichkeit der Elektronen ~~~~~~~~$\mu = (0,283 \pm 0,016) \frac{m^2}{Vs}$ 
+ \item Lebensdauer der Elektronen ~~~~~~~~~~$\tau = (5,22 \pm 0,03) 10^{-5} s $
+ \item Diffusionskonstante der Elektronen ~~$D = (5,42 \pm 0,03) 10^{-8} \frac{m^2}{s}$
 \end{itemize}
 
 
@@ -580,94 +576,151 @@ Hier unsere Gaussfits, hier ist das Verlaufen der Ladungsträgerwolke mit dem Ab
 \centering 
 \end{minipage}
 \end{figure}
+\newpage
 
 \subsubsection{Variation des elektrischen Felds}
-Hier nahmen wir 
+Hier nahmen wir zwölf Messreihen auf, wobei wir die Treiberspannung zwischen 15,2 V und 51,2 V variierten. Der Abstand lag bei allen Messungen bei 3,98 mm. Zur Auswertung sind hier noch ein paar überlegungen zum Fit der Schwerpunkte zu machen: Da wir den Ort der Messung nicht Verändern gilt:
+\begin{align*}
+ x_c = E \mu t + x_0 = const. = 3,98 mm
+\end{align*}
+
+wobei nun das elektrische Feld E und die Zeit bis zur Schwerpunktsdetektion t variabel sind. Es ergibt sich also:
+\begin{align*}
+ t = \frac{x_c+x_0}{E \mu} + t_0
+\end{align*}
+
+als Fitfunktion an die Daten des Schwerpunktes. Alle anderen Fitfunktionen bleiben unverändert:
 
 \begin{figure}[H]  
-\begin{minipage}{0.49\linewidth}
+\includegraphics[width=0.9\linewidth]{pictures/varVolt/movabilty.eps}
+\caption{Verlauf der Schwerpunkte}
+\end{figure}
+
+\begin{figure}[H]  
+\includegraphics[width=0.9\linewidth]{pictures/varVolt/lifetime.eps}
+\caption{Verlauf der Amplituden}
+\end{figure}
+
+\begin{figure}[H]  
+\includegraphics[width=0.9\linewidth]{pictures/varVolt/diffusion.eps}
+\caption{Verlauf der Breiten}
+\end{figure}
+\newpage
+
+Aus diesen Fits erhielten wir als Ergebnisse:
+\begin{itemize}
+ \item Beweglichkeit der Elektronen ~~~~~~~~~$\mu = (111 \pm 8) \frac{m^2}{Vs}$ 
+ \item Lebensdauer der Elektronen ~~~~~~~~~~~$\tau = (3,25 \pm 0,05) 10^{-5} s $
+ \item Diffusionskonstante der Elektronen ~~$D = (5,53 \pm 0,06) 10^{-8} \frac{m^2}{s}$
+\end{itemize}
+
+Hier die Gaussfits, unter den Abbildungen ist die Treiberspannung angegeben:
+
+\begin{figure}[H]  
+\begin{minipage}{0.33\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/varVolt/00.eps}
-\small{Messung 1 bei Variation der Spannung}
+\small{51,2 V}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
-\centering 
-\includegraphics[width=0.9\linewidth]{pictures/varVolt/01.eps}
-\small{Messung 2 bei Variation der Spannung}
-\end{minipage}
-\end{figure}
-
-\begin{figure}[H]  
-\begin{minipage}{0.49\linewidth}
+\begin{minipage}{0.33\linewidth}
 \centering
-\includegraphics[width=0.9\linewidth]{pictures/varVolt/02.eps}
-\small{Messung 3 bei Variation der Spannung}
+\includegraphics[width=0.9\linewidth]{pictures/varVolt/01.eps}
+\small{50 V}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.33\linewidth}
 \centering 
-\includegraphics[width=0.9\linewidth]{pictures/varVolt/03.eps}
-\small{Messung 4 bei Variation der Spannung}
+\includegraphics[width=0.9\linewidth]{pictures/varVolt/02.eps}
+\small{46,4 V}
 \end{minipage}
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.49\linewidth}
+\begin{minipage}{0.33\linewidth}
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/varVolt/03.eps}
+\small{43,2 V}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/varVolt/04.eps}
-\small{Messung 5 bei Variation der Spannung}
+\small{40 V}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.33\linewidth}
 \centering 
 \includegraphics[width=0.9\linewidth]{pictures/varVolt/05.eps}
-\small{Messung 6 bei Variation der Spannung}
+\small{36,6 V}
 \end{minipage}
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.49\linewidth}
+\begin{minipage}{0.33\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/varVolt/06.eps}
-\small{Messung 7 bei Variation der Spannung}
+\small{33,2 V}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
-\centering 
-\includegraphics[width=0.9\linewidth]{pictures/varVolt/07.eps}
-\small{Messung 8 bei Variation der Spannung}
-\end{minipage}
-\end{figure}
-
-\begin{figure}[H]  
-\begin{minipage}{0.49\linewidth}
+\begin{minipage}{0.33\linewidth}
 \centering
-\includegraphics[width=0.9\linewidth]{pictures/varVolt/08.eps}
-\small{Messung 9 bei Variation der Spannung}
+\includegraphics[width=0.9\linewidth]{pictures/varVolt/07.eps}
+\small{30 V}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.33\linewidth}
 \centering 
-\includegraphics[width=0.9\linewidth]{pictures/varVolt/09.eps}
-\small{Messung 10 bei Variation der Spannung}
+\includegraphics[width=0.9\linewidth]{pictures/varVolt/08.eps}
+\small{26,8 V}
 \end{minipage}
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.49\linewidth}
+\begin{minipage}{0.33\linewidth}
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/varVolt/09.eps}
+\small{23,2 V}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/varVolt/10.eps}
-\small{Messung 11 bei Variation der Spannung}
+\small{20 V}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.33\linewidth}
 \centering 
 \includegraphics[width=0.9\linewidth]{pictures/varVolt/11.eps}
-\small{Messung 12 bei Variation der Spannung}
+\small{15,2 V}
 \end{minipage}
 \end{figure}
 
 \section{Zusammenfassung}
-
-Bei der Vermessung der Bandlücke erhielten wir:
+Hier nochmal eine Zusammenstellung der Ergebnisse und ein Fazit zu den jeweiligen Versuchsteilen:
+\begin{itemize}
+ \item Vermessung der Bandlücke
 \begin{align*}
  E_G = 0,741 \pm 0,045
 \end{align*}
-Verglichen mit dem Literaturwert von $E_G = 0,66 eV$ liegen wir damit in der richtigen Größenordnung. Der Literaturwert liegt in der $2\sigma$ Umgebung unseres Messwerts. 
+Verglichen mit dem Literaturwert von $E_G = 0,66 eV$ liegen wir damit in der richtigen Größenordnung. Der Literaturwert liegt in der $2\sigma$ Umgebung unseres Messwerts
+\item Haynes-Shockley Experiment
+Obwohl die Fits bis auf die der Breiten alle recht gut aussahen, gelang es uns nicht Werte zu erhalten mit denen man im Rahmen der Fehlergrenzen auf den Litheraturwert kommt. Trotz langer Fehleranalyse war es uns nicht möglich ihn zu finden, wesshalb wir auch diesen Teil des Auswertungsskripts angehängt haben. Desweiteren existiert auch ein SVN-Repository, in welchem die Skripte samt Pfaden und Daten abgelegt sind und man Ideen zur Korektur sofort Testen kann, die Adresse ist: \\ http://fp-auswertung.googlecode.com/svn/trunk/
+\begin{itemize}
+\item Litheraturwerte:
+\begin{itemize}
+ \item Beweglichkeit der Elektronen ~~~~~~~~$\mu = (0,39 \pm ?) \frac{m^2}{Vs}$ 
+ \item Lebensdauer der Elektronen ~~~~~~~~~~$\tau = (45 \pm 2) \mu s $
+ \item Diffusionskonstante der Elektronen ~~$D = (0,0101 \pm ?) \frac{m^2}{s}$
+\end{itemize}
+\item Variabler Abstand:
+\begin{itemize}
+ \item Beweglichkeit der Elektronen ~~~~~~~~$\mu = (0,283 \pm 0,016) \frac{m^2}{Vs}$ 
+ \item Lebensdauer der Elektronen ~~~~~~~~~~$\tau = (52,2 \pm 0,3) \mu s $
+ \item Diffusionskonstante der Elektronen ~~$D = (5,42 \pm 0,03) 10^{-8} \frac{m^2}{s}$
+\end{itemize}
+\item Variable Treiberspannung
+\begin{itemize}
+ \item Beweglichkeit der Elektronen ~~~~~~~~~$\mu = (111 \pm 8) \frac{m^2}{Vs}$ 
+ \item Lebensdauer der Elektronen ~~~~~~~~~~~$\tau = (32,5 \pm 0,5) \mu s $
+ \item Diffusionskonstante der Elektronen ~~$D = (5,53 \pm 0,06) 10^{-8} \frac{m^2}{s}$
+\end{itemize}
+\end{itemize}
+Wie man sieht liefert unsere Analyse der Daten keine passenden Werte für die Diffusionskonstante, was der Verlauf der Breiten aber auch schon ahnen lies. Die Lebensdauer und die Beweglichkeit liegen wenigstens in der richtigen Grössenordnung, allerdings ausserhalb $2\sigma$. Unter diesen Umständen machte die Mc Kelvey Korrektur keinen Sinn.
+\end{itemize}
+
+
 
 \end{document}

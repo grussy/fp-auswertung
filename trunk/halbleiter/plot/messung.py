@@ -11,9 +11,11 @@ gROOT.SetStyle("Plain")
 # Hilfsroutinen und Klassen zur Handhabung der Messungen
 # -------------------------------------------------------------------
 
-# Fehler der Treiberspannung
-sU = 0.1
-sDist = 2.08e-3
+# Konstanten
+# Länge des GermaniumBlocks
+L, sL = 30e-3,1e-5
+sU = 5e-3
+
 
 # Klasse zum Einlesen, Fitten und Plotten der Messungen
 class Messung:
@@ -104,10 +106,11 @@ def GewMittel(werte, fehler):
         sumb += 1. / fehler[i]**2
     return (suma/sumb, 1/sqrt(sumb))
 
-# Zeige Litheraturwerte in cm^2
-def PrintLith():
-        print '\nLitherature Values:'
-        print ' Mobility:           (%g +- %g) cm^2/(Vs)'%(3900, 0)
-        print ' Lifetime:           (%g +- %g) s'%(45e-6,2e-6)
-        print ' Diffusionconstant:  (%g +- %g) cm^2/s'%(101,0)
+# Zeige Ergebnisse
+def PrintSol(mo, smo, life, slife, dif, sdif):
+        print '\nSolution:\t\t\t\tLith\t\t\tYours\t\t\tCorectness'
+        print ' Mobility[m^2/(Vs)] :\t\t(%g +- %g)\t\t\t(%g +- %g)\t\t\t%g'%(0.3900, 0, mo,smo,mo/0.3900)
+        print ' Lifetime[s] :\t\t\t(%g +- %g)\t\t\t(%g +- %g)\t\t\t%g'%(45e-6,2e-6, life, slife,life/45e-6)
+        print ' Diffusionconstant[m^2/s]:\t(%g +- %g)\t\t\t(%g +- %g)\t\t\t%g'%(0.0101,0, dif, sdif, dif/0.0101)
+        print'\nDone. Press any Key.'
         
