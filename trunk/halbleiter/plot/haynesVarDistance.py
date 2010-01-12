@@ -23,17 +23,32 @@ msf = lade_Daten('data/haynes_shockley/varDistance/table.dat')
 #Fitten, zeichnen, rechnen, speichern ... 
 print '\nFitting now ... '
 for m in msf :
-    #doof aber einer brauchte andere initParams sonst gabs keine Glocke:
+    #doof aber eiige brauchten andere initParams sonst gabs keine Glocken:
      # in Liste: Amplitude Sigma Schwerpunkt Offset
-    if (m.name == 'varDistance/csv/F0006CH1.CSV'): 
-        m.fit([0.000025,0.7e-6,1.952e-5,-0.0075])
+    if (m.name == 'varDistance/csv/F0000CH1.CSV'): 
+        m.fit([0.000025,0.7e-6,4.75e-6,0.05])
+    elif (m.name == 'varDistance/csv/F0001CH1.CSV'): 
+        m.fit([0.000025,0.7e-6,9e-6,-0.0025])
     elif (m.name == 'varDistance/csv/F0002CH1.CSV'): 
         m.fit([0.000025,0.7e-6,1.3e-5,-0.0025])
-    elif (m.name == 'varDistance/csv/F0000CH1.CSV'): 
-        m.fit([0.000025,0.7e-6,4.75e-6,0.05])
+    elif (m.name == 'varDistance/csv/F0003CH1.CSV'): 
+        m.fit([0.000025,0.7e-6,1.75e-5,-0.0075])
+    elif (m.name == 'varDistance/csv/F0004CH1.CSV'): 
+        m.fit([0.000025,0.7e-6,2.2e-5,-0.0075])
+    elif (m.name == 'varDistance/csv/F0005CH1.CSV'): 
+        m.fit([0.000025,0.7e-6,2.4e-5,-0.0075])
+    elif (m.name == 'varDistance/csv/F0006CH1.CSV'): 
+        m.fit([0.000025,0.7e-6,1.952e-5,-0.0075])
+    elif (m.name == 'varDistance/csv/F0007CH1.CSV'): 
+        m.fit([0.000025,0.7e-6,1.7e-5,-0.0025])
+    elif (m.name == 'varDistance/csv/F0008CH1.CSV'): 
+        m.fit([0.000025,0.7e-6,1.1e-5,-0.0025])
+    elif (m.name == 'varDistance/csv/F0009CH1.CSV'): 
+        m.fit([0.000025,0.7e-6,7.5e-6,-0.0025])
     else:
         m.fit( [1e-5,1e-05,1e-5,0])
     print 'Fit on Data %s: Chisquare = %g, Rchisquare= %g '%(m.name, m.chisq, m.rchisq)
+    print m.amp
     amps.append(float(m.amp))
     sigs.append(float(m.sigma))
     means.append(float(m.ort))
@@ -42,7 +57,7 @@ for m in msf :
     ssigs.append(float(m.ssigma))
     smeans.append(float(m.sort))
     sdists.append(float(m.sdist))
-    #m.draw()
+    m.draw()
 #    m.savePlot()
 
 #Fitte die Schwerpunkte -> Beweglichkeit 
@@ -76,7 +91,7 @@ cAmp = TCanvas('AmpFit', 'AmpFit')
 cAmp.SetGrid()
 gAmp.Draw('AP')
 fe = TF1('MeanFit', '[0]*exp(-x/[1])')
-fe.SetParameters(array('d', [5e-4,1e-5]))
+fe.SetParameters(array('d', [5e-6,1e-5]))
 gAmp.Fit(fe, 'Q')
 tau, stau = fe. GetParameter(1)*10, fe.GetParError(1)*10
 cAmp.Update()

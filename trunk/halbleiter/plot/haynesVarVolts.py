@@ -51,9 +51,7 @@ for m in msf :
         sEs.append(Es[len(Es)-1]*((sU/float(m.volts))+(float(sL)/float(L))))
     #m.draw()
     #m.savePlot()
-    
-print array('d', Es)
-print array('d', means)
+
 
 #Fitte die Schwerpunkte
 gMean = TGraphErrors(len(Es), array('d',Es) ,array('d',means), array('d',sEs) ,array('d',smeans))
