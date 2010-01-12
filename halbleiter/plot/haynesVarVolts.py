@@ -7,8 +7,6 @@ from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TGraphErrors
 
 gROOT.SetStyle("Plain")
 
-# Fehler der Treiberspannung
-sU = 0.1
 # Listendeklarationen
 amps, samps = [], []
 sigs, ssigs = [] , []
@@ -19,9 +17,6 @@ Es, sEs = [],[]
 # Lade Messdaten
 print '\nLoading Data ...'
 msf = lade_Daten('data/haynes_shockley/varVolts/table.dat')
-
-#Berechne Fehler auf Spannung, per StAbw eines "linearen" Bereichs
-sx, sy = [], []
 
 #Fitten, zeichnen, rechnen, speichern ... 
 print '\nFitting now ... '
@@ -52,20 +47,13 @@ for m in msf :
         ssigs.append(float(m.ssigma))
         smeans.append(float(m.sort))
         sdists.append(float(m.sdist))
-        Es.append(float(m.volts)/float(m.dist))
-        sEs.append(Es[len(Es)-1]*((sU/float(m.volts))+(float(m.sdist)/float(m.dist))))
+        Es.append(float(m.volts)/float(L))
+        sEs.append(Es[len(Es)-1]*((sU/float(m.volts))+(float(sL)/float(L))))
     #m.draw()
     #m.savePlot()
     
-##print '\n DEBUG: Fehler:'
-##print 'Amps:'
-##print samps
-##print 'Sigs:'
-##print ssigs
-##print 'Means:'
-##print smeans
-print means[1]
-#Berechne Physik
+print array('d', Es)
+print array('d', means)
 
 #Fitte die Schwerpunkte
 gMean = TGraphErrors(len(Es), array('d',Es) ,array('d',means), array('d',sEs) ,array('d',smeans))
@@ -78,7 +66,7 @@ cMean = TCanvas('MeanFit', 'MeanFit')
 cMean.SetGrid()
 gMean.Draw('AP')
 flin = TF1('MeanFit', '([1]/([0]*x))+[2]')
-flin.SetParameters(array('d', [1e-5,9e-6,0.1]))
+flin.SetParameters(array('d', [100,1,1e-5]))
 flin.SetMarkerStyle(20)
 flin.SetMarkerColor(2)
 flin.SetMarkerSize(0.5)
@@ -106,7 +94,7 @@ fe.SetMarkerStyle(20)
 fe.SetMarkerColor(2)
 fe.SetMarkerSize(0.5)
 gAmp.Fit(fe, 'Q')
-tau, stau = fe. GetParameter(1), fe.GetParError(1)
+tau, stau = fe. GetParameter(1)*10, fe.GetParError(1)*10
 cAmp.Update()
 chisq = fe.GetChisquare()
 ndf = fe.GetNDF()
@@ -138,26 +126,9 @@ ndf = fs.GetNDF()
 rchisq = chisq / ndf
 print 'Fit on Sigmas: Chisquare = %g, Rchisquare= %g '%(chisq, ndf)
 
-#csig.SaveAs('eps/sigmasVarDist.eps' % self.name[:-4])
-#camp.SaveAs('eps/ampsVarDist.eps' % self.name[:-4])
-#cmean.SaveAs('eps/MeansVarDist.eps' % self.name[:-4])
-
 # Endlich: Berechnung der physikalischen Grössen
 print '\nCalculating ...'
-print ' Mobility:           (%g +- %g) m^2/(Vs)'%(vel, svel)
-print ' Lifetime:           (%g +- %g) s'%(tau, stau)
-print ' Diffusionconstant:  (%g +- %g)m^2/s'%(D,sD)
 
-PrintLith
-   
-print'\nDone. Press any Key.' 
-    
+#Last and Least Ergebniss
+PrintSol(vel, svel, tau, stau, D, sD)    
 raw_input();
-
-
-# Erzeuge TeX Tabellen
-#import texgen
-#texgen.write_table_schleife(msf)
-#texgen.write_table_schleife_fit(msf)
-#texgen.write_table_z(msf)
-#texgen.write_table_schleife_dipol(msf)
