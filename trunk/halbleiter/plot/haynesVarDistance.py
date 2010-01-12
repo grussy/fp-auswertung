@@ -16,7 +16,7 @@ dists, sdists = [], []
 # Treiberspannung, hier konstant
 Utreib, sUtreib = 51.2,0.1
 # Länge des GermaniumBlocks
-L, sL = 0.3,1e-5
+L, sL = 30e-3,1e-5
 
 # Lade Messdaten
 print '\nLoading Data ...'
@@ -44,10 +44,10 @@ for m in msf :
     ssigs.append(float(m.ssigma))
     smeans.append(float(m.sort))
     sdists.append(float(m.sdist))
-    m.draw()
+    #m.draw()
 #    m.savePlot()
 
-#Fitte die Schwerpunkte
+#Fitte die Schwerpunkte -> Beweglichkeit 
 gMean = TGraphErrors(len(means), array('d',means) ,array('d',dists), array('d',smeans) ,array('d',sdists))
 gMean.SetTitle(';Zeit t [s];Ort des Schwerpunktes[m]')
 gMean.GetHistogram().SetTitleOffset(1.3, 'Y')
@@ -67,7 +67,7 @@ ndf = flin.GetNDF()
 rchisq = chisq / ndf
 print '\nFit on Mass Center: Chisquare = %g, Rchisquare= %g '%(chisq, rchisq)
 
-#Fitte die Amplituden
+#Fitte die Amplituden -> Lebensdauer
 gAmp = TGraphErrors(len(means), array('d',means) ,array('d',amps), array('d',smeans) ,array('d',samps))
 gAmp.SetTitle(';Zeit t [s];Amplitude der Gauskurve[V]')
 gAmp.GetHistogram().SetTitleOffset(1.3, 'Y')
@@ -88,9 +88,9 @@ rchisq = chisq / ndf
 print 'Fit on Amplitudes: Chisquare = %g, Rchisquare= %g '%(chisq, rchisq)
 
 
-#Fitte die Breiten
+#Fitte die Breiten -> Diffusionskonstante
 gsig = TGraphErrors(len(means), array('d',means) ,array('d',sigs), array('d',smeans) ,array('d',ssigs))
-gsig.SetTitle(';Zeit t [s];Spannung U [V]')
+gsig.SetTitle(';Zeit t [s];Breite der Gauskurve [s]')
 gsig.GetHistogram().SetTitleOffset(1.3, 'Y')
 gsig.SetMarkerStyle(20)
 gsig.SetMarkerColor(2)
@@ -100,8 +100,7 @@ csig.SetGrid()
 gsig.Draw('AP')
 fs = TF1('MeanFit', 'sqrt(2*[0]*x)')
 fs.SetParameters(array('d', [5e-8]))
-fs.Draw('SAME')
-#gsig.Fit(fs, 'Q')
+gsig.Fit(fs, 'Q')
 D, sD = fs.GetParameter(0), fs.GetParError(0)
 csig.Update()
 chisq = fs.GetChisquare()
@@ -115,18 +114,11 @@ E = Utreib/L
 sE = E*sqrt((sUtreib/Utreib)**2+(sL/L)**2)
 mu = vel/E
 smu = mu*sqrt((svel/vel)**2+(sE/E)**2)
-print ' Mobility:           (%g +- %g) m^2/(Vs)'%(mu, smu)
+print ' Mobility:           (%g +- %g) m^2/Vs'%(mu*1e4, smu*1e4)
 print ' Lifetime:           (%g +- %g) s'%(tau, stau)
-print ' Diffusionconstant:  (%g +- %g)m^2/s'%(D,sD)
+print ' Diffusionconstant:  (%g +- %g) m^2/Vs'%(D,sD)
+PrintLith
 
    
 print'\nDone. Press any Key.' 
 raw_input();
-
-
-# Erzeuge TeX Tabellen
-#import texgen
-#texgen.write_table_schleife(msf)
-#texgen.write_table_schleife_fit(msf)
-#texgen.write_table_z(msf)
-#texgen.write_table_schleife_dipol(msf)
