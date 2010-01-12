@@ -115,8 +115,9 @@ print 'Fit on Amplitudes: Chisquare = %g, Rchisquare= %g '%(chisq, ndf)
 
 
 #Fitte die Breiten
+#--> leider ergabs bei uns keine Wurzelabhängikeit ...
 gsig = TGraphErrors(len(means), array('d',means) ,array('d',sigs), array('d',smeans) ,array('d',ssigs))
-gsig.SetTitle(';Zeit t [s];Spannung U [V]')
+gsig.SetTitle(';Zeit t [s];Breite der Gauskurve[s]')
 gsig.GetHistogram().SetTitleOffset(1.3, 'Y')
 gsig.SetMarkerStyle(20)
 gsig.SetMarkerColor(2)
@@ -142,14 +143,12 @@ print 'Fit on Sigmas: Chisquare = %g, Rchisquare= %g '%(chisq, ndf)
 #cmean.SaveAs('eps/MeansVarDist.eps' % self.name[:-4])
 
 # Endlich: Berechnung der physikalischen Grössen
-##print '\nCalculating ...'
-##E, sE = GewMittel(Es, sEs)
-##mu = vel/E
-##smu = mu*((svel/vel)+(sE/E))
-##print ' Mobility:           (%g +- %g) m^2/(Vs)'%(mu, smu)
-##print ' Lifetime:           (%g +- %g) s'%(tau, stau)
-##print ' Diffusionconstant:  (%g +- %g)m^2/s'%(D,sD)
+print '\nCalculating ...'
+print ' Mobility:           (%g +- %g) m^2/(Vs)'%(vel, svel)
+print ' Lifetime:           (%g +- %g) s'%(tau, stau)
+print ' Diffusionconstant:  (%g +- %g)m^2/s'%(D,sD)
 
+PrintLith
    
 print'\nDone. Press any Key.' 
     

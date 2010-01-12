@@ -291,7 +291,7 @@ Des weiteren erkennt man das der Schwerpunkt der Gaußkurve
 x_c(t)=-E\tilde{\mu} \cdot t
 \end{align}
 
-mit konstanter Geschwindigkeit $E\tilde{\mu}$ durch dden Halbleiter bewegt. Außerdem lässt die Diffusion die Gaußkurve zerfließen und man sieht leicht:
+mit konstanter Geschwindigkeit $E\tilde{\mu}$ durch den Halbleiter bewegt. Außerdem lässt die Diffusion die Gaußkurve zerfließen und man sieht leicht:
 \begin{align}
 \sigma(t)= \sqrt{2\tilde{D}t}
 \end{align}
@@ -305,7 +305,7 @@ Aufgrund der Tatsache das auch während des vorbeifliegens an der Prüfnadel Dif
  \tilde{\mu_0}=\frac{\tilde{\mu}}{\sqrt{x^2+1}-x} \textnormal{mit} ~~~~~x=\frac{2kT}{eEd}(\frac{t}{\tau_n}+\frac{1}{2})
 \end{align}
 
-dem wahren Wert $\tilde{\mu_0}$ angepasst werden. d bezeichnet den Abstand zwischen
+dem wahren Wert $\tilde{\mu_0}$ angepasst werden, d bezeichnet hierbei den Abstand zwischen
 Laserinjektion und Nadel.Will man diese Korrektur zur Bestimmung der Diffusionskonstanten $D_n$ mit einbeziehen, kann die McKelvey-Korrektur nicht verwendet werden. Hier empfiehlt es sich eine modifizierte Gauß-Funktion zu verwenden:
 \begin{align}
 y(x)=A e^{-\frac{x}{\tau}}\frac{1}{2\pi\sigma^2}e^{-\frac{1}{2}(\frac{x-x_c}{\sigma})^2}
@@ -390,6 +390,8 @@ Die Messung des Abstandes zwischen Nadel und Laser sellte sich dabei als schwier
 \subsection{Halbleiterdetektor}
 
 \section{Auswertung}
+Zur Auswertung bentzten wir das Datenanalyseframework PyRoot
+
 \subsection{Vermessung der Bandlücke}
 Zuerst wurden die Daten vom Untergrund bereinigt und auf die Strahlungsleistung der Lampe normiert:
 \begin{align}
@@ -458,74 +460,129 @@ Mit den von uns durchgeführten Messungen erhält man somit acht Werte für die 
 
 \subsection{Haynes- und Shockley-Experiment}
 \captionfont\footnotesize
+Die Mathematik zur Auswertung ist im Kapitel der theoretischen Grundlagen besprochen worden.
 
 \subsubsection{Variabler Abstand}
+ Wir nahmen zehn Messungen bei variablem Abstand auf. Dieser Lag zwischen 3,8 und 4,7 $mm$, die Treiberspannung betrug 50V. Wir fitteten an jeden Datansatz eine Gausskurve wobei wir den Bereich und die Initialparameter schätzten. Aus den Fits erhielten wir Verläufe der Fitparameter, die wir wieder analysieren konnten. Hierfür benutzten wir folgende Funktionen:
+\begin{itemize}
+ \item als Gaussfunktion: 
+\begin{align*}
+U(t) = U_0 + \frac{A}{\sqrt{2\pi \sigma^2}}e^{-\frac{1}{2} \left( \frac{x -x_c}{\sigma}\right)^2 }
+\end{align*}
+ \item für den Verlauf der Schwerpunkte:
+\begin{align*}
+x_c(t) = \frac{U}{L} \mu t + x_0
+\end{align*}
+ \item für den Verlauf der Amplituden:
+\begin{align*}
+A(t) = C e^{-\frac{t}{\tau}}
+\end{align*}
+ \item für den Verlauf der Breiten:
+\begin{align*}
+\sigma(t) = \sqrt{2 D t}
+\end{align*}
+\end{itemize}
+
+Somit erhielten wir also die Beweglichkeit $\mu$, die Lebenszeit $\tau$ und die Diffusionskonstante $D$ aus diesen letzteren Fits an die Verläufe der Gaussparameter. Diese werden nun dargestellt, es folgen die Ergebnisse dann unsere Gaussfits. Das PyRoot-Skript befindet sich im Anhang.
+
+
 \begin{figure}[H]  
-\begin{minipage}{0.49\linewidth}
+\includegraphics[width=0.9\linewidth]{pictures/varDist/schwerpunkt.eps}
+\caption{Verlauf der Schwerpunkte}
+\end{figure}
+
+\begin{figure}[H]  
+\includegraphics[width=0.9\linewidth]{pictures/varDist/amplitude.eps}
+\caption{Verlauf der Amplituden}
+\end{figure}
+
+\begin{figure}[H]  
+\includegraphics[width=0.9\linewidth]{pictures/varDist/sigma.eps}
+\caption{Verlauf der Breiten}
+\end{figure}
+
+Aus diesen Fits erhielten wir als Ergebnisse:
+
+\begin{itemize}
+ \item Beweglichkeit der Elektronen ~~~~~~$\mu = $ 
+ \item Lebensdauer der Elektronen ~~~~~~~~$\tau = $
+ \item Diffusionskonstante der Elektronen $D = $
+\end{itemize}
+
+
+\newpage
+Hier unsere Gaussfits, hier ist das Verlaufen der Ladungsträgerwolke mit dem Abstand schön zu erkennen. Unter den Abbildungen ist der Abstand Laser - Nadel angegeben.
+
+\begin{figure}[H]  
+\begin{minipage}{0.33\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/varDist/00.eps}
-\small{Messung 1 bei Variation des Abstands}
+\small{3,78 mm}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
-\centering 
-\includegraphics[width=0.9\linewidth]{pictures/varDist/09.eps}
-\small{Messung 2 bei Variation des Abstands}
-\end{minipage}
-\end{figure}
-
-\begin{figure}[H]  
-\begin{minipage}{0.49\linewidth}
+\begin{minipage}{0.33\linewidth}
 \centering
-\includegraphics[width=0.9\linewidth]{pictures/varDist/01.eps}
-\small{Messung 3 bei Variation des Abstands}
+\includegraphics[width=0.9\linewidth]{pictures/varDist/09.eps}
+\small{3,89 mm}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.33\linewidth}
 \centering 
-\includegraphics[width=0.9\linewidth]{pictures/varDist/08.eps}
-\small{Messung 4 bei Variation des Abstands}
+\includegraphics[width=0.9\linewidth]{pictures/varDist/01.eps}
+\small{3,99 mm}
 \end{minipage}
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.49\linewidth}
+\begin{minipage}{0.33\linewidth}
+\centering
+\includegraphics[width=0.9\linewidth]{pictures/varDist/08.eps}
+\small{4,09 mm}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/varDist/02.eps}
-\small{Messung 5 bei Variation des Abstands}
+\small{4,19 mm}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
+\begin{minipage}{0.33\linewidth}
 \centering 
 \includegraphics[width=0.9\linewidth]{pictures/varDist/07.eps}
-\small{Messung 6 bei Variation des Abstands}
+\small{4,29 mm}
 \end{minipage}
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.49\linewidth}
+\begin{minipage}{0.33\linewidth}
 \centering
 \includegraphics[width=0.9\linewidth]{pictures/varDist/03.eps}
-\small{Messung 7 bei Variation des Abstands}
+\small{4,39 mm}
 \end{minipage}
-\begin{minipage}{0.5\linewidth}
-\centering 
+\begin{minipage}{0.33\linewidth}
+\centering
 \includegraphics[width=0.9\linewidth]{pictures/varDist/06.eps}
-\small{Messung 8 bei Variation des Abstands}
+\small{4,49 mm}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+\centering 
+\includegraphics[width=0.9\linewidth]{pictures/varDist/04.eps}
+\small{4,59 mm}
 \end{minipage}
 \end{figure}
 
 \begin{figure}[H]  
-\begin{minipage}{0.49\linewidth}
+\begin{minipage}{0.33\linewidth}
 \centering
-\includegraphics[width=0.9\linewidth]{pictures/varDist/04.eps}
-\small{Messung 9 bei Variation des Abstands}
-\end{minipage}
-\begin{minipage}{0.5\linewidth}
-\centering 
 \includegraphics[width=0.9\linewidth]{pictures/varDist/05.eps}
-\small{Messung 10 bei Variation des Abstands}
+\small{4,69 mm}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+\centering
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+\centering 
 \end{minipage}
 \end{figure}
 
 \subsubsection{Variation des elektrischen Felds}
+Hier nahmen wir 
 
 \begin{figure}[H]  
 \begin{minipage}{0.49\linewidth}

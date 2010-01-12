@@ -33,8 +33,8 @@ class Messung:
         self.U = [float(z[1]) for z in data]
         self.count = len(self.time)
         print 'Found %i datapoints in %s'%(self.count, name)
-        xerrors = [1e-20 for i in range(self.count)]
-        yerrors = [8.67e-4 for i in range(self.count)]
+        xerrors = [1e-10 for i in range(self.count)]
+        yerrors = [5e-3 for i in range(self.count)]
             
     # Erzeuge Graphen
         g = TGraphErrors(self.count, array('d',self.time) ,array('d',self.U), 
@@ -48,13 +48,9 @@ class Messung:
 
     # Gaussfit ohne Korrektur
     def fit(self, initParams):
-        f = TF1('f_'+self.name, '[0]/sqrt(2*pi*[1]) * exp(-0.5*((x-[2])/[1])^2) + [3]', self.lower, self.upper)
+        f = TF1('f_'+self.name, '(([0]/sqrt(2*pi*[1])) * exp(-0.5*(((x-[2])/[1])^2))) + [3]', self.lower, self.upper)
         f.SetMarkerColor(2)
         f.SetParameters(array('d', initParams))
-##        f.SetParLimits(0,5e-6,1e-3);
-##        f.SetParLimits(1,1e-7,5e-4);
-##        f.SetParLimits(2,1e-7,1e-4);
-##        f.SetParLimits(3,-1,1);
         self.graph.Fit(f, 'QR')
         self.amp, self.samp = f.GetParameter(0), f.GetParError(0)
         self.sigma, self.ssigma = f.GetParameter(1), f.GetParError(1)
@@ -107,3 +103,11 @@ def GewMittel(werte, fehler):
         suma += werte[i] / fehler[i]**2
         sumb += 1. / fehler[i]**2
     return (suma/sumb, 1/sqrt(sumb))
+
+# Zeige Litheraturwerte in cm^2
+def PrintLith():
+        print '\nLitherature Values:'
+        print ' Mobility:           (%g +- %g) cm^2/(Vs)'%(3900, 0)
+        print ' Lifetime:           (%g +- %g) s'%(45e-6,2e-6)
+        print ' Diffusionconstant:  (%g +- %g) cm^2/s'%(101,0)
+        
