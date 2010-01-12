@@ -32,7 +32,7 @@ xa = g.GetXaxis()
 xa.SetLimits(200, 700)
 
 #fr = TF1('fr', '[0]*(1 / sqrt(2 * pi * [1]**2)) * exp(-((x-[2])**2)/(2 * [1]**2)))', 0, 200)
-fr = TF1('fr', '[0]*( 1 / sqrt(2 * pi * [1]^2) * exp(- 0.5 * (x - [2])^2 / [1]^2))', 280, 350)
+fr = TF1('fr', '([0]/sqrt(2 * pi * [1]^2)) * exp(- 0.5 *((x - [2])/[1])^2)', 280, 350)
 fr.SetParameter(0, 200)
 fr.SetParameter(1, 1)
 fr.SetParameter(2, 300)
