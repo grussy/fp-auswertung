@@ -14,9 +14,9 @@ gROOT.SetStyle("Plain")
 x = []
 y = []
 i = 0
+a = 0
 
-
-for line in open("Si_co57.asc"):
+for line in open("CdTe_AM.asc"):
 	y += [float(line)]
 	x += [i]
 	i += 1
@@ -29,7 +29,7 @@ g.SetMarkerStyle(3)
 g.SetMarkerColor(2)
 g.SetMarkerSize(1.0)
 xa = g.GetXaxis()
-xa.SetLimits(200, 700)
+xa.SetLimits(0, 900)
 
 #fr = TF1('fr', '[0]*(1 / sqrt(2 * pi * [1]**2)) * exp(-((x-[2])**2)/(2 * [1]**2)))', 0, 200)
 fr = TF1('fr', '[0]*( 1 / sqrt(2 * pi * [1]^2) * exp(- 0.5 * (x - [2])^2 / [1]^2))', 280, 350)
