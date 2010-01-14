@@ -30,6 +30,10 @@ g.SetMarkerColor(2)
 g.SetMarkerSize(1.0)
 xa = g.GetXaxis()
 xa.SetLimits(150, 250)
+h = g.GetHistogram()
+h.SetMinimum(0)
+h.SetMaximum(200)
+
 
 #fr = TF1('fr', '[0]*(1 / sqrt(2 * pi * [1]**2)) * exp(-((x-[2])**2)/(2 * [1]**2)))', 0, 200)
 fr = TF1('fr', '[0]*( 1 / sqrt(2 * pi * [1]^2) * exp(- 0.5 * (x - [2])^2 / [1]^2))', 280, 350)
