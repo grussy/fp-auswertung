@@ -47,12 +47,10 @@ c.SetGrid()
 g.Draw('AP')
 c.Update()
 
-location = fr.GetParameter(2)
-height = fr.GetParameter(0)
-breite = fr.GetParameter(1)
-print "Center: %.2f" % location
-print "Hoehe: %.2f" % height
-print "Breite: %.2f" % breite
+print " Data of 59,5 keV Peak:"
+print "Center: %.2f+-%.2f" % (fr.GetParameter(2), fr.GetParError(2))
+print "Hoehe: %.2f+-%.2f" % (fr.GetParameter(0), fr.GetParError(0))
+print "Breite: %.2f+-%.2f" % (fr.GetParameter(1), fr.GetParError(1))
 	
 line = sys.stdin.readline()
      

@@ -29,7 +29,7 @@ g.SetMarkerStyle(3)
 g.SetMarkerColor(2)
 g.SetMarkerSize(1.0)
 xa = g.GetXaxis()
-xa.SetLimits(250, 350)
+xa.SetLimits(100, 350)
 h = g.GetHistogram()
 h.SetMinimum(0)
 h.SetMaximum(200)
@@ -48,12 +48,10 @@ c.SetGrid()
 g.Draw('AP')
 c.Update()
 
-location = fr.GetParameter(2)
-height = fr.GetParameter(0)
-breite = fr.GetParameter(1)
-print "Center: %.2f" % location
-print "Hoehe: %.2f" % height
-print "Breite: %.2f" % breite
+print " Data of 59,5 keV Peak:"
+print "Center: %.2f+-%.2f" % (fr.GetParameter(2), fr.GetParError(2))
+print "Hoehe: %.2f+-%.2f" % (fr.GetParameter(0), fr.GetParError(0))
+print "Breite: %.2f+-%.2f" % (fr.GetParameter(1), fr.GetParError(1))
 	
 line = sys.stdin.readline()
      
