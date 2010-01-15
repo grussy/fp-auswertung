@@ -304,6 +304,11 @@ print '\nA bei 59keV: %f'%rel_59
 print 'A bei 122keV: %f'%rel_122
 print 'A bei 136keV: %f'%rel_136
 
+#tex:
+print '%.2f & %.2f & %.2f \\\\'%(1.4, rel_59*100, srel_59*100)
+print '%.2f & %.2f & %.2f \\\\'%(1.83, rel_122*100, srel_122*100)
+print '%.2f & %.2f & %.2f \\\\'%(1.2, rel_136*100, srel_136*100)
+
 print "\nrelative Energieaufloesung:"
 print "\nEnergie    Si          CdTe"
 print '59keV: %f        %f'%(rer_59_si, rer_59_cdte)
