@@ -21,6 +21,7 @@ for line in open("CdTe_AM.asc"):
 	x += [i]
 	i += 1
 count = len(x)
+raw_cdte_am_x, raw_cdte_am_y = x,y
 # Erzeuge Graphen
 g = TGraph(count, array('d',x) ,array('d',y))
 g.SetTitle(';Kanal;Counts')
@@ -62,6 +63,7 @@ for line in open("CdTe_co57.asc"):
 	x += [i]
 	i += 1
 count = len(x)
+raw_cdte_co_x, raw_cdte_co_y = x,y
 # Erzeuge Graphen
 g = TGraph(count, array('d',x) ,array('d',y))
 g.SetTitle(';Kanal;Counts')
@@ -106,6 +108,7 @@ for line in open("Si_Am.mca"):
 	x += [i]
 	i += 1
 count = len(x)
+raw_si_am_x, raw_si_am_y = x,y
 # Erzeuge Graphen
 g = TGraph(count, array('d',x) ,array('d',y))
 g.SetTitle(';Kanal;Counts')
@@ -145,6 +148,7 @@ for line in open("Si_co57.asc"):
 	x += [i]
 	i += 1
 count = len(x)
+raw_si_co_x, raw_si_co_y = x,y
 # Erzeuge Graphen
 g = TGraph(count, array('d',x) ,array('d',y))
 g.SetTitle(';Kanal;Counts')
@@ -229,6 +233,7 @@ se = [1e-10 for i in range(count)]
 # Erzeuge Graphen
 mg = TMultiGraph()
 mg.SetTitle(';Energie [keV];Kanal')
+
 g = TGraphErrors(count, array('d',e), array('d',chan_si), array('d',se), array('d',schan_si))
 g.GetHistogram().SetTitleOffset(1.3, 'Y')
 g.SetMarkerStyle(20)
@@ -242,6 +247,7 @@ g.SetMarkerSize(1.0)
 fr = TF1('fr', '[0]*x+[1]', 58, 140)
 fr.SetParameters(5, 1)
 g.Fit(fr, 'QR')
+si_a, si_b = fr.GetParameter(0), fr.GetParameter(1)
 
 g1 = TGraphErrors(count, array('d',e), array('d',chan_cd), array('d',se), array('d',schan_cd))
 g1.GetHistogram().SetTitleOffset(1.3, 'Y')
@@ -256,7 +262,7 @@ g1.SetMarkerSize(1.0)
 fr1 = TF1('fr', '[0]*x+[1]', 58, 140)
 fr1.SetParameters(5, 1)
 g1.Fit(fr1, 'QR')
-
+cdte_a, cdte_b = fr.GetParameter(0), fr.GetParameter(1)
 
 aLegend = TLegend(0.75,0.4,0.9,0.5)
 aLegend.AddEntry(g, "Si","p")
@@ -305,8 +311,83 @@ print '122keV: %f       %f'%(rer_122_si, rer_122_cdte)
 print '136keV: %f       %f'%(rer_136_si, rer_136_cdte)
 
 #now draw scaled pics
+#scale it
+scaled_cdte_am_x, scaled_cdte_co_x, scaled_si_am_x, scaled_si_co_x = [], [], [], []
+for i in raw_cdte_am_x:
+    scaled_cdte_am_x.append((i - cdte_b)/cdte_a)
+for i in raw_cdte_co_x:
+    scaled_cdte_co_x.append((i - cdte_b)/cdte_a)
+for i in raw_si_am_x:
+    scaled_si_am_x.append((i - si_b)/si_a)
+for i in raw_si_co_x:
+    scaled_si_co_x.append((i - si_b)/si_a)
+count = len(scaled_cdte_am_x)
+# Erzeuge Graphen
+g = TGraph(count, array('d',scaled_cdte_am_x) ,array('d',raw_cdte_am_y))
+g.SetTitle(';Energie [keV];Counts')
+g.GetHistogram().SetTitleOffset(1.3, 'Y')
+g.SetMarkerStyle(3)
+g.SetMarkerColor(2)
+g.SetMarkerSize(1.0)
+xa = g.GetXaxis()
+xa.SetLimits(0, 100)
+c = TCanvas('c_','')
+c.SetGrid()
+g.Draw('AP')
+c.Update()
 
-##print '%s & %.2g & %.2g & %.2g & %.2g & %.2g & %.2g & %.2f \\\\' % (
-##        m.bez, m.Bz, m.sBz, pm, spm, pt, spt, pt/pm)
+
+count = len(scaled_cdte_co_x)
+# Erzeuge Graphen
+g = TGraph(count, array('d',scaled_cdte_co_x) ,array('d',raw_cdte_co_y))
+g.SetTitle(';Energie [keV];Counts')
+g.GetHistogram().SetTitleOffset(1.3, 'Y')
+g.SetMarkerStyle(3)
+g.SetMarkerColor(2)
+g.SetMarkerSize(1.0)
+xa = g.GetXaxis()
+xa.SetLimits(0, 180)
+c = TCanvas('c_','')
+c.SetGrid()
+g.Draw('AP')
+c.Update()
+
+
+count = len(scaled_si_am_x)
+# Erzeuge Graphen
+g = TGraph(count, array('d',scaled_si_am_x) ,array('d',raw_si_am_y))
+g.SetTitle(';Energie [keV];Counts')
+g.GetHistogram().SetTitleOffset(1.3, 'Y')
+g.SetMarkerStyle(3)
+g.SetMarkerColor(2)
+g.SetMarkerSize(1.0)
+xa = g.GetXaxis()
+xa.SetLimits(0, 100)
+h = g.GetHistogram()
+h.SetMinimum(0)
+h.SetMaximum(20)
+c = TCanvas('c_','')
+c.SetGrid()
+g.Draw('AP')
+c.Update()
+
+
+count = len(scaled_si_co_x)
+# Erzeuge Graphen
+g = TGraph(count, array('d',scaled_si_co_x) ,array('d',raw_si_co_y))
+g.SetTitle(';Energie [keV];Counts')
+g.GetHistogram().SetTitleOffset(1.3, 'Y')
+g.SetMarkerStyle(3)
+g.SetMarkerColor(2)
+g.SetMarkerSize(1.0)
+xa = g.GetXaxis()
+xa.SetLimits(0, 180)
+h = g.GetHistogram()
+h.SetMinimum(0)
+h.SetMaximum(300)
+c = TCanvas('c_','')
+c.SetGrid()
+g.Draw('AP')
+c.Update()
 
 line = sys.stdin.readline()
