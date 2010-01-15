@@ -483,7 +483,7 @@ Somit erhielten wir also die Beweglichkeit $\mu$, die Lebenszeit $\tau$ und die 
 
 
 \begin{figure}[H]  
-\includegraphics[width=0.9\linewidth]{pictures/varDist/Schwerpunkt.eps}
+\includegraphics[width=0.9\linewidth]{pictures/varDist/schwerpunkt.eps}
 \caption{Verlauf der Schwerpunkte}
 \end{figure}
 
@@ -764,6 +764,7 @@ Somit lässt sich das Verhältnis der Absorptionswahrscheinlichkeiten berechnen,
  \frac{A_{Si}}{A_{CdTe}} = \frac{C_{Si}~a_{CdTe}}{C_{CdTe}~a_{Si}}
 \end{align*}
 wobei $a$ die jeweilige aktive Fläche bezeichnet.
+Wir erhielten:
 
 Der Fehler auf die Verhältnisse resultiert aus dem Fehler von $C$
 \begin{align*}
@@ -771,21 +772,18 @@ Der Fehler auf die Verhältnisse resultiert aus dem Fehler von $C$
 \end{align*}
 
 \begin{center}
+Ergebnisse der Absorbtionsverhältnisse \\
 % use packages: array
-\begin{tabular}{|l|lll|}
+\begin{tabular}{|l|ll|}
 \hline
-Absorbtionsverhältnisse \\
-Energie [keV] & Literaturwert[\%] & Messergebnis [\%] & Fehler [\%] \\
+Energie [keV] & Messergebniss [\%] & Fehler [\%] \\
 \hline
-59.5 & 1.40 & 22.07 & 0.06 \\
-122.04 & 1.83 & 21.83 & 0.01 \\
-136.47 & 1.2 & 21.82 & 0.03 \\
+59.5 & 22.07 & 0.06 \\
+122.04 & 21.83 & 0.01 \\
+136.47 & 21.82 & 0.03 \\
 \hline
 \end{tabular}
 \end{center}
-
-
-%Absorbieren----------------------------------------hier----------------------
 
 \subsubsection{Relative Energieauflösung}
 Die relative Energieauflösung bezeichnet das Verhältnis der Halbwertsbreite
@@ -802,18 +800,32 @@ Der Fehler berechnet sich zu:
 \begin{align*}
  s_{RER} = RER \cdot \sqrt{\left(\frac{s_E}{E}\right)^2 + \left(\frac{s_{\sigma}}{\sigma}\right)^2}
 \end{align*}
+\newpage
 
-
+Mit diesen Formeln erhielten wir aus unseren Messdaten:
+\begin{center}
+Ergebnisse der relativen Energieauflösungen(RER) \\
+% use packages: array
+\begin{tabular}{|l|ll|ll|}
+\hline
+Energie [keV] & RER von Si & Fehler & RER von CdTe & Fehler \\
+\hline
+59.5 & 0.093 & 0.0056 & 0.103 & 0.0039 \\
+122.04 & 0.048 & 0.0013 & 0.048 & 0.0012 \\
+136.47 & 0.046 & 0.0090 & 0.044 & 0.0022 \\
+\hline
+\end{tabular}
+\end{center}
 
 \section{Zusammenfassung}
 Hier nochmal eine Zusammenstellung der Ergebnisse und ein Fazit zu den jeweiligen Versuchsteilen:
 \begin{itemize}
- \item Vermessung der Bandlücke
+ \item \textbf{Vermessung der Bandlücke}
 \begin{align*}
  E_G = 0,741 \pm 0,045 eV
 \end{align*}
 Verglichen mit dem Literaturwert von $E_G = 0,66 eV$ liegen wir damit in der richtigen Größenordnung. Der Literaturwert liegt in der $2\sigma$ Umgebung unseres Messwerts
-\item Haynes-Shockley Experiment
+\item \textbf{Haynes-Shockley Experiment}
 Obwohl die Fits bis auf die der Breiten alle recht gut aussahen, gelang es uns nicht Werte zu erhalten mit denen man im Rahmen der Fehlergrenzen auf den Literaturwert kommt. Trotz langer Fehleranalyse war es uns nicht möglich ihn zu finden, weshalb wir auch diesen Teil des Auswertungsskripts angehängt haben. Des weiteren existiert auch ein SVN-Repository, in welchem die Skripte samt Pfaden und Daten abgelegt sind und man Ideen zur Korrektur sofort Testen kann, die Adresse ist: \\ \url{http://fp-auswertung.googlecode.com/svn/trunk/halbleiter/}
 \begin{itemize}
 \item Literaturwerte:
@@ -838,15 +850,38 @@ Obwohl die Fits bis auf die der Breiten alle recht gut aussahen, gelang es uns n
 Wie man sieht liefert unsere Analyse der Daten keine passenden Werte für die Diffusionskonstante, was der Verlauf der Breiten aber auch schon ahnen lies. Die Lebensdauer und die Beweglichkeit liegen wenigstens in der richtigen Größenordnung, allerdings außerhalb $2\sigma$. Unter diesen Umständen machte die Mc Kelvey Korrektur keinen Sinn.
 
 
-\item Halbleiterdetektor: \\
+\item \textbf{Halbleiterdetektor:} \\
+Wir hatten grosse Schwierigkeiten die Auswertung dieses Teils richtig zu verstehen. Man hat kein Referenzspektrum, mit dem man den Verlauf des selbst gemessenen Vergleichen könnte. Wir haben also nach Rücksprache mit der Tutorin angenommen das die Peaks der bekannten Energien ungefähr in den gleichen Kanälen des MCA wie in der Staatsexamensarbeit gelandet sind. Mit dieser Annahme erhielten wir folgende Ergebnisse:
 
-Absorptionsverhältnisse: 
-\begin{align*}
- Abs_[Si
-\end{align*}
+Absorptionsverhältinisse: \\
+\begin{center}
+% use packages: array
+\begin{tabular}{|l|lll|}
+\hline
+Energie [keV] & Litheraturwert[\%] & Messergebniss [\%] & Fehler [\%] \\
+\hline
+59.5 & 1.40 & 22.07 & 0.06 \\
+122.04 & 1.83 & 21.83 & 0.01 \\
+136.47 & 1.2 & 21.82 & 0.03 \\
+\hline
+\end{tabular}
+\end{center}
 Abweichungen vom Literaturwert könne viele Ursachen haben, unteranderm wir die Absorption in den den Detektor umgebenen Schichten nicht berücksichtigt und auch die Dicke der Detektoren könnte von den Herstellerangaben abweichen.\\
-\end{itemize}
-Relative Energieauflösung:
-%blaballslfbsl
 
+Relative Energieauflösung:\\
+hierfür erhielten wir als Messergebnisse und Fehler:
+\begin{center}
+% use packages: array
+\begin{tabular}{|l|ll|ll|}
+\hline
+Energie [keV] & RER von Si & Fehler & RER von CdTe & Fehler \\
+\hline
+59.5 & 0.093 & 0.0056 & 0.103 & 0.0039 \\
+122.04 & 0.048 & 0.0013 & 0.048 & 0.0012 \\
+136.47 & 0.046 & 0.0090 & 0.044 & 0.0022 \\
+\hline
+\end{tabular}
+\end{center}
+da hier den Studenten keine Angaben über Litheraturwerte oder Messergebnisse zugänglich gemacht werden, kann auch kein Vergleich mit solchen Referenzwerten erfolgen.
+\end{itemize}
 \end{document}
