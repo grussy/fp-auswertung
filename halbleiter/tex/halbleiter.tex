@@ -734,6 +734,23 @@ Somit lässt sich das Verhältniss der Apsorptionswahrscheinlichkeiten berechnen
 
 %Absorbverhä----------------------------------------hier----------------------
 
+\subsubsection{Relative Energieauflösung}
+Die relative Energieauflösung bezeichnet das Verhältnis der Halbwertsbreite
+eines Peaks zu dessen Lage. Die Halbwertsbreite einer Gaußverteilung lässt sich einfach aus der Standartabweichung berechnen:
+\begin{align*}
+ FWHM = 2\sqrt{2 ln 2} \sigma \approx 2,35\sigma
+\end{align*}
+die relative Energieauflösung wird damit zu:
+\begin{align*}
+ RER(E) = \frac{FWHM_E}{E} \approx \frac{2,35\sigma_E}{E}
+\end{align*}
+
+Der Fehler berechnet sich zu:
+\begin{align*}
+ s_{RER} = RER \cdot \sqrt{\left(\frac{s_E}{E}\right)^2 + \left(\frac{s_{\sigma}}{\sigma}\right)^2}
+\end{align*}
+
+
 
 \section{Zusammenfassung}
 Hier nochmal eine Zusammenstellung der Ergebnisse und ein Fazit zu den jeweiligen Versuchsteilen:
@@ -774,6 +791,9 @@ Absorptionsverhältinisse:
 \begin{align*}
  Abs_[Si
 \end{align*}
-Abweichungen vom Literaturwert könne viele Ursachen haben, unteranderm wir die Absorption in den den Detektor umgebenen Schichten nicht berücksichtigt und auch die Dicke der Detektoren könnte von den Herstellerangaben abweichen.
+Abweichungen vom Literaturwert könne viele Ursachen haben, unteranderm wir die Absorption in den den Detektor umgebenen Schichten nicht berücksichtigt und auch die Dicke der Detektoren könnte von den Herstellerangaben abweichen.\\
+
+Relative Energieauflösung:
+%blaballslfbsl
 
 \end{document}
