@@ -759,7 +759,16 @@ Die Zahl der aufgefangenen Photonen gibt der Faktor $C$ des Gaußfitts an:
 \begin{align*}
  G(E) = C \frac{1}{\sqrt{2 \pi \sigma}} e^{-\frac{1}{2}\left(\frac{E-E_i}{\sigma_i}\right)^2}
 \end{align*}
-Somit lässt sich das Verhältniss der Apsorptionswahrscheinlichkeiten berechnen, hierbei muss noch beachtet werden, dass die beiden Detektoren unterschiedliche aktive Flächen haben. Der Fehler auf die Verhältnisse resultiert aus dem Fehler von $C$
+Somit lässt sich das Verhältniss der Apsorptionswahrscheinlichkeiten berechnen, hierbei muss noch beachtet werden, dass die beiden Detektoren unterschiedliche aktive Flächen haben.
+\begin{align*}
+ \frac{A_{Si}}{A_{CdTe}} = \frac{C_{Si}~a_{CdTe}}{C_{CdTe}~a_{Si}}
+\end{align*}
+wobei $a$ die jeweilige aktive Fläche bezeichnet.
+
+Der Fehler auf die Verhältnisse resultiert aus dem Fehler von $C$
+\begin{align*}
+ s_{Abs} = \frac{A_{Si}~a_{Si}}{A_{CdTe}~a_{CdTe}} \cdot \sqrt{\left(\frac{s_{C_{Si}}}{C_{Si}}\right)^2 + \left(\frac{s_{C_{CdTe}}}{C_{CdTe}}\right)^2}
+\end{align*}
 
 \begin{center}
 % use packages: array
