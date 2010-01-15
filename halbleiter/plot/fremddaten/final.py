@@ -94,7 +94,7 @@ CdTe.append([fr1.GetParameter(0), fr1.GetParError(0),
     
 CdTe.append([fr2.GetParameter(0), fr2.GetParError(0), 
     fr2.GetParameter(2), fr2.GetParError(2), 
-    fr2.GetParameter(1), fr2.GetParError(1)])
+    -fr2.GetParameter(1), fr2.GetParError(1)])
 
 x = []
 y = []
@@ -212,24 +212,20 @@ print "  Hoehe: %.2f+-%.2f" % (Si[2][0], Si[2][1])
 print "  Center: %.2f+-%.2f" % (Si[2][2], Si[2][3])
 print "  Breite: %.2f+-%.2f" % (Si[2][4], Si[2][5])
 
-gROOT.SetStyle("Plain")
+# Energieskalierung: linearer fit
 #datenarrays
-e, chan_si, schan_si, sig_si, ssig_si = [],[],[],[],[]
-chan_cd, schan_cd, sig_cd, ssig_cd = [],[],[],[]
+chan_si, schan_si = [],[]
+chan_cd, schan_cd = [],[]
 # lade daten
-for line in open('/home/paule/fp/trunk/halbleiter/plot/fremddaten/fit.dat', 'r').readlines()[1:]:
-    v = line.split()
-    e.append(float(v[0]))
-    chan_si.append(float(v[1]))
-    schan_si.append(float(v[2]))
-    sig_si.append(float(v[3]))
-    ssig_si.append(float(v[4]))
-    chan_cd.append(float(v[5]))
-    schan_cd.append(float(v[6]))
-    sig_cd.append(float(v[7]))
-    ssig_cd.append(float(v[8]))
+for i in range(0,3):
+    chan_si.append(float(Si[i][2]))
+    schan_si.append(float(Si[i][3]))
+    chan_cd.append(float(CdTe[i][2]))
+    schan_cd.append(float(CdTe[i][3]))
+e = [59.5, 122.06, 136.47]
 count = len(e)
 se = [1e-10 for i in range(count)]
+
 # Erzeuge Graphen
 mg = TMultiGraph()
 mg.SetTitle(';Energie [keV];Kanal')
@@ -284,9 +280,31 @@ srel_122 = rel_59*sqrt((Si[1][3]/Si[1][2])**2+(CdTe[1][3]/CdTe[1][2])**2)
 rel_136 = (Si[2][2]*acdte)/(CdTe[2][2]*asi)
 srel_136 = rel_59*sqrt((Si[2][3]/Si[2][2])**2+(CdTe[2][3]/CdTe[2][2])**2)
 
+rer_59_si = (2.35*Si[0][4])/Si[0][2]
+srer_59_si = rer_59_si*sqrt((Si[0][3]/Si[0][2])**2+(Si[0][5]/Si[0][4])**2)
+rer_122_si = (2.35*Si[1][4])/Si[1][2]
+srer_122_si = rer_59_si*sqrt((Si[1][3]/Si[1][2])**2+(Si[1][5]/Si[1][4])**2)
+rer_136_si = (2.35*Si[2][4])/Si[2][2]
+srer_136_si = rer_59_si*sqrt((Si[2][3]/Si[2][2])**2+(Si[2][5]/Si[2][4])**2)
+
+rer_59_cdte = (2.35*CdTe[0][4])/CdTe[0][2]
+srer_59_cdte = rer_59_cdte*sqrt((CdTe[0][3]/CdTe[0][2])**2+(CdTe[0][5]/CdTe[0][4])**2)
+rer_122_cdte = (2.35*CdTe[1][4])/CdTe[1][2]
+srer_122_cdte = rer_59_cdte*sqrt((CdTe[1][3]/CdTe[1][2])**2+(CdTe[1][5]/CdTe[1][4])**2)
+rer_136_cdte = (2.35*CdTe[2][4])/CdTe[2][2]
+srer_136_cdte = rer_59_cdte*sqrt((CdTe[2][3]/CdTe[2][2])**2+(CdTe[2][5]/CdTe[2][4])**2)
+print "\nAbsobtionsverhaeltnisse:"
 print '\nA bei 59keV: %f'%rel_59
 print 'A bei 122keV: %f'%rel_122
 print 'A bei 136keV: %f'%rel_136
+
+print "\nrelative Energieaufloesung:"
+print "\nEnergie    Si          CdTe"
+print '59keV: %f        %f'%(rer_59_si, rer_59_cdte)
+print '122keV: %f       %f'%(rer_122_si, rer_122_cdte)
+print '136keV: %f       %f'%(rer_136_si, rer_136_cdte)
+
+#now draw scaled pics
 
 ##print '%s & %.2g & %.2g & %.2g & %.2g & %.2g & %.2g & %.2f \\\\' % (
 ##        m.bez, m.Bz, m.sBz, pm, spm, pt, spt, pt/pm)
