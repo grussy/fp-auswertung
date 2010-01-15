@@ -725,6 +725,16 @@ Mit den Schwerpunkten und den bekannten Energien ($^{241}Am:59keV$, $^{57}Co:122
 \end{figure}
 somit ist jedem Kanal eine Energie von $???$ zugeordnet.
 
+\subsubsection{Absorptionsverhältnisse}
+Die Zahl der aufgefangenen Photonen gibt der Faktor $C$ des Gaußfitts an:
+\begin{align*}
+ G(E) = C \frac{1}{\sqrt{2 \pi \sigma}} e^{-\frac{1}{2}\left(\frac{E-E_i}{\sigma_i}\right)^2}
+\end{align*}
+Somit lässt sich das Verhältniss der Apsorptionswahrscheinlichkeiten berechnen, hierbei muss noch beachtet werden, dass die beiden Detektoren unterschiedliche aktive Flächen haben. Der Fehler auf die Verhältnisse resultiert aus dem Fehler von $C$
+
+%Absorbverhä----------------------------------------hier----------------------
+
+
 \section{Zusammenfassung}
 Hier nochmal eine Zusammenstellung der Ergebnisse und ein Fazit zu den jeweiligen Versuchsteilen:
 \begin{itemize}
@@ -734,7 +744,7 @@ Hier nochmal eine Zusammenstellung der Ergebnisse und ein Fazit zu den jeweilige
 \end{align*}
 Verglichen mit dem Literaturwert von $E_G = 0,66 eV$ liegen wir damit in der richtigen Größenordnung. Der Literaturwert liegt in der $2\sigma$ Umgebung unseres Messwerts
 \item Haynes-Shockley Experiment
-Obwohl die Fits bis auf die der Breiten alle recht gut aussahen, gelang es uns nicht Werte zu erhalten mit denen man im Rahmen der Fehlergrenzen auf den Litheraturwert kommt. Trotz langer Fehleranalyse war es uns nicht möglich ihn zu finden, wesshalb wir auch diesen Teil des Auswertungsskripts angehängt haben. Desweiteren existiert auch ein SVN-Repository, in welchem die Skripte samt Pfaden und Daten abgelegt sind und man Ideen zur Korektur sofort Testen kann, die Adresse ist: \\ http://fp-auswertung.googlecode.com/svn/trunk/
+Obwohl die Fits bis auf die der Breiten alle recht gut aussahen, gelang es uns nicht Werte zu erhalten mit denen man im Rahmen der Fehlergrenzen auf den Litheraturwert kommt. Trotz langer Fehleranalyse war es uns nicht möglich ihn zu finden, wesshalb wir auch diesen Teil des Auswertungsskripts angehängt haben. Desweiteren existiert auch ein SVN-Repository, in welchem die Skripte samt Pfaden und Daten abgelegt sind und man Ideen zur Korektur sofort Testen kann, die Adresse ist: \\ \url{http://fp-auswertung.googlecode.com/svn/trunk/halbleiter/}
 \begin{itemize}
 \item Litheraturwerte:
 \begin{itemize}
@@ -758,6 +768,12 @@ Obwohl die Fits bis auf die der Breiten alle recht gut aussahen, gelang es uns n
 Wie man sieht liefert unsere Analyse der Daten keine passenden Werte für die Diffusionskonstante, was der Verlauf der Breiten aber auch schon ahnen lies. Die Lebensdauer und die Beweglichkeit liegen wenigstens in der richtigen Grössenordnung, allerdings ausserhalb $2\sigma$. Unter diesen Umständen machte die Mc Kelvey Korrektur keinen Sinn.
 \end{itemize}
 
+Versuch Halbleiterdetektor: \\
 
+Absorptionsverhältinisse: 
+\begin{align*}
+ Abs_[Si
+\end{align*}
+Abweichungen vom Literaturwert könne viele Ursachen haben, unteranderm wir die Absorption in den den Detektor umgebenen Schichten nicht berücksichtigt und auch die Dicke der Detektoren könnte von den Herstellerangaben abweichen.
 
 \end{document}
