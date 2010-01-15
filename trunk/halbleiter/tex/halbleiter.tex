@@ -688,12 +688,49 @@ Hier die Gaussfits, unter den Abbildungen ist die Treiberspannung angegeben:
 \end{minipage}
 \end{figure}
 
+\subsection{Halbleiterdetektor}
+Nachdem wir leider feststellen mussten, das die von uns aufgezeichneten Daten nur Untergrund enthielten und somit für die Auswertung unbrauchbar waren, erhielten wir die Daten der Assistentin.\\
+
+Wir identifizierten die Peaks die zu den Strahlungsquellen gehörten und fitteten entsprechende Gausskurven an diese:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{../plot/eps/gamma/cdte_am.eps}
+\caption{$^{241}Am$ mit CdTe-Sonde}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{../plot/eps/gamma/cdte_co.eps}
+\caption{$^{57}Co$ mit CdTe-Sonde}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{../plot/eps/gamma/si_am.eps}
+\caption{$^{241}Am$ mit Silizium-Sonde}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{../plot/eps/gamma/si_co.eps}
+\caption{$^{57}Co$ mit Silizium-Sonde}
+\end{figure}
+
+Mit den Schwerpunkten und den bekannten Energien ($^{241}Am:59keV$, $^{57}Co:122$ \& $136keV$) der drei Kurven ergibt sich für jeden Sensor die Eichgerade:
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{../plot/eps/gamma/finalfit.eps}
+\caption{Energieeichung}
+\end{figure}
+somit ist jedem Kanal eine Energie von $???$ zugeordnet.
+
 \section{Zusammenfassung}
 Hier nochmal eine Zusammenstellung der Ergebnisse und ein Fazit zu den jeweiligen Versuchsteilen:
 \begin{itemize}
  \item Vermessung der Bandlücke
 \begin{align*}
- E_G = 0,741 \pm 0,045
+ E_G = 0,741 \pm 0,045 eV
 \end{align*}
 Verglichen mit dem Literaturwert von $E_G = 0,66 eV$ liegen wir damit in der richtigen Größenordnung. Der Literaturwert liegt in der $2\sigma$ Umgebung unseres Messwerts
 \item Haynes-Shockley Experiment
