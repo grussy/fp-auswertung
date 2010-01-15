@@ -49,7 +49,7 @@ for m in msf :
         sdists.append(float(m.sdist))
         Es.append(float(m.volts)/float(L))
         sEs.append(Es[len(Es)-1]*((sU/float(m.volts))+(float(sL)/float(L))))
-    #m.draw()
+    m.draw()
     #m.savePlot()
 
 
