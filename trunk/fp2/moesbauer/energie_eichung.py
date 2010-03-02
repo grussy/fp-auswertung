@@ -4,6 +4,7 @@
 #from konst import phi0, omega, somega
 from math import pi, cos, sin
 from array import array
+import sys; sys.path.append('/usr/lib/root/')
 from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph
 
 gROOT.SetStyle("Plain")
@@ -19,20 +20,23 @@ class Messung:
     def __init__(self, name, K_energie, initheight, initwidth, initplace):
         self.name = name
 	self.kenergie = K_energie
-	self.fitparameter = fitparameter
+	#self.fitparameter = fitparameter
 	self.counts = []
 	dataline = 0
-	for line in open('data/'+name+'.ICE','r'):
+	for line in open(name+'.IEC','r'):
 		if dataline == 0:
-			if line == 'A004USERDEFINED':
+			if 'A004USERDEFINED' in line:
 				dataline = 1
 		else:
-			for word in line[1:]:
-				self.counts.append(word)
-	self.channel = []*len(self.counts)
+			for word in line.split()[1:]:
+				if word != "":
+					print word
+					self.counts.append(float(word))
+	self.count = len(self.counts)
+	self.channel = [i for i in range(self.count)]
 		
 	# Erzeuge Graphen
-        g = TGraph(count, array('d',self.channel) ,array('d',self.counts))
+        g = TGraph(self.count, array('d',self.channel) ,array('d',self.counts))
         g.SetTitle(';Counts;Channel')
         g.GetHistogram().SetTitleOffset(1.3, 'Y')
         g.SetMarkerStyle(1)
@@ -56,10 +60,10 @@ def load(dateiname=messuebersicht):
 		v = line.split()
 		mi = Messung(
 			name = v[0],
-			K_energie = v[1],
-			initplace = v[2],
-			initwidth = v[3],
-			initheight = v[4])
+			K_energie = 0,
+			initplace = 0,
+			initwidth = 0,
+			initheight = 0)
 		m += [mi]
 	return m
 
