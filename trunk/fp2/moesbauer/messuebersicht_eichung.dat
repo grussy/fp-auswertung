@@ -1,6 +1,7 @@
-Name (datei+Messung)	K_energy	Ort	Breite	Höhe
-Molibdaen_960s				
-Rubidium_960s				
-Silber_960s				
-Terbium_960s				
-#Ba_960s
+Name (datei+Messung)	K_energy	Ort	Breite	Höhe	lower	upper
+Molibdaen_960s	17.44	1707	500	13000	1200	2600
+Rubidium_960s	13.37	1270	400	7000	854	1800
+Silber_960s	22.1	2155	500	30000	1464	4200
+Terbium_960s	44.23	4386	500	43000	3294	6466
+#Ba_960s	32.06	3137	700	6000	1952	4026
+
