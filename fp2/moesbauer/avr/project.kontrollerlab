@@ -2,6 +2,7 @@
 <PROJECT VERSION="0.1" >
   <FILES>
     <FILE SHOWN="TRUE" NAME="main.c" />
+    <FILE SHOWN="FALSE" NAME="mousemove.py" />
   </FILES>
   <SETTINGS>
     <ASSEMBLER_COMMAND VALUE="avr-gcc" />

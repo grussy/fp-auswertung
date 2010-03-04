@@ -8,13 +8,13 @@
 #define F_CPU 16000000UL  // Systemtakt in Hz - Definition als unsigned long beachten
 #endif
 #include <util/delay.h>
-#define BAUD 38400UL
+#define BAUD 115200UL
 #define UBRR_VAL ((F_CPU+BAUD*8)/(BAUD*16)-1)   // clever runden
 #define BAUD_REAL (F_CPU/(16*(UBRR_VAL+1)))     // Reale Baudrate
 #define BAUD_ERROR ((BAUD_REAL*1000)/BAUD) // Fehler in Promille, 1000 = kein Fehler.
-#if ((BAUD_ERROR<990) || (BAUD_ERROR>1010))
-  #error Systematischer Fehler der Baudrate grösser 1% und damit zu hoch! 
-#endif
+// #if ((BAUD_ERROR<990) || (BAUD_ERROR>1010))
+//   #error Systematischer Fehler der Baudrate grösser 1% und damit zu hoch! 
+// #endif
 
 int int1, int2 = 0;
 unsigned int saved_timer = 0;
@@ -112,12 +112,12 @@ int main(void)
 	while(1) {
 		if (int1) {
 			int1 = 0;
-			sprintf(buffer, "\ntimer: %u\toverflows: %u", saved_timer, saved_overflows);
+			sprintf(buffer, " %ut%uo", saved_timer, saved_overflows);
 			uart_puts(buffer);
 		}
 		if (int2) {
 			int2 = 0;
-			sprintf(buffer, "\ntimer: %u\toverflows: %u", saved_timer, saved_overflows);
+			sprintf(buffer, " %ut%uo", saved_timer, saved_overflows);
 			uart_puts(buffer);
 		}
 	}
