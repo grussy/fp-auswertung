@@ -1,13 +1,7 @@
 <!DOCTYPE KontrollerLab>
 <PROJECT VERSION="0.8.0-beta1" >
   <FILES>
-    <FILE VIEWS="4,27,400,300,4," SHOWN="TRUE" NAME="main.c" />
-    <FILE VIEWS="29,52,1024,788,4," SHOWN="TRUE" NAME="uart.c" />
-    <FILE VIEWS="54,77,1024,788,4," SHOWN="TRUE" NAME="uart.h" />
-    <FILE VIEWS="79,102,1024,788,4," SHOWN="TRUE" NAME="commands.h" />
-    <FILE VIEWS="104,127,1024,788,4," SHOWN="TRUE" NAME="commands.c" />
-    <FILE VIEWS="129,152,1024,788,4," SHOWN="TRUE" NAME="lcd.h" />
-    <FILE VIEWS="0,0,1024,788,5," SHOWN="TRUE" NAME="lcd.c" />
+    <FILE VIEWS="0,0,1120,446,5," SHOWN="TRUE" NAME="main.c" />
   </FILES>
   <SETTINGS>
     <ASSEMBLER_COMMAND VALUE="avr-gcc" />
