@@ -78,32 +78,53 @@ def updatePlot(*args):
 os.chdir(root)
 l = [(os.path.getmtime(x), x)for x in os.listdir(".")]
 l.sort()
-file_name = l[-1][1]
-print "Using log file: %s%s"%(root, file_name)
-bw = BackwardsReader('%s%s'%(root, file_name))
+file_name = "%s%s"%(root, l[-1][1])
+print "Using newest log file: %s"%(file_name)
 
-while(1):
-    xdata = []
-    ydata = []
-    histo = []
-    bw = BackwardsReader('%s%s'%(root, file_name))
-    line = bw.readline() #last line is often incomplete 
-    for i in range(samples):
-        line = bw.readline()
-        lines.append(bw.readline())
-    for line in lines:
-        xdata.append(line.split('\t')[0].strip('\n'))
-        ydata.append(line.split('\t')[3].strip('\n'))
-        h=float(line.split('\t')[3].strip('\n'))
-        print h
-        if (h < 4000)&(h >-4000):
-            histo.append(float(h))
-    figure(0)
-    hist(histo, 20)
-    figure(1)
-    plot(ydata)
-    show()
-    time.sleep(10)
+
+x_data = [] # leere Listen
+y_data = []
+f = open(file_name,'r')
+for line in f:
+    data = line.strip('\n').split('\t')
+    print data
+    if ((len(data) == 4)):
+        if (len(data[3]) > 11):
+            x_data.append(float(line.split('\t')[0].strip('\n')))
+            y_data.append(float(line.split('\t')[3].strip('\n')))
+##            if ((y_data[-1] > -4e3)&(y_data[-1] < 4e3)):
+##                histo.append(y_data[-1])
+        histo.append(y_data[-1])
+figure(0)
+hist(histo, 20)
+figure(1)
+plot(y_data)
+show()
+
+##bw = BackwardsReader('%s%s'%(root, file_name))
+##
+##while(1):
+##    xdata = []
+##    ydata = []
+##    histo = []
+##    bw = BackwardsReader('%s%s'%(root, file_name))
+##    line = bw.readline() #last line is often incomplete 
+##    for i in range(samples):
+##        line = bw.readline()
+##        lines.append(bw.readline())
+##    for line in lines:
+##        xdata.append(line.split('\t')[0].strip('\n'))
+##        ydata.append(line.split('\t')[3].strip('\n'))
+##        h=float(line.split('\t')[3].strip('\n'))
+##        print h
+##        if (h < 4000)&(h >-4000):
+##            histo.append(float(h))
+##    figure(0)
+##    hist(histo, 20)
+##    figure(1)
+##    plot(ydata)
+##    show()
+##    time.sleep(10)
 
 
 ##while(1):
