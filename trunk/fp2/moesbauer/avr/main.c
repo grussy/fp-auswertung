@@ -16,8 +16,8 @@
 //   #error Systematischer Fehler der Baudrate grösser 1% und damit zu hoch! 
 // #endif
 
-int int1, int2 = 0;
-unsigned int saved_timer = 0;
+volatile int interrupt = 0;
+unsigned int error_counter, saved_timer, counted_interrupts = 0;
 unsigned long overflows, saved_overflows=0;
 
  
@@ -59,28 +59,33 @@ void init_Interrupts( void )
 	GIMSK  |= (1<<INT0)|(1<<INT1);
 }
 
-ISR(INT0_vect)
+inline void count_interrupt( void )
 {
+	counted_interrupts += 1;     //count
+}
+
+inline void handle_Interrupt( void )
+{
+	if (interrupt) {
+		error_counter += 1;
+	}
+	interrupt = 1;	//flag setzen
 	TCCR1B &= ~(1<<CS10); // stop timer
 	saved_timer = TCNT1; //timer auslesen
 	saved_overflows = overflows; // overflows auslesen
 	overflows = 0; //reset
-	TCNT1H = 0;
-	TCNT1L = 0;
+	TCNT1= 0;
 	TCCR1B |= (1<<CS10); // no prescaler, start timer
-	int1 = 1;	//flag setzen
+}
+
+ISR(INT0_vect)
+{
+	handle_Interrupt();
 }
 
 ISR(INT1_vect)
 {
-	TCCR1B &= ~(1<<CS10); // stop timer
-	saved_timer = TCNT1; //timer auslesen
-	saved_overflows = overflows; // overflows auslesen
-	overflows = 0; //reset
-	TCNT1H = 0;
-	TCNT1L = 0;
-	TCCR1B |= (1<<CS10); // no prescaler, start timer
-	int2 = 1;
+	handle_Interrupt();
 }
 
 ISR(TIMER1_OVF_vect)
@@ -106,19 +111,26 @@ int main(void)
 	uart_puts("\n#                     by Tobi and Paul                  #");
 	uart_puts("\n#########################################################");
 	uart_puts("\n");
+	sprintf(buffer, "\n Baudrate is Set to: %i, while its Error is at %f\n", BAUD, (BAUD_ERROR -1000)/10);
+	uart_puts(buffer);
 	init_Interrupts();
 	start_Timer();
 	sei();
 	while(1) {
-		if (int1) {
-			int1 = 0;
-			sprintf(buffer, " %ut%uo", saved_timer, saved_overflows);
+		if (interrupt) {
+			interrupt = 0;
+			sprintf(buffer, "%ut%uo", saved_timer, saved_overflows);
 			uart_puts(buffer);
 		}
-		if (int2) {
-			int2 = 0;
-			sprintf(buffer, " %ut%uo", saved_timer, saved_overflows);
+		if (error_counter) {
+			sprintf(buffer, "\n[DEBUG] Error Counter was at: %u\n", error_counter);
 			uart_puts(buffer);
+			error_counter = 0;
 		}
+// 		if (int2) {
+// 			int2 = 0;
+// 			sprintf(buffer, " %ut%uo", saved_timer, saved_overflows);
+// 			uart_puts(buffer);
+// 		}
 	}
 }

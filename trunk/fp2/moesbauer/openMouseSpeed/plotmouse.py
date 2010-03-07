@@ -1,64 +1,127 @@
+#!/usr/bin/env python
+import os, glob, time, sys, string
+import gobject
+import gtk
+import matplotlib
+matplotlib.use('GTKAgg')
+from matplotlib import rcParams
 from pylab import *
-import os, glob, time
+
 root = '/home/paule/fp-auswertung/fp2/moesbauer/openMouseSpeed/data/' # one specific folder
+samples = 50
+
+lines = []
+histo= [] # leere Liste
+xdata = []
+ydata = []
+
+class BackwardsReader:
+  def readline(self):
+    while len(self.data) == 1 and ((self.blkcount * self.blksize) < self.size):
+      self.blkcount = self.blkcount + 1
+      line = self.data[0]
+      try:
+        self.f.seek(-self.blksize * self.blkcount, 2) # read from end of file
+        self.data = string.split(self.f.read(self.blksize) + line, '\n')
+      except IOError:  # can't seek before the beginning of the file
+        self.f.seek(0)
+        self.data = string.split(self.f.read(self.size - (self.blksize * (self.blkcount-1))) + line, '\n')
+
+    if len(self.data) == 0:
+      return ""
+
+    # self.data.pop()
+    # make it compatible with python <= 1.5.1
+    line = self.data[-1]
+    self.data = self.data[:-1]
+    return line + '\n'
+
+  def __init__(self, file, blksize=4096):
+    """initialize the internal structures"""
+    # get the file size
+    self.size = os.stat(file)[6]
+    # how big of a block to read from the file...
+    self.blksize = blksize
+    # how many blocks we've read
+    self.blkcount = 1
+    self.f = open(file, 'rb')
+    # if the file is smaller than the blocksize, read a block,
+    # otherwise, read the whole thing...
+    if self.size > self.blksize:
+      self.f.seek(-self.blksize * self.blkcount, 2) # read from end of file
+    self.data = string.split(self.f.read(self.blksize), '\n')
+    # strip the last item if it's empty...  a byproduct of the last line having
+    # a newline at the end of it
+    if not self.data[-1]:
+      # self.data.pop()
+      self.data = self.data[:-1]
+
+def updateData(*args):
+    bw = BackwardsReader('%s%s'%(root, file_name))
+    line = bw.readline() #last line is often incomplete 
+    for i in range(samples):
+        line = bw.readline()
+        lines.append(bw.readline())
+    for line in lines:
+        xdata.append(line.split('\t')[0].strip('\n'))
+        ydata.append(line.split('\t')[3].strip('\n'))
+        h = (line.split('\t')[0].strip('\n'))
+    if (h < 4000)&(h > -4000):
+            histo.append(h)
+    return True
+
+def updatePlot(*args):
+    print ydata
+
+    return True
+
 os.chdir(root)
 l = [(os.path.getmtime(x), x)for x in os.listdir(".")]
 l.sort()
 file_name = l[-1][1]
-lines = []
-histo= [] # leere Liste
-x = []
-y = [] 
-f = open('%s%s'%(root, file_name),'r')
-for line in f:
-    lines.append(line)
-lines.pop()
-for line in lines:
-    x.append(line.split()[0].strip())
-    y.append(line.split()[3].strip())
-    if ((len(line.split()) < 4)&( line.split()[-1].split() == 'e' )):
-        continue
-    if (float(line.split()[3].strip()) < 4000)&(float(line.split()[3].strip()) > -4000):
-        histo.append(float(line.split()[3].strip()))
+print "Using log file: %s%s"%(root, file_name)
+bw = BackwardsReader('%s%s'%(root, file_name))
 
-figure(0)
-hist(histo,100)
-figure(1)
-plot(y)
-show()
+while(1):
+    xdata = []
+    ydata = []
+    histo = []
+    bw = BackwardsReader('%s%s'%(root, file_name))
+    line = bw.readline() #last line is often incomplete 
+    for i in range(samples):
+        line = bw.readline()
+        lines.append(bw.readline())
+    for line in lines:
+        xdata.append(line.split('\t')[0].strip('\n'))
+        ydata.append(line.split('\t')[3].strip('\n'))
+        h=float(line.split('\t')[3].strip('\n'))
+        print h
+        if (h < 4000)&(h >-4000):
+            histo.append(float(h))
+    figure(0)
+    hist(histo, 20)
+    figure(1)
+    plot(ydata)
+    show()
+    time.sleep(10)
 
-##from array import array
-##import sys; sys.path.append('/usr/lib/root/')
-##import time
-##from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraphErrors
-##
-##Xrange = 20
-##
-##x, y, buffer =[]
-### Erzeuge Graphen
-##g = TGraph(self.count, array('d',self.channel) ,array('d',self.counts))
-##g.SetTitle(';Channel;Counts')
-##g.GetHistogram().SetTitleOffset(1.3, 'Y')
-##g.SetMarkerStyle(1)
-##g.SetMarkerColor(2)
-##g.SetMarkerSize(3.0)
-##c = TCanvas('c_'+self.name, self.name)
-##c.SetGrid()
-##graph.Draw('AP')
-##c.Update()
-##counter = 0
-##
-##def update():
-##    i = counter - Xrange
-##    x = []
-##    while(i < counter):
-##        x.append(i)
-##        y.append(
-##    
+
 ##while(1):
-##    counter += 1
-##    for line in open('/home/paule/fp-auswertung/fp2/moesbauer/avr/speed.dat','r'):
-##        buffer.append(line)        
-##    update()
-##    time.sleep(.1)
-##    
+##    bw = BackwardsReader('%s%s'%(root, file_name))
+##    line = bw.readline() #last line is often incomplete 
+##    for i in range(samples):
+##        line = bw.readline()
+##        lines.append(bw.readline())
+##    for line in lines:
+##        x.append(line.split()[0].strip())
+##        y.append(line.split()[3].strip())
+##        if ((len(line.split()) < 4)&( line.split()[-1].split() == 'e' )):
+##            continue
+##        if (float(line.split()[3].strip()) < 4000)&(float(line.split()[3].strip()) > -4000):
+##            histo.append(float(line.split()[3].strip()))
+##    figure(0)
+##    hist(histo,100)
+##    figure(1)
+##    plot(y)
+##    show()
+##    time.sleep(.5)
