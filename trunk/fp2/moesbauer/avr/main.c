@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <avr/interrupt.h>
- 
 #ifndef F_CPU
 #warning "F_CPU war noch nicht definiert, wird nun nachgeholt mit 16000000"
 #define F_CPU 16000000UL  // Systemtakt in Hz - Definition als unsigned long beachten
@@ -16,18 +15,27 @@
 //   #error Systematischer Fehler der Baudrate grösser 1% und damit zu hoch! 
 // #endif
 
-volatile int interrupt = 0;
-unsigned int error_counter, saved_timer, counted_interrupts = 0;
-unsigned long overflows, saved_overflows=0;
+/* Variable Declaration */
+volatile int cmd_recieved, int1, int2, send = 0;
+volatile unsigned int error_counter, saved_timer, counted_interrupts = 0;
+volatile unsigned long overflows, saved_overflows=0;
+volatile char cmd [10];
+char buffer [20];
 
- 
+void append(char* s, char c)
+{
+        int len = strlen(s);
+        s[len] = c;
+        s[len+1] = '\0';
+}
+
 void USART_Init( void )
 {
   /* Set baud rate */
   UBRRH = (unsigned char)(UBRR_VAL>>8);
   UBRRL = (unsigned char)UBRR_VAL;
-  /* Enable receiver and transmitter */
-  UCSRB = (1<<RXEN)|(1<<TXEN);
+  /* Enable receiver and transmitter, Enable the USART Recieve Complete interrupt (USART_RXC) */
+  UCSRB = (1<<RXEN)|(1<<TXEN)|(1 << RXCIE);
   UCSRC |= (1<<URSEL)|(1 << UCSZ1)|(1 << UCSZ0); // Asynchron 8N1 
 }
  
@@ -53,6 +61,8 @@ void uart_puts (char *s)
 
 void init_Interrupts( void )
 {
+	DDRD |= (1<<DDD3) | (1<<DDD2); // Set PORTD Pins 2 and 3 as input (external interupt pins)
+	PORTD |= (1<<PORTD3) | (1<<PORTD2); // activate internal pullups
 	// interrupt on change on INT0 and INT1
 	MCUCR = (0<<ISC01) |(1<<ISC00) | (0<<ISC11) | (1<<ISC10);
 	// turn on interrupts!
@@ -64,45 +74,68 @@ inline void count_interrupt( void )
 	counted_interrupts += 1;     //count
 }
 
-inline void handle_Interrupt( void )
+ISR(INT0_vect)
 {
-	if (interrupt) {
+// 	count_interrupt();
+	if (int1) {
 		error_counter += 1;
 	}
-	interrupt = 1;	//flag setzen
-	TCCR1B &= ~(1<<CS10); // stop timer
+	int1 = 1;	//flag setzen
 	saved_timer = TCNT1; //timer auslesen
 	saved_overflows = overflows; // overflows auslesen
 	overflows = 0; //reset
 	TCNT1= 0;
-	TCCR1B |= (1<<CS10); // no prescaler, start timer
-}
-
-ISR(INT0_vect)
-{
-	handle_Interrupt();
 }
 
 ISR(INT1_vect)
 {
-	handle_Interrupt();
+// 	count_interrupt();
+	if (int2) {
+		error_counter += 1;
+	}
+	int2 = 1;	//flag setzen
+	saved_timer = TCNT1; //timer auslesen
+	saved_overflows = overflows; // overflows auslesen
+	overflows = 0; //reset
+	TCNT1= 0;
 }
 
 ISR(TIMER1_OVF_vect)
 {
+// 	if (overflows == 1000) {
+// 		send = 1;
+// 	}
 	overflows++;
 }
 
-void start_Timer( void )
+ISR(USART_RXC_vect)
+{
+	char ReceivedByte;
+	ReceivedByte = UDR;
+	if (ReceivedByte == '\r'){
+		cmd_recieved = 1;
+	} else {
+	UDR = ReceivedByte;
+        int len = strlen(cmd);
+        cmd[len] = ReceivedByte;
+        cmd[len+1] = '\0';
+	}
+} 
+
+inline void start_Timer( void )
 {
 	TIMSK |= (1 << TOIE1); // enable Interrupt on Overlow
 	TCCR1A &= ~((1 << COM1A1)|(1<<COM1B1)|(1 << COM1A0)|(1<<COM1B0)); // normal Mode
 	TCCR1B |= (1<<CS10); // no prescaler, start timer
 }
 
+inline void stop_Timer( void )
+{
+	TCCR1B &= ~(1<<CS10); // stop timer
+}
+
 int main(void)
 {
-	char buffer [20];
 	USART_Init();
 	uart_puts("\n#########################################################");
 	uart_puts("\n# Welcome to Low Speed Meassuring using a Mouse Sensor. #");
@@ -111,14 +144,18 @@ int main(void)
 	uart_puts("\n#                     by Tobi and Paul                  #");
 	uart_puts("\n#########################################################");
 	uart_puts("\n");
-	sprintf(buffer, "\n Baudrate is Set to: %i, while its Error is at %f\n", BAUD, (BAUD_ERROR -1000)/10);
-	uart_puts(buffer);
+	sprintf(cmd, "");
 	init_Interrupts();
 	start_Timer();
 	sei();
 	while(1) {
-		if (interrupt) {
-			interrupt = 0;
+		if (int1) {
+			int1 = 0;
+			sprintf(buffer, "%ut%uo", saved_timer, saved_overflows);
+			uart_puts(buffer);
+		}
+		if (int2) {
+			int2 = 0;
 			sprintf(buffer, "%ut%uo", saved_timer, saved_overflows);
 			uart_puts(buffer);
 		}
@@ -127,10 +164,28 @@ int main(void)
 			uart_puts(buffer);
 			error_counter = 0;
 		}
-// 		if (int2) {
-// 			int2 = 0;
-// 			sprintf(buffer, " %ut%uo", saved_timer, saved_overflows);
-// 			uart_puts(buffer);
-// 		}
+		if (send) {
+			sprintf(buffer, "%ut%uo%ui", TCNT1, overflows, counted_interrupts);
+			TCNT1 = 0;
+			overflows = 0;
+			counted_interrupts = 0;
+			uart_puts(buffer);
+		}
+		if (cmd_recieved) {
+			uart_putc('\r');
+			if (strcmp(cmd ,'help')==0){ 
+				uart_puts("\n[Usage] Enter Command. While meassuring command means stop.");
+				uart_puts("\n Commands are:");
+				uart_puts("\n                      help - for this Help");
+				uart_puts("\n                     start - start a meassurement. While this i send.");
+			} else if (cmd == 'easteregg'){
+			} else {
+				uart_puts("[Unknown Command]: ");
+				uart_puts(cmd);
+			}
+			sprintf(cmd, "");
+			cmd_recieved = 0;
+			uart_putc('\r');
+		}
 	}
 }
