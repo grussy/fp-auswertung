@@ -17,7 +17,7 @@
 \lfoot{}
 \rfoot{Paul Kremser, Tobias Grussenmeyer}
 \cfoot{\thepage}
-\fancyhead[L]{FPI Versuch: Ringlaser}
+\fancyhead[L]{FPII Versuch: Mösbauereffekt}
 \renewcommand{\headrulewidth}{0.6pt}
 \renewcommand{\footrulewidth}{0.6pt}
 \setlength{\headheight}{16pt}
@@ -38,8 +38,8 @@
 
 \begin{titlepage}
 \author{Paul Kremser, Tobias Grussenmeyer}
-\title{Versuch: Ultraschall}
-\date{Versuchsdurchführung: 6. und 7. Oktober 2009} 
+\title{Versuch: Mösbauereffekt}
+\date{Versuchsdurchführung: 1. bis 12. März 2010} 
 \maketitle
 \thispagestyle{empty}
 \end{titlepage}
@@ -50,8 +50,21 @@
 \newpage
 \pagenumbering{arabic}
 \section{Überblick}
+Stichwort rückstoßfreie Resonanzabsorption: Emmitiert ein Kern Strahlung in Form eines Photons, so hat dieses Photon einen Impuls.
+Nach der Impulserhaltung muss also auch der strahlende Kern gerade diesen Impuls in entgegengesetzter Richtung erhalten. Der Kern hat nach Aussendung des Photons eine Geschwindigkeit, folglich eine kinetische Energie. Dem Photon fehlt sozusagen genau die Energie welche der Kern für die Bewegung hat. Von 'Fehlen' spricht man, da die Energie des Photons nun nicht ausreicht um einen anderen (ruhenden) Kern anzuregen. Um die Anregung zu ermöglichen müsste dieser Kern sich mit der 'doppelten Geschwindigkeit' des ersten auf das Photon zu bewegen.
 
+Bindet man die Kerne nun aber in Kristalle ein so muss der Impuls des Photons irgentwie auf den gesamten Kristall übergehen. Im glücklichten Fall entsteht hierbei kein Phonon im Kristall und die dem Photon fehlende Energie geht mit steigender Masse des Kristalls gegen Null. Man spricht von rückstoßfreier Resonanzabsorption, das Photon kann nun einen anderen Kern anregen.
 \section{Aufgabestellung}
+\begin{enumerate}
+ \item Verkabelung des Aufbaus, Einstellungen der Elektronik (Verstärker, Delay, SCA und Gate).
+ \item Energieeichung des MCA mit Hilfe eines Americium Strahlers und verschiedener metallischer Floureszenzplättchen (Aufbau mit Drehscheibe)
+ \item Mit dem SCA ein Fenster auf die 14,4 KeV Linie setzen.
+ \item Mit Hilfe verschiedener Aluminiumplättchen sollen Untergrundmessungen bei verschiedenen Dicken gemacht werden um später auf die Dicke Null extrapolieren zu können.
+ \item Aufnahme der Spektren des Einlinien- (Eisen) absorbers und des 6-Linien- (Edelstahl) absorbers.
+\end{enumerate}
+
+
+
 
 \section{Theoretische Grundlagen}
 
@@ -63,4 +76,13 @@
 
 \section{Zusammenfassung}
 
+\section{Zusatz: Geschwindigkeitsmessung}
+Nach Aussagen des Assistenten stellte sich bei diesem Versuchsaufbau schon seit längerem die Frage wie groß der Fehler der Geschindigkeit des Schlittens also des Absorbers ist. Somit haben wir uns ein paar Gedanken gemacht wie man denn die Geschwindikeit des Schlittens Messen kann. Eine Zeitmessung über lange Strecken macht keinen Sinn, da die Konstanz der Geschindigkeit untersucht werden soll. Wir hatten die Idee den Sensor einer optischen Maus zu verwenden: 800 dpi, sollten eine ausreichende Genauigkeit bringen.
+
+Gängige Maussensoren haben zwei mögliche Ausgänge: Ein serieller Ausgang und eine ``Vierzusands Ring Ausgang'' also 2 Pins für jede Achse, wobei die Zustände im Ring je nach Bewegungsrichtung linksrum oder rechtsrum aufeinander folgen.
+
+Wir entschienden uns mit der Intention die kleinstmöglichen Inkremente zu erhalten für den letzeren Anschluss und nahmen einen Microcontroller für die Auswertung der Bewegung. Anfangs war das ein Microchip PIC18F4550, da dieser jedoch Probleme machte stiegen wir auf einen Atmel ATMega32 um. Leider mussten wir feststellen als wir die ersten Geschwindigkeitshistogramme betrachteten, dass ein Fehler vorlag. Es stellte sich heraus das der 16MHz Takt des Microcontrollers nicht ausreichte um alle Zustandsänderungen des Maussensors zu erfassen. Bei schnellen Bewegungen kam der Chip nicht nach einem Interrupt nicht mehr in den normalen Programmablauf da schon der nächste Interrupt ausgelöst war.
+
+
+Also musste doch die 1te Anschlussmethode herhalten, diesmal aber ohne Microcontroller und stattdessen direkt am PC angeschlossen.
 \end{document}
