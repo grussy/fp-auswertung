@@ -17,17 +17,10 @@
 
 /* Variable Declaration */
 volatile int cmd_recieved, int1, int2, send = 0;
-volatile unsigned int error_counter, saved_timer, counted_interrupts = 0;
+volatile unsigned int error_counter, saved_timer, counted_interrupts, interrupts = 0;
 volatile unsigned long overflows, saved_overflows=0;
 volatile char cmd [10];
-char buffer [20];
-
-void append(char* s, char c)
-{
-        int len = strlen(s);
-        s[len] = c;
-        s[len+1] = '\0';
-}
+volatile char buffer [30];
 
 void USART_Init( void )
 {
@@ -61,8 +54,8 @@ void uart_puts (char *s)
 
 void init_Interrupts( void )
 {
-	DDRD |= (1<<DDD3) | (1<<DDD2); // Set PORTD Pins 2 and 3 as input (external interupt pins)
-	PORTD |= (1<<PORTD3) | (1<<PORTD2); // activate internal pullups
+// 	DDRD |= (1<<DDD3) | (1<<DDD2); // Set PORTD Pins 2 and 3 as input (external interupt pins)
+// 	PORTD |= (1<<PORTD3) | (1<<PORTD2); // activate internal pullups
 	// interrupt on change on INT0 and INT1
 	MCUCR = (0<<ISC01) |(1<<ISC00) | (0<<ISC11) | (1<<ISC10);
 	// turn on interrupts!
@@ -76,34 +69,40 @@ inline void count_interrupt( void )
 
 ISR(INT0_vect)
 {
-// 	count_interrupt();
+//	interrupts++;     //count// 	
 	if (int1) {
 		error_counter += 1;
 	}
-	int1 = 1;	//flag setzen
+	int1 += 1;	//flag setzen
 	saved_timer = TCNT1; //timer auslesen
 	saved_overflows = overflows; // overflows auslesen
-	overflows = 0; //reset
 	TCNT1= 0;
+	overflows = 0; //reset
 }
 
 ISR(INT1_vect)
 {
-// 	count_interrupt();
+//	interrupts++;     //count// 	if (int1) {
 	if (int2) {
 		error_counter += 1;
 	}
-	int2 = 1;	//flag setzen
+	int2 += 1;	//flag setzen
 	saved_timer = TCNT1; //timer auslesen
 	saved_overflows = overflows; // overflows auslesen
-	overflows = 0; //reset
 	TCNT1= 0;
+	overflows = 0; //reset
 }
 
 ISR(TIMER1_OVF_vect)
 {
-// 	if (overflows == 1000) {
+// 	if (overflows == 10) {
 // 		send = 1;
+// 		saved_timer = TCNT1;
+// 		TCNT1 = 0;
+// 		saved_overflows = overflows;
+// 		overflows = 0;
+// 		counted_interrupts = interrupts;
+// 		interrupts = 0;
 // 	}
 	overflows++;
 }
@@ -146,39 +145,41 @@ int main(void)
 	uart_puts("\n");
 	sprintf(cmd, "");
 	init_Interrupts();
+	GIMSK  &= ~(1<<INT0)|(1<<INT1); //but stop meassuring
 	start_Timer();
 	sei();
 	while(1) {
+// 		if (error_counter) {
+// 			sprintf(buffer, "\n[DEBUG] Error Counter was at: %u\n", error_counter);
+// 			uart_puts(buffer);
+// 			error_counter = 0;
+// 		}
 		if (int1) {
+			sprintf(buffer, "%ui%ut%uo\n", int1+int2, saved_timer, saved_overflows);
 			int1 = 0;
-			sprintf(buffer, "%ut%uo", saved_timer, saved_overflows);
 			uart_puts(buffer);
 		}
 		if (int2) {
+			sprintf(buffer, "%ui%ut%uo\n", int1+int2, saved_timer, saved_overflows);
 			int2 = 0;
-			sprintf(buffer, "%ut%uo", saved_timer, saved_overflows);
 			uart_puts(buffer);
-		}
-		if (error_counter) {
-			sprintf(buffer, "\n[DEBUG] Error Counter was at: %u\n", error_counter);
-			uart_puts(buffer);
-			error_counter = 0;
 		}
 		if (send) {
-			sprintf(buffer, "%ut%uo%ui", TCNT1, overflows, counted_interrupts);
-			TCNT1 = 0;
-			overflows = 0;
-			counted_interrupts = 0;
-			uart_puts(buffer);
+			if (counted_interrupts) {
+				sprintf(buffer, "%ut%ui%uo\n", saved_timer, counted_interrupts, saved_overflows);
+				uart_puts(buffer);
+			}
+			send = 0;
 		}
 		if (cmd_recieved) {
 			uart_putc('\r');
-			if (strcmp(cmd ,'help')==0){ 
+			if (strcmp(cmd ,"help")==0){ 
 				uart_puts("\n[Usage] Enter Command. While meassuring command means stop.");
 				uart_puts("\n Commands are:");
 				uart_puts("\n                      help - for this Help");
 				uart_puts("\n                     start - start a meassurement. While this i send.");
-			} else if (cmd == 'easteregg'){
+			} else if (cmd == "start"){
+				
 			} else {
 				uart_puts("[Unknown Command]: ");
 				uart_puts(cmd);
