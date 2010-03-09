@@ -147,6 +147,7 @@ class MainFrame(wx.Frame):
             channels[channelNumber] += 1
             
         xlistdump = range(1,100)
+        
         #drawing Histogramm
         h = TGraph(numberOfChannels, array('d',xlistdump) ,array('d',channels))
         h.SetTitle(';Zeit t [ms];Geschwindigkeit []')
@@ -154,11 +155,17 @@ class MainFrame(wx.Frame):
         h.SetMarkerStyle(20)
         h.SetMarkerColor(2)
         h.SetMarkerSize(0.4)
+        
+        lg = TLegend()
+        lg.addEntry('Kanalbreite:',channelWidth)
+        lg.addEntry('Anfangskanal:', min(vel))
+        
         self.histo = h
         ch = TCanvas('Histogramm of Velocities')
         self.histoCanvas = ch
         ch.SetGrid()
         self.histo.Draw('APX')
+        lg.Draw()
         #self.f.Draw('SAME')
         ch.Update()
         
