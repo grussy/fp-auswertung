@@ -15,7 +15,7 @@ gROOT.SetStyle("Plain")
 ##########################################################################################
 
 # Messdatei 
-messdaten = 'messdaten.dat' #In dieser Datei befinden sich (bald) alle Messdaten / Unsortiert
+messdaten = 'eisen_1.dat' #In dieser Datei befinden sich (bald) alle Messdaten / Unsortiert
 
 velo = []
 time = []
@@ -39,6 +39,7 @@ Fenster = TCanvas('cr', 'Eisenabsorber')
 Fenster.SetGrid()
 gr = TGraph(length, array('d',velo), array('d', rates))
 gr.SetTitle(';Geschwindigkeit / mm/s; Zählrate 1/s')
+gr.GetHistogram().SetTitleOffset(1.3, 'Y')
 gr.GetYaxis().CenterTitle()
 gr.SetMarkerColor(2)
 gr.SetMarkerStyle(3)

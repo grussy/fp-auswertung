@@ -14,6 +14,7 @@ import gobject
 import gtk
 from math import pi, sqrt, exp
 from array import array
+from operator import div, mod
 
 # begin wxGlade: extracode
 # end wxGlade
@@ -136,6 +137,30 @@ class MainFrame(wx.Frame):
         self.graph.Draw('APX')
         #self.f.Draw('SAME')
         c.Update()
+        
+        #sorting Velocities for Histogram in channels
+        numberOfChannels = 100
+        channels = [0]*numberOfChannels
+        channelWidth = (max(vel) - min(vel)) / numberOfChannels
+        for velo in vel:
+            channelNumber = int(div(velo - min(vel), channelWidth))
+            channels[channelNumber] += 1
+            
+        xlistdump = range(1,100)
+        #drawing Histogramm
+        h = TGraph(numberOfChannels, array('d',xlistdump) ,array('d',channels))
+        h.SetTitle(';Zeit t [ms];Geschwindigkeit []')
+        h.GetHistogram().SetTitleOffset(1.3, 'Y')
+        h.SetMarkerStyle(20)
+        h.SetMarkerColor(2)
+        h.SetMarkerSize(0.4)
+        self.histo = h
+        ch = TCanvas('Histogramm of Velocities')
+        self.histoCanvas = ch
+        ch.SetGrid()
+        self.histo.Draw('APX')
+        #self.f.Draw('SAME')
+        ch.Update()
         
         
     def __set_properties(self):
