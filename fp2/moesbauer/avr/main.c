@@ -16,7 +16,7 @@
 // #endif
 
 /* Variable Declaration */
-volatile int cmd_recieved, int1, int2, send = 0;
+volatile int cmd_recieved, int1, int2, send, started = 0;
 volatile unsigned int error_counter, saved_timer, counted_interrupts, interrupts = 0;
 volatile unsigned long overflows, saved_overflows=0;
 volatile char cmd [10];
@@ -54,12 +54,23 @@ void uart_puts (char *s)
 
 void init_Interrupts( void )
 {
-// 	DDRD |= (1<<DDD3) | (1<<DDD2); // Set PORTD Pins 2 and 3 as input (external interupt pins)
+ 	DDRD &= ~((1<<DDD3) | (1<<DDD2)); // Set PORTD Pins 2 and 3 as input (external interupt pins)
+ 	DDRB &= ~(1<<DDB2); // Set PORTD Pins 2 and 3 as input (external interupt pins)
 // 	PORTD |= (1<<PORTD3) | (1<<PORTD2); // activate internal pullups
-	// interrupt on change on INT0 and INT1
+// 	interrupt on change on INT0 and INT1
 	MCUCR = (0<<ISC01) |(1<<ISC00) | (0<<ISC11) | (1<<ISC10);
+	//interrupt INT2 on rising edge
+	MCUCSR |= (1<<ISC2);
 	// turn on interrupts!
-	GIMSK  |= (1<<INT0)|(1<<INT1);
+	GIMSK  |= (1<<INT0)|(1<<INT1)|(1<<INT2);
+}
+
+inline void toggle_Int2( void )
+{
+	GIMSK &= ~(1<<INT2); //disable INT2 see datasheet for info why
+	MCUCSR ^= (1<<ISC2); // toggle
+	GIFR |= (1<<INTF2); //clear
+	GIMSK |= (1<<INT2);  //enable INT2
 }
 
 inline void count_interrupt( void )
@@ -91,6 +102,20 @@ ISR(INT1_vect)
 	saved_overflows = overflows; // overflows auslesen
 	TCNT1= 0;
 	overflows = 0; //reset
+}
+
+ISR(INT2_vect)
+{
+	if (started){
+		uart_puts("1t1000i1o\n");
+		started = 0;
+		//uart_puts("stopped");
+	} else {
+		uart_puts("1t2000i1o\n");
+		started = 1;
+		//uart_puts("started");
+	}
+	toggle_Int2();
 }
 
 ISR(TIMER1_OVF_vect)
@@ -157,12 +182,12 @@ int main(void)
 		if (int1) {
 			sprintf(buffer, "%ui%ut%uo\n", int1+int2, saved_timer, saved_overflows);
 			int1 = 0;
-			uart_puts(buffer);
+			if (started) uart_puts(buffer);
 		}
 		if (int2) {
 			sprintf(buffer, "%ui%ut%uo\n", int1+int2, saved_timer, saved_overflows);
 			int2 = 0;
-			uart_puts(buffer);
+			if (started) uart_puts(buffer);
 		}
 		if (send) {
 			if (counted_interrupts) {
@@ -178,8 +203,27 @@ int main(void)
 				uart_puts("\n Commands are:");
 				uart_puts("\n                      help - for this Help");
 				uart_puts("\n                     start - start a meassurement. While this i send.");
+				uart_puts("\n                      stop - stop a meassurement.");
+				uart_puts("\n                   auto_on - start/stop auto on (INT2).");
+				uart_puts("\n                  auto_off - start/stop auto off (INT2).");
+				uart_puts("\n                    errors - Read error counter");
 			} else if (cmd == "start"){
-				
+				started = 1;
+				uart_puts("OK\n");
+			} else if (cmd == "stop"){
+				started = 0;
+				uart_puts("OK\n");
+			} else if (cmd == "auto_on"){
+				started = 0;
+				GIMSK |= (1<<INT2);
+				uart_puts("OK\n");
+			} else if (cmd == "auto_off"){
+				GIMSK &= ~(1<<INT2); //disable INT2
+				started = 0;
+				uart_puts("OK\n");
+			} else if (cmd == "errors") {
+				sprintf(buffer, "ErrorCount: %i\n", saved_timer, counted_interrupts, saved_overflows);h
+				uart_puts(buffer);
 			} else {
 				uart_puts("[Unknown Command]: ");
 				uart_puts(cmd);
