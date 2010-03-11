@@ -114,6 +114,7 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_BUTTON, self.OnSaveCal, self.btnSaveCal)
         self.Bind(wx.EVT_BUTTON, self.OnCalculateCal, self.btnCalculate)
         self.Bind(wx.EVT_BUTTON, self.OnHelpCal, self.btnHelp)
+	self.Bind(wx.EVT_TEXT_ENTER, self.OnCmd, self.txtDebug)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         # end wxGlade
         self.InitVariables()
@@ -262,7 +263,7 @@ class MainFrame(wx.Frame):
         self.elapsedTime = 0
         self.count = 0
         self.tableCount = 0
-        self.root = '/home/paule/fp-auswertung/fp2/moesbauer/openMouseSpeed/' # one specific folder
+        self.root = '/home/grussy/trunk/fp2/moesbauer/openMouseSpeed' # one specific folder
         os.chdir(self.root)
         self.file = open("data/init","w")
         self.file.close()
@@ -435,6 +436,9 @@ class MainFrame(wx.Frame):
 		        for byte in text:
 		            self.rawData.append(byte)
 
+    def OnCmd(self, event):
+	print "er"
+	self.txtDebug.AppendText("\n[CMD] %s"%(str(event)))
     def OnMenuOpen(self, event): # wxGlade: MainFrame.<event_handler>
         self.txtDebug.AppendText("\n[MISSING] Event handler `OnMenuOpen' not implemented!")
         event.Skip()

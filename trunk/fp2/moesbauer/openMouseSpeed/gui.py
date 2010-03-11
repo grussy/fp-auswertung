@@ -172,7 +172,7 @@ class MainFrame(wx.Frame):
         self.time = []
         self.elapsedTime = 0
         self.count = 0
-        self.root = '/home/paule/fp-auswertung/fp2/moesbauer/openMouseSpeed/' # one specific folder
+        self.root = '/home/grussy/trunk/fp2/moesbauer/openMouseSpeed/' # one specific folder
         os.chdir(self.root)
         self.file = open("data/init","w")
         self.file.close()
