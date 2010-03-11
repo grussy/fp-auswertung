@@ -1,7 +1,7 @@
 <!DOCTYPE KontrollerLab>
-<PROJECT VERSION="0.1" >
+<PROJECT VERSION="0.8.0-beta1" >
   <FILES>
-    <FILE SHOWN="TRUE" NAME="main.c" />
+    <FILE VIEWS="0,0,1120,767,5," SHOWN="TRUE" NAME="main.c" />
   </FILES>
   <SETTINGS>
     <ASSEMBLER_COMMAND VALUE="avr-gcc" />
@@ -20,6 +20,7 @@
     <MAP_FILE VALUE="project.map" />
     <OBJCOPY_COMMAND VALUE="avr-objcopy" />
   </SETTINGS>
+  <DEBUGGER_SETTINGS/>
   <PROGRAMMERCONFIG>
     <AVRDUDE_CONNECTION_PORT VALUE="/dev/ttyS0" />
     <AVRDUDE_COUNT_ERASE VALUE="FALSE" />
