@@ -246,9 +246,12 @@ class MainFrame(wx.Frame):
         self.Layout()
         self.SetSize((435, 600))
         # end wxGlade
+
+
     def InitVariables(self):
         self.ser = serial.Serial()
         self.alive = threading.Event()
+        self.aliveSerial = threading.Event()
         self.rawData = deque(['1','i','100','t','0','o','\n'])#sample data
         while (len(self.rawData) != 0):
             self.rawData.popleft()
@@ -259,12 +262,13 @@ class MainFrame(wx.Frame):
         self.elapsedTime = 0
         self.count = 0
         self.tableCount = 0
-        
         self.root = '/home/paule/fp-auswertung/fp2/moesbauer/openMouseSpeed/' # one specific folder
         os.chdir(self.root)
         self.file = open("data/init","w")
         self.file.close()
         self.pollData = 1
+	self.StartMainThread()
+
 
     def SetDisconnected(self):
         self.statusbar.SetStatusText("Welcome to OpenMouseSpeed")
@@ -284,18 +288,30 @@ class MainFrame(wx.Frame):
         self.btnCalculate.Enable()
         self.btnTestCal.Enable()
         self.btnSaveCal.Enable()
+
     def StartMainThread(self):      
-        self.mainTread = threading.Thread(target=self.MainThread)
-        self.mainTread.setDaemon(1)
+        self.mainThread = threading.Thread(target=self.MainThread)
+        self.mainThread.setDaemon(1)
         self.alive.set()
-        self.mainTread.start()
+        self.mainThread.start()
 
     def StopMainThread(self):
-        if self.mainTread is not None:
+        if self.mainThread is not None:
             self.alive.clear()          #clear alive event for thread
-            self.mainTread.join()          #wait until thread has finished
-            self.mainTread = None
+            self.mainThread.join()          #wait until thread has finished
+            self.mainThread = None
 
+    def StartSerialThread(self):      
+        self.serialThread = threading.Thread(target=self.SerialThread)
+        self.serialThread.setDaemon(1)
+        self.aliveSerial.set()
+        self.serialThread.start()
+
+    def StopSerialThread(self):
+        if self.serialThread is not None:
+            self.alive.clear()          #clear alive event for thread
+            #self.serialThread.join()          #wait until thread has finished
+            self.serialThread = None
 
     def drawHisto(self):
         #sorting Velocities for Histogram in channels
@@ -360,60 +376,64 @@ class MainFrame(wx.Frame):
         self.graph.Draw('APX')
         #self.f.Draw('SAME')
         c.Update()
+
+
     def MainThread(self):
-        """Thread that handles the incomming traffic. Does the basic input
-           transformation (newlines) and generates an SerialRxEvent"""
         while self.alive.isSet():               #loop while alive event is true
+            if (len(self.rawData) > 10):        #to be sure we have a full data set in buffer
+                byte  = self.rawData.popleft()
+                self.buffer += byte
+                if (byte == '\n'):
+                    helpStr = ""
+                    try :
+                        interrupts = 0
+                        for char in self.buffer:
+                            if (char  == 'i')&(helpStr != ''):
+                                interrupts = int(helpStr.strip('iot'))
+                                helpStr = ""
+                                continue
+                            if (char == "t")&(helpStr != ''):
+                                timer = int(helpStr.strip('tio'))
+                                helpStr = ""
+                                continue
+                            if (char == "o")&(helpStr != ''):
+                                overflows = int(helpStr.strip('\n').strip('oti'))
+                                continue
+                            helpStr += char
+                        if (interrupts == 1):
+                            time = (65535*overflows + timer)/16e3       #msec
+                            self.elapsedTime += float(time/1e3)         #sec
+                            self.vel.append(float(100/time))            #?
+                            self.time.append(self.elapsedTime)
+			    self.txtData.AppendText("%.6e\t%.6e\n"%(self.elapsedTime, self.vel[-1]))
+                            if self.chkBoxLogData.IsChecked():
+                                try:
+                                    self.file.write("%.6e\t%.6e\n"%
+                                        (self.elapsedTime, self.vel[-1]))
+                                except IOError:
+                                    dlg = wx.MessageDialog(self, 
+                                        "Could not write to Log File !!", 
+                                        "OpenMouseSpeed 0.1a", 
+                                        wx.OK | wx.ICON_INFORMATION)
+                                    self.chkBoxLogData.SetValue(0)
+                                    dlg.Show()
+                                    dlg.Destroy()
+                            self.buffer = ""
+                    except ValueError:
+                        self.txtDebug.AppendText("\n[Debug] ValueError " +
+                            "while converting serial Data")
+                        self.txtDebug.AppendText("\n[Debug]    --> helpStr was: %s"%(helpStr))
+
+    def SerialThread(self):
+        while self.aliveSerial.isSet():               #loop while alive event is true
             if self.pollData:
-                n = self.ser.inWaiting()
-		text = ""
-                if n:
-                    text = text + self.ser.read(n) #get it
-                for byte in text:
-                    self.rawData.append(byte)
-                if (len(self.rawData) > 10):        #to be sure we have a full data set in buffer
-                    byte  = self.rawData.popleft()
-                    self.buffer += byte
-                    if (byte == '\n'):
-                        helpStr = ""
-                        try :
-                            interrupts = 0
-                            for char in self.buffer:
-                                if (char  == 'i')&(helpStr != ''):
-                                    interrupts = int(helpStr.strip('iot'))
-                                    helpStr = ""
-                                    continue
-                                if (char == "t")&(helpStr != ''):
-                                    timer = int(helpStr.strip('tio'))
-                                    helpStr = ""
-                                    continue
-                                if (char == "o")&(helpStr != ''):
-                                    overflows = int(helpStr.strip('\n').strip('oti'))
-                                    continue
-                                helpStr += char
-                            if (interrupts == 1):
-                                time = (65535*overflows + timer)/16e3       #msec
-                                self.elapsedTime += float(time/1e3)         #sec
-                                self.vel.append(float(100/time))            #?
-                                self.time.append(self.elapsedTime)
-				self.txtData.AppendText("%.6e\t%.6e\n"%(self.elapsedTime, self.vel[-1]))
-                                if self.chkBoxLogData.IsChecked():
-                                    try:
-                                        self.file.write("%.6e\t%.6e\n"%
-                                            (self.elapsedTime, self.vel[-1]))
-                                    except IOError:
-                                        dlg = wx.MessageDialog(self, 
-                                            "Could not write to Log File !!", 
-                                            "OpenMouseSpeed 0.1a", 
-                                            wx.OK | wx.ICON_INFORMATION)
-                                        self.chkBoxLogData.SetValue(0)
-                                        dlg.Show()
-                                        dlg.Destroy()
-                                self.buffer = ""
-                        except ValueError:
-                            self.txtDebug.AppendText("\n[Debug] ValueError " +
-                                "while converting serial Data")
-                            self.txtDebug.AppendText("\n[Debug]    --> helpStr was: %s"%(helpStr))
+		text = self.ser.read(1)
+		if (text):
+		        n = self.ser.inWaiting()
+		        if n:
+		            text = text + self.ser.read(n) #get it
+		        for byte in text:
+		            self.rawData.append(byte)
 
     def OnMenuOpen(self, event): # wxGlade: MainFrame.<event_handler>
         self.txtDebug.AppendText("\n[MISSING] Event handler `OnMenuOpen' not implemented!")
@@ -429,17 +449,11 @@ class MainFrame(wx.Frame):
             self.txtDebug.AppendText("   %s\n"%(str(self.ser)))
             try:
                 self.ser.open()
-            except serial.SerialException:
-                self.SetDisconnected()
-                dlg = wx.MessageDialog(None, str(e), "Serial Port Error", wx.OK | wx.ICON_ERROR)
-                dlg.ShowModal()
-                dlg.Destroy()
-            else:
                 n = self.ser.inWaiting()
                 self.txtDebug.AppendText("\n[SERIAL] Bytes in Buffer when opening: %i"%(n))
                 if n:
                     text = self.ser.read(n)
-                self.StartMainThread()
+                self.StartSerialThread()
                 self.SetConnected()
                 if self.chkBoxLogData.IsChecked():
                     folder = self.txtDataFolder.GetValue()
@@ -458,6 +472,12 @@ class MainFrame(wx.Frame):
                         dlg.Show()
                         dlg.Destroy()
 
+            except serial.SerialException:
+                self.SetDisconnected()
+                dlg = wx.MessageDialog(None, str(e), "Serial Port Error", wx.OK | wx.ICON_ERROR)
+                dlg.ShowModal()
+                dlg.Destroy()
+
     def OnMenuQuickConnect(self, event): # wxGlade: MainFrame.<event_handler>
         self.txtDebug.AppendText("\n[MISSING] Event handler `OnMenuQuickConnect' not implemented!")
         event.Skip()
@@ -467,7 +487,7 @@ class MainFrame(wx.Frame):
         event.Skip()
 
     def OnClose(self, event):
-        #self.StopMainThread()
+        #self.StopSerialThread()
         self.ser.close()
         self.file.close()
         exit()
@@ -540,7 +560,6 @@ class MainFrame(wx.Frame):
         event.Skip()
 
 # end of class MainFrame
-
 
 if __name__ == "__main__":
     app = wx.PySimpleApp(0)

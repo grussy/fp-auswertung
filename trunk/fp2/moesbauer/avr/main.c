@@ -62,7 +62,7 @@ void init_Interrupts( void )
 	//interrupt INT2 on rising edge
 	MCUCSR |= (1<<ISC2);
 	// turn on interrupts!
-	GIMSK  |= (1<<INT0)|(1<<INT1)|(1<<INT2);
+	GIMSK  |= (1<<INT0)|(1<<INT1);
 }
 
 inline void toggle_Int2( void )
@@ -199,30 +199,32 @@ int main(void)
 		if (cmd_recieved) {
 			uart_putc('\r');
 			if (strcmp(cmd ,"help")==0){ 
-				uart_puts("\n[Usage] Enter Command. While meassuring command means stop.");
-				uart_puts("\n Commands are:");
+				uart_puts("\n[Usage] Enter Command:");
 				uart_puts("\n                      help - for this Help");
 				uart_puts("\n                     start - start a meassurement. While this i send.");
 				uart_puts("\n                      stop - stop a meassurement.");
 				uart_puts("\n                   auto_on - start/stop auto on (INT2).");
 				uart_puts("\n                  auto_off - start/stop auto off (INT2).");
 				uart_puts("\n                    errors - Read error counter");
-			} else if (cmd == "start"){
+			} else if (strcmp(cmd, "start") == 0){
 				started = 1;
 				uart_puts("OK\n");
-			} else if (cmd == "stop"){
+			} else if (strcmp(cmd, "stop") == 0){
 				started = 0;
 				uart_puts("OK\n");
-			} else if (cmd == "auto_on"){
+			} else if (strcmp(cmd, "auto_on") == 0){
 				started = 0;
 				GIMSK |= (1<<INT2);
 				uart_puts("OK\n");
-			} else if (cmd == "auto_off"){
+			} else if (strcmp(cmd, "auto_off") == 0){
 				GIMSK &= ~(1<<INT2); //disable INT2
 				started = 0;
 				uart_puts("OK\n");
-			} else if (cmd == "errors") {
-				sprintf(buffer, "ErrorCount: %i\n", saved_timer, counted_interrupts, saved_overflows);h
+			} else if (strcmp(cmd, "errors") == 0) {
+				sprintf(buffer, "ErrorCount: %i\n", saved_timer, counted_interrupts, saved_overflows);
+				uart_puts(buffer);
+			} else if (strcmp(cmd, "?") == 0) {
+				sprintf(buffer, "openMouseSpeed Firmware 0.1 a");
 				uart_puts(buffer);
 			} else {
 				uart_puts("[Unknown Command]: ");
