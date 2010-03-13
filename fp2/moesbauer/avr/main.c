@@ -16,7 +16,7 @@
 // #endif
 
 /* Variable Declaration */
-volatile int cmd_recieved, int1, int2, send, started = 0;
+volatile int cmd_recieved, int1, int2, send, started, num_samples= 0;
 volatile unsigned int error_counter, saved_timer, counted_interrupts, interrupts = 0;
 volatile unsigned long overflows, saved_overflows=0;
 volatile char cmd [10];
@@ -62,7 +62,7 @@ void init_Interrupts( void )
 	//interrupt INT2 on rising edge
 	MCUCSR |= (1<<ISC2);
 	// turn on interrupts!
-	GIMSK  |= (1<<INT0)|(1<<INT1);
+	GIMSK  |= (1<<INT0)|(1<<INT1)|(1<<INT2);
 }
 
 inline void toggle_Int2( void )
@@ -75,60 +75,51 @@ inline void toggle_Int2( void )
 
 inline void count_interrupt( void )
 {
-	counted_interrupts += 1;     //count
+	interrupts++;     //count//
+	if (interrupts >= num_samples) {
+		saved_timer = TCNT1; //timer auslesen
+		saved_overflows = overflows; // overflows auslesen
+		counted_interrupts = interrupts;
+		TCNT1= 0;
+		overflows = 0; //reset
+		interrupts = 0;
+		send = 1;
+	}
 }
 
 ISR(INT0_vect)
 {
-//	interrupts++;     //count// 	
-	if (int1) {
-		error_counter += 1;
-	}
-	int1 += 1;	//flag setzen
-	saved_timer = TCNT1; //timer auslesen
-	saved_overflows = overflows; // overflows auslesen
-	TCNT1= 0;
-	overflows = 0; //reset
+	count_interrupt();
 }
 
 ISR(INT1_vect)
 {
-//	interrupts++;     //count// 	if (int1) {
-	if (int2) {
-		error_counter += 1;
-	}
-	int2 += 1;	//flag setzen
-	saved_timer = TCNT1; //timer auslesen
-	saved_overflows = overflows; // overflows auslesen
-	TCNT1= 0;
-	overflows = 0; //reset
+	count_interrupt();
 }
 
 ISR(INT2_vect)
 {
 	if (started){
-		uart_puts("1t1000i1o\n");
+		GIMSK  &= ~(1<<INT0)|(1<<INT1); //stop meassuring
+		stop_Timer();
+		TCNT1 = 0;
+		overflows = 0;
 		started = 0;
-		//uart_puts("stopped");
+		send = 0
+		uart_puts("stopped\n");
 	} else {
-		uart_puts("1t2000i1o\n");
+		TCNT1 = 0;
+		overflows = 0;
 		started = 1;
-		//uart_puts("started");
+		uart_puts("started\n");
+		TCCR1B |= (1<<CS10); // start timer
+		GIMSK  |= (1<<INT0)|(1<<INT1); //start meassuring
 	}
 	toggle_Int2();
 }
 
 ISR(TIMER1_OVF_vect)
 {
-// 	if (overflows == 10) {
-// 		send = 1;
-// 		saved_timer = TCNT1;
-// 		TCNT1 = 0;
-// 		saved_overflows = overflows;
-// 		overflows = 0;
-// 		counted_interrupts = interrupts;
-// 		interrupts = 0;
-// 	}
 	overflows++;
 }
 
@@ -160,6 +151,7 @@ inline void stop_Timer( void )
 
 int main(void)
 {
+	num_samples = 8;
 	USART_Init();
 	uart_puts("\n#########################################################");
 	uart_puts("\n# Welcome to Low Speed Meassuring using a Mouse Sensor. #");
@@ -168,33 +160,23 @@ int main(void)
 	uart_puts("\n#                     by Tobi and Paul                  #");
 	uart_puts("\n#########################################################");
 	uart_puts("\n");
+	sprintf(buffer, "\n  Auto Meassure on, Sampling %u counts", num_samples);
+	uart_puts(buffer);
+	uart_puts("\n  [OUTPUT] is <number_of_interrupts number_of_overflows timer_count>");
 	sprintf(cmd, "");
 	init_Interrupts();
 	GIMSK  &= ~(1<<INT0)|(1<<INT1); //but stop meassuring
 	start_Timer();
 	sei();
 	while(1) {
-// 		if (error_counter) {
-// 			sprintf(buffer, "\n[DEBUG] Error Counter was at: %u\n", error_counter);
-// 			uart_puts(buffer);
-// 			error_counter = 0;
-// 		}
-		if (int1) {
-			sprintf(buffer, "%ui%ut%uo\n", int1+int2, saved_timer, saved_overflows);
-			int1 = 0;
-			if (started) uart_puts(buffer);
-		}
-		if (int2) {
-			sprintf(buffer, "%ui%ut%uo\n", int1+int2, saved_timer, saved_overflows);
-			int2 = 0;
-			if (started) uart_puts(buffer);
-		}
-		if (send) {
-			if (counted_interrupts) {
-				sprintf(buffer, "%ut%ui%uo\n", saved_timer, counted_interrupts, saved_overflows);
-				uart_puts(buffer);
+		if (started) {
+			if (send) {
+				if (counted_interrupts) {
+					sprintf(buffer, "%u %u %u\n", saved_timer, saved_overflows, counted_interrupts);
+					uart_puts(buffer);
+				}
+				send = 0;
 			}
-			send = 0;
 		}
 		if (cmd_recieved) {
 			uart_putc('\r');
@@ -221,12 +203,12 @@ int main(void)
 				started = 0;
 				uart_puts("OK\n");
 			} else if (strcmp(cmd, "errors") == 0) {
-				sprintf(buffer, "ErrorCount: %i\n", saved_timer, counted_interrupts, saved_overflows);
+				sprintf(buffer, "ErrorCount: %i\n", error_counter);
 				uart_puts(buffer);
 			} else if (strcmp(cmd, "?") == 0) {
-				sprintf(buffer, "openMouseSpeed Firmware 0.1 a");
+				sprintf(buffer, "Timer was %u ", TCNT1);
 				uart_puts(buffer);
-			} else {
+			}else {
 				uart_puts("[Unknown Command]: ");
 				uart_puts(cmd);
 			}
