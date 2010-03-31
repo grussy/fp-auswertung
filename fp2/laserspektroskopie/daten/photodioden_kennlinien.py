@@ -23,7 +23,7 @@ for line in open('PD1_kennlinie.dat','r'):
     Diode1_U_10K.append(float(splitted[3]))
     
     
-#TODO: Errors Y from Oszilloskope File anfügen
+#TODO: Errors Y from Oszilloskope File anfï¿½gen
 
 graphD1_50R = TGraphErrors(len(Diode1_laserstrom), array('d',Diode1_laserstrom) ,array('d',Diode1_U_50R), 
             array('d',[1]*len(Diode1_laserstrom)), array('d',[2]*len(Diode1_U_50R)))
@@ -58,7 +58,7 @@ for line in open('PD2_kennlinie.dat','r'):
     Diode2_U_10K.append(float(splitted[3]))
 
 
-#TODO: Errors Y from Oszilloskope File anfügen
+#TODO: Errors Y from Oszilloskope File anfï¿½gen
 graphD2_50R = TGraphErrors(len(Diode2_laserstrom), array('d',Diode2_laserstrom) ,array('d',Diode2_U_50R), 
             array('d',[1]*len(Diode2_laserstrom)), array('d',[2]*len(Diode2_U_50R)))
     
@@ -74,6 +74,7 @@ canvasD2.SetGrid()
 graphD2_10K.Draw('AC*')
 graphD2_1K.Draw('C*')
 graphD2_50R.Draw('C*')
+
 
 canvasD2.Update()
 
