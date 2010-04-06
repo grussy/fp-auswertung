@@ -25,6 +25,8 @@
 % Für die Wahl der Schriftart
 \newcommand{\changefont}[3]{
 \fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+%\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand*\vec[1]{{\mbox{\boldmath\ensuremath{#1}}}}
 
 \begin{document}
 % keine Hurenkinder und Schusterjungen
@@ -67,6 +69,35 @@ Bindet man die Kerne nun aber in Kristalle ein so muss der Impuls des Photons ir
 
 
 \section{Theoretische Grundlagen}
+Wie schon im Überblick erwähnt geht es beim Mößbauereffekt um das Auftreten rückstoßfreier Kernresonanzabsorption.
+In unserem Fall wird der Mößbauereffekt an der 14,4keV-Linie von $^{57}Fe$ beobachtet. 
+
+\subsection{Resonanzabsorption}
+Geht ein Kern unter Aussendung eines Photons von einem angeregten Zustand $E_a$ in den Grundzustand $E_g$ über und regt dieses Photon
+wiederum einen anderen Kern aus dem
+Grundzustand $E_g$ in den selben angeregten Zustand $E_a$ an, so spricht man von Resonanzabsorption.
+
+Ein Freies Ruhendes Atom mit Masse $m$ erhält bei Emission eines Photons $\gamma$ aufgrund der Impulserhaltung
+gerade den entgegengesetzten Impuls des ausgesendeten Photons:
+\begin{align}
+ \vec{p}_g = -\vec{p}_\gamma = \hbar\vec{k}
+\end{align}
+Für die Energie dieses Rückstoßes erhält man mit der Photonenenergie $E^2_\gamma = \vec{p}^2_\gamma c^2$:
+\begin{align}
+ E_R = \frac{\vec{p}_g^2}{2m} = \frac{\vec{p}^2_\gamma}{2m} = \frac{E^2_\gamma}{2mc^2}
+\end{align}
+Die Energie des Übergangs $E = E_a - E_g$ teilt sich also auf die Rückstoßenergie und die Photonenenergie auf:
+\begin{align}
+ E = E_R + E_\gamma
+\end{align}
+Somit entspricht die Energie des emmitierten Photons nicht ganz der des Übergangs. Ebenso wird bei der Absorption eines Photons durch einen freien ruhenden
+Kern ein Impuls auf den Kern übertragen. Insgesamt fehlt für die Resonanzabsorption bei freien ruhenden Atomen bzw Kernen also der Energiebetrag von $2E_R$
+
+
+\subsection{Mößbauereffekt}
+\subsection{Isomerieverschiebung}
+\subsection{Hyperfeinstrukturaufspaltung}
+\subsection{Linienverbreiterung}
 
 \section{Versuchsaufbau}
 
@@ -79,7 +110,7 @@ Bindet man die Kerne nun aber in Kristalle ein so muss der Impuls des Photons ir
 \section{Zusatz: Geschwindigkeitsmessung}
 Nach Aussagen des Assistenten stellte sich bei diesem Versuchsaufbau schon seit längerem die Frage wie groß der Fehler der Geschindigkeit des Schlittens also des Absorbers ist. Somit haben wir uns ein paar Gedanken gemacht wie man denn die Geschwindikeit des Schlittens Messen kann. Eine Zeitmessung über lange Strecken macht keinen Sinn, da die Konstanz der Geschindigkeit untersucht werden soll. Wir hatten die Idee den Sensor einer optischen Maus zu verwenden: 800 dpi, sollten eine ausreichende Genauigkeit bringen.
 
-Gängige Maussensoren haben zwei mögliche Ausgänge: Ein serieller Ausgang und eine ``Vierzusands Ring Ausgang'' also 2 Pins für jede Achse, wobei die Zustände im Ring je nach Bewegungsrichtung linksrum oder rechtsrum aufeinander folgen.
+Gängige Maussensoren haben zwei mögliche Ausgänge: Ein serieller Ausgang und eine ``Quadratur Ausgang'' also 2 Pins für jede Achse, wobei die Zustände im Ring je nach Bewegungsrichtung linksrum oder rechtsrum aufeinander folgen.
 
 Wir entschienden uns mit der Intention die kleinstmöglichen Inkremente zu erhalten für den letzeren Anschluss und nahmen einen Microcontroller für die Auswertung der Bewegung. Anfangs war das ein Microchip PIC18F4550, da dieser jedoch Probleme machte stiegen wir auf einen Atmel ATMega32 um. Leider mussten wir feststellen als wir die ersten Geschwindigkeitshistogramme betrachteten, dass ein Fehler vorlag. Es stellte sich heraus das der 16MHz Takt des Microcontrollers nicht ausreichte um alle Zustandsänderungen des Maussensors zu erfassen. Bei schnellen Bewegungen kam der Chip nicht nach einem Interrupt nicht mehr in den normalen Programmablauf da schon der nächste Interrupt ausgelöst war.
 
