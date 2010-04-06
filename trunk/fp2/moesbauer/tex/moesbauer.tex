@@ -77,7 +77,7 @@ Geht ein Kern unter Aussendung eines Photons von einem angeregten Zustand $E_a$ 
 wiederum einen anderen Kern aus dem
 Grundzustand $E_g$ in den selben angeregten Zustand $E_a$ an, so spricht man von Resonanzabsorption.
 
-Ein Freies Ruhendes Atom mit Masse $m$ erhält bei Emission eines Photons $\gamma$ aufgrund der Impulserhaltung
+Ein freies ruhendes Atom bzw. ruhender Kern mit Masse $m$ erhält bei Emission eines Photons $\gamma$ aufgrund der Impulserhaltung
 gerade den entgegengesetzten Impuls des ausgesendeten Photons:
 \begin{align}
  \vec{p}_g = -\vec{p}_\gamma = \hbar\vec{k}
@@ -85,16 +85,34 @@ gerade den entgegengesetzten Impuls des ausgesendeten Photons:
 Für die Energie dieses Rückstoßes erhält man mit der Photonenenergie $E^2_\gamma = \vec{p}^2_\gamma c^2$:
 \begin{align}
  E_R = \frac{\vec{p}_g^2}{2m} = \frac{\vec{p}^2_\gamma}{2m} = \frac{E^2_\gamma}{2mc^2}
+ \label{e_r}
 \end{align}
 Die Energie des Übergangs $E = E_a - E_g$ teilt sich also auf die Rückstoßenergie und die Photonenenergie auf:
 \begin{align}
  E = E_R + E_\gamma
 \end{align}
 Somit entspricht die Energie des emmitierten Photons nicht ganz der des Übergangs. Ebenso wird bei der Absorption eines Photons durch einen freien ruhenden
-Kern ein Impuls auf den Kern übertragen. Insgesamt fehlt für die Resonanzabsorption bei freien ruhenden Atomen bzw Kernen also der Energiebetrag von $2E_R$
+Kern ein Impuls auf den Kern übertragen. Insgesamt fehlt für die Resonanzabsorption bei freien ruhenden Atomen bzw Kernen also der Energiebetrag von $2E_R$.
+Damit sind die Emissions- und Absorptionslinie gegeneinander Energieverschoben. (Siehe Abbildung. \ref{energieverschiebung})
+\begin{figure}
+ \includegraphics[width=0.9\linewidth]{pictures/energieverschiebung.eps}
+ \caption{Energieverschiebung von Emissions- und Absorptionslinie}
+ \label{energieverschiebung}
+\end{figure}
+Bei Übergängen an Atomen im Sichtbaren Bereich ist die Linienbreite, aufgrund der relativ kleinen Übergangsenergie (eV-Bereich) gegenüber der Atommasse,
+groß gegenüber der Verschiebung der beiden Linien. Kommt zur natürlichen Linienbreite auch noch die Dopplerverbreiterung wenn sich die Atome ein einem Gas
+befinden so kann fast vollständige Überlappung der beiden Linien erreicht werden. Es kommt also fast immer zu Resonanzabsorption.
 
+Bei Kernübergängen im $\gamma$-Bereich ist die Übergangsenergie im keV-Bereich und somit groß gegen die Masse des Kerns. Die beiden Linien überschneiden sich
+selbst mit Dopplerverbreiterung garnicht oder fast garnicht. In einem solchen System wird also keine Resonanzabsorption zu beobachten sein zumindest nicht
+wenn man das System nicht dahingehend beeinflussen kann dass die Linien näher zusammenrücken. Hier kommt der Mößbauereffekt gelegen.
 
 \subsection{Mößbauereffekt}
+Rudolf Mößbauer entdeckte, dass wenn man die Kerne nicht frei vorliegen hat sondern in ein Gitter bindet, kann man erreichen das der Rückstoßimpuls $\vec{p}_g$
+auf den gesamten Kristall übertragen wird. Wegen der riesigen Masse des Kristalls ist nach Gleichung \ref{e_r} damit aber, solange keine Gitterschwingungen (Phononen) angeregt werden,
+fast kein Energieübertrag verbunden. Die Emissions- und Absorptionslinie sind somit nicht gegeneinander verschoben und es kann Resonanzabsorption auftreten. Die sogenannte
+``rückstoßfreie Resonanzabsorption''.
+
 \subsection{Isomerieverschiebung}
 \subsection{Hyperfeinstrukturaufspaltung}
 \subsection{Linienverbreiterung}
