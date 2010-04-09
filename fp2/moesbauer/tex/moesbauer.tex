@@ -52,6 +52,40 @@
 \newpage
 \pagenumbering{arabic}
 \section{Überblick}
+
+Bei dem Mössbauereffekt handelt es sich um rückstoßfreie Resonanzabsorption im Gammastrahlenbereich. Sein Namensgeber Rudolf Mössbauer erhielt für die Entdeckung 1961 den Nobelpreis. Zum besseren Verständnis des eigentlichen Phänomens wird nun zunächst etwas Vorwissen erläutert.
+
+
+Radioaktive Strahlung
+
+im allgemeinen unterscheidet man drei Arten bei dortiger Strahlung
+
+die Alphastrahlung
+hierbei handelt es sich um Heliumskerne. Punkt
+
+die Betastrahlung
+hierbei handelt es sich um Elektronen. Blabla.
+
+Die Gammastrahlung
+hierbei handelt es sich um hoch energetische elektromagnetische Strahlung. Besonders gefährlich wird sie dadurch das sie nur sehr schwer abzuschirmen ist. Man benötigt ein sehr dichtes Material in der Praxis wird meist gleich verwendet. Zusätzlich ist eine sehr dicke Matriarchat für vonnöten um die Strahlung abzuschwächen.
+
+
+
+
+Der Mössbauereffekt
+
+im Rahmen seiner Dissertationsarbeit wollte Mössbauer die Wahrscheinlichkeit für die Emissionen und anschließende Absorption eines Gammaquant untersuchen. Er ging davon aus dass sich zwei Quanten die auf diese Weise Wechsel wirken mit der doppelten Rückstoßgeschwindigkeit aufeinander zu bewegen müssen. Diese Theorie folgt direkt aus der Impulserhaltung und schien zunächst auch durch das Experiment bestätigt zu werden. Zuerst untersuchter Mössbauer nämlich
+
+
+Wenn der Eisenkern von einem angeregten in einen Grundzustand übergeht, sendet er ein Gamma Quant aus. Da dieses einen von Null verschiedenen Impuls hat muss sich laut der Impulserhaltung auch der Impuls des Kerns geändert haben. Interpretieren wir die Bewegungsrichtung des Quants als positive Wegrichtung so sinkt der Impuls des Kerns bei der Emission. Für das ausgesendete Quant heißt das dass es nicht mehr exakt die Energie des Zustandsübergangs hat da der Impulsübertrag einen Energieübertrag impliziert. Geht man von freiem Eisenkern aus wie auch Mössbauer es zunächst tat so ist diese Energieübertrag durchaus signifikant. Betrachtet man sie Absorption so findet auch hier ein Energieübertrag statt, allerdings steigt hier der Impuls des Kerns und es bleibt nicht die gesamte Energie des Quants übrig um den Kern anzuregen. Folgende Skizze soll dies nochmal veranschaulichen.
+
+
+
+Mössbauer forderte also zunächst das sich zwei Quanten für die Resonanzabsorption auftreten könne stets mit der doppelten Rückstoßgeschwindigkeit aufeinander zu bewegen müssen hierbei handelt es sich um die Relativgeschwindigkeit zwischen den Quanten. Seine ersten Messungen schienen seiner Annahme auch zu bestätigen diese waren noch bei Zimmertemperatur und darüber. Als er jedoch die Konsistenz auch bei tiefen Temperaturen überprüfen wollte verhielt sich das Messignal plötzlich völlig anders als erwartet.
+
+
+
+
 Stichwort rückstoßfreie Resonanzabsorption: Emmitiert ein Kern Strahlung in Form eines Photons, so hat dieses Photon einen Impuls.
 Nach der Impulserhaltung muss also auch der strahlende Kern gerade diesen Impuls in entgegengesetzter Richtung erhalten. Der Kern hat nach Aussendung des Photons eine Geschwindigkeit, folglich eine kinetische Energie. Dem Photon fehlt sozusagen genau die Energie welche der Kern für die Bewegung hat. Von 'Fehlen' spricht man, da die Energie des Photons nun nicht ausreicht um einen anderen (ruhenden) Kern anzuregen. Um die Anregung zu ermöglichen müsste dieser Kern sich mit der 'doppelten Geschwindigkeit' des ersten auf das Photon zu bewegen.
 
@@ -125,7 +159,7 @@ fast kein Energieübertrag verbunden. Die Emissions- und Absorptionslinie sind s
 
 \section{Zusammenfassung}
 
-\section{Zusatz: Geschwindigkeitsmessung}
+\section{Zusatz: Geschwindigkeitsmessung oder die entdeckung der Langsamkeit}
 Nach Aussagen des Assistenten stellte sich bei diesem Versuchsaufbau schon seit längerem die Frage wie groß der Fehler der Geschindigkeit des Schlittens also des Absorbers ist. Somit haben wir uns ein paar Gedanken gemacht wie man denn die Geschwindikeit des Schlittens Messen kann. Eine Zeitmessung über lange Strecken macht keinen Sinn, da die Konstanz der Geschindigkeit untersucht werden soll. Wir hatten die Idee den Sensor einer optischen Maus zu verwenden: 800 dpi, sollten eine ausreichende Genauigkeit bringen.
 
 Gängige Maussensoren haben zwei mögliche Ausgänge: Ein serieller Ausgang und eine ``Quadratur Ausgang'' also 2 Pins für jede Achse, wobei die Zustände im Ring je nach Bewegungsrichtung linksrum oder rechtsrum aufeinander folgen.
@@ -134,4 +168,11 @@ Wir entschienden uns mit der Intention die kleinstmöglichen Inkremente zu erhal
 
 
 Also musste doch die 1te Anschlussmethode herhalten, diesmal aber ohne Microcontroller und stattdessen direkt am PC angeschlossen.
+
+Nachdem das Programm geschrieben und die ersten Messungen gemacht waren wurde schnell klar das wir einen noch falscheren Weg eingeschlagen hatten, denn nun verpassten wir zwar keinenWeginkrement mehr, allerdings 
+lag nun die Genauigkeit der Zeitmessung an der Prozessorauslastung des Rechners. Da dies noch unzulänglicher war überdachten wir unseren ersten Ansatz, und implementiereten eine Version in der über eine einstellbare Anzahl von Weginkrementen gemittelt wird.
+Dies erwies sich als des Rätsels Lösung. Wir hatten zwar die Anzahl der Messungen deutlich reduziert, dafür war die Aufgabe die der Microcontroller nun wärend eines Interrupts zu tun hatte (zählen) nicht mehr rechenintensiv, wesshalb es nun nicht mehr zu ``doppelten Interrupts'' kam.
+Desweiteren hatten wir den Fehler unserer Messung nun deutlich reduziert. Leider hatten wir Hard- und Software erst am letzten Tag unseres Praktikums bugfrei, wesshalb wir nicht mehr viele Datenreihen aufnehmen konnten. Die Aufgenommenen lieferten allerdings wie wir finden ein 
+Ergebniss, das durchaus Verbesserungsmöglichkeiten aufzeigt.
+
 \end{document}
