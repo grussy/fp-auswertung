@@ -147,6 +147,19 @@ auf den gesamten Kristall übertragen wird. Wegen der riesigen Masse des Kristal
 fast kein Energieübertrag verbunden. Die Emissions- und Absorptionslinie sind somit nicht gegeneinander verschoben und es kann Resonanzabsorption auftreten. Die sogenannte
 ``rückstoßfreie Resonanzabsorption''.
 
+\subsubsection{Debye-Waller-Faktor}
+Wie schon erwähnt kann es aber auch vorkommen, dass keine rückstoßfreie Resonanzabsorption auftritt da bei der Absorption oder Emission Gitterschwingungen (Phononen) 
+angeregt werden können und somit dem Photon doch wieder nicht die volle Energie des Übergangs zur Verfügung steht. Der Debye-Waller-Faktor $f$ gibt an wieviel rückstoßfreie Resonanzabsorption
+auftritt. Er hängt von der Temperatur und der Übergangsenergie ab:
+\begin{align}
+ f = exp\left[ -\frac{3E_R}{2k_B\Theta}\left(1+\left(\frac{2T}{\Theta}\right)^2 \int\limits_{0}^{\frac{\Theta}{T}} \frac{x~dx}{e^x - 1}\right)\right]
+\end{align}
+und lässt sich für kleine Temperaturen $(T<<\Theta)$ und Kerne im arteigenen kubischen Gitter annähern durch:
+\begin{align}
+ f \approx exp \left[ -\frac{E_R}{k_B\Theta}\left(\frac{3}{2} + \left(\frac{\pi T}{\Theta}\right)^2\right)\right]
+\end{align}
+wobei $T$ die absolute Temperatur, $k_B$ die Boltzmannkonstante, $E_R$ die Rückstoßenergie und $\Theta$ die Debye-Temperatur ist.
+
 \subsection{Isomerieverschiebung}
 \subsection{Hyperfeinstrukturaufspaltung}
 \subsection{Linienverbreiterung}
