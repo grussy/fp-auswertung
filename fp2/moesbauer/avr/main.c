@@ -105,7 +105,7 @@ ISR(INT2_vect)
 		TCNT1 = 0;
 		overflows = 0;
 		started = 0;
-		send = 0
+		send = 0;
 		uart_puts("stopped\n");
 	} else {
 		TCNT1 = 0;
