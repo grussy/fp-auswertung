@@ -20,7 +20,7 @@
 \fancyhead[L]{FPII Versuch: Mösbauereffekt}
 \renewcommand{\headrulewidth}{0.6pt}
 \renewcommand{\footrulewidth}{0.6pt}
-\setlength{\headheight}{16pt}
+\setlength{\headheight}{30pt}
 \setlength{\parindent}{0pt}
 % Für die Wahl der Schriftart
 \newcommand{\changefont}[3]{
@@ -105,7 +105,7 @@ Resonanzabsorption, das Photon kann nun einen anderen Kern anregen.
 
 \section{Theoretische Grundlagen}
 Wie schon im Überblick erwähnt geht es beim Mößbauereffekt um das Auftreten rückstoßfreier Kernresonanzabsorption.
-In unserem Fall wird der Mößbauereffekt an der 14,4keV-Linie von $^{57}Fe$ beobachtet. 
+Im Fall dieses Experiments wird der Mößbauereffekt an der 14,4keV-Linie von $^{57}Fe$ beobachtet. 
 
 \subsection{Resonanzabsorption}
 Geht ein Kern unter Aussendung eines Photons von einem angeregten Zustand $E_a$ in den Grundzustand $E_g$ über und regt dieses Photon
@@ -162,6 +162,16 @@ und lässt sich für kleine Temperaturen $(T<<\Theta)$ und Kerne im arteigenen k
 wobei $T$ die absolute Temperatur, $k_B$ die Boltzmannkonstante, $E_R$ die Rückstoßenergie und $\Theta$ die Debye-Temperatur ist.
 
 \subsection{Isomerieverschiebung}
+Ist die Ladungsdichteverteilung des angeregten Zustands nicht die selbe wie die des Grundzustands, wie z.B. bei dem im Versuch verwendeten $^{57}Fe$ bei dem der Kernradius
+des angeregten Zustands etwas kleiner ist als der Kernradius des Grundzustands, so führt das zu unterschiedlichen Wechselwirkungsenergien des Kerns mit
+der Hülle, also zu unterschiedlichen Energien der beiden Zustände. Dadurch sind das angeregte Energieniveau und das Grundnieveau um unterschiedliche Beträge gegen die
+reinen Kernenergien (ohne Hüllenwechselwirkung) verschoben. Ist nun die Elektronendichte $L(0)$ am Kernort aufgrund chemischer Bindungen in Quelle und Absorber unterschiedlich,
+so bewirkt das einen kleinen Unterschied in der Übergangsenergie.
+\begin{align}
+ E_\gamma = E_0 + \frac{2\pi}{3} L(0) \left[ R_a^2 - R_g^2\right]
+\end{align}
+Folglich entsteht eine kleine Verschiebung der gemessenen Linie gegenüber dem Nullpunkt der Geschwindigkeit. Diese wird als Isomerieverschiebung bezeichnet. Die Isomerieverschiebung
+liegt etwa in der Größenordnung der natürlichen Linienbreite und ist ein praktisches Werkzeug zur Untersuchung von chemischen Bindungen in den verwendeten Materialien.
 
 \subsection{Hyperfeinstrukturaufspaltung}
 Die Hyperfeinstrukturaufspaltung resultiert aus der Kopplung des kernmagnetischen Moments $\mu_I$ mit dem am Kernort durch die Hüllenelektronen erzeugten Magnetfeld $B_J$.
@@ -193,12 +203,24 @@ Durch das Abfahren der Emissionslinie mit der Absorptionslinie durch die Variati
 Emissions- und Absorptionskurve. Bei Verwendung von dünnen Quellen und Absorbern ist die gemessene Linie wieder eine Lorentzkurve und man erhält für den Zusammenhang
 zwischen gemessener und natürlicher Linienbreite den Zusammenhang:
 \begin{align}
+ \label{linienbreite}
  \Gamma_{mes} = 2\Gamma
 \end{align}
 
 Im Experiment verwendet man in der Praxis jedoch meistens dicke Absorber, was leider diesen einfachen Zusammenhang zerstört. Die Dicke von Quelle und Absorber bewirkt
-eine zusätzliche Verbreiterung der gemessenen Linie und lässt diese nicht mehr die Form einer Lorentzkurve haben.
-
+eine zusätzliche Verbreiterung der gemessenen Linie und lässt diese nicht mehr die Form einer Lorentzkurve haben. Nur durch umfangreiche numerische Berechnungen
+lässt sich die Verbreiterung der Linie mit der effektiven Quellen- und Absorberdicke in Beziehung setzen. Die Diagramme dazu sind in Frauenfelder ??Bibtex?? zu finden.
+Macht man die Annahme einer nicht resonant absorbierenden Quelle, also einer Quelle mit einer effektiven Quellendicke von 0, so muss nur die effektive Absorberdicke bestimmt
+werden. Diese ist definiert durch:
+\begin{align}
+ T_a = f_a \beta n \sigma_0 d
+\end{align}
+wobei $f_a$ der Debye-Waller-Faktor des Absorbers, $\beta$ die Isotopenhäufigkeit des absorbierenden Kerns $(^{57}Fe)$ im Absorber, $n$ die atomare Dichte
+des Absorbermaterials (Eisen), $\sigma_0$ der maximale Wirkungsquerschnitt und $d$ die Absorberdicke ist. Anhand dieser Größe kann dann aus einem Diagramm in Frauenfelder ??Bibtex??
+die relative Verbreiterung $W = \frac{\Gamma_{mes}}{\Gamma}$ und damit die natürliche Linienbreite $\Gamma = \frac{\Gamma_{mes}}{W}$ abgelesen werden.
+Eine andere Möglichkeit besteht darin statt einer Lorentzkurve auch eine Faltung aus Lorentz- und Gaußkurve an die Messwerte zu fitten. Hier repräsentiert der Gaußanteil
+die Verbreiterung der Linie durch Absorber- und Quellendicke. Hier gilt dann wieder für die Halbwertsbreite des Lorenzanteils der Zusammenhang aus Gleichung \ref{linienbreite}.
+Somit lässt sich auch die natürliche Linienbreite mit $\Gamma = \frac{\Gamma_{mes}}{2}$ wieder leicht daraus bestimmen.
 \section{Versuchsaufbau}
 
 \section{Durchführung}
