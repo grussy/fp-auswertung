@@ -64,10 +64,7 @@ hierbei handelt es sich um Elektronen.
 \textit{Die Gammastrahlung},hierbei handelt es sich um hoch energetische elektromagnetische Strahlung.
 Besonders gefährlich wird sie dadurch das sie nur sehr schwer abzuschirmen ist. Man benötigt ein sehr dichtes Material in der Praxis
 wird meist Blei verwendet. Zusätzlich ist eine sehr dicke Matrialschicht für vonnöten um die Strahlung abzuschwächen.
-
-
-
-
+\newline
 \textbf{Der Mössbauereffekt},
 im Rahmen seiner Dissertationsarbeit wollte Mössbauer die Wahrscheinlichkeit für die Emissionen und anschließende Absorption eines Gammaquant untersuchen.
 Er ging davon aus, dass sich zwei Quanten die auf diese Weise Wechselwirken mit der doppelten Rückstoßgeschwindigkeit aufeinander zu bewegen müssten.
@@ -102,9 +99,6 @@ Resonanzabsorption, das Photon kann nun einen anderen Kern anregen.
  \item Mit Hilfe verschiedener Aluminiumplättchen sollen Untergrundmessungen bei verschiedenen Dicken gemacht werden um später auf die Dicke Null extrapolieren zu können.
  \item Aufnahme der Spektren des Einlinien- (Eisen) absorbers und des 6-Linien- (Edelstahl) absorbers.
 \end{enumerate}
-
-
-
 
 \section{Theoretische Grundlagen}
 Wie schon im Überblick erwähnt geht es beim Mößbauereffekt um das Auftreten rückstoßfreier Kernresonanzabsorption.
@@ -226,6 +220,34 @@ die Verbreiterung der Linie durch Absorber- und Quellendicke. Hier gilt dann wie
 Somit lässt sich auch die natürliche Linienbreite mit $\Gamma = \frac{\Gamma_{mes}}{2}$ wieder leicht daraus bestimmen.
 \section{Versuchsaufbau}
 
+Mössbauer selbst untersuchte in seinem Versuchsaufbau die Emission des Absorbers hinter einer Abschirmung. Folgende Skizze soll seinen Versuchsaufbau veranschaulichen.
+
+[Skizze]
+
+in unserem Versuchsaufbau hingegen wird die Transmission des Absorbers hinter diesem detektiert. Hierfür wird ein Szintillationskristall verwendet.
+
+[SKIZZE]
+
+\subsection{Szintillatoren}
+beim Durchgang von energiereichen Fotonen oder geladenen Teilchen durch einen Szintillator wird dieser angeregt und gibt diese Anregungsenergie in Form von Licht wieder ab.
+man unterscheidet
+anorganische Szintillatoren	mit Aktivatorzentren (Farbzentren) dotierte Kristalle. Ionisierende Strahlung erzeugt freier Elektronen, freie Löcher, oder freie Elektron-Loch-Paare (Exzitzonen).
+				Diese wandern bis sie auf ein Aktivatorzentrum treffen, welches in einem angeregten Zustand übergeht und unter Emission von sichtbaren Licht wieder in einen Grundzustand 						zurückfällt. Damit der Szintillationskristall für sein eigenes Licht durchlässig ist muss er ein Einkristall (Monokristall, Kristall einer Atomsorte) sein. Der Donator muss so gewählt sein
+				dass er das Leitungs Band des Kristalls derart verformt das an der Fehlstelle Energieniveaus entstehen deren emittierte Fotonen nicht reabsorbiert werden können.
+Organische Szintillatoren	können Kristalle, Flüssigkeiten oder Polymehrere Festkörper sein. Die Szintillation funktioniert durch Anregung von Molekülzuständen in einem primären Fluoreszenzstoff, der 
+				dann UV Strahlung emittiert.
+Wir verwenden einen Szintillationskristall mit Farbstoffdonator.
+
+Das vom Szintillatoren emittierte Licht ist noch zu schwach um direkt gemessen zu werden. Daher verwendet man einen Foto multipler um den Szintillator zu einem Szintillationzähler zu erweitern.
+
+Photomultiplier
+
+[Skizze]
+
+ein Photomultiplier ist eine "Photeletktrodenvervielfachungsröhre", also eine Elektronenröhre zur Vervielfältigung von Photonen, also zur Verstärkung sehr schwacher Lichtsignale. Dies wird realisiert durch 
+eine Photokathode aus der Photonen durch Photoeffekt Elektronen erzeugen. Diese werden durch eine Spannung, die wie in obiger Skizze zu sehen über eine Spannungsteilerkette gestaffelt an sogenante Dynoden angelegt ist, beschleunigt. Bei jedem auftreffen auf solch eine Dynode erzeugt jedes Elektron mehrere Sekundärelektronen (n=3..10) , was eine rasche Vervielfältigung bedeutet. Die Elektronen fliessen schliesslich über die Anode und einen Messwiederstand nach Masse ab. Gemessen wird die Spannung die dabei am Messwiederstand abfällt.
+
+Diese Spannung wird nun elektronisch verarbeitet. Zunächst wird sie vorverstärkt, dann wird sie nach einem konfigurierbarem Verstärker aufgeteilt. Ein Teil geht in einem Fensterdiskriminator der andere in einen so genanntes Linear Gate. 
 \section{Durchführung}
 \subsection{Energieeichung MCA und Fenstereinstellung}
 Um den Multikanalanalysator zum Messen verwenden zu können, muss bekannt sein welche Energie welchem Kanal zugeordnet ist. Hierzu führt man eine Eichung mittels einer bzw. verschiedener
