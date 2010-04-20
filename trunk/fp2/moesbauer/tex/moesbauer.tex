@@ -87,7 +87,7 @@ nicht die gesamte Energie des Quants übrig um den Kern anzuregen. Folgende Skiz
 \begin{figure}
  \includegraphics[width=0.9\linewidth]{pictures/linienskizze.ps}
  \caption{Energieverschiebung von Emissions- und Absorptionslinie}
- \label{energieverschiebung}
+ \label{linienskizze}
 \end{figure}
 
 
@@ -227,15 +227,31 @@ Somit lässt sich auch die natürliche Linienbreite mit $\Gamma = \frac{\Gamma_{
 \section{Versuchsaufbau}
 
 \section{Durchführung}
-\subsection{Energieeichung MCA}
+\subsection{Energieeichung MCA und Fenstereinstellung}
 Um den Multikanalanalysator zum Messen verwenden zu können, muss bekannt sein welche Energie welchem Kanal zugeordnet ist. Hierzu führt man eine Eichung mittels einer bzw. verschiedener
-Quellen durch deren bekannte Energien eindeutig identifizierbare Linen im gemessenen Spektrum ergeben. Natürlich hängt die Energie - MCA Kanal beziehung von der Verstärkereinstellung ab.
-Folglich begannen wir damit anhand des Spektrums der Eisenquelle grob zu vermuten wo die zu untersuchende Linie liegt um eine möglichst optimale Auflösung der Linie durch die
+Quellen durch deren bekannte Energien eindeutig identifizierbare Linen im gemessenen Spektrum ergeben. Natürlich hängt die Energie - MCA Kanal Beziehung von der Verstärkereinstellung ab.
+Folglich begannen wir damit anhand des Spektrums der $^{57}$Co-Quelle grob zu vermuten wo die zu untersuchende Linie liegt um eine möglichst optimale Auflösung der Linie durch die
 Verstärkereinstellung zu erreichen. Hierbei kann man leider nicht an das gewünschte maximum gehen, da der Verstärker sonst übersteuert, was man schön am Oszilloskop beobachten kann.
 Als zufriedenstellende Einstellungen gefunden waren konnten wir die Energieeichung mit der Americium-Quelle durchführen. Vor diese Quelle können verschiedene Metallplättchen geschoben
 werden um verschiedene Energielinien ($K_\alpha$-Linien) zu erhalten. An die hierbei gemessenen Spektren lies sich jeweils eine Gaußkurve anpassen und schließlich aus den Orten der
-einzelenen Gaußkurven und den zugehörigen bekannten Energien ein liniarer Zusammenhang zwischen Kanalnummer und Energie herstellen.
+einzelenen Gaußkurven und den zugehörigen bekannten Energien ein linearer Zusammenhang zwischen Kanalnummer und Energie herstellen.\\
 
+Nun konnte der $14,4keV$-Peak eindeutig identifiziert werden und wir konnten mit dem SCA das Fenster auf diesen Peak setzen. Das Fenster muss gesetzt werden, da in der eigentlichen
+Messung nicht mit dem MCA gemessen wird sonder zwei Counter verwedet werden da diese von der Motorsteuerung aktiviert und deaktiviert werden können. Hierdurch soll sichergestellt werden,
+dass nur gemessen wird wenn der Schlitten auch gerade die gewünschte Geschwindigkeit fährt. Für die Einstellung des Fensters, muss das vom Verstärker kommende Signal in den SCA gegeben
+werden, dieser entscheidet ob es im Fenster liegt und gibt in diesem fall einen Puls, welcher später vom Counter registriert werden soll, auf seinen Ausgang. Dieses Signal wird verwendet
+um ein Gate zu schalten, welches dann wiederum das eigentliche Signal, das vom Verstärker kommt zum MCA durchlässt. Wie man sich denken kann muss dieser Prozess zeitlich abgestimmt
+geschehen. Hierfür steht ein Delay zur Verfügung an dem verschiedene Verzögerungen des Signals gewählt werden können. Außerdem bietet der SCA die möglichkeit das Triggersignal verzögert
+zu senden. Für die Einstellung werden einfach beide Signale auf dem Oszilloskop betrachtet und über geeignete Verzögerungen Zeitlich in Deckung gebracht.\\
+
+Um sicher zu stellen, dass die von uns gewählte Fenstereinstellung eine Messung möglich machen würde, nahmen wir über jeweils 10 Minuten mittels MCA zwei Kurven auf, eine mit
+ruhendem Absorber und eine mit maximaler Absorbergeschwindigkeit. Als wir zwischen diesen beiden Kurven einen Unterschied erkennen konnten waren wir mit der Fenstereinstellung zufrieden.
+
+\subsection{Bestimmung des Untergrunds}
+Neben den zwei wesentlichen Peaks im Spektrum der Quelle registriert der Szintillationszähler auch einen Untergrund welcher im wesentlichen durch Comptonstreuung erzeugt wird. Um diesen
+Untergrund bestimmen und später von den Messungen abziehen zu können stehen diverse Aluminiumplättchen unterschiedlicher Dicke zur Verfügung. Mit verschiedenen Kombinationen dieser Plättchen nahmen wir
+insgesamt 16 Messreihen auf. Wobei wir einen Bereich von $0,2$ bis $12 mm$ Dicke abdeckten. Aus diesen Daten lässt sich später auf die Dicke 0 extrapolieren und somit eine Zählrate für
+den Untergrund bestimmen. Mehr dazu in der Auswertung.
 \section{Auswertung}
 
 \section{Zusammenfassung}
