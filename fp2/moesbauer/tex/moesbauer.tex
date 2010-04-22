@@ -222,30 +222,44 @@ Somit lässt sich auch die natürliche Linienbreite mit $\Gamma = \frac{\Gamma_{
 
 Mössbauer selbst untersuchte in seinem Versuchsaufbau die Emission des Absorbers hinter einer Abschirmung. Folgende Skizze soll seinen Versuchsaufbau veranschaulichen.
 
-[Skizze]
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/moessbauer_original_aufbau.eps}
+ \caption{Schematik des Originalaufbaus wie von Mössbauer benutzt}
+\end{figure}
 
 in unserem Versuchsaufbau hingegen wird die Transmission des Absorbers hinter diesem detektiert. Hierfür wird ein Szintillationskristall verwendet.
 
-[SKIZZE]
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/unser_aufbau.eps}
+ \caption{Energieverschiebung von Emissions- und Absorptionslinie}
+\end{figure}
 
 \subsection{Szintillatoren}
 beim Durchgang von energiereichen Fotonen oder geladenen Teilchen durch einen Szintillator wird dieser angeregt und gibt diese Anregungsenergie in Form von Licht wieder ab.
 man unterscheidet
-anorganische Szintillatoren	mit Aktivatorzentren (Farbzentren) dotierte Kristalle. Ionisierende Strahlung erzeugt freier Elektronen, freie Löcher, oder freie Elektron-Loch-Paare (Exzitzonen).
-				Diese wandern bis sie auf ein Aktivatorzentrum treffen, welches in einem angeregten Zustand übergeht und unter Emission von sichtbaren Licht wieder in einen Grundzustand 						zurückfällt. Damit der Szintillationskristall für sein eigenes Licht durchlässig ist muss er ein Einkristall (Monokristall, Kristall einer Atomsorte) sein. Der Donator muss so gewählt sein
-				dass er das Leitungs Band des Kristalls derart verformt das an der Fehlstelle Energieniveaus entstehen deren emittierte Fotonen nicht reabsorbiert werden können.
-Organische Szintillatoren	können Kristalle, Flüssigkeiten oder Polymehrere Festkörper sein. Die Szintillation funktioniert durch Anregung von Molekülzuständen in einem primären Fluoreszenzstoff, der 
-				dann UV Strahlung emittiert.
-Wir verwenden einen Szintillationskristall mit Farbstoffdonator.
+\begin{itemize}
+ \item anorganische Szintillatoren
+  mit Aktivatorzentren (Farbzentren) dotierte Kristalle. Ionisierende Strahlung erzeugt freier Elektronen, freie Löcher, oder freie Elektron-Loch-Paare (Exzitzonen).
+  Diese wandern bis sie auf ein Aktivatorzentrum treffen, welches in einem angeregten Zustand übergeht und unter Emission von sichtbaren Licht wieder in einen Grundzustand 						zurückfällt. Damit der Szintillationskristall für sein eigenes Licht durchlässig ist muss er ein Einkristall (Monokristall, Kristall einer Atomsorte) sein. Der Donator muss so gewählt sein
+  dass er das Leitungs Band des Kristalls derart verformt das an der Fehlstelle Energieniveaus entstehen deren emittierte Fotonen nicht reabsorbiert werden können.
+ \item Organische Szintillatoren
+  können Kristalle, Flüssigkeiten oder Polymehrere Festkörper sein. Die Szintillation funktioniert durch Anregung von Molekülzuständen in einem primären Fluoreszenzstoff, der 
+  dann UV Strahlung emittiert.
+\end{itemize}
+Wir verwenden einen Szintillationskristall mit Farbstoffdonator.\newline
 
 Das vom Szintillatoren emittierte Licht ist noch zu schwach um direkt gemessen zu werden. Daher verwendet man einen Foto multipler um den Szintillator zu einem Szintillationzähler zu erweitern.
 
-Photomultiplier
-
-[Skizze]
+\subsection{Photomultiplier}
 
 ein Photomultiplier ist eine "Photeletktrodenvervielfachungsröhre", also eine Elektronenröhre zur Vervielfältigung von Photonen, also zur Verstärkung sehr schwacher Lichtsignale. Dies wird realisiert durch 
-eine Photokathode aus der Photonen durch Photoeffekt Elektronen erzeugen. Diese werden durch eine Spannung, die wie in obiger Skizze zu sehen über eine Spannungsteilerkette gestaffelt an sogenante Dynoden angelegt ist, beschleunigt. Bei jedem auftreffen auf solch eine Dynode erzeugt jedes Elektron mehrere Sekundärelektronen (n=3..10) , was eine rasche Vervielfältigung bedeutet. Die Elektronen fliessen schliesslich über die Anode und einen Messwiederstand nach Masse ab. Gemessen wird die Spannung die dabei am Messwiederstand abfällt.
+eine Photokathode aus der Photonen durch Photoeffekt Elektronen erzeugen. Diese werden durch eine Spannung, die wie in obiger Skizze zu sehen über eine Spannungsteilerkette gestaffelt an sogenante Dynoden angelegt ist, beschleunigt. 
+Bei jedem auftreffen auf solch eine Dynode erzeugt jedes Elektron mehrere Sekundärelektronen (n=3..10) , was eine rasche Vervielfältigung bedeutet. Die Elektronen fliessen schliesslich über die Anode und einen Messwiederstand nach Masse ab. Gemessen wird die Spannung die dabei am Messwiederstand abfällt. \newline
+
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/photomultiplier_schema.eps}
+ \caption{Funktionsprinzip eines Photomultipliers}
+\end{figure}
 
 Diese Spannung wird nun elektronisch verarbeitet. Zunächst wird sie vorverstärkt, dann wird sie nach einem konfigurierbarem Verstärker aufgeteilt. Ein Teil geht in einem Fensterdiskriminator der andere in einen so genanntes Linear Gate. 
 \section{Durchführung}
