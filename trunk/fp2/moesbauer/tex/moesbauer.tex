@@ -359,45 +359,30 @@ Dieses Ergebniss benutzten wir um den 14.4 keV Peak unseres Eisens zu identifizi
 \end{figure}
 
 \subsection{Untergrund}
-Da bei dem Zerfall von $^{57}Co}$ nach $^{57}Fe$ im Wesentlichen zwei Energien ($14,4 keV$ und $122 keV$ bzw. $136 keV$
+Da bei dem Zerfall von $^{57}Co$ nach $^{57}Fe$ im Wesentlichen zwei Energien ($14,4 keV$ und $122 keV$ bzw. $136 keV$
 \footnote{Der $136 keV$-Übergang ist relativ selten und liegt im Vergleich zu dem 14,4 keV sehr nah an dem $122 keV$-Übergang. Aus diesem Grund kann in guter
 Näherung von nur zwei verschiedenen Energien ausgegangen werden.}). Bei der Abschirmung durch Aluminium erwartet man also bei zunehmender Plättchendicke
 unterschiedlich starke Abschwächung der beiden Energien. Fittet man also eine Überlagerung von zwei Expotentialfunktionen an den gemessenen Verlauf, kann auf
 die Abschwächung der einzelnen Energien zurückgeschlossen werden. Wir erhalten somit einen Wert für den Untergrund in unserem $14,4 keV$ Fenster.\\
 
-Die Dicke des Aluminiumabsorbers haben wir jeweils mit der Mikrometerschraube gemessen und somit einen Fehler von 0,01 mm auf diese angenommen. Da die Mikrometerschraube leider wohl schon mal mit Gewalt in Berührung kam hat diese einen Offset den man n
-Der Fehler sR der Z ̈hlrate R = N/t ergibt sich aus dem statistischen Fehler
-                       a
-       √
-sN = N der Ereigniszahl und dem Fehler st = 1 ms der Messzeit t zu:
-                                          st       sN
-                                             2         2
-                            sR = R ·           +         .
-                                           t       N
-Aus dem durchgef ̈hrten Fit ergab sich so f ̈r die Abschirmung der γ-Quanten
-                    u                           u
-h ̈herer Energie folgender Zusammenhang zwischen Abschirmungsdicke d in mm
- o
-und Z ̈hlrate R:
-       a
-                f2 (d) = (69,11 ± 0,28) · exp (−0,0378 ± 0,0006) cps
-Damit ergibt sich durch Extrapolation auf eine Abschirmungsdicke d = 0 als
-Z ̈hlrate Rug f ̈r den Compton-Untergrund im 14,4 keV-Fenster:
-  a            u
-                              Rug = (69,11 ± 0,28) cps
-Diese Untergrundrate wurde bei allen folgenden Messungen ber ̈cksichtigt und
-                                                                    u
-von den aufgenommenen Z ̈hlraten abgezogen. Der Fehler wurde dabei auch
-                              a
-durch gaußsche Fehlerfortpflanzung berechnet.
-Es ist noch anzumerken, dass es sich hierbei um eine zweite Untergrund-Messung
-handelt, die wir am Ende des Versuchs durchgef ̈hrt haben. Die erste Messung,
-                                                    u
-vom Anfang des Versuchs, wurde von uns nicht weiter ber ̈cksichtigt, da wir
-                                                               u
-f ̈r deren Aufnahme keine Messungen mit kleinen Abschirmdicken durchgef ̈hrt
- u                                                                          u
-hatten. Trotzdem sei hier nochmal das Ergebnis der ersten Messung angegeben:
+Die Dicke des Aluminiumabsorbers haben wir jeweils mit der Mikrometerschraube gemessen und einen Fehler von $0,01 mm$ auf diese angenommen. Da die Mikrometerschraube leider wohl schon mal mit Gewalt in Berührung kam, hat diese einen Offset den man nicht übersehen sollte.
+Der Fehler auf die Zählrate $R = \frac{N}{t}$ ergibt sich zu:
+\begin{align}
+ s_R = R \sqrt{\left(\frac{s_t}{t}\right)^2 + \frac{1}{\sqrt{N}}}
+\end{align}
+
+Durch die relativ langen Messdauern (teilweise über Nacht gemessen) wird dieser Fehler allerdings so klein, dass ROOT keinen Fit mehr hinbekommt.
+Möglicherweise liegt hier ein systematischer Fehler vor der mit den Plättchen zusammenhängt oder von den ``Witterungsbedingungen'' abhängig ist.
+Gefittet wurde also mit der \textit{W} Option\footnote{\textit{W} - Set all weights to 1; ignore error bars}. Der Fit berücksichtigt also leider nicht, dass die Punkte die über Nacht gemessen wurden eigentlich einen kleineren Fehler haben als die Anderen. Aus dem Fit ergab sich folgender Zusammenhang für Dicke und Abschwächung der höheren Energie:
+\begin{align}
+ f_2 (d) = (50,38 \pm 0,78) \cdot exp (-0,0413 \pm 0,0027) \frac{Counts}{s}
+\end{align}
+ und somit eine Zählrate für den Untergrund bei Dicke 0 in unserm Fenster von:
+\begin{align}
+ R_{Untergrund} = (50,38 \pm 0,78) \frac{Counts}{s} 
+\end{align}
+Diese Rate wurde in allen folgenden Messungen abgezogen.
+       
 
 \begin{figure}[H]
  \includegraphics[width=0.9\linewidth]{pictures/untergrund.eps}
