@@ -38,22 +38,34 @@ class Messung:
                         self.counts.append(float(word))
         self.count = len(self.counts)
         self.channel = [i for i in range(self.count)]
-            
+        self.scounts = [200]*self.count
+        self.schannel = [1]*self.count
         # Erzeuge Graphen
-        g = TGraph(self.count, array('d',self.channel) ,array('d',self.counts))
+        g = TGraphErrors(self.count, array('d',self.channel) ,array('d',self.counts),
+            array('d',self.schannel) ,array('d',self.scounts))
         g.SetTitle(';Channel;Counts')
-        g.GetHistogram().SetTitleOffset(1.3, 'Y')
+        g.GetHistogram().SetTitleOffset(1.45, 'Y')
         g.SetMarkerStyle(1)
         g.SetMarkerColor(2)
         g.SetMarkerSize(3.0)
         self.graph = g
+
 
     # Zeichne Graphen
     def draw(self):
         c = TCanvas('c_'+self.name, self.name)
         self.canvas = c
         c.SetGrid()
-        self.graph.Draw('AP')
+        self.graph.Draw('APX')
+        lg = TLegend(0.47, 0.64, 0.88, 0.84)
+        lg.SetFillColor(0)
+        lg.AddEntry(self.graph, 'Messreihe:'+ self.name, 'p')
+        lg.AddEntry(self.fitfkt, 'Gauﬂfit', 'l')
+        lg.AddEntry(self.fitfkt, 'Schwerpkt = %.4f #pm %.4f' % (self.ort,self.sort), '')
+        lg.AddEntry(self.fitfkt, '#chi^{2}/ndf = %.2f/%d = %.2f' % (
+            self.chisq, self.ndf, self.rchisq), '')
+        self.legend = lg
+        self.legend.Draw()
         c.Update()
 
     # Gaussfit ohne Korrektur
@@ -62,7 +74,8 @@ class Messung:
             f = TF1('f_'+self.name, '(([0]/(sqrt(2*pi)*[1])) * exp(-0.5*(((x-[2])/[1])^2))) + (([4]/(sqrt(2*pi)*[5])) * exp(-0.5*(((x-[6])/[5])^2))) + [3]', self.fitrange[0], self.fitrange[1])
             f.SetMarkerColor(2)
             f.SetParameters(array('d', self.fitparameter))
-            self.graph.Fit(f, 'QR')
+            self.graph.Fit(f, 'MQR')
+            self.fitfkt = f
             self.amp, self.samp = f.GetParameter(0), f.GetParError(0)
             self.sigma, self.ssigma = f.GetParameter(1), f.GetParError(1)
             self.ort, self.sort = f.GetParameter(2), f.GetParError(2)
@@ -74,7 +87,8 @@ class Messung:
             f = TF1('f_'+self.name, '(([0]/sqrt(2*pi*[1])) * exp(-0.5*(((x-[2])/[1])^2))) + [3]', self.fitrange[0], self.fitrange[1])
             f.SetMarkerColor(2)
             f.SetParameters(array('d', self.fitparameter))
-            self.graph.Fit(f, 'QR')
+            self.graph.Fit(f, 'MQR')
+            self.fitfkt = f
             self.amp, self.samp = f.GetParameter(0), f.GetParError(0)
             self.sigma, self.ssigma = f.GetParameter(1), f.GetParError(1)
             self.ort, self.sort = f.GetParameter(2), f.GetParError(2)
@@ -109,27 +123,42 @@ messungen = load()
 x,y,sy,sx=[],[],[],[]
 print "\nFiting and Drawing ..."
 for m in messungen:
-	m.fit()
-	m.draw()
-	x.append(float(m.kenergie))
-	sx.append(0.01)
-	y.append(float(m.ort))
-	sy.append(float(m.sort))
+    m.fit()
+    m.draw()
+    x.append(float(m.kenergie))
+    sx.append(0.01)
+    y.append(float(m.ort))
+    sy.append(float(m.sort))
 
 print "\nCalculating ..."
 g = TGraphErrors(len(x), array('d',x) ,array('d',y),array('d',sx),array('d',sy))
-g.SetTitle(';Energy;Channel')
+g.SetTitle(';Energie [keV];Kanal')
 g.GetHistogram().SetTitleOffset(1.3, 'Y')
-g.SetMarkerStyle(1)
+g.SetMarkerStyle(3)
 g.SetMarkerColor(2)
-g.SetMarkerSize(3.0)
+g.SetMarkerSize(1.0)
 f = TF1('Eichgerade', '[0]*x+[1]')
 f.SetMarkerColor(2)
+f.SetMarkerStyle(6)
 f.SetParameters(120,1000)
-g.Fit(f, 'QR')
+g.Fit(f, 'MQE', 'X')
+a, sa = f.GetParameter(0), f.GetParError(0)
+b, sb = f.GetParameter(1), f.GetParError(1)
+chisq = f.GetChisquare()
+ndf = f.GetNDF()
+rchisq = chisq/ndf
 c = TCanvas('Eichung', 'eichung')
 c.SetGrid()
 g.Draw('AP')
+lg = TLegend(0.47, 0.14, 0.88, 0.34)
+lg.SetFillColor(0)
+lg.AddEntry(g, 'Messreihe: Energieeichung.dat', 'p')
+lg.AddEntry(f, 'Linearer Fit: ax+b', 'l')
+lg.AddEntry(f, 'a = %.4f #pm %.4f' % (a,sa), '')
+lg.AddEntry(f, 'b = %.4f #pm %.4f' % (b,sb), '')
+lg.AddEntry(f, '#chi^{2}/ndf = %.2f/%d = %.2f' % (
+    chisq, ndf, rchisq), '')
+lg.Draw()
 c.Update()
 
 

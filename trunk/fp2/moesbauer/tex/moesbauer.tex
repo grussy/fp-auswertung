@@ -301,6 +301,62 @@ wenn die Labviewsoftware sich mal wieder aufgehängt hatte. Abgesehen von diesen
 Übung als sehr einfach.
 \section{Auswertung}
 \subsection{Energieeichung}
+
+Um den Kanälen des MCA einen Energiewert zuordnen zu können führten wir zunächst eine Energieeichung durch. Dazu hatten wir folgende fünf Proben mit $K\alpha$ Übergängen
+bekannter Energien zur Verfügung:
+\begin{itemize}
+ \item Rubidium bei\hspace{30pt}13.37 keV
+ \item Molibdän bei\hspace{30pt}17.44 keV
+ \item Silber	bei\hspace{30pt}22.10 keV
+ \item Terbium  bei\hspace{30pt}44.23 keV
+ \item Barium   bei\hspace{30pt}32.06 keV
+\end{itemize}
+
+wir nahmen also deren Spektren auf, führten Gaussfits an die oben genannten Linien durch und erhielten so fünf Kanalwerte bekannter Energien. An diese fitteten 
+wir eine Gerade (der lineare Zusammenhang zwischen Kanal und Energie ist nirgends explizit erwähnt, aber natürlich dringend notwendig) um folgende Parameter
+zu erhalten, hierbei ist $C$ der Kanal, $E$ die Energie und $a,b$ die Fitparameter.
+\begin{align*}
+  C = a \cdot E + b \hspace{30pt} \textnormal{mit }a = 100.52 \pm 0.04\textnormal{ und }b =  -62.42 \pm 1.285
+\end{align*}
+wobai für den Fehler die Gaußsche Fehlerfortpflanzung anzuwenden ist:
+\begin{align*}
+  s_C = \sqrt{\frac{\partial{c}}{\partial{a}}^2 s_a^2 + \frac{\partial{C}}{\partial{b}}^2 s_b^2 } = \sqrt{E^2 s_a^2 + s_b^2}
+\end{align*}
+
+Dieses Ergebniss benutzten wir um den 14.4 keV Peak unseres Eisens zu identifizieren. Als Erwarteten Kanal erhält man also:
+\begin{align*}
+  C_{14.4keV} = 1385,07 \pm 1,27
+\end{align*}
+
+
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/eichung_rubidium.eps}
+ \caption{Gaußfit an Rubbidium}
+\end{figure}
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/eichung_molibdaen.eps}
+ \caption{Gaußfit an Molibdän}
+\end{figure}
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/eichung_silber.eps}
+ \caption{Gaußfit an Silber}
+\end{figure}
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/eichung_terbium.eps}
+ \caption{Gaußfit an Terbium}
+\end{figure}
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/eichung_barium.eps}
+ \caption{Gaußfit an Barium}
+\end{figure}
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/eichung_linear.eps}
+ \caption{linearer Fit an die bekannten Energien}
+\end{figure}
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/photomultiplier_schema.eps}
+ \caption{Gaußfit an 14,4keV Linie von Eisen}
+\end{figure}
 \subsection{Untergrund}
 \subsection{1-Linien-Absorber (Edelstahl)}
 \subsection{6-Linien-Absorber (Eisen)}
