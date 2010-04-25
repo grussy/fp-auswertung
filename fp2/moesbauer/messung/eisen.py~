@@ -50,11 +50,42 @@ gr.Draw('AP')
 
 #erzeuge Fitfunktion
 lorentz = '[0]'  #Offset
-for i in range(1,6):
+for i in range(1,7):
     j = 3*i
     lorentz += '+ 2*[%i]/pi * [%i]/(4*(x-[%i])^2 + [%i]^2)' % (j-2,j-1,j,j-1)
 
 f = TF1('f', lorentz)
+
+params = [
+    (0, 'y_{0}',   317),
+    (1, 'A1',       -13),
+    (2, '#w1',    0.6),
+    (3, '#wc1',  -5),
+    
+    (4, 'A2',       -6),
+    (5, '#w2',    0.4),
+    (6, '#wc2',  -3), 
+
+    (7, 'A3',       -4.5),
+    (8, '#w3',    0.2),
+    (9, '#wc3',  -0.7), 
+
+    (10, 'A4',       -4),
+    (11, '#w4',    0.25),
+    (12, '#wc4',  0.9), 
+
+    (13, 'A5',       -8),
+    (14, '#w5',    0.3),
+    (15, '#wc5',  3), 
+
+    (16, 'A6',       -16),
+    (17, '#w6',    0.9),
+    (18, '#wc6',  5)]
+
+
+for i, pn, pv in params:
+    f.SetParName(i, pn)
+    f.SetParameter(i, pv)
 
 gr.Fit(f, 'Q+')
 
