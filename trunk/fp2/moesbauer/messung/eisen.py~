@@ -35,7 +35,7 @@ length = len(velo)
 
 
 #Plotte die Daten:
-Fenster = TCanvas('cr', 'Edelstahlabsorber')
+Fenster = TCanvas('cr', 'Eisenabsorber')
 Fenster.SetGrid()
 gr = TGraph(length, array('d',velo), array('d', rates))
 gr.SetTitle(';Geschwindigkeit / mm/s; Zählrate 1/s')

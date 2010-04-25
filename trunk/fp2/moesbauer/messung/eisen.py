@@ -15,7 +15,7 @@ gROOT.SetStyle("Plain")
 ##########################################################################################
 
 # Messdatei 
-messdaten = 'eisen_1.dat' #In dieser Datei befinden sich (bald) alle Messdaten / Unsortiert
+messdaten = 'eisen_all.dat' #In dieser Datei befinden sich (bald) alle Messdaten / Unsortiert
 
 velo = []
 time = []

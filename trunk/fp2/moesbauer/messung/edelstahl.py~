@@ -16,7 +16,7 @@ gROOT.SetStyle("Plain")
 ##########################################################################################
 
 # Messdatei 
-messdaten = 'messdaten.dat' #In dieser Datei befinden sich (bald) alle Messdaten / Unsortiert
+messdaten = 'edelstahl_all.dat' #In dieser Datei befinden sich (bald) alle Messdaten / Unsortiert
 untergrund = 50.38      #Untergrundrate für das Messfenster in cps
 velo = []
 time = []
@@ -34,7 +34,7 @@ for line in open(messdaten):
 
 length = len(velo)
 
-print "Edelstahlabsorber, Messdaten: %s, Untergrund: %s" % (messdaten, untergrund)
+print "Edelstahlabsorber, Messdaten: %s, Untergrund: %s cps" % (messdaten, untergrund)
 
 #Plotte die Daten:
 Fenster = TCanvas('cr', 'Edelstahlabsorber')
