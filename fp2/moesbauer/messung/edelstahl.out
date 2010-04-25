@@ -1,0 +1,28 @@
+Edelstahlabsorber, Messdaten: edelstahl_all.dat, Untergrund: 50.38 cps
+
+Lorentz-Fit:
+f(x) = y0+A*TMath::BreitWigner(x,mu,Gamma)
+chisq/ndf = 830.28/202 = 4.1103
+    y0 =    269.667 +- 0.272641
+     A =    -28.515 +- 0.743946
+    mu =   0.212571 +- 0.00381528
+ Gamma =   0.436249 +- 0.00960204
+
+Gauss-Fit:
+f(x) = y0+A*TMath::Gaus(x,mu,sigma)
+chisq/ndf = 816.96/202 = 4.0443
+    y0 =    267.554 +- 0.245547
+     A =    -38.367 +- 0.412917
+    mu =   0.228035 +- 0.00390102
+ sigma =   0.205359 +- 0.00359744
+
+Voigt-Fit:
+f(x) = y0+A*TMath::Voigt(x-mu,sigma,Gamma)
+chisq/ndf = 652.80/201 = 3.2478
+    y0 =    268.692 +- 0.274018
+     A =   -24.6772 +- 0.812042
+    mu =   0.221673 +- 0.00360286
+ sigma =   0.126986 +- 0.0111349
+ Gamma =   0.259806 +- 0.0295426
+
+Done. Press Enter to continue ...
