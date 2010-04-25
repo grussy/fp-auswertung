@@ -45,6 +45,19 @@ gr.SetMarkerColor(2)
 gr.SetMarkerStyle(3)
 gr.Draw('AP')
 
+
+# 6-Fach Loretzfit -----------------------------------------------------------
+
+#erzeuge Fitfunktion
+lorentz = '[0]'  #Offset
+for i in range(1,6):
+    j = 3*i
+    lorentz += '+ 2*[%i]/pi * [%i]/(4*(x-[%i])^2 + [%i]^2)' % (j-2,j-1,j,j-1)
+
+f = TF1('f', lorentz)
+
+gr.Fit(f, 'Q+')
+
 Fenster.Update()
 
 print "\nDone. Press Enter to continue ..."
