@@ -40,7 +40,7 @@ print "Edelstahlabsorber, Messdaten: %s, Untergrund: %s cps" % (messdaten, unter
 Fenster = TCanvas('cr', 'Edelstahlabsorber')
 Fenster.SetGrid()
 gr = TGraph(length, array('d',velo), array('d', rates))
-gr.SetTitle(';Geschwindigkeit / mm/s; Zählrate 1/s')
+gr.SetTitle('Edelstahlabsorber ( 1 Linie );Geschwindigkeit / mm/s; Zählrate 1/s')
 gr.GetHistogram().SetTitleOffset(1.3, 'Y')
 gr.GetYaxis().CenterTitle()
 gr.SetMarkerColor(2)
