@@ -23,6 +23,7 @@ counts = []
 rates = []
 
 for line in open(messdaten):
+    if not line.strip() or line.strip()[0] == '#': continue
     buffer = line.split()
     print buffer
     velo.append(float(buffer[0]))
