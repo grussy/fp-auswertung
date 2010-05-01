@@ -2,7 +2,8 @@
 # -*- coding: iso-8859-1 -*-
 
 #from konst import phi0, omega, somega
-from math import pi, cos, sin
+from math import pi, cos, sin, log
+from konst import Q, c, hbar, E0, omega0
 from array import array
 import sys; sys.path.append('/usr/lib/root/')
 from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraphErrors, TMath, TGaxis
@@ -109,6 +110,103 @@ lgv.Draw()
 print "   done with voigt."
 Fenster.Update()
 print "   all done."
+
+
+
+# Berechen gesuchte Werte -------------------------------------------------
+
+def fwhm(f, xl=-30.0, xr=30.0):
+    '''
+    Berechnet volle Breite des halben Maximums.
+    Dabei wird die Funktion f im Bereich xl <= x <=xr untersucht.
+    '''
+    ymax, xmin = f.GetParameter(0), f.GetParameter(2)
+    yh = (ymax + f.Eval(xmin))/2.0
+    return f.GetX(yh, xmin, xr) - f.GetX(yh, xl, xmin)
+
+
+# Voigt, FWHM
+## mu, smu = fv.GetParameter(2), fv.GetParError(2)
+## w, sw = fwhm(fv), abs(fwhm(fg)-fwhm(fl))/2
+
+# Voigt, Fitparameter Gamma
+mu, smu = fv.GetParameter(2), fv.GetParError(2)
+w, sw = fv.GetParameter(4), fv.GetParError(4)
+
+# Lorentz, Fitparameter Gamma
+## mu, smu = fl.GetParameter(2), fl.GetParError(2)
+## w, sw = fl.GetParameter(3), fl.GetParError(3)
+
+w, sw = Q(w, 'mm/s'), Q(sw, 'mm/s')     # Halbwertsbreite [mm/s]
+mu, smu = Q(mu, 'mm/s'), Q(smu, 'mm/s') # Isomerieverschiebung [mm/s]
+
+
+# Isomerieverschiebung [eV]
+Eiso = (E0 * mu / c).inUnitsOf('eV')
+sEiso = (E0 * smu / c).inUnitsOf('eV')
+
+# Gemessene Linienbreite [eV]
+Gmess = (E0 * w / c).inUnitsOf('eV')
+sGmess = (E0 * sw / c).inUnitsOf('eV')
+
+# Angegebene Werte
+n = 0.7*Q('8.4e22 cm**(-3)')     # Anzahl der Eisenatome pro cm^3
+beta = 0.022                     # Anteil von Fe-57
+alpha, salpha = 8.9, 0.7         # Konversionskoeffizient alpha
+fa = 0.8                         # Debye-Waller Faktor des Absorbers
+da = Q('25 mum').inUnitsOf('m')  # Dicke des Absorbers [m]
+
+# Wirkungsquerschnitt [m^2]
+sigma0 = (2*pi * (c/omega0)**2 * 1./(1.+alpha) * 4./2.).inUnitsOf('m**2')
+ssigma0 = sigma0 * salpha/(1.+alpha)
+
+# Effektive Absorberdicke
+da_eff = beta * fa * da * n * sigma0
+sda_eff = da_eff * ssigma0/sigma0
+
+# Natuerliche Linienbreite [keV] (lineare Naeherung)
+## G = Gmess / (2. + 0.27 * da_eff)
+## sG = G/Gmess * (
+## sGmess**2 + (0.27 * beta * fa * da * n * ssigma0 * G)**2)**(0.5)
+
+# Natuerliche Linienbreite [keV] (polynomielle Naeherung nach Heberle)
+## t, st = da_eff, sda_eff
+## a1, a2, a3, a4 = 0.1288, 4.733e-3, -9.21e-4, 3.63e-5
+## G = 0.5*Gmess / (1. + a1*t + a2*t**2 + a3*t**3 + a4*t**4)
+## sG = G * ( (sGmess/Gmess)**2 +
+##            ( st * (a1 + 2*a2*t + 3*a3*t**2 + 4*a4*t**3)/
+##              (1. + a1*t + a2*t**2 + a3*t**3 + a4*t**4) )**2
+##          )**0.5
+
+# Natuerliche Linienbreite [eV] (Relative Verbreiterung W abgelesen)
+## W, sW = 3.63, 0.09
+## G = Gmess / W
+## sG = G * ( (sGmess/Gmess)**2 + (sW/W)**2 )**0.5
+
+# Natuerliche Linienbreite [eV] (duenne Absorber / Voigt-Fit)
+G = Gmess / 2
+sG = sGmess / 2
+
+# Mittlere Lebensdauer [ns]
+tau = (hbar/G).inUnitsOf('ns')
+stau = tau * sG/G
+
+# Halbwertszeit [ns]
+t12 = tau * log(2)
+st12 = stau * log(2)
+
+print '\nIsomerieverschiebung: (%g +- %g) eV  (%.2f%%)' % (
+    Eiso.value, sEiso.value, abs(sEiso/Eiso)*100)
+print 'Effektive Absorberdicke: %g +- %g (%.2f%%)' % (
+    da_eff, sda_eff, sda_eff/da_eff*100)
+print 'Gemessene Linienbreite: (%g +- %g) eV  (%.2f%%)' % (
+    Gmess.value, sGmess.value, abs(sGmess/Gmess)*100)
+print 'Natuerliche Linienbreite: (%g +- %g) eV  (%.2f%%)' % (
+    G.value, sG.value, abs(sG/G)*100)
+print 'Mittlere Lebensdauer: (%g +- %g) ns (%.2f%%)' % (
+    tau.value, stau.value, abs(stau/tau)*100)
+print 'Halbwertszeit: (%g +- %g) ns (%.2f%%)' % (
+    t12.value, st12.value, abs(st12/t12)*100)
 
 
 print "\nDone. Press Enter to continue ..."
