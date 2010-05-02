@@ -52,9 +52,25 @@
 \newpage
 \pagenumbering{arabic}
 \section{Überblick}
-Die Holographie ist ein Verfahren zur dreidimensionalen Abbildung von
-Gegenständen. Zudem existiern auch einige sehr interessante Messmethoden die auf der Holographie basieren. Beispielsweise ist es durch Überlagerung von 
-Hologramm und wahrem Objekt möglich kleinste Veränderungen am Objekt festzustellen. 
+Holographie ist eine Methode, Objekte dreidimensional abzubilden. Das physikalische Prinzip
+der Holographie wurde bereits 1948 von dem Physiker Dennis Gabor entwickelt, der für diese
+Erfindung 1971 den Nobelpreis bekam. Er hatte ein
+Verfahren entwickelt, mit dem es möglich war, die gesamte Information, also sowohl Amplitude
+als auch Phase, eines an einem Objekt gestreuten Wellenfeldes zu speichern.
+Während in der Fotografie nur die Amplitude gespeichert wird und man ein zweidimensionales Bild
+erhält, gibt eine holographische Aufnahme den vollständigen räumlichen Eindruck wieder. Das Hologramm
+wirkt wie ein Fenster, durch das das Objekt betrachtet wird. So ist es
+z.B. möglich auch aus einem kleinen Ausschnitt des Hologramms den ganzen Gegenstand zu betrachten,
+nur eben aus dem entsprechenden Blickwinkel. Gabors Verfahren besteht
+darin, das Objektwellenfeld, das von einem beleuchteten Objekt ausgeht mit einem ungestreuten Wellenfeld, dem Referenzfeld
+interferieren zu lassen und das Interferenzmuster auf einer Photoplatte zu speichern. 
+Schließlich wird das ursprüngliche Objektfeld mit Hilfe des Referenzfeldes wieder zurück gewonnen (Rekonstruktion). Das Hologramm dient dabei als
+Beugungsgitter und die gebeugten Strahlen erzeugen ein Wellenfeld, welches sich vom ursprünglichen Wellenfeld nicht wesentlich unterscheidet.
+Eine der wichtigsten Anwendungen der Holographie ist die Interferometrie. Dabei werden auf
+einem Film mehrere Hologramme desselben Objekts aufgenommen. Die verschiedenen Bilder
+überlagern sich und bilden ein Interferenzmuster, aus dem sich sogar Verformungen im Bereich
+der Lichtwellenlänge ermitteln lassen.
+
 
 \section{Aufgabenstellung}
 \begin{itemize}
@@ -67,7 +83,105 @@ Hologramm und wahrem Objekt möglich kleinste Veränderungen am Objekt festzuste
 
 
 \section{Theoretische Grundlagen}
+\subsection{Licht als elektromagnetische Welle}
+Im Prinzip wird jede Funktion die die Wellengleichung
+\begin{align}
+ \Delta \vec{E} - \frac{1}{v^2} \frac{\partial^2 \vec{E}}{\partial t^2}
+\end{align}
+löst als Welle bezeichnet. Ein möglicher Ansatz ist der einer harmonischen Welle:
+\begin{align}
+ \vec{E}(\vec{r},t) = \vec{E_0}(\vec{r}) e^{i(\vec k \vec r \pm \omega t + \delta)}
+\end{align}
+mit Amplitude $\vec E_0$, Wellenvektor $\vec k$ und Kreisfrequenz $\omega$.
+Mit Wellenlänge $\lambda$ und Lichtgeschwindigkeit $c$ gilt außerdem:
+\begin{align*}
+ c = \frac{\omega}{\left| \vec k \right|} \quad \left|\vec k \right| = \frac{2\pi}{\lambda}
+\end{align*}
+
+Wichtige harmonische Wellen sind
+\begin{itemize}
+ \item Ebene Wellen: Unter einer ebenen Welle im Raum versteht man eine Welle, die zu einem
+     bestimmten Zeitpunkt $t$ in allen Ebenen senkrecht zur Ausbreitungsrichtung jeweils eine
+     konstante Phase besitzt. Also jede Welle
+    \begin{align}
+      \vec{E}(\vec{r},t) = \vec{E_0}(\vec{r}) e^{i(\vec k \vec r \pm \omega t)}
+    \end{align}
+    für die $\vec k\cdot \vec r = const$ gilt.
+
+ \item Kugelwellen: Kugelwellen erhalten ihre große Bedeutung durch das Huygensche Prinzip,
+     nach dem jeder von einer Welle erregte Raumpunkt Ausgangspunkt einer neuen Kugelwelle ist.
+    Um zu einer Darstellung einer Kugelwelle zu kommen, bei der die Phase auf
+     einer Kugelfläche konstant ist, schreibt man die Wellengleichung zweckmäßig in Kugelkoordinaten $(r, \theta, \phi)$
+     Mit dem Laplace-Operator in Kugelkoordinaten und der Tatsache, dass Kugelwellen
+     sphärisch symmetrisch sind erhält man für die Wellengleichung
+    \begin{align}
+     \frac{\partial}{\partial r^2} (\vec r \vec E ) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} (\vec r \vec E) = 0
+    \end{align}
+    und als Lösung:
+    \begin{align}
+      \vec{E}(\vec{r},t) = \frac{\vec{E_0}}{\vec{r}} e^{i(\vec k \vec r \pm \omega t)}
+    \end{align}
+     Die Amplitude $E_0$ fällt proportional zu $\frac{1}{r}$ ab. In großer Entfernung vom Ursprung geht
+     die Kugelwelle lokal in eine ebene Welle über.
+\end{itemize}
+
+\subsubsection{Interferenz}
+Die Linearität der Wellengleichung erlaubt Superpositionen, d.h. jede Linearkombination zweier Lösungen ist wiederum eine Lösung. Die Uberlagerung von Teilwellen bezeichnet man als Interferenz. Überlagert man Wellen mit gleicher Phase, so spricht man von
+konstruktiver Interferenz, da diese sich verstärken. Löschen sich die Wellen dagegen gerade gegenseitig
+aus, spricht man von destruktiver Interferenz.
+Interferieren zwei ebene Wellen gleicher Frequenz $\omega$ und Ausbreitungsrichtung $\vec k$ gilt für die
+resultierende Welle folgende Beziehung
+\begin{align}
+ \vec E_{ges} &= \vec E_1 + \vec E_2 \\
+&= \vec E_{01} e^{i(\vec k \vec r + \omega t + \phi_1)} + \vec E_{02} e^{i(\vec k \vec r + \omega t + \phi_2)} \\
+&= \left( \vec E_{01} e^{i\phi_1} + \vec E_{02} e^{i\phi_2} \right) e^{i(\vec k \vec r + \omega t)}
+\end{align}
+Man erhält somit eine neue Welle mit Amplitude $\vec E_{01} e^{i\phi_1} + \vec E_{02} e^{i\phi_2}$. Damit wird die
+Intensität $I= \vec E_{0ges}\vec E^*_{0ges}$ zu
+\begin{align}
+ I &= \vec E^2_{01} + \vec E^2_{02} + \vec E_{01}\vec E_{02} \left( e^{-i(\phi_2 - \phi_1)} + e^{i(\phi_2 - \phi_1)}\right) \\
+\label{31} &= I_1 + I_2 + 2\vec E_{01}\vec E_{02} \cos{(\phi_2 - \phi_1)}
+\end{align}
+
+Der dritte Summand aus Gleichung \ref{31} wird als Interferenzterm bezeichnet.
+Um Interferenzstrukturen beobachten zu können, müssen die Wellen eine feste Phasenbeziehungbesitzen.
+Denn falls $\Delta\phi$ beliebige Phasenwinkel zwischen $0$ und $2\pi$ annimmt, mittelt sich der
+Interferenzterm aus \ref{31} weg. Strahlt eine Quelle Wellen konstanter Phasenbeziehung ab, so
+nennt man sie kohärent. Perfekte Kohärenz gibt es nicht! Es besteht
+lediglich die Möglichkeit durch bestimmte experimentelle Anordnungen zeitlich oder räumlich
+kohärente Wellen zu erzeugen.
+Zeitliche Kohärenz beobachtet der Experimentator, wenn sich die Phasendifferenz während $\delta t$
+um weniger als $2\pi$ ändert. Die maximale Zeitspanne $\Delta t$, für die dies gilt, bezeichnet man als
+Kohärenzzeit. Eine typische Anordnung zur Erzeugung zeitlich kohärenter Lichtwellen ist der
+Laser. Das Produkt aus Kohärenzzeit und Lichtgeschwindigkeit heißt Kohärenzlänge.
+Unter räumlicher Kohärenz versteht man, dass sich die Phasendifferenz in einem festen Raumpunkt während der
+gesamten Beobachtungszeit um weniger als $2\pi$ ändert. 
+
+Da die Kohärenzlänge einer Lichtquelle angibt, über welche Wegstrecke das Licht eine feste
+Phasenbeziehung aufrecht erhalten kann, spielt sie in der Holographie in sofern eine Rolle, als
+dass sie dem maximalen Wegunterschied zwischen Referenz- und Objektstrahl entspricht, der
+auftreten darf, um noch Interferenzbilder zu erzeugen. Damit ist eine obere Grenze für die Tiefe
+des Objekts gegeben, von dem ein Hologramm angefertigt werden kann.
+
 \subsection{Michelson-Interferometer}
+Das Michelson-Interferometer ist ein Interferometer, das nach dem Physiker Albert Abraham Michelson benannt wurde. 
+Die generelle Funktionsweise eines Interferometers besteht darin, dass eine Lichtwelle in zwei Teile aufzuspalten. Diese zwei Wellen durchlaufen dann
+unterschiedlich lange Strecken oder Medien, in denen die Lichtgeschwindigkeit verschieden ist. Dadurch ergibt sich eine Phasenverschiebung zwischen den
+zwei Wellen. Werden diese dann wieder zusammengeführt, kommt es zur Interferenz.
+\begin{figure}[h]
+ \includegraphics[width=0.5\linewidth]{pictures/michelson.eps}
+ \caption{Aufbau Michelson-Interferometer}
+ \label{michelson}
+\end{figure}
+Beim Michelson-Interferometer geschieht die Aufteilung der Lichtwelle mittels eines halbdurchlässigen Spiegels. Siehe Abbildung \ref{michelson}
+
+Verändert man die optische Weglänge einer der beiden Wellen, z.B. indem man einen der beiden Spiegel verschiebt, so verschieben sich die Phasen der beiden
+Wellen gegeneinander. Sind sie nun in Phase, so addiert sich ihre Amplitude (man spricht von konstruktiver Interferenz), sind sie jedoch gegenphasig, so
+löschen sie sich gegenseitig aus (destruktive Interferenz). Über die Intensitätsmessung der resultierenden Welle können bereits kleinste Veränderungen des
+Gangunterschieds zwischen den beiden Wellen gemessen werden.
+
+In unserem Versuch wird das Interferometer dazu verwendet die Kohärenzlänge des Laser zu bestimmen und zu beobachten wie Störungen
+(z.B. Schwingungen des Tisches oder der Luft) die Interferenz zerstören.
 \subsection{Hologramme}
 Auf normalen Fotos ist auf dem Film lediglich Information über die Intensität und bei Farbfotos die Farbe des Lichtes enthalten.
 
@@ -113,9 +227,40 @@ je nach einfallswikel des Lichtes.
 
 \subsection{Doppelbelichtungsholographie}
 Bei der Doppelbelichtungsholographie werden zwei verschiedene (räumliche) Zustände des Objekts nacheinander auf einen Film belichtet. Für jeden Zustand wird
-dabei die halbe Belichtungszeit verwendet. Ist der Unterschied der beiden Zustände nicht zu groß so lässt sich bei der Rekonstruktion eine Überlagerung der
+dabei die halbe normale Belichtungszeit verwendet. Ist der Unterschied der beiden Zustände nicht zu groß so lässt sich bei der Rekonstruktion eine Überlagerung der
 beiden Zustände beobachten. In diesem Versuch werden drei an einem Ende eingespannte Metallbalken durch kleine Gewichte verbogen. Später lassen sich auf dem
 virtuellen Bild der Balken Interferenzstreifen beobachten. Aus dem Abstand dieser Streifen kann auf die Stärke der Durchbiegung zurückgeschlossen werden.
+
+Da nur sehr kleine Objektveränderungen betrachtet werden, kann die Intensität der beiden
+Aufnahmen als gleich angesehen werden. Für die Amplituden gilt also
+\begin{align*}
+ \vec E_{01} &= E e^{i\phi_1} \\
+ \vec E_{02} &= E e^{i\phi_2}
+\end{align*}
+und damit ergibt die aus der Überlagerung der beiden Wellen folgende Intensitätsverteilung
+\begin{align}
+ I = 2E^2(1+\cos{(\phi_2 - \phi_1)})
+\end{align}
+Die Phasendifferenz $\Delta\phi = \phi_2 - \phi_1$ im Interferenzterm ist eine Funktion der Wegdifferenz des
+Lichtes, die durch das Verformen des Objekts entstanden ist. Wird der Objektpunkt $M$ um
+die Strecke $D$ senkrecht zur Oberfläche verschoben, so hat dies einen Wegunterschied $d = D(\cos{\alpha} + \cos{\beta})$ zur Folge.
+Daraus ergibt sich für die Phasendifferenz
+\begin{align}
+ \Delta\phi = \frac{2\pi}{\lambda} D(\cos{\alpha} + \cos{\beta})
+\end{align}
+% und damit unter Anwendung von Additionstheoremen für die Intensität
+% \begin{align}
+%  I = 4E^2 \cos{\frac{2\pi}{\lambda}} D(\cos{\alpha} + \cos{\beta})^2
+% \end{align}
+% Die Intensität ändert sich also mit $\cos^2$ , wobei das Argument bis auf einen konstanten Faktor,
+% nämlich die Verschiebung D, bestimmt ist. Zwei Interferenzstreifen entstehen also durch Verschiebung um
+% \begin{align}
+%  D =\frac{\lambda}{\cos{\alpha} + \cos{\beta}}
+% \end{align}
+???
+
+
+
 Die Durchbiegungskurven haben die Form:
 \begin{align}
  y = P_1 \left(\frac{5 x^2 - x^3}{6}\right) + P_2 x + P_3
