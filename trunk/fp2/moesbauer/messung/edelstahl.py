@@ -2,7 +2,7 @@
 # -*- coding: iso-8859-1 -*-
 
 #from konst import phi0, omega, somega
-from math import pi, cos, sin, log
+from math import pi, cos, sin, log, sqrt
 from konst import Q, c, hbar, E0, omega0
 from array import array
 import sys; sys.path.append('/usr/lib/root/')
@@ -25,6 +25,9 @@ counts = []                     #Gezählte Ereignisse
 rates = []                      #Raten [counts/second]
 srates = []                     #Fehler auf Raten
 svelo = []                      #Fehler auf Geschwindigkeiten (bestimmt mit Maussensor)
+stime = 2
+scounts = 1
+drawopts = 'APZ'
 
 #Lade Daten:
 print "Loading Data in %s ..."%(messdaten)
@@ -33,8 +36,11 @@ for line in open(messdaten):
     velo.append(float(buffer[0]))
     time.append(float(buffer[1]))
     counts.append(float(buffer[2]))
-    rates.append((float(buffer[2]) / (float(buffer[1]) / 1000)) - untergrund)
+    rate = (float(buffer[2]) / (float(buffer[1]) / 1000)) - untergrund
+    rates.append(rate)
+    srates.append(rate*sqrt((stime/float(buffer[1]))**2+(sqrt(float(buffer[2]))/float(buffer[2]))**2))
 length = len(velo)
+svelo = [0.01]*length
 assert length > 0
 print "   found %i datapoints."%(length)
 
@@ -44,14 +50,25 @@ print "   found %i datapoints."%(length)
 print "\nFitting and Drawing ..."
 Fenster = TCanvas('cr', 'Edelstahlabsorber')
 Fenster.SetGrid()
-gr = TGraph(length, array('d',velo), array('d', rates))
+gr = TGraphErrors(length, array('d',velo), array('d', rates),array('d',svelo),array('d',srates))
 gr.SetTitle('Edelstahlabsorber ( 1 Linie );Geschwindigkeit / mm/s; Zählrate 1/s')
 gr.GetHistogram().SetTitleOffset(1.3, 'Y')
+gr.GetHistogram().GetXaxis().SetLimits(-2.5, 2.5);
 gr.GetYaxis().CenterTitle()
 gr.SetMarkerColor(2)
 gr.SetMarkerStyle(3)
 gr.Draw('AP')
-
+frame = Fenster.GetFrame()
+x1, x2, y2 = frame.GetX1(), frame.GetX2(), frame.GetY2()
+E1 = (E0 / c * Q(-2.5,'mm/s')).inUnitsOf('eV').value
+E2 = (E0 / c * Q(2.5,'mm/s')).inUnitsOf('eV').value
+print E1
+print E2
+eax = TGaxis(x1, 0.5, x2, 0.5, E1, E2, 510, '')
+eax.SetTitle('Energie [eV]')
+eax.Draw()
+eax.Paint()
+Fenster.Update()
 # Fuehre Lorentz-Fit durch:
 fl = TF1('fl', '[0] + [1]*TMath::BreitWigner(x, [2], [3])')
 fl.SetLineColor(3); fl.SetLineStyle(2); fl.SetLineWidth(2)
@@ -69,7 +86,7 @@ lgl = create_fit_legend(
     fl, 'f(x)', 'Lorentz-Fit', lpos = (0.58, 0.41, 0.88, 0.64))
 lgl.Draw()
 print "   done with lorentz."
-
+Fenster.Update()
 # Fuehre Gauss-Fit durch:
 fg = TF1('fg', '[0] + [1]*TMath::Gaus(x, [2], [3])')
 fg.SetLineColor(4); fg.SetLineStyle(4); fg.SetLineWidth(2)
@@ -87,7 +104,7 @@ lgg = create_fit_legend(
     fg, 'f(x)', 'Gauss-Fit', lpos = (0.58, 0.16, 0.88, 0.38))
 lgg.Draw()
 print "   done with gauss."
-
+Fenster.Update()
 # Fuehre Voigt-Fit durch:
 fv = TF1('fv', '[0] + [1]*TMath::Voigt(x-[2], [3], [4])')
 fv.SetLineColor(1); fv.SetLineStyle(1); fv.SetLineWidth(2)
@@ -97,7 +114,7 @@ params = [
     (1, 'A',       -25),
     (2, '#mu',    0.22),
     (3, '#sigma',  0.13),
-    (4, '#Gamma',  0.26) ]
+    (4, '#Gamma',  0.2) ]
 for i, pn, pv in params:
     fv.SetParName(i, pn)
     fv.SetParameter(i, pv)
