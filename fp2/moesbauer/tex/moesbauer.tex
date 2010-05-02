@@ -12,6 +12,7 @@
 \usepackage[dvips,unicode,colorlinks,linkcolor=black]{hyperref} 
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{listings}
 
 \pagestyle{fancy}
 \lfoot{}
@@ -27,6 +28,28 @@
 \fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
 %\renewcommand{\vec}[1]{\mathbf{#1}}
 \renewcommand*\vec[1]{{\mbox{\boldmath\ensuremath{#1}}}}
+
+\lstset{
+	basicstyle=\ttfamily\scriptsize\mdseries,
+	keywordstyle=\bfseries\color{black},
+	identifierstyle=,
+	commentstyle=\color{black},	
+	stringstyle=\itshape\color{black},
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=1,
+	breaklines=true,
+	frame=none,
+	showstringspaces=false,
+	tabsize=4,
+	backgroundcolor=\color{white},
+	captionpos=b,
+	float=htbp,
+	frame=tlrb,
+	extendedchars=false,
+	inputencoding=utf8,
+	language=python
+}
 
 \begin{document}
 % keine Hurenkinder und Schusterjungen
@@ -479,9 +502,9 @@ Diagramm in [FRAUENFELDER] und der effektiven Absorberdicke zu (der Fehler ist h
 \end{align*}
 Nun Lässt sich die  natürliche Linienbreite auch aus den Fitparameter $\sigma$ der Breite berechnen:
 \begin{align*}
- \Gamma_{mm} = (0.44 \pm 0.006) \frac{mm}{s}
- \Gamma_{mes} = \frac{E_0\Gamma_{mm}}{c} = (21.1 \pm 0.3) 10^{-9}eV
- \Gamma = \frac{\Gamma_{mess}}{W} = (5.09 \pm 0.14) 10^{-9} eV
+ \Gamma_{mm} &= (0.44 \pm 0.006) \frac{mm}{s} \\
+ \Gamma_{mes} &= \frac{E_0\Gamma_{mm}}{c} = (21.1 \pm 0.3) 10^{-9}eV \\
+ \Gamma &= \frac{\Gamma_{mess}}{W} = (5.09 \pm 0.14) 10^{-9} eV
 \end{align*}
 
 Weiter folgt dann über  die Energie-Zeit-Unschärfe $\tau \Gamma = \hbar$ die mittlere Lebensdauer $\tau$ zu:
@@ -576,7 +599,7 @@ Bildet man daraus das gewichtete Mittel, so erhält man:
  E_{iso} = (-5.205 \pm 0.18)10^{-9} eV
 \end{align*}
 
-\subsubsection{Kernmagnetisches Moment $\mu_a$}
+\subsubsection[Kernmagnetisches Moment]{Kernmagnetisches Moment $\mu_a$}
 Subtrahiert man je zwei nach Tabelle \ref{eisen_tab1} zugehörige Werte von $v_{hfs}^i$ nach Gleichung \ref{geschw} so erhält man drei Gleichungen:
 \begin{align}
  \notag \Delta v_1=v_{hfs}^1 - v_{hfs}^6 = -\frac{2c}{E_0} \left( \frac{\mu_a}{3} + \mu_g \right) B \\
@@ -644,8 +667,8 @@ Für den Untergrund in unserem Fenster aufgrund der Compton-Streuung erhielten w
 \subsubsection*{Isomerieverschiebung}
 Die von uns festgestellte Isomerieverschiebung beträgt:
 \begin{align*}
- v_{iso} &= ( 0,22 \pm 0,0026) \frac{mm}{s} \\
- E_{iso} &= ( 10,7 \pm 0,12 ) \cdot 10^{-9} eV
+ v_{iso} &= ( -0,22 \pm 0,0026) \frac{mm}{s} \\
+ E_{iso} &= ( -10,7 \pm 0,12 ) \cdot 10^{-9} eV
 \end{align*}
 
 \subsubsection*{Effektive Absorberdicke}
@@ -669,6 +692,11 @@ somit ergibt sich eine \textbf{mittlere Lebensdauer} von:
 \begin{align*}
  \tau = (93,84 \pm 7,12) ns
 \end{align*}
+Literaturwert:
+\begin{align*}
+ \Gamma = 4,64 \cdot 10^{-9} 
+\end{align*}
+
 
 \subsection*{Eisen- (6 Linien-) Absorber}
 \subsubsection*{Isomerieverschiebung}
@@ -690,6 +718,12 @@ Das gewichtete Mittel aus diesen drei Werten ist:
  E_{iso} &= ( -5,205 \pm 0,18 ) \cdot 10^{-9} eV
 \end{align*}
 
+Literaturwert (hersteller der Quelle):
+\begin{align*}
+ v_{iso,Lit} = -0,110 \frac{mm}{s}
+\end{align*}
+
+
 \subsubsection*{Kernmagnetisches Moment}
 Das gemessene Kernmagnetische Moment beträgt:
 \begin{align}
@@ -697,6 +731,11 @@ Das gemessene Kernmagnetische Moment beträgt:
 \mu_{a,23} &=  (-0,153 \pm 0,00545) \mu_N \\
 \mu_{a,31} &=  (-0,1577 \pm 0,0004093) \mu_N 
 \end{align}
+
+Literaturwert:
+\begin{align*}
+\mu_{a,lit} = (-0,1549 \pm 0,0002) \mu_N
+\end{align*}
 
 \subsubsection*{Magnetfeld am Kernort}
 Das Magnetfeld am Kernort haben wir bestimmt zu:
@@ -726,5 +765,16 @@ lag nun die Genauigkeit der Zeitmessung an der Prozessorauslastung des Rechners.
 Dies erwies sich als des Rätsels Lösung. Wir hatten zwar die Anzahl der Messungen deutlich reduziert, dafür war die Aufgabe die der Microcontroller nun wärend eines Interrupts zu tun hatte (zählen) nicht mehr rechenintensiv, wesshalb es nun nicht mehr zu ``doppelten Interrupts'' kam.
 Desweiteren hatten wir den Fehler unserer Messung nun deutlich reduziert. Leider hatten wir Hard- und Software erst am letzten Tag unseres Praktikums bugfrei, wesshalb wir nicht mehr viele Datenreihen aufnehmen konnten. Die Aufgenommenen lieferten allerdings wie wir finden ein 
 Ergebniss, das durchaus Verbesserungsmöglichkeiten aufzeigt.
+
+\section{Anhang}
+
+\subsection{Quelltexte}
+\lstinputlisting[language=python, extendedchars=false, inputencoding=utf8]{../eichung/energie_eichung.py}
+\lstinputlisting[language=python, extendedchars=false, inputencoding=utf8]{../untergrund/untergrund.py}
+\lstinputlisting[language=python, extendedchars=false, inputencoding=utf8]{../messung/edelstahl.py}
+\lstinputlisting[language=python, extendedchars=false, inputencoding=utf8]{../messung/konst.py}
+\lstinputlisting[language=python, extendedchars=false, inputencoding=utf8]{../messung/fit_tools.py}
+\lstinputlisting[language=python, extendedchars=false, inputencoding=utf8]{../messung/eisen.py}
+
 
 \end{document}

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 #from konst import phi0, omega, somega
 from math import pi, cos, sin, sqrt
 from array import array
@@ -8,17 +8,17 @@ from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraph
 from Scientific.Physics.PhysicalQuantities import PhysicalQuantity as Q
 from fit_tools import *
 gROOT.SetStyle("Plain")
-##########################################################################################
+####################################################
 #                   Messung bei verschiedenen Geschwindigkeiten mit Eisenabsorber
 # 
-##########################################################################################
+####################################################
 
 # Variablen, Datenfelder etc
 messdaten = 'eisen_all.dat'     #In dieser Datei befinden sich (bald) alle Messdaten / Unsortiert
-untergrund = 50.38              #Untergrundrate für das Messfenster in cps
+untergrund = 50.38              #Untergrundrate fÃ¼r das Messfenster in cps
 velo = []                       #Geschwindigkeiten des Schlittens
 time = []                       #Dauer der Messung
-counts = []                     #Gezählte Ereignisse
+counts = []                     #GezÃ¤hlte Ereignisse
 rates = []                      #Raten [counts/second]
 srates = []                     #Fehler auf Raten
 svelo = []                      #Fehler auf Geschwindigkeiten (bestimmt mit Maussensor)
@@ -86,7 +86,7 @@ def arith_mittel(x):
     return sumx / len(x)
 
 # START DES SCRIPTS
-##########################################################################################
+###########################################################
 
 print "Loading ..."
 for line in open(messdaten):
@@ -108,7 +108,7 @@ print "\nFitting and Drawing ..."
 Fenster = TCanvas('cr', 'Eisenabsorber')
 Fenster.SetGrid()
 gr = TGraphErrors(length, array('d',velo), array('d', rates), array('d',svelo), array('d', srates))
-gr.SetTitle(';Geschwindigkeit / mm/s; Zählrate 1/s')
+gr.SetTitle(';Geschwindigkeit / mm/s; ZÃ¤hlrate 1/s')
 gr.GetHistogram().GetXaxis().SetLimits(-10.0, 10.0);
 gr.GetHistogram().SetTitleOffset(1.3, 'Y')
 gr.GetYaxis().CenterTitle()

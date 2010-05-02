@@ -1,7 +1,6 @@
 #!/usr/bin/python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 
-#from konst import phi0, omega, somega
 from math import pi, cos, sin, log, sqrt, exp
 from konst import Q, c, hbar, E0, omega0
 from array import array
@@ -12,17 +11,17 @@ from scipy.special import jn
 
 gROOT.SetStyle("Plain")
 
-##########################################################################################
-#                   Messung bei verschiedenen Geschwindigkeiten mit Edelstahlabsorber
+#####################################################
+#  Messung bei verschiedenen Geschwindigkeiten mit Edelstahlabsorber
 # 
-##########################################################################################
+#####################################################
 
 # Variablen, Datenfelder etc
 messdaten = 'edelstahl_all.dat' #In dieser Datei befinden sich (bald) alle Messdaten / Unsortiert
-untergrund = 50.38              #Untergrundrate für das Messfenster in cps
+untergrund = 50.38              #Untergrundrate fÃ¼r das Messfenster in cps
 velo = []                       #Geschwindigkeiten des Schlittens
 time = []                       #Dauer der Messung
-counts = []                     #Gezählte Ereignisse
+counts = []                     #GezÃ¤hlte Ereignisse
 rates = []                      #Raten [counts/second]
 srates = []                     #Fehler auf Raten
 svelo = []                      #Fehler auf Geschwindigkeiten (bestimmt mit Maussensor)
@@ -52,7 +51,7 @@ print "\nFitting and Drawing ..."
 Fenster = TCanvas('cr', 'Edelstahlabsorber')
 Fenster.SetGrid()
 gr = TGraphErrors(length, array('d',velo), array('d', rates),array('d',svelo),array('d',srates))
-gr.SetTitle('Edelstahlabsorber ( 1 Linie );Geschwindigkeit / mm/s; Zählrate 1/s')
+gr.SetTitle('Edelstahlabsorber ( 1 Linie );Geschwindigkeit / mm/s; ZÃ¤hlrate 1/s')
 gr.GetHistogram().SetTitleOffset(1.3, 'Y')
 gr.GetHistogram().GetXaxis().SetLimits(-2.5, 2.5);
 gr.GetYaxis().CenterTitle()
@@ -145,7 +144,7 @@ print 'Gemessene Linienbreite: (%g +- %g) eV  (%.2f%%)' % (
     Gmess.value, sGmess.value, abs(sGmess.value/Gmess.value)*100)
 Gmess = (E0 *  Q(mu/W, 'mm/s')/ c).inUnitsOf('eV')
 sGmess = Gmess * sqrt((sW/W)**2+(smu/mu)**2)
-print 'natürl Linienbreite: (%g +- %g) eV  (%.2f%%)' % (
+print 'natÃ¼rl Linienbreite: (%g +- %g) eV  (%.2f%%)' % (
     Gmess.value, sGmess.value, abs(sGmess/Gmess)*100)
 tau = (hbar/Gmess).inUnitsOf('ns')
 stau = tau*(sGmess/Gmess)
@@ -203,11 +202,6 @@ sig = sigma0.inUnitsOf('m*m').value
 ssig = ssigma0.inUnitsOf('m*m').value
 print 'Wirkungsquerschnitt: (%g +- %g) m^2 (%.2f%%)' % (
     sig, ssig, ssig/sig*100)
-
-
-
-
-
 
 print "\nDone. Press Enter to continue ..."
 raw_input();
