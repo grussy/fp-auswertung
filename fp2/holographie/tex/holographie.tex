@@ -12,6 +12,7 @@
 \usepackage[dvips,unicode,colorlinks,linkcolor=black]{hyperref} 
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{listings}
 
 \pagestyle{fancy}
 \lfoot{}
@@ -27,6 +28,26 @@
 \fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
 %\renewcommand{\vec}[1]{\mathbf{#1}}
 \renewcommand*\vec[1]{{\mbox{\boldmath\ensuremath{#1}}}}
+
+\lstset{
+	basicstyle=\ttfamily\scriptsize\mdseries,
+	keywordstyle=\bfseries\color{black},
+	identifierstyle=,
+	commentstyle=\color{black},	
+	stringstyle=\itshape\color{black},
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=1,
+	breaklines=true,
+	frame=none,
+	showstringspaces=false,
+	tabsize=4,
+	backgroundcolor=\color{white},
+	captionpos=b,
+	float=htbp,
+	frame=tlrb
+%	extendedchars=true
+}
 
 \begin{document}
 % keine Hurenkinder und Schusterjungen
@@ -169,6 +190,7 @@ Die generelle Funktionsweise eines Interferometers besteht darin, dass eine Lich
 unterschiedlich lange Strecken oder Medien, in denen die Lichtgeschwindigkeit verschieden ist. Dadurch ergibt sich eine Phasenverschiebung zwischen den
 zwei Wellen. Werden diese dann wieder zusammengeführt, kommt es zur Interferenz.
 \begin{figure}[h]
+ \centering
  \includegraphics[width=0.5\linewidth]{pictures/michelson.eps}
  \caption{Aufbau Michelson-Interferometer}
  \label{michelson}
@@ -263,12 +285,79 @@ Daraus ergibt sich für die Phasendifferenz
 
 Die Durchbiegungskurven haben die Form:
 \begin{align}
- y = P_1 \left(\frac{5 x^2 - x^3}{6}\right) + P_2 x + P_3
+ y = P_1 \left(5 x^2 - \frac{x^3}{6}\right) + P_2 x + P_3
 \end{align}
 wobei $x$ der Abstand von der Einspannstelle, $y$ die Auslenkung aus der Ruhelage und $P_{1,2,3}$ Material bzw. Aufbaubedingt sind.
 
 \section{Durchführung}
+\subsection{Michelson-Interferometer}
+Zu Anfang des Versuchs haben wir das Michelson-Interferometer aufgebaut. Hierzu verwendeten wir den Strahlteiler, zwei Spiegel und einen Schirm. Siehe
+Abbildung %\ref{michelson-photo}
+Angefangen mit gleicher Weglänge für beide Teilstrahlen, beobachteten wir den Einfluss von Schwingungen auf das Interferenzbild durch Klopfen auf den Tisch,
+lautes Sprechen, Stampfen auf dem Boden und Entzündung einer Flamme unter einem Teilstrahl. Schließlich vergrößerten wir einen der beiden Wege bis kein 
+Interferenzmuster mehr zustande kam. Bevor das Bild ganz verschwindet, kann man ein Wandern oder ``Athmen'' im Bild beobachten.
+
+\subsection{Holografie}
+\subsubsection{Justierung der Optik}
+Nachdem wir festgestellt hatten, dass die Strahlteilerscheibe wohl einen ``achter'' hat und somit den reflektierten Strahl bei Änderung der Intensität leicht
+verschiebt, entschieden wir diesen für die Objektwelle zu verwenden. Damit war es uns möglich zuerst Raumfilter und Spiegel des Referenzstrahls bei maximaler
+Intensität zu justieren und anschließend das für die Aufnahme verwendete Intensitätsverhältnis (wesentlich mehr Intensität für Objektwelle) einzustellen. Nun 
+konnten auch Raumfilter und Spiegel des Objektstrahls justiert werden, ohne danach nochmals an dem Strahlteiler drehen zu müssen.
+Wie wir schon vorher erfahren hatten, benötigt das Justieren der Raumfilter einige Übung. Das Vorgehen besteht im Wesentlichen darin, das Objektiv
+ohne Pinnhole im Strahlengang so zu positioniern, dass der Strahl mittig durchläuft und nicht abgelenkt wird. Dies lässt sich ziemlich gut erreichen
+indem
+man die Reflexion des Strahls an der Linse betrachtet: Man lässt den Strahl auf dem Weg zum Objektiv durch ein gelochtes Stück Papier laufen, bilden die 
+Reflexionen am Objektiv auf diesem Papier konzentrische Kreise um das Loch, ist das Objektiv perfekt positioniert.
+Danach wird das Pinnhole auf den Schlitten aufgesetzt
+und bis auf ca. $1mm$ an das Objektiv herangeschoben und dort fixiert. Nun versucht man Grob das Pinnhole mit den beiden Senkrecht zu Strahl stehenden Achsen
+so zu Positionieren, dass der Strahl mittig auf die Folie trifft. Bringt man nun das Pinnhole noch etwas näher an das Objektiv und variiert danach wieder die
+beiden senkrechten Achsen, so kann man einen sehr intensitätsschwachen verschwommenen Lichtpunkt auf dem Schirm finden. Schließlich gilt es das Pinnhole immer
+näher an das Objektiv zu bringen und dabei immer wieder den Lichtkegel mit den beiden senkrechten Achsen auf die ursprüngliche Position zu verschieben, bis 
+ein Bereich etwa der Größe des Spiegels vollständig gleichmäßig beleuchtet ist.
+
+Nach dem Einstellen der beiden Raumfilter, werden Spiegel , Objekt und Filmhalterung positioniert. Hierbei ist die Kohärenzlänge des Lasers zu beachten.
+Leider ist die vorhandene Kombination aus Magnetfuß, Spiegel und Stange nicht auf den restlichen Aufbau abgestimmt. Die Spiegel lassen sich somit nicht tief
+genug positionieren um den Aufgespalteten Strahl optimal auszunutzen. Außerdem sind die Magnetfüße teilweise so schlecht, dass man sich gar nicht sicher ist
+ist welche Einstellung (Magnet senkrecht / waagerecht) besseren halt bietet. So kam es oft vor, dass die komplette Justierung wiederholt werden musste, da man
+aus Versehen irgentwo drangekommen war.
+
+\subsubsection{Belichtung und Entwicklung}
+Da die am Versuch vorhandene Photodiode defekt was, gab es keine Möglichkeit die Intensität am Ort des Films zu messen. Somit konnten wir die Belichtungszeit
+nicht ausrechenen sonder nur ausprobieren. Wir versuchten Werte von $10s$, $3min$, $5min$, $10min$ und $12min$. Bei allen Zeiten war nach dem Entwickeln eine
+Schwärzung des Films zu sehen. Bei Zeiten unter $5min$ war jedoch schon nach kurzer Zeit im Bleichbad absolut nichts mehr auf dem Film zu sehen. Bei größeren
+Zeiten, war nach ca. $2min$ bleichen die Schwärzung verschwunden und gelbliche Ringartige Strukturen zu erkennen. Wir entschieden uns Schließlich für:
+$12min$ Belichten, $1min$ Entwickeln $2min$ Bleichen und ca $20min$ Wässern.
+
+\subsubsection{Rekonstruktion}
+Nachdem wir die Balken jeweils $6min$ mit und $6min$ ohne angehängte Gewichte belichtet, entwickelt, gebleicht, gewässert und getrocknet hatten, plazierten
+wir das Hologramm wieder zwischen den beiden Glasscheiben und entfernten das Objekt. Mit der Videokamera am Versuch war es zwar möglich das Hologramm zu sehen,
+jedoch nicht ein Bild der Messskala (Rechter Winkel) und des Hologramms gleichzeitig aufzunehmen. Mit Hilfe einer digitalen Spiegelreflexkamera konnten wir
+solch Bilder anfertigen. Hierzu haben wir die Skala während der Belichtung kurz mit einer Taschenlampe beleuchtet. Wie man an den Bildern sieht, ist es uns
+nicht gelungen ein Hologramm anzufertigen das an allen Punkten die Information trägt. Es gab immer Stellen im Hologramm an denen man das Objekt nicht sehen 
+konnte. Aus den Fotos konnten wir ziemlich gut die Position der Minima auf den Balken bestimmen.
+
+\subsection{Weiteres}
+Da der Aufbau des öfteren, insbesondere jeden Morgen eigentlich kommplett neu durchgeführt werden musste kamen wir erst am letzten Tag zur Echtzeitholographie
+leider haben wir es nicht mehr geschafft in der Verbleibenden Zeit ein funktionierendes Hologramm der Aluplatte anzufertigen.
+
 \section{Auswertung}
+\begin{figure}[h]
+\centering
+ \includegraphics[width=0.5\linewidth]{pictures/staebe.eps}
+ \caption{Aufbau Michelson-Interferometer}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+ \includegraphics[width=0.5\linewidth]{pictures/staebe-skala.eps}
+ \caption{Aufbau Michelson-Interferometer}
+\end{figure}
 \section{Zusammenfassung}
+
+\section{Anhang}
+
+\subsection{Quelltext}
+
+\lstinputlisting[language=python, extendedchars=false, inputencoding=utf8]{../staebe/staebe.py}
 
 \end{document}
