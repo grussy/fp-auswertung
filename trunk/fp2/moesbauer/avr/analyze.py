@@ -132,7 +132,7 @@ for val in vel:
             rangeMax = val
 
 #drawing Histogramm
-h = TH1D('h', 'Histogramm of Velocities', bins, rangeMin, rangeMax)
+h = TH1D('h', 'Histogramm of Velocities', bins, 8, 12)
 for value in vel:
     h.Fill(value)
 h.SetTitle(';Geschwindigkeit [];Häufigkeit [counts]')
