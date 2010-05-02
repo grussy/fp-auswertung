@@ -475,21 +475,22 @@ die natürliche Linienbreite über den Lorentzfit zu bestimmen. Dabei muss darau
 Fitparameter verfälscht und man daher die relative Linienverbreiterung $W = \frac{\Gamma_{mes}}{\Gamma}$ bestimmen muss. Diese erhielten wir aus dem 
 Diagramm in [FRAUENFELDER] und der effektiven Absorberdicke zu (der Fehler ist hier ein Ablesefehler):
 \begin{align*}
- W = 6,75 \pm 0,2
+ W = 4.15 \pm 0,1
 \end{align*}
 Nun Lässt sich die  natürliche Linienbreite auch aus den Fitparameter $\sigma$ der Breite berechnen:
 \begin{align*}
- \Gamma_{mm} = \frac{\sigma}{W} = 
+ \Gamma_{mm} = (0.44 \pm 0.006) \frac{mm}{s}
+ \Gamma_{mes} = \frac{E_0\Gamma_{mm}}{c} = (21.1 \pm 0.3) 10^{-9}eV
+ \Gamma = \frac{\Gamma_{mess}}{W} = (5.09 \pm 0.14) 10^{-9} eV
 \end{align*}
-Weiter folgt dann über  die Energie-Zeit-Unschärfe 
-$\tau \Gamma = \hbar$ die mittlere Lebensdauer $\tau$ zu:
+
+Weiter folgt dann über  die Energie-Zeit-Unschärfe $\tau \Gamma = \hbar$ die mittlere Lebensdauer $\tau$ zu:
 \begin{align*}
- \tau = \frac{\hbar}{\Gamma}
+ \tau = \frac{\hbar}{\Gamma} = (129.3 \pm 3.5)ns
 \end{align*}
-wir erhielten auf diese weise folgende Ergebnisse:
 
-
-
+Eine weitere Methode ist die Überlagerung eines Gauß- und Lorentzfits, auch Voigtfit genannt. Hier wird die Verbreiterung der Linie durch den
+Gaußanteil repräsentiert, wesshalb dann für den zusammenhang der Lorentzbreite und der natürlichen Linienbreite wieder gilt: $\Gamma = \frac{\gamma_{mes}}{2}$.
 Der Parameter $\Gamma$ der Voigtfunktion gibt die gemessene Linienbreite an. Wir erhielten also als gemessene Linienbreite
 \begin{align*}
  \Gamma_{mm} = (0.292 \pm 0.022) \frac{mm}{s}
