@@ -418,7 +418,78 @@ die Nullage genau dem 14.4keV Übergang entspricht. Wir erhielten:
  v_{iso} = (0.22\pm 0.0026) \hspace{10pt} \textnormal{ bzw } \hspace{10pt} E_{iso} = (10.7 \pm 0.12) 10^{-9} eV
 \end{align*}
 
+\subsubsection{effektive Absorberdicke, Wirkungsquerschnitt, Debye-Waller-Faktor}
+Die effektive Absorberdicke $T_a$ berechnet sich zu
+\begin{align*}
+ T_a = f_a \beta n \sigma_0 d
+\end{align*}
+
+und wird benötigt um aus der Breite der Lorentzkurve die natürliche Linienbreite zu erhalten. Die Werte zur Berechnung waren angegeben:
+\begin{align*}
+  \textnormal{Debye-Waller-Faktor Absorber } \hspace{15pt} f_a &= 0.8 \\
+  \textnormal{Anzahl Eisenatome pro }cm^3 \hspace{15pt} n &= 70\%\cdot8.4\cdot10^{22}cm^{-3} \\
+  \textnormal{Anteil von }^57Fe\textnormal{ im Isotopengemisch} \hspace{15pt} \beta &= 0.022 \\
+  \textnormal{Konversionskoeffizient } \hspace{15pt} \alpha &= 8.9 \pm 0.7 \\
+  \textnormal{Dicke des Absorbers } \hspace{15pt} d &= 2.5 \cdot 10^{-5}m \\
+\end{align*}
+
+Jetzt fehlt nur noch der maximale Wirkungsquerschnitt $\sigma_0$, welcher sich aber berechnen lies zu:
+\begin{align*}
+ \sigma_0 = 2\pi \left( \frac{c}{\omega_0} \right)^2 \frac{1}{1+\alpha}\frac{2 I_a +1}{2I_g+1}
+\end{align*}
+Hierbei sind $w_0 = \frac{E_0}{\hbar}$ die Kreisfrequenz des 14.4keV $\gamma$-Quants und $I_a=\frac{3}{2},~I_g=\frac{1}{2}$ die Kernspinquantenzahlen
+des angeregten und des Grundzustandes. Wir erhielten:
+\begin{align*}
+ \sigma_0 = (2.38 \pm 0.17) \cdot 10^{-22}m^2
+\end{align*}
+und somit
+\begin{align*}
+ T_a = (6.15 \pm 0.43)
+\end{align*}
+
+hierbei berechneten sich die Fehler nach der gaußschen Fehlerfortpflanzung:
+\begin{align*}
+ s_{\sigma_0} = \sqrt{\left( \frac{\partial \sigma_0}{\partial \alpha} \right)^2 s_{\alpha}^2 } = \sigma_0 \frac{s_{\alpha}}{1 + \alpha} \\
+ s_{T_a} = \sqrt{\left( \frac{\partial T_a}{\partial \sigma_0} \right)^2 } = T_a \frac{s_{\sigma_0}}{\sigma_0}
+\end{align*}
+
+Der Debye-Waller-Faktor der Quelle lässt sich berechnen wenn man den des Absorbers kennt. Die Formel hierfür lautet:
+\begin{align*}
+f_Q=\frac{Z_{max} - Z_{min}}{Z_{max}} \left( 1 - e^{-\frac{T_A}{2}} J_0 \left( i \frac{T_A}{2} \right) \right)^{-1}
+\end{align*}
+hierbei sind 
+\begin{align*}
+  \textnormal{minimale Zählrate } \hspace{15pt} Z_{min} &= 228.5 \\
+  \textnormal{maximale Zählrate } \hspace{15pt} Z_{max} &= 269.5 \\
+  \textnormal{Nullte Besselfunktion} \hspace{15pt} J_0
+\end{align*}
+wir erhielten:
+\begin{align*}
+f_Q = 0.2
+\end{align*}
+
+
 \subsubsection{Linienbreite und Lebensdauer}
+Zur bestimmung der Linienbreite und der Lebensdauer sollen zwei Methoden verwendet und deren Ergebnisse verglichen werden. Die erste besteht darin
+die natürliche Linienbreite über den Lorentzfit zu bestimmen. Dabei muss darauf geachtet werden das hier die Verwendung eines dicken Absorbers den
+Fitparameter verfälscht und man daher die relative Linienverbreiterung $W = \frac{\Gamme_{mes}}{\Gamma}$ bestimmen muss. Diese erhielten wir aus dem 
+Diagramm in [FRAUENFELDER] und der effektiven Absorberdicke zu (der Fehler ist hier ein Ablesefehler):
+\begin{align*}
+ W = 6,75 \pm 0,2
+\end{align*}
+Nun Lässt sich die  natürliche Linienbreite auch aus den Fitparameter $\sigma$ der Breite berechnen:
+\begin{align*}
+ \Gamma_{mm} = \frac{\sigma}{W} = 
+\end{align*}
+Weiter folgt dann über  die Energie-Zeit-Unschärfe 
+$\tau \Gamma = \hbar$ die mittlere Lebensdauer $\tau$ zu:
+\begin{align*}
+ \tau = \frac{\hbar}{\Gamma}
+\end{align*}
+wir erhielten auf diese weise folgende Ergebnisse:
+
+
+
 Der Parameter $\Gamma$ der Voigtfunktion gibt die gemessene Linienbreite an. Wir erhielten also als gemessene Linienbreite
 \begin{align*}
  \Gamma_{mm} = (0.292 \pm 0.022) \frac{mm}{s}
