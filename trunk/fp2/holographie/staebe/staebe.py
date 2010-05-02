@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: iso-8859-1 -*-
+
 
 #from konst import phi0, omega, somega
 from math import pi, cos, sin, log
@@ -12,7 +12,7 @@ from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraph
 gROOT.SetStyle("Plain")
 
 ##########################################################################################
-#                   Doppelbelichtungsholographie mit 3 Metallst‰ben
+#                   Doppelbelichtungsholographie mit 3 Metallstaeben
 # 
 ##########################################################################################
 
@@ -58,7 +58,7 @@ class Stab:
 ##        lg = TLegend(0.47, 0.64, 0.88, 0.84)
 ##        lg.SetFillColor(0)
 ##        lg.AddEntry(self.graph, 'Messreihe:'+ self.name, 'p')
-##        lg.AddEntry(self.fitfkt, 'Gauﬂfit', 'l')
+##        lg.AddEntry(self.fitfkt, 'Gau√üfit', 'l')
 ##        lg.AddEntry(self.fitfkt, 'Schwerpkt = %.4f #pm %.4f' % (self.ort,self.sort), '')
 ##        lg.AddEntry(self.fitfkt, '#chi^{2}/ndf = %.2f/%d = %.2f' % (
 ##            self.chisq, self.ndf, self.rchisq), '')
@@ -70,7 +70,7 @@ class Stab:
         print self.name
         print "Unterkante ist bei: %s" % self.unterkante
         print "Oberkante ist bei:  %s" % self.oberkante
-        print "Stabl‰nge:          %s" % self.stablaenge
+        print "Stablaenge:          %s" % self.stablaenge
         print "Minima:"
         print self.minima
         print "Positionen der Minima:"
