@@ -8,7 +8,7 @@ from math import pi, cos, sin, log
 from array import array
 import sys; sys.path.append('/usr/lib/root/')
 from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraphErrors, TMath, TGaxis
-##from fit_tools import *
+from fit_tools import *
 
 gROOT.SetStyle("Plain")
 
@@ -19,7 +19,7 @@ gROOT.SetStyle("Plain")
 
 class Stab:
 
-    def __init__(self, name, fehler, stablaenge):
+    def __init__(self, name, fehler, stablaenge,deltad):
         self.name = name
         self.fehler = fehler
         self.stablaenge = stablaenge
@@ -35,16 +35,30 @@ class Stab:
         
         for pos in range(1, len(self.positions)):
             self.minima.append( self.positions[pos] - self.unterkante )
-            
         # Erzeuge Graphen
         self.count = len(self.minima)
-        self.x = range(1,self.count+1)
-        self.sx = [1e-15]*self.count
-        self.sminima = [self.fehler]*self.count
+        self.lambd = 0.632816 #um
+        self.x =[]
+##        self.x.append(0.)
+        self.cosines = 1.9#1.866
+        self.d0 = 0
+        self.d = []
+##        self.d.append(0)
+        self.d.append(self.d0)
+        #deltad=0.5
         
-        g = TGraphErrors(self.count, array('d',self.x) ,array('d',self.minima), array('d',self.sx) ,array('d',self.sminima))
-        g.SetTitle('%s;x;y' % self.name)
-        g.GetHistogram().SetTitleOffset(1.45, 'Y')
+        self.minima.reverse()
+        self.x = [i for i in self.minima]
+        self.count = len(self.x)
+        self.sx = [0.05]*self.count
+        for i in range(self.count):
+            self.d.append(deltad/1)
+            deltad += (2*self.lambd/self.cosines)
+        self.sd = [self.fehler*d for d in self.d]
+        
+        g = TGraphErrors(self.count, array('d',self.x) ,array('d',self.d), array('d',self.sx) ,array('d',self.sd))
+        g.SetTitle(';Abstand zum Einspannpunkt [cm]; Abstand zum ungebogenen Bild [um]')
+        g.GetHistogram().SetTitleOffset(1, 'Y')
         g.SetMarkerStyle(1)
         g.SetMarkerColor(2)
         g.SetMarkerSize(3.0)
@@ -56,15 +70,6 @@ class Stab:
         self.canvas = c
         c.SetGrid()
         self.graph.Draw('A*')
-##        lg = TLegend(0.47, 0.64, 0.88, 0.84)
-##        lg.SetFillColor(0)
-##        lg.AddEntry(self.graph, 'Messreihe:'+ self.name, 'p')
-##        lg.AddEntry(self.fitfkt, 'Gaußfit', 'l')
-##        lg.AddEntry(self.fitfkt, 'Schwerpkt = %.4f #pm %.4f' % (self.ort,self.sort), '')
-##        lg.AddEntry(self.fitfkt, '#chi^{2}/ndf = %.2f/%d = %.2f' % (
-##            self.chisq, self.ndf, self.rchisq), '')
-##        self.legend = lg
-##        self.legend.Draw()
         c.Update()
         
     def ausgabe(self):
@@ -72,32 +77,42 @@ class Stab:
         print "Unterkante ist bei: %s" % self.unterkante
         print "Oberkante ist bei:  %s" % self.oberkante
         print "Stablaenge:          %s" % self.stablaenge
-        print "Minima:"
-        print self.minima
+        print "biegung:"
+        print self.d
         print "Positionen der Minima:"
-        print self.positions
+        print self.x
         
     def fit(self):
-        f = TF1('f', '[0]*(5*x**2 - x**3)/6+[1]*x+[2]')
+        f = TF1('f', '[0]*(5*x**2 - ((x**3)/6))+[1]*x+[2]')
+        #f = TF1('f', '[0]*(5*x**2 - ((x**3)/6))')
+        f.SetParameters(0.01, 0.1, 0)
         f.SetLineColor(4); f.SetLineStyle(4); f.SetLineWidth(2)
-        self.graph.Fit(f, 'Q+')
+        self.graph.Fit(f, 'IEQ+')
+        lgg = create_fit_legend(
+            f, 'f(x)', 'Polynomieller Fit', lpos = (0.58, 0.16, 0.88, 0.38))
+        self.legend = lgg
+        lgg.Draw()
         self.canvas.Update()
+        b = 0.01
+        c = 0.005
+        self.Ela = (-12 * 0.03*9.81 )/(f.GetParameter(0)*b*c**3)
+        self.sEla = self.Ela * f.GetParError(0)/f.GetParameter(0)
+        print "%s : %g +- %g"% (self.name, self.Ela,self.sEla)
 
-test = Stab("1.stab", 1e-2, 12.0)
-test.ausgabe()
+test = Stab("1.stab", 1e-2, 10.0, 0.55)
+#test.ausgabe()
 test.draw()
 test.fit()
 
-test2 = Stab("2.stab", 1e-2, 12.0)
-test2.ausgabe()
+test2 = Stab("2.stab", 1e-2, 10.0, 1.1)
+#test2.ausgabe()
 test2.draw()
 test2.fit()
 
-test3 = Stab("3.stab", 1e-2, 12.0)
-test3.ausgabe()
+test3 = Stab("3.stab", 1e-2, 10.0, 1.8)
+#test3.ausgabe()
 test3.draw()
 test3.fit()
-
 
 print "\nDone. Press Enter to continue ..."
 raw_input();
