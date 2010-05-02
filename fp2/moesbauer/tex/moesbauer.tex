@@ -218,7 +218,6 @@ lassen sich deren Energien berechnen zu:
 Dementsprechend erhalten wir 6 Absorptionslinien in der Transmissionskurve.
 \subsection{Linienverbreiterung}
 \label{linienverbreiterung}
-Als Linienverbreiterung bezeichnet man im allgemeinen die 
 Ein Ziel des Mößbauerexperimets ist die Ausmessung des sehr schmalen Linienprofils. Aus der Halbwertsbreite der gemessenen Linie lässt sich dann die natürliche Linienbreite bestimmen.
 
 Wegen der Heisenbergschen Unschärferelation für Energie $E$ und Zeit $t$:
@@ -292,7 +291,12 @@ Bei jedem auftreffen auf solch eine Dynode erzeugt jedes Elektron mehrere Sekund
  \caption{Funktionsprinzip eines Photomultipliers}
 \end{figure}
 
-Diese Spannung wird nun elektronisch verarbeitet. Zunächst wird sie vorverstärkt, dann wird sie nach einem konfigurierbarem Verstärker aufgeteilt. Ein Teil geht in einem Fensterdiskriminator der andere in einen so genanntes Linear Gate. 
+Diese Spannung wird nun elektronisch verarbeitet. Zunächst wird sie vorverstärkt, dann wird sie nach einem konfigurierbarem Verstärker aufgeteilt. Ein Teil geht in einem Fensterdiskriminator der andere in einen so genanntes Linear Gate. Der Diskriminator sendet ein Signal an den Zähler der während der eigendlichen Messung die ankommenden Impulse zählt. Ein zweiter Puls öffnet das linear Gate, welches dann für eine eingestellte Zeitspanne das Signal des Verstärkers auf einen Multi Channel Analyzer (MCA) gibt. Dort wird jeder Impuls entsprechend seiner Höhe in einen Kanal einsortiert. Folgende Skizze soll 
+den Signalverlauf nochmal verdeutlichen.
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/aufbau.eps}
+ \caption{Versuchsaufbau mit elektronischer Verarbeitung}
+\end{figure}
 \section{Durchführung}
 \subsection{Energieeichung MCA und Fenstereinstellung}
 Um den Multikanalanalysator zum Messen verwenden zu können, muss bekannt sein welche Energie welchem Kanal zugeordnet ist. Hierzu führt man eine Eichung mittels einer bzw. verschiedener
@@ -657,11 +661,15 @@ Bildet man daraus das gewichtete Mittel, so erhält man:
 \end{align*}
 
 \section{Zusammenfassung}
+Wir konnten den Mössbauereffekt beobachten und verstehen. Die Messergebnisse sind nicht optimal, allerdings fanden wir nach Rücksprache mit anderen
+Konmilitonen heraus das diese ähnlich gute Ergebnisse erziehlt hatten. Warscheinlich liegt ein unendeckter systematischer Fehler vor, den wir im Antrieb des Schlittens vermuteten.
+
 \subsection*{Untergrund}
 Für den Untergrund in unserem Fenster aufgrund der Compton-Streuung erhielten wir:
 \begin{align*}
  (50,38 \pm 0,78) \frac{Counts}{s}
 \end{align*}
+Hierfür hatten wir keinen Vergleichswert zur Verfügung.
 
 \subsection*{Edelstahl- (1Linien-) Absorber}
 \subsubsection*{Isomerieverschiebung}
@@ -670,18 +678,21 @@ Die von uns festgestellte Isomerieverschiebung beträgt:
  v_{iso} &= ( -0,22 \pm 0,0026) \frac{mm}{s} \\
  E_{iso} &= ( -10,7 \pm 0,12 ) \cdot 10^{-9} eV
 \end{align*}
+Hierfür hatten wir leider keinen Vergleichswert zur Verfügung, da uns Angaben zu Absorber fehlten.
 
 \subsubsection*{Effektive Absorberdicke}
 Die Effektive Absorberdicke ergab sich zu:
 \begin{align*}
- \Gamma_a = ( 6,15 \pm 0,43 )
+ T_a = ( 6,15 \pm 0,43 )
 \end{align*}
+Hierfür hatten wir keinen Vergleichswert zur Verfügung.
 
 \subsubsection*{Debye-Waller-Faktor}
 Für den Debye-Waller-Faktor erhieten wir:
 \begin{align*}
  f_Q = 0,2
 \end{align*}
+Hierfür hatten wir keinen Vergleichswert zur Verfügung.
 
 \subsubsection*{Natürliche Linienbreite}
 Die Natürliche Linienbreite haben wir gemessen zu:
@@ -692,11 +703,11 @@ somit ergibt sich eine \textbf{mittlere Lebensdauer} von:
 \begin{align*}
  \tau = (93,84 \pm 7,12) ns
 \end{align*}
-Literaturwert:
+Der Litheraturwert beträgt hier
 \begin{align*}
  \Gamma = 4,64 \cdot 10^{-9} 
 \end{align*}
-
+Leider stimmen unsere Messwerte nur im bereich $6\sigma$ mit den Litheraturwerten überein. Wir haben also eine zu breite Linie gemessen. Das kann mehrere Ursachen haben, zum Beispiel den Fehler der Geschwindigkeit des Messchlittens, der die Linie weiter Verbreitert (siehe dazu auch Anhang).
 
 \subsection*{Eisen- (6 Linien-) Absorber}
 \subsubsection*{Isomerieverschiebung}
@@ -722,7 +733,7 @@ Literaturwert (hersteller der Quelle):
 \begin{align*}
  v_{iso,Lit} = -0,110 \frac{mm}{s}
 \end{align*}
-
+Leider stimmt trotz scheinbar guter Übereinstimmung der Werte das gewichtete Mittel nur im Bereich $5\sigma$ mit dem Litheraturwert überein. Ein systematischer Fehler hier könnte eine nichtlinearität des motorgetriebes darstellen.
 
 \subsubsection*{Kernmagnetisches Moment}
 Das gemessene Kernmagnetische Moment beträgt:
@@ -736,7 +747,8 @@ Literaturwert:
 \begin{align*}
 \mu_{a,lit} = (-0,1549 \pm 0,0002) \mu_N
 \end{align*}
-
+Hier verzichteten wir auf die Angabe eines gewichteten Mittels da die Ergebnisse über Division korreliert sind. Wie man sieht sind alle Werte etwas zu hoch
+jedoch im Berich $10\sigma$ stimmig.
 \subsubsection*{Magnetfeld am Kernort}
 Das Magnetfeld am Kernort haben wir bestimmt zu:
 \begin{align*}
@@ -748,6 +760,7 @@ Für das gewichtete Mittel erhält man:
 \begin{align*}
  B = (32,78 \pm 0,075)T
 \end{align*}
+Eine genaue Litheraturangabe konnten wir auch hier leider nicht finden.
 
 
 \section{Zusatz: Geschwindigkeitsmessung oder die entdeckung der Langsamkeit}
@@ -760,11 +773,22 @@ Wir entschienden uns mit der Intention die kleinstmöglichen Inkremente zu erhal
 
 Also musste doch die 1te Anschlussmethode herhalten, diesmal aber ohne Microcontroller und stattdessen direkt am PC angeschlossen.
 
-Nachdem das Programm geschrieben und die ersten Messungen gemacht waren wurde schnell klar das wir einen noch falscheren Weg eingeschlagen hatten, denn nun verpassten wir zwar keinenWeginkrement mehr, allerdings 
+Nachdem das Programm geschrieben und die ersten Messungen gemacht waren wurde schnell klar das wir einen noch falscheren Weg eingeschlagen hatten, denn nun verpassten wir zwar keinen Weginkrement mehr, allerdings 
 lag nun die Genauigkeit der Zeitmessung an der Prozessorauslastung des Rechners. Da dies noch unzulänglicher war überdachten wir unseren ersten Ansatz, und implementiereten eine Version in der über eine einstellbare Anzahl von Weginkrementen gemittelt wird.
 Dies erwies sich als des Rätsels Lösung. Wir hatten zwar die Anzahl der Messungen deutlich reduziert, dafür war die Aufgabe die der Microcontroller nun wärend eines Interrupts zu tun hatte (zählen) nicht mehr rechenintensiv, wesshalb es nun nicht mehr zu ``doppelten Interrupts'' kam.
 Desweiteren hatten wir den Fehler unserer Messung nun deutlich reduziert. Leider hatten wir Hard- und Software erst am letzten Tag unseres Praktikums bugfrei, wesshalb wir nicht mehr viele Datenreihen aufnehmen konnten. Die Aufgenommenen lieferten allerdings wie wir finden ein 
 Ergebniss, das durchaus Verbesserungsmöglichkeiten aufzeigt.
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/speed.eps}
+ \caption{Geschwindigkeitsmessung $10\frac{mm}{s}$, $100mm$ Weg}
+\end{figure}
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/speed-histo.eps}
+ \caption{Geschwindigkeitshistogramm $10\frac{mm}{s}$, $100mm$ Weg}
+\end{figure}
+Bei dieser Messung haben wir das Triggersignal welches den Zähler startet und stoppt mitverwendet um die Geschwindigkeitsmessung zu triggern.
+Man kann unschwer erkennen, das schon gezählt wird wenn die Motorgeschwindigkeit noch nicht konstant ist bzw. das noch gezählt wird wenn der Motor schon wieder am Bremsen ist. Leider haben wir nicht die Möglichkeit gehabt den Sensor extern zu eichen. Die Sensoreichung geschieht hier über die annahme, dass
+die Wegstrecke immer die selbe bleibt und auch wirklich dem eingegebenen Wert entspricht.
 
 \section{Anhang}
 
