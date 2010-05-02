@@ -1,7 +1,7 @@
-#!/usr/bin/python
-# -*- coding: iso-8859-1 -*-
+#!/usr/bin/python 
+# -*- coding: utf-8 -*-
 
-#from konst import phi0, omega, somega
+
 from math import pi, cos, sin, exp, sqrt
 from array import array
 import sys; sys.path.append('/usr/lib/root/')
@@ -9,12 +9,12 @@ from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraph
 
 gROOT.SetStyle("Plain")
 
-##########################################################################################
+####################################################
 #                   Untergrundmessung
 # 
-##########################################################################################
+####################################################
 
-# Messübersichtdatei (Dateinamen der Datendateien und alle nötigen Einstellungen der jeweiligen Messreihen)
+# MessÃ¼bersichtdatei (Dateinamen der Datendateien und alle nÃ¶tigen Einstellungen der jeweiligen Messreihen)
 messuebersicht = 'messuebersicht_untergrund.dat'
 
 #Klasse Messung (zum auslesen der Messdaten, plotten, fitten)
@@ -102,7 +102,7 @@ x,y,sy,sx=[],[],[],[]
 print "\nFiting and Drawing ..."
 for m in messungen:
 ##	m.fit()
-##    m.draw()
+    m.draw()
     print(m.dicke)
     print(m.getCps(900,1400))
     x.append(m.dicke)
@@ -120,7 +120,7 @@ g.SetMarkerSize(1)
 f = TF1('fit', '[0]*exp([1]*x) + [2]*exp([3]*x)')
 f.SetMarkerColor(2)
 #f.SetParameters(120,1000)
-g.Fit(f, 'QE')
+g.Fit(f, 'QEW')
 c = TCanvas('Eichung', 'eichung')
 c.SetGrid()
 g.Draw('AP')

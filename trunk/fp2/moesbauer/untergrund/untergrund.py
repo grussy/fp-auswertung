@@ -1,7 +1,6 @@
-#!/usr/bin/python
-# -*- coding: iso-8859-1 -*-
+#!/usr/bin/python 
+# -*- coding: utf-8 -*-
 
-#from konst import phi0, omega, somega
 from math import pi, cos, sin, exp, sqrt
 from array import array
 import sys; sys.path.append('/usr/lib/root/')
@@ -9,17 +8,16 @@ from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraph
 
 gROOT.SetStyle("Plain")
 
-##########################################################################################
+####################################################
 #                   Untergrundmessung
 # 
-##########################################################################################
+####################################################
 
-# Messübersichtdatei (Dateinamen der Datendateien und alle nötigen Einstellungen der jeweiligen Messreihen)
+# MessÃ¼bersichtdatei (Dateinamen der Datendateien und alle nÃ¶tigen Einstellungen der jeweiligen Messreihen)
 messuebersicht = 'messuebersicht_untergrund.dat'
 
 #Klasse Messung (zum auslesen der Messdaten, plotten, fitten)
 class Messung:
-
     def __init__(self, name, Dicke, Messzeit, FehlerDicke, FehlerZeit):
         self.name = name
         self.dicke = float(Dicke)
@@ -77,17 +75,8 @@ def load(dateiname=messuebersicht):
     for line in open(dateiname, 'r').readlines():
         if not line.strip() or line.strip()[0] == '#': continue
         v = line.split()
-        #double = 0
-        #pars = [float(v[4]), float(v[3]), float(v[2])]
-        #if (v[7] == 'yes'):
-        #    double = 1
-        #    pars = [float(v[4]), float(v[3]), float(v[2]),float(v[10]), float(v[9]), float(v[8])]
         mi = Messung(
             name = v[0],
-            #K_energie = v[1],
-            #fitparams = pars, #hoehe, breite, ort
-            #fitrange = [float(v[5]), float(v[6])],
-            #fitdouble = double)
             Dicke = v[1],
             Messzeit = v[2],
             FehlerDicke = v[3],
@@ -101,7 +90,6 @@ messungen = load()
 x,y,sy,sx=[],[],[],[]
 print "\nFiting and Drawing ..."
 for m in messungen:
-##	m.fit()
     m.draw()
     print(m.dicke)
     print(m.getCps(900,1400))
@@ -119,13 +107,11 @@ g.SetMarkerColor(2)
 g.SetMarkerSize(1)
 f = TF1('fit', '[0]*exp([1]*x) + [2]*exp([3]*x)')
 f.SetMarkerColor(2)
-#f.SetParameters(120,1000)
 g.Fit(f, 'QEW')
 c = TCanvas('Eichung', 'eichung')
 c.SetGrid()
 g.Draw('AP')
 c.Update()
-
 
 # Hole Fitergebnisse
 a1, sa1 = f.GetParameter(0), f.GetParError(0)
@@ -171,8 +157,7 @@ lg.AddEntry(f, 'b_{2} = %.4f #pm %.4f' % (b2,sb2), '')
 lg.AddEntry(f, 'f_{2}(0) = %.2f #pm %.2f' % (ug,sug), '')
 lg.AddEntry(f, '#chi^{2}/ndf = %.2f/%d = %.2f' % (
     chisq, ndf, rchisq), '')
-lg.Draw()
-        
+lg.Draw()       
 
 c.Update()
 

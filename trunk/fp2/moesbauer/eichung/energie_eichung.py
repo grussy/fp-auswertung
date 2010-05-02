@@ -8,10 +8,10 @@ from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraph
 
 gROOT.SetStyle("Plain")
 
-##########################################################################################
+########################################################
 #                   Energie eichung des Multikanalanalysators
 # Dieses Programm nimmt die Energieeichung des MCA bei dem Mössbauer-Effekt im FP II vor
-##########################################################################################
+#########################################################
 
 # Messübersichtdatei (Dateinamen der Datendateien und alle nötigen Einstellungen der jeweiligen Messreihen)
 messuebersicht = 'messuebersicht_eichung.dat'

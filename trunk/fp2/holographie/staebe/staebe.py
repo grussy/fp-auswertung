@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 
 #from konst import phi0, omega, somega
@@ -11,10 +12,10 @@ from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraph
 
 gROOT.SetStyle("Plain")
 
-##########################################################################################
+##########################################################################
 #                   Doppelbelichtungsholographie mit 3 Metallstaeben
 # 
-##########################################################################################
+##########################################################################
 
 class Stab:
 
