@@ -472,7 +472,7 @@ f_Q = 0.2
 \subsubsection{Linienbreite und Lebensdauer}
 Zur bestimmung der Linienbreite und der Lebensdauer sollen zwei Methoden verwendet und deren Ergebnisse verglichen werden. Die erste besteht darin
 die natürliche Linienbreite über den Lorentzfit zu bestimmen. Dabei muss darauf geachtet werden das hier die Verwendung eines dicken Absorbers den
-Fitparameter verfälscht und man daher die relative Linienverbreiterung $W = \frac{\Gamme_{mes}}{\Gamma}$ bestimmen muss. Diese erhielten wir aus dem 
+Fitparameter verfälscht und man daher die relative Linienverbreiterung $W = \frac{\Gamma_{mes}}{\Gamma}$ bestimmen muss. Diese erhielten wir aus dem 
 Diagramm in [FRAUENFELDER] und der effektiven Absorberdicke zu (der Fehler ist hier ein Ablesefehler):
 \begin{align*}
  W = 6,75 \pm 0,2
@@ -633,6 +633,82 @@ Bildet man daraus das gewichtete Mittel, so erhält man:
 \end{align*}
 
 \section{Zusammenfassung}
+\subsection*{Untergrund}
+Für den Untergrund in unserem Fenster aufgrund der Compton-Streuung erhielten wir:
+\begin{align*}
+ (50,38 \pm 0,78) \frac{Counts}{s}
+\end{align*}
+
+\subsection*{Edelstahl- (1Linien-) Absorber}
+\subsubsection*{Isomerieverschiebung}
+Die von uns festgestellte Isomerieverschiebung beträgt:
+\begin{align*}
+ v_{iso} &= ( 0,22 \pm 0,0026) \frac{mm}{s} \\
+ E_{iso} &= ( 10,7 \pm 0,12 ) \cdot 10^{-9} eV
+\end{align*}
+
+\subsubsection*{Effektive Absorberdicke}
+Die Effektive Absorberdicke ergab sich zu:
+\begin{align*}
+ \Gamma_a = ( 6,15 \pm 0,43 )
+\end{align*}
+
+\subsubsection*{Debye-Waller-Faktor}
+Für den Debye-Waller-Faktor erhieten wir:
+\begin{align*}
+ f_Q = 0,2
+\end{align*}
+
+\subsubsection*{Natürliche Linienbreite}
+Die Natürliche Linienbreite haben wir gemessen zu:
+\begin{align*}
+ \Gamma = ( 7 \pm 0,53) \cdot 10^{-9} eV
+\end{align*}
+somit ergibt sich eine \textbf{mittlere Lebensdauer} von:
+\begin{align*}
+ \tau = (93,84 \pm 7,12) ns
+\end{align*}
+
+\subsection*{Eisen- (6 Linien-) Absorber}
+\subsubsection*{Isomerieverschiebung}
+Hier erhielten wir für die Isomerieverschiebung folgende Werte: \\
+
+\begin{tabular}{|l|lll|}
+\hline
+Peaks & $v_{iso}/\frac{mm}{s}$ & $E_{iso}/10^{-9}eV$ & \% Fehler\\
+\hline
+1 und 6& $-0,1021 \pm 0,004$ & $-4,91 \pm 0,19$ & 3.9\\
+2 und 5& $-0,2262 \pm 0,028$ & $-10,8 \pm 1,4$ & 12.56\\
+3 und 4& $-0,1497 \pm 0,013$ & $-7,195 \pm 0,63$ & 8.78\\
+\hline
+\end{tabular} \\
+
+Das gewichtete Mittel aus diesen drei Werten ist:
+\begin{align*}
+  v_{iso} &= ( -0,1083 \pm 0,0038) \frac{mm}{s} \\
+ E_{iso} &= ( -5,205 \pm 0,18 ) \cdot 10^{-9} eV
+\end{align*}
+
+\subsubsection*{Kernmagnetisches Moment}
+Das gemessene Kernmagnetische Moment beträgt:
+\begin{align}
+\mu_{a,12} &=  (-0,1585 \pm 0,00094) \mu_N \\
+\mu_{a,23} &=  (-0,153 \pm 0,00545) \mu_N \\
+\mu_{a,31} &=  (-0,1577 \pm 0,0004093) \mu_N 
+\end{align}
+
+\subsubsection*{Magnetfeld am Kernort}
+Das Magnetfeld am Kernort haben wir bestimmt zu:
+\begin{align*}
+  B_1 &= (31,82\pm0,17)T \\
+ B_2 &= (33,1\pm0,3)T \\
+ B_3 &= (32,99\pm0,08)T
+\end{align*}
+Für das gewichtete Mittel erhält man:
+\begin{align*}
+ B = (32,78 \pm 0,075)T
+\end{align*}
+
 
 \section{Zusatz: Geschwindigkeitsmessung oder die entdeckung der Langsamkeit}
 Nach Aussagen des Assistenten stellte sich bei diesem Versuchsaufbau schon seit längerem die Frage wie groß der Fehler der Geschindigkeit des Schlittens also des Absorbers ist. Somit haben wir uns ein paar Gedanken gemacht wie man denn die Geschwindikeit des Schlittens Messen kann. Eine Zeitmessung über lange Strecken macht keinen Sinn, da die Konstanz der Geschindigkeit untersucht werden soll. Wir hatten die Idee den Sensor einer optischen Maus zu verwenden: 800 dpi, sollten eine ausreichende Genauigkeit bringen.
