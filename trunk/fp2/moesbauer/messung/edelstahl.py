@@ -26,7 +26,7 @@ counts = []                     #Gezählte Ereignisse
 rates = []                      #Raten [counts/second]
 srates = []                     #Fehler auf Raten
 svelo = []                      #Fehler auf Geschwindigkeiten (bestimmt mit Maussensor)
-stime = 2
+stime = 0.1
 scounts = 1
 drawopts = 'APZ'
 
@@ -132,11 +132,25 @@ print "   all done."
 
 
 # Berechen gesuchte Werte -------------------------------------------------
+print "\nLorentzFit"
 # Lorentz, Fitparameter Gamma
-## mu, smu = fl.GetParameter(2), fl.GetParError(2)
-## w, sw = fl.GetParameter(3), fl.GetParError(3)
-
-
+mu, smu = fl.GetParameter(3), fl.GetParError(3)
+Gmess, sGmess = Q(mu, 'mm/s'), Q(smu, 'mm/s')
+W, sW = 4.15, 0.1
+print 'Gemessene Linienbreite: (%g +- %g) mm/s  (%.2f%%)' % (
+    Gmess.value, sGmess.value, abs(sGmess.value/Gmess.value)*100)
+Gmess = (E0 * Gmess/ c).inUnitsOf('eV')
+sGmess =  (E0 * sGmess / c).inUnitsOf('eV')
+print 'Gemessene Linienbreite: (%g +- %g) eV  (%.2f%%)' % (
+    Gmess.value, sGmess.value, abs(sGmess.value/Gmess.value)*100)
+Gmess = (E0 *  Q(mu/W, 'mm/s')/ c).inUnitsOf('eV')
+sGmess = Gmess * sqrt((sW/W)**2+(smu/mu)**2)
+print 'natürl Linienbreite: (%g +- %g) eV  (%.2f%%)' % (
+    Gmess.value, sGmess.value, abs(sGmess/Gmess)*100)
+tau = (hbar/Gmess).inUnitsOf('ns')
+stau = tau*(sGmess/Gmess)
+print 'Mittlere Lebensdauer: (%g +- %g) ns (%.2f%%)' % (
+    tau.value, stau.value, abs(stau/tau)*100)
 
 print "\nVoigtFit"
 w, sw = Q(fv.GetParameter(4), 'mm/s'), Q(fv.GetParError(4), 'mm/s')     # Halbwertsbreite [mm/s]
