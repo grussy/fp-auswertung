@@ -15,8 +15,6 @@
 
 \frame{\frametitle{Inhaltsverzeichnis}\tableofcontents} 
 
-\part{part1}
-
 \section{Überblick}
 
 \frame{\frametitle{Rudolf Mößbauer}
@@ -41,22 +39,40 @@ und zwar über die bei hohen Temperaturen gemessene.
 \section{Theoretische Grundlagen}
 \subsection{Resonanzabsorption}
 \frame{\frametitle{Resonanzabsorption}
-\begin{itemize}[<+->]
+\begin{itemize}
  \item Beim Kernübergang von angeregtem- in Grundzustand
  \item wird ein Photon erzeugt $E_\gamma \approx E_a - E_g$
  \item dieses kann einen anderen Kern anregen
  \item Resonanzabsorption: Gleiche angeregte Zustände
  \item Aus der Impulserhaltung folgt ein Engergiefehlbetrag der doppelten Rückstoßenergie
 \end{itemize}
+}
 
-\pause
- 
+\frame{\frametitle{Energieverschiebung}
 \begin{figure}
- \includegraphics[width=0.9\linewidth]{pictures/linienskizze.ps}
+ \includegraphics[width=0.7\linewidth]{pictures/energieverschiebung.eps}
  \caption{Energieverschiebung von Emissions- und Absorptionslinie}
- \label{linienskizze}
+ \label{energieverschiebung}
 \end{figure}
 }
+
+\subsection{Debye-Waller-Faktor}
+\frame{\frametitle{Debye-Waller-Faktor}
+Wie schon erwähnt kann es aber auch vorkommen, dass keine rückstoßfreie Resonanzabsorption auftritt da bei der Absorption oder Emission Gitterschwingungen (Phononen) 
+angeregt werden können und somit dem Photon doch wieder nicht die volle Energie des Übergangs zur Verfügung steht. Der Debye-Waller-Faktor $f$ gibt an wie viel rückstoßfreie Resonanzabsorption
+auftritt. Er hängt von der Temperatur und der Übergangsenergie ab:
+}
+\frame{\frametitle{Debye-Waller-Faktor}
+\begin{align}
+ f = exp\left[ -\frac{3E_R}{2k_B\Theta}\left(1+\left(\frac{2T}{\Theta}\right)^2 \int\limits_{0}^{\frac{\Theta}{T}} \frac{x~dx}{e^x - 1}\right)\right]
+\end{align}
+und lässt sich für kleine Temperaturen $(T<<\Theta)$ und Kerne im arteigenen kubischen Gitter annähern durch:
+\begin{align}
+ f \approx exp \left[ -\frac{E_R}{k_B\Theta}\left(\frac{3}{2} + \left(\frac{\pi T}{\Theta}\right)^2\right)\right]
+\end{align}
+wobei $T$ die absolute Temperatur, $k_B$ die Boltzmannkonstante, $E_R$ die Rückstoßenergie und $\Theta$ die Debye-Temperatur ist.
+}
+
 
 \end{document}
 
