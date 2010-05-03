@@ -198,8 +198,8 @@ zwei Wellen. Werden diese dann wieder zusammengeführt, kommt es zur Interferenz
 Beim Michelson-Interferometer geschieht die Aufteilung der Lichtwelle mittels eines halb durchlässigen Spiegels. Siehe Abbildung \ref{michelson}
 
 Verändert man die optische Weglänge einer der beiden Wellen, z.B. indem man einen der beiden Spiegel verschiebt, so verschieben sich die Phasen der beiden
-Wellen gegeneinander. Sind sie nun in Phase, so addiert sich ihre Amplitude (man spricht von konstruktiver Interferenz), sind sie jedoch gegenphasig, so
-löschen sie sich gegenseitig aus (destruktive Interferenz). Über die Intensitätsmessung der resultierenden Welle können bereits kleinste Veränderungen des
+Wellen gegeneinander. Sind sie nun in Phase, so addiert sich ihre Amplitude, sind sie jedoch gegenphasig, so
+löschen sie sich gegenseitig aus. Über die Intensitätsmessung der resultierenden Welle können bereits kleinste Veränderungen des
 Gangunterschieds zwischen den beiden Wellen gemessen werden.
 
 In unserem Versuch wird das Interferometer dazu verwendet die Kohärenzlänge des Laser zu bestimmen und zu beobachten wie Störungen
@@ -216,7 +216,7 @@ beobachten kann. Dieses Wellenfeld wird Objektwelle genannt. Diese Welle wird mi
 die Intensität des Lichtes, durch das Interferenzmuster wird aber die relative Phase (zwischen Objekt- und Referenzwelle) aufgezeichnet.
 
 Voraussetzungen für die Aufzeichnung von Hologrammen ist die zeitliche und räumliche Stabilität der Interferenzmuster. Die aufzuzeichnenden Objekte dürfen
-sich während der minutenlangen Belichtung nicht bewegen. Deswegen befindet sich der Aufbau zur Aufnahme des Hologramms auf einem scheren Tisch welcher auf 
+sich während der minutenlangen Belichtung nicht bewegen. Deswegen befindet sich der Aufbau zur Aufnahme des Hologramms auf einem schweren Tisch welcher auf 
 einem dämpfenden Material gelagert ist. 
 
 Nach der Entwicklung des Films erhält man ein Gitter, je nach Art des Films bzw. der Entwicklung ist dies ein Amplitudengitter (Partikel im Film absorbieren
@@ -259,13 +259,13 @@ Aufnahmen als gleich angesehen werden. Für die Amplituden gilt also
  \vec E_{01} &= E e^{i\phi_1} \\
  \vec E_{02} &= E e^{i\phi_2}
 \end{align*}
-und damit ergibt die aus der Überlagerung der beiden Wellen folgende Intensitätsverteilung
+und damit ergibt die aus der Überlagerung der beiden Wellen folgende Intensitätsverteilung bei Doppelbelichtung:
 \begin{align}
- I = 2E^2(1+\cos{(\phi_2 - \phi_1)})
+ I(r) = I_0(r) cos^2\left( \frac{\Delta\phi}{2} \right)
 \end{align}
 Die Phasendifferenz $\Delta\phi = \phi_2 - \phi_1$ im Interferenzterm ist eine Funktion der Wegdifferenz des
-Lichtes, die durch das Verformen des Objekts entstanden ist. Wird der Objektpunkt $M$ um
-die Strecke $D$ senkrecht zur Oberfläche verschoben, so hat dies einen Wegunterschied $d = D(\cos{\alpha} + \cos{\beta})$ zur Folge.
+Lichtes, die durch das Verformen des Objekts entstanden ist. Man sieht sofort das die Pashendifferenz zwischen zwei Minima $4\pi$ sein muss.
+ Wird der Objektpunkt $M$ um ie Strecke $D$ senkrecht zur Oberfläche verschoben, so hat dies einen Wegunterschied $d = D(\cos{\alpha} + \cos{\beta})$ zur Folge.
 Daraus ergibt sich für die Phasendifferenz
 \begin{align}
  \Delta\phi = \frac{2\pi}{\lambda} D(\cos{\alpha} + \cos{\beta})
@@ -279,8 +279,7 @@ wobei $x$ der Abstand von der Einspannstelle, $y$ die Auslenkung aus der Ruhelag
 
 \section{Durchführung}
 \subsection{Michelson-Interferometer}
-Zu Anfang des Versuchs haben wir das Michelson-Interferometer aufgebaut. Hierzu verwendeten wir den Strahlteiler, zwei Spiegel und einen Schirm. Siehe
-Abbildung %\ref{michelson-photo}
+Zu Anfang des Versuchs haben wir das Michelson-Interferometer aufgebaut. Hierzu verwendeten wir den Strahlteiler, zwei Spiegel und einen Schirm.
 Angefangen mit gleicher Weglänge für beide Teilstrahlen, beobachteten wir den Einfluss von Schwingungen auf das Interferenzbild durch Klopfen auf den Tisch,
 lautes Sprechen, Stampfen auf dem Boden und Entzündung einer Flamme unter einem Teilstrahl. Schließlich vergrößerten wir einen der beiden Wege bis kein 
 Interferenzmuster mehr zustande kam. Bevor das Bild ganz verschwindet, kann man ein Wandern oder ``Athmen'' im Bild beobachten.
@@ -297,13 +296,13 @@ indem
 man die Reflexion des Strahls an der Linse betrachtet: Man lässt den Strahl auf dem Weg zum Objektiv durch ein gelochtes Stück Papier laufen, bilden die 
 Reflexionen am Objektiv auf diesem Papier konzentrische Kreise um das Loch, ist das Objektiv perfekt positioniert.
 Danach wird das Pinnhole auf den Schlitten aufgesetzt
-und bis auf ca. $1mm$ an das Objektiv herangeschoben und dort fixiert. Nun versucht man Grob das Pinnhole mit den beiden Senkrecht zu Strahl stehenden Achsen
+und bis auf ca. $1mm$ an das Objektiv herangeschoben und dort fixiert. Nun versucht man Grob das Pinnhole mit den beiden senkrecht zu Strahl stehenden Achsen
 so zu Positionieren, dass der Strahl mittig auf die Folie trifft. Bringt man nun das Pinnhole noch etwas näher an das Objektiv und variiert danach wieder die
 beiden senkrechten Achsen, so kann man einen sehr intensitätsschwachen verschwommenen Lichtpunkt auf dem Schirm finden. Schließlich gilt es das Pinnhole immer
 näher an das Objektiv zu bringen und dabei immer wieder den Lichtkegel mit den beiden senkrechten Achsen auf die ursprüngliche Position zu verschieben, bis 
 ein Bereich etwa der Größe des Spiegels vollständig gleichmäßig beleuchtet ist.
 
-Nach dem Einstellen der beiden Raumfilter, werden Spiegel , Objekt und Filmhalterung positioniert. Hierbei ist die Kohärenzlänge des Lasers zu beachten.
+Nach dem Einstellen der beiden Raumfilter, werden Spiegel, Objekt und Filmhalterung positioniert. Hierbei ist die Kohärenzlänge des Lasers zu beachten.
 Leider ist die vorhandene Kombination aus Magnetfuß, Spiegel und Stange nicht auf den restlichen Aufbau abgestimmt. Die Spiegel lassen sich somit nicht tief
 genug positionieren um den aufgespaltenen Strahl optimal auszunutzen. Außerdem sind die Magnetfüße teilweise so schlecht, dass man sich gar nicht sicher ist
 ist welche Einstellung (Magnet senkrecht / waagerecht) besseren halt bietet. So kam es oft vor, dass die komplette Justierung wiederholt werden musste, da man
@@ -320,17 +319,17 @@ $12min$ Belichten, $1min$ Entwickeln $2min$ Bleichen und ca $20min$ Wässern.
 Nachdem wir die Balken jeweils $6min$ mit und $6min$ ohne angehängte Gewichte belichtet, entwickelt, gebleicht, gewässert und getrocknet hatten, platzierten
 wir das Hologramm wieder zwischen den beiden Glasscheiben und entfernten das Objekt. Mit der Videokamera am Versuch war es zwar möglich das Hologramm zu sehen,
 jedoch nicht ein Bild der Messskala (Rechter Winkel) und des Hologramms gleichzeitig aufzunehmen. Mit Hilfe einer digitalen Spiegelreflexkamera konnten wir
-solch Bilder anfertigen. Hierzu haben wir die Skala während der Belichtung kurz mit einer Taschenlampe beleuchtet. Wie man an den Bildern sieht, ist es uns
+solche Bilder anfertigen. Hierzu haben wir die Skala während der Belichtung kurz mit einer Taschenlampe beleuchtet. Wie man an den Bildern sieht, ist es uns
 nicht gelungen ein Hologramm anzufertigen das an allen Punkten die Information trägt. Es gab immer Stellen im Hologramm an denen man das Objekt nicht sehen 
 konnte. Aus den Fotos konnten wir ziemlich gut die Position der Minima auf den Balken bestimmen.
 
-\subsection{Weiteres}
-Da der Aufbau des öfteren, insbesondere jeden Morgen eigentlich komplett neu durchgeführt werden musste kamen wir erst am letzten Tag zur Echtzeitholographie
-leider haben wir es nicht mehr geschafft in der Verbleibenden Zeit ein funktionierendes Hologramm der Aluplatte anzufertigen.
+\subsection{Schwierigkeiten}
+Da der Aufbau des öfteren, insbesondere jeden Morgen eigentlich komplett neu durchgeführt werden musste kamen wir erst am letzten Tag zur Echtzeitholographie.
+Leider haben wir es nicht mehr geschafft in der Verbleibenden Zeit ein funktionierendes Hologramm der Aluplatte anzufertigen.
 
 \section{Auswertung}
 Für die Durchbiegung der Balken haben wir die Positionen der Intensitätsminima auf diesen bestimmt und dann wie in der Staatsexamensarbeit beschrieben
-daraus die Durchbiegung der Punkte in $\mu m$ bestimmt und diese gegen die Positionen geplottet.
+daraus die Durchbiegung der Punkte in $\mu m$ bestimmt und diese gegen die Positionen geplottet. 
 Wobei die Durchbiegung $d_i$ des $i$-ten Punktes gegeben ist durch:
 \begin{align}
  d_i = \frac{2 \lambda i}{\cos{\alpha} + \cos{\beta}}
@@ -374,39 +373,39 @@ beschrieben mittels:
 \end{align*}
 mit $E$ Elastizitätsmodul, $\vec F$ Kraft, $b$ Breite und $c$ Dicke, der Elastizitätsmodul berechnen.
 
-Für die Elastizitätzmoduln drei Stäbe (von links nach rechts) erhielten wir:
+Für die Elastizitätzmoduln der drei Stäbe (von links nach rechts) erhielten wir:
 \begin{align*}
- (194 \pm 28) \cdot 10^{-9} \frac{N}{m^2}
- (113 \pm 27) \cdot 10^{-9} \frac{N}{m^2}
- (77  \pm 13) \cdot 10^{-9} \frac{N}{m^2}
+ E_1 =(194 \pm 28) \cdot 10^{-9} \frac{N}{m^2}\\
+ E_2 =(113 \pm 27) \cdot 10^{-9} \frac{N}{m^2}\\
+ E_3 =(77  \pm 13) \cdot 10^{-9} \frac{N}{m^2}
 \end{align*}
 
 wobei man den Fehler auf die Kraft, Dicke und Breite vernachlässigen kann und sich der Fehler auf den Modul nur aus dem Fehler des Parameters $p_0$ ergibt.
 \begin{align}
- s_E = E \cdot \frac{s_{p_0}}{p_0}
+ s_{E_i} = E_i \cdot \frac{s_{p_0}}{p_0}
 \end{align}
 
 
 
 \section{Zusammenfassung}
 Nach einigen Schwierigkeiten mit dem Entwicklungsprozess gelang es uns recht gute Hologramme aufzunehmen. Leider standen uns nur vier von fünf möglichen Tagen
-zur Verfügung und wir mussten den Strahlengang jeden Morgen neu justieren. Dies führte dazu das wir nur Interferometrie mit Doppelbelichtungstechnik durchführen konnten.
+zur Verfügung und wir mussten den Strahlengang jeden Morgen neu justieren. Dies führte dazu, dass wir nur Interferometrie mit Doppelbelichtungstechnik durchführen konnten.
  
 Für die Elastizitätzmoduln der drei Stäbe (von links nach rechts) erhielten wir:
 \begin{align*}
- (194 \pm 28) \cdot 10^{-9} \frac{N}{m^2}
- (113 \pm 27) \cdot 10^{-9} \frac{N}{m^2}
- (77  \pm 13) \cdot 10^{-9} \frac{N}{m^2}
+ E_1 = (194 \pm 28) \cdot 10^{-9} \frac{N}{m^2}\\
+ E_2 = (113 \pm 27) \cdot 10^{-9} \frac{N}{m^2}\\
+ E_3 = (77  \pm 13) \cdot 10^{-9} \frac{N}{m^2}
 \end{align*}
-Die Litheraturwerte betragen:
+Die Literaturwerte betragen:
 \begin{align*}
- 195  \cdot 10^{-9} \frac{N}{m^2}
- 100  \cdot 10^{-9} \frac{N}{m^2}
- 72   \cdot 10^{-9} \frac{N}{m^2}
+ E_1 = 195  \cdot 10^{-9} \frac{N}{m^2}\\
+ E_2 = 100  \cdot 10^{-9} \frac{N}{m^2}\\
+ E_3 = 72   \cdot 10^{-9} \frac{N}{m^2}
 \end{align*}
 Wie man sieht stimmen unsere Messwerte im Bereich ihrer Fehler mit den Literaturwerten überein.
 
-wir konnten also die Materialien anhand ihres Interferenzmusters unterscheiden. Trotz der eher Mittelmässigen Ergebnisse konnten wir das Prinzip der Hologramme 
+wir konnten also die Materialien anhand ihres Interferenzmusters unterscheiden. Trotz der eher mittelmässigen Ergebnisse konnten wir das Prinzip der Hologramme 
 sowie die Technik deren Interferometrie beobachten und verstehen.
 
 %\section{Anhang}
