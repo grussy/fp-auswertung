@@ -62,8 +62,6 @@ frame = Fenster.GetFrame()
 x1, x2, y2 = frame.GetX1(), frame.GetX2(), frame.GetY2()
 E1 = (E0 / c * Q(-2.5,'mm/s')).inUnitsOf('eV').value
 E2 = (E0 / c * Q(2.5,'mm/s')).inUnitsOf('eV').value
-print E1
-print E2
 eax = TGaxis(x1, 0.5, x2, 0.5, E1, E2, 510, '')
 eax.SetTitle('Energie [eV]')
 eax.Draw()
@@ -127,8 +125,6 @@ lgv.Draw()
 print "   done with voigt."
 Fenster.Update()
 print "   all done."
-
-
 
 # Berechen gesuchte Werte -------------------------------------------------
 print "\nLorentzFit"
