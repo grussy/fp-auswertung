@@ -28,16 +28,105 @@ und zwar über die bei hohen Temperaturen gemessene.
 
 \section{Theorie und Aufbau}
 \subsection{Emission und Absorption}
+
+\frame{\frametitle{Emission und Absorption}
+\begin{columns}
+\column{.55\textwidth}
 \begin{enumerate}
- \item Geht ein 
- \item Energieeichung des MCA mit Hilfe eines Americium Strahlers und verschiedener metallischer Floureszenzplättchen (Aufbau mit Drehscheibe)
- \item Mit dem SCA ein Fenster auf die 14,4 KeV Linie setzen.
- \item Mit Hilfe verschiedener Aluminiumplättchen sollen Untergrundmessungen bei verschiedenen Dicken gemacht werden um später auf die Dicke Null extrapolieren zu können.
- \item Aufnahme der Spektren des Einlinien- (Eisen) Absorbers und des 6-Linien- (Edelstahl) Absorbers.
+ \item \textcolor{blue}{Emission}: In der Quelle zerfällt angeregter Zustand (Skizze) und erzeugt Gammastrahlung
+ \item \textcolor{blue}{Absorbtion}: Gammastrahlung regt Kern im Absorber an, Kern wird kurz angeregt
+ \item \textcolor{blue}{Resonanzabsorbtion}: Quelle und Absorber gleichen Materials
 \end{enumerate}
+\column{.45\textwidth}
+\centering 
+\begin{figure}[H]  
+\includegraphics[width=0.95\linewidth]{pictures/zerfall_quelle.eps}
+\end{figure}
+\end{columns}
+\vfill
+Bei beiden Vorgängen wird Energie übertragen $\Rightarrow$ Linien verschoben
+}
+
+\frame{\frametitle{Energieübertrag}
+\begin{columns}
+\column{.55\textwidth}
+\begin{itemize}
+ \item \textcolor{blue}{Emission}:\\
+Rückstoßimpuls $p_R = -p_{\gamma}$\\
+Energieübertrag $E_R = \frac{p_{\gamma}^2}{2m} = \frac{E_{\gamma}^2}{2mc^2}$\\
+Quant verliert Energie $\Rightarrow E_{\gamma} = E_0-E_R$ 
+ \item \textcolor{blue}{Absorbtion}:\\
+Rückstoßimpuls $p_R = p_{\gamma}$\\
+Quant kann nur absorbiert werden wenn $E_{\gamma} = E_0+E_R$
+\end{itemize}
+\column{.45\textwidth}
+\centering 
+\begin{figure}[H]  
+\includegraphics[width=0.95\linewidth]{pictures/linienskizze1.ps}
+\end{figure}
+\end{columns}
+\vfill
+Linien sind um $2E_R$ gegeneinander verschoben, also ist keine Resonanzabsorption möglich
+}
+
+\frame{\frametitle{Linienbreite}
+Die Breite der Energielinien ist durch zwei Effekte gegeben
+\begin{itemize}
+ \item \textcolor{blue}{natürliche Linienbreite $\Gamma$}: \\
+  resultiert aus Energie-Zeit-Unschärfe, diese verknüpft $\Gamma$ mit mittlerer Lebensdauer $\tau$\\
+ \begin{align*}
+  \tau \Gamma = \hbar \Rightarrow \Gamma = \frac{\hbar}{\tau}
+ \end{align*}
+ \item \textcolor{blue}{Dopplerverbreiterung}: \\
+  resultiert aus Bewegung der Atome, durch Dopplereffekt wird Frequenz $\nu_0$ verschoben:
+ \begin{align*}
+  \nu = \nu_0 * \left( 1 + \frac{v}{c} \right)
+ \end{align*}
+\end{itemize}
+\vfill
+  Bei thermischer Bewegung $v$ Gaußverteilt
+}
+\subsection{Rückstoßfreie Resonanzabsorbtion}
+
+\frame{\frametitle{Kerne im Gitter}
+Wenn Kerne in Gitter gebunden sind wird der Rückstoßimpuls auf das Gitter übertragen
+\begin{itemize}
+\item in Imbulsbilanz erhöht sich die Masse der Kerne auf Gittermasse 
+\item fast kein Energieübertrag auf den Kern bei Emission 
+\item Absorbtion kann stattfinden, da auch hier kaum Energieübertrag
+\end{itemize}
+\vfill
+$\Rightarrow$ Resonanzabsorbtion möglich
+}
+
+\frame{\frametitle{Kerne im Gitter}
+\includegraphics[width=0.95\linewidth]{pictures/linienskizze.ps}
+}
+
+\frame{\frametitle{Anregung von Gitterschwingungen}
+Im Gitter können allerdings Gitterschwingungen angeregt werden
+\begin{itemize}
+ \item tritt auf, wenn Rückstoßenergie Phonon erzeugen kann
+ \item Gammaquant fehlt Energie $\Rightarrow$ keine Resonanzabsorption
+\end{itemize}
+\vfill
+$\Rightarrow$ Debye-Waller-Faktor gibt Anteil elastisch gestreuter Photonen an
+}
+
+\frame{\frametitle{Debye-Waller-Faktor}
+Debye-Waller-Faktor $f$ ist Verhältniss von elastischer Streuung und Absorbtion durch Gitterschwingungen.
+\begin{align*}
+ f = exp\left[ -\frac{3E_R}{2k_B\Theta}\left(1+\left(\frac{2T}{\Theta}\right)^2 \int\limits_{0}^{\frac{\Theta}{T}} \frac{x~dx}{e^x - 1}\right)\right]
+\end{align*}
+für kleine Temperaturen $(T<<\Theta)$ und Kerne im arteigenen kubischen Gitter:
+\begin{align*}
+ f \approx exp \left[ -\frac{E_R}{k_B\Theta}\left(\frac{3}{2} + \left(\frac{\pi T}{\Theta}\right)^2\right)\right]
+\end{align*}
+$\Theta$ ist die Debye-Temperatur, eine Materialkonstante.
+}
+
 \subsection{Hyperfeinstruktur}
 
-\subsection{Rückstoßfreie Resonanzabsorbtion}
 
 \subsection{Aufbau}
 
@@ -61,19 +150,10 @@ und zwar über die bei hohen Temperaturen gemessene.
 }
 
 \frame{\frametitle{Debye-Waller-Faktor}
-Wie schon erwähnt kann es aber auch vorkommen, dass keine rückstoßfreie Resonanzabsorption auftritt da bei der Absorption oder Emission Gitterschwingungen (Phononen) 
-angeregt werden können und somit dem Photon doch wieder nicht die volle Energie des Übergangs zur Verfügung steht. Der Debye-Waller-Faktor $f$ gibt an wie viel rückstoßfreie Resonanzabsorption
-auftritt. Er hängt von der Temperatur und der Übergangsenergie ab:
+
 }
 \frame{\frametitle{Debye-Waller-Faktor}
-\begin{align}
- f = exp\left[ -\frac{3E_R}{2k_B\Theta}\left(1+\left(\frac{2T}{\Theta}\right)^2 \int\limits_{0}^{\frac{\Theta}{T}} \frac{x~dx}{e^x - 1}\right)\right]
-\end{align}
-und lässt sich für kleine Temperaturen $(T<<\Theta)$ und Kerne im arteigenen kubischen Gitter annähern durch:
-\begin{align}
- f \approx exp \left[ -\frac{E_R}{k_B\Theta}\left(\frac{3}{2} + \left(\frac{\pi T}{\Theta}\right)^2\right)\right]
-\end{align}
-wobei $T$ die absolute Temperatur, $k_B$ die Boltzmannkonstante, $E_R$ die Rückstoßenergie und $\Theta$ die Debye-Temperatur ist.
+
 }
 
 \section{Durchführung und Ergebnisse}
