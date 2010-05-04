@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[draft]{beamer}
 \usepackage{beamerthemesplit} % kam neu dazu
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -78,10 +78,133 @@ wobei $T$ die absolute Temperatur, $k_B$ die Boltzmannkonstante, $E_R$ die Rück
 
 \section{Durchführung und Ergebnisse}
 \subsection{Aufgabenstellung}
-\subsection{Energieeichung}
-\subsection{}
-\subsection{}
-\subsection{}
+\frame{\frametitle{Aufgabenstellung}
+\begin{enumerate}
+ \item Energieeichung des MCA
+ \item Energiefenster auf 14,4 KeV Linie
+ \item Untergrundmessung
+ \item Spektrum des 1-Linien- (Eisen) Absorbers
+ \begin{itemize}
+  \item Isomerieverschiebung
+  \item Effektive Absorberdicke, Wirkungsquerschnitt, Debye-Waller-Faktor
+  \item Linienbreite und Lebensdauer
+ \end{itemize}
+ \item Spektrum des 6-Linien- (Edelstahl) Absorbers.
+ \begin{itemize}
+  \item Isomerieverschiebung
+  \item Kernmagnetisches Moment
+  \item Magnetfeld am Kernort
+ \end{itemize}
+\end{enumerate}
+}
+
+\subsection{Energieeichug und Energiefenster}
+\frame{\frametitle{Energieeichung}
+\begin{block}{Wofür Energieeichung}
+ Zur Identifikation des 14,4$keV$ Peaks im Spektrum \\
+ $\Rightarrow$ Beziehung zwischen Kanal des MCA und Energie 
+\end{block}
+\begin{block}{Wie}
+ Americium-Quelle mit verschiedenen Metallplättchen \\
+ $\Rightarrow$ Bekannte Energien mit identifizierbaren Peaks
+\end{block}
+\vfill
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Stoff & Rubidium & Molibdän & Silber & Terbium & Barium\\
+Energie $K_{\alpha}$/keV & 13.3 & 17.44 & 22.1 & 44.23 & 32.06 \\
+\hline
+\end{tabular}
+
+}
+\frame{\frametitle{Gaußfits an $K_\alpha$-Linien}
+\includegraphics[width=0.9\linewidth]{pictures/eichung_terbium.eps}
+}
+\frame{\frametitle{Gaußfits an $K_\alpha$-Linien}
+\begin{columns}
+        \column{.5\textwidth}
+                 \includegraphics[width=0.9\linewidth]{pictures/eichung_silber.eps}
+        \column{.5\textwidth}
+		 \includegraphics[width=0.9\linewidth]{pictures/eichung_rubidium.eps}
+\end{columns}
+\begin{columns}
+        \column{.5\textwidth}
+                \includegraphics[width=0.9\linewidth]{pictures/eichung_molibdaen.eps}
+        \column{.5\textwidth}
+                \includegraphics[width=0.9\linewidth]{pictures/eichung_barium.eps}
+\end{columns}
+}
+\frame{\frametitle{Fit an die Orte der Gaußkurven}
+\includegraphics[width=0.9\linewidth]{pictures/eichung_linear.eps}
+}
+\frame{\frametitle{Fit an die Orte der Gaußkurven}
+\begin{block}{Fit}
+\begin{align*}
+  C = a \cdot E + b \hspace{30pt}
+\end{align*}
+\begin{align*}
+ \textnormal{mit}\hspace{30pt}a = 100.52 \pm 0.04\textnormal{ und }b =  -62.42 \pm 1.285
+\end{align*}
+\end{block}
+
+\begin{block}{14,4 keV Linie}
+\begin{align*}
+  C_{14.4keV} = 1385,07 \pm 1,27
+\end{align*}
+\end{block}
+}
+\frame{\frametitle{Fenstereinstellung}
+\begin{block}{Warum ein Fenster verwenden}
+ Mößbauermessung geschieht mit Zähler, getriggert durch Motor \\
+ $\Rightarrow$ Nur Ereignisse mit 14,4 keV sollen gezählt werden
+\end{block}
+\begin{block}{Single-Channel-Analyser}
+ Einstellung: Unter- und Obergrenze für Energie \\
+ Visualisierung über MCA
+\end{block}
+}
+\subsection{Untergrund}
+\frame{\frametitle{Untergrund}
+\begin{block}{Compton-Streuung}
+\begin{itemize}
+ \item Quelle hat im wesentlichen zwei Peaks ($14,4 keV$ und $122 keV$)
+ \item Comptonstreuung erzeugt Untergrund im Messfenster
+ \item Nur indirekt messbar
+\end{itemize}
+\end{block}
+\begin{block}{Abschirmung durch Aluminium}
+Bei zunehmender Dicke erwartet man unterschiedliche Abschwächung der beiden Energien \\
+$\Rightarrow$ Doppelter Expotentialfit und Extrapolation auf Dicke 0
+\end{block}
+}
+\frame{\frametitle{Untergrundfit}
+\includegraphics[width=0.9\linewidth]{pictures/untergrund.eps}
+}
+\frame{\frametitle{Untergrundfit}
+\begin{block}{Fit}
+\begin{align*}
+  f_2 (d) = (50,38 \pm 0,78) \cdot exp (-0,0413 \pm 0,0027) \frac{Counts}{s}
+\end{align*}
+\end{block}
+
+\begin{block}{Untergrundzählrate}
+\begin{align*}
+  R_{Untergrund} = (50,38 \pm 0,78) \frac{Counts}{s} 
+\end{align*}
+\end{block}
+}
+\subsection{Die Messung}
+\frame{\frametitle{Absorberschlitten und Motor}
+
+}
+% 1 Linien (Edelstahl)
+\frame{\frametitle{Edelstahl-(1-Linien-)absorber}
+
+}
+
+% 6 Linien (Eisen)
+
+\subsection{Ergebnisse}
 \section{Die Entdeckung der Langsamkeit}
 \end{document}
 
