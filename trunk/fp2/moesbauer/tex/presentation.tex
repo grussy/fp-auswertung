@@ -1,4 +1,4 @@
-\documentclass[draft]{beamer}
+\documentclass{beamer}
 \usepackage{beamerthemesplit} % kam neu dazu
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -121,37 +121,77 @@ für kleine Temperaturen $(T<<\Theta)$ und Kerne im arteigenen kubischen Gitter:
  f \approx exp \left[ -\frac{E_R}{k_B\Theta}\left(\frac{3}{2} + \left(\frac{\pi T}{\Theta}\right)^2\right)\right]
 \end{align*}
 $\Theta$ ist die Debye-Temperatur, eine Materialkonstante.
+\vfill
+$\Rightarrow f$ sollte möglichst groß sein
 }
 
-\subsection{Hyperfeinstruktur}
-
-
-\subsection{Aufbau}
-
-
-\frame{\frametitle{Resonanzabsorption}
-\begin{itemize}
- \item Beim Kernübergang von angeregtem- in Grundzustand
- \item wird ein Photon erzeugt $E_\gamma \approx E_a - E_g$
- \item dieses kann einen anderen Kern anregen
- \item Resonanzabsorption: Gleiche angeregte Zustände
- \item Aus der Impulserhaltung folgt ein Engergiefehlbetrag der doppelten Rückstoßenergie
-\end{itemize}
-}
-
-\frame{\frametitle{Energieverschiebung}
-\begin{figure}
- \includegraphics[width=0.7\linewidth]{pictures/energieverschiebung.eps}
- \caption{Energieverschiebung von Emissions- und Absorptionslinie}
- \label{energieverschiebung}
+\frame{\frametitle{Temperaturabhängigkeit Debye-Waller-Faktor}
+\centering 
+\begin{figure}[H]  
+\includegraphics[width=0.75\linewidth]{pictures/debye.eps}
 \end{figure}
 }
 
-\frame{\frametitle{Debye-Waller-Faktor}
-
+\frame{\frametitle{Temperaturabhängigkeit Debye-Waller-Faktor}
+\centering 
+\begin{figure}[H]  
+\includegraphics[width=0.75\linewidth]{pictures/debye.eps}
+\end{figure}
+\hfill
+Für $^{57}Fe$ Debye-Waller-Faktor bei Raumtemperatur > 90\% \\
 }
-\frame{\frametitle{Debye-Waller-Faktor}
+\subsection{Hyperfeinstruktur und Isomerieverschiebung}
 
+
+\frame{\frametitle{Hyperfeinstruktur}
+\begin{columns}
+\column{.55\textwidth}
+\begin{itemize}
+ \item Entartung des Kernspins wird durch Magnetfeld $B$ aufgehoben, neue Wechselwirkungsenergie $E_{mag}$
+\begin{align*}
+ E_{mag}=\frac{\mu_l m_l}{l}B
+\end{align*}
+ \item Zustände spalten in $2l+1$ Unterniveaus auf
+ \item Auswahlregel $\Delta m_l = 0, \pm 1$ \\
+$\Rightarrow$ sechs mögliche Übergänge \\
+\end{itemize}
+\column{.45\textwidth}
+\includegraphics[width=0.9\linewidth]{pictures/termshema_eisen.eps}
+\end{columns}
+\vfill
+$\Rightarrow$ Transmissionskurve ist 6-Linien Spektrum
+}
+
+\frame{\frametitle{Isomerieverschiebung}
+Durch unterschiedliche Materialien in Absorber und Quelle verursacht
+\begin{columns}
+\column{.55\textwidth}
+\begin{itemize}
+ \item unterschiedliche La\-dungs\-dich\-te\-ver\-teil\-ung\-en von Kern im Grundzustand und angeregtem Kern
+ \item Elektronen\-hülle erzeugt unterschiedliche Coulomb\-energien
+\end{itemize}
+\column{.45\textwidth}
+\includegraphics[width=0.9\linewidth]{pictures/isomerie.eps}
+\end{columns}
+\vfill
+$\Rightarrow$ Möglichkeit der Analyse chemischer Bindungen
+}
+\subsection{Aufbau}
+\frame{\frametitle{Frequenzdurchstimmung mittels Dopplereffekt}
+\includegraphics[width=0.9\linewidth]{pictures/aufbau_doppler.eps} \\
+Absorber wird mit konstanter Geschwindigkeit $v$ bewegt \\
+\vfill
+$\Rightarrow$ Dopplerverschiebung der Übergangsfrequenz $\nu_0$ zu
+ \begin{align*}
+  \nu(v) = \nu_0 * \left( 1 + \frac{v}{c} \right)
+ \end{align*}
+}
+
+\frame{\frametitle{Versuchsaufbau mit Elektronik}
+\includegraphics[width=0.9\linewidth]{pictures/aufbau_el.eps} \\
+Elektronik soll Impulse des Detektors filtern \\
+\vfill
+$\Rightarrow$ nur relevante Impulse des Detektors werden gezählt
 }
 
 \section{Durchführung und Ergebnisse}
@@ -287,7 +327,7 @@ $\Rightarrow$ Doppelter Expotentialfit und Extrapolation auf Dicke 0
 \end{block}
 }
 \frame{\frametitle{Absorberschlitten und Motor}
-\includegraphics[width=0.9\linewidth]{pictures/motor.eps}
+%\includegraphics[width=0.9\linewidth]{pictures/motor.eps}
 }
 % 1 Linien (Edelstahl)
 \frame{\frametitle{Edelstahl-(1-Linien-)absorber}
