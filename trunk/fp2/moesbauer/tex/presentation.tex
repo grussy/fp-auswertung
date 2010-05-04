@@ -291,9 +291,75 @@ $\Rightarrow$ Doppelter Expotentialfit und Extrapolation auf Dicke 0
 }
 % 1 Linien (Edelstahl)
 \frame{\frametitle{Edelstahl-(1-Linien-)absorber}
-
+\begin{block}{Der Absorber}
+ Edelstahl, unmagnetisch, 25$\mu m$ Dick
+\end{block}
+\begin{block}{Absorberbewegung}
+\begin{itemize}
+ \item Geschwindigkeiten von $-2,5\frac{mm}{s}$ bis $2,5\frac{mm}{s}$ \\
+ $\Rightarrow$ Dopplerverschiebung von $\pm 1,2 \cdot 10^{-7} eV$ 
+ \item Geschwindigkeitsvariation $\Rightarrow$ Verschiebung Absorptions- gegen Emissionslinie
+\end{itemize}
+\end{block}
 }
+\frame{\frametitle{Spektrum}
+\begin{block}{Transmissionsprofil}
+\begin{itemize}
+ \item Transmissionsprofil näherungsweise Lorentzförmig
+ \item Abweichung da dicker Absorber verwendet
+ \item Lorentzfit zu schmal
+\end{itemize}
+\end{block}
 
+\begin{block}{Voigt-Fit}
+ \begin{itemize}
+  \item Faltung von Lorentz und Gauß
+  \item Lorentzanteil liefert direkt die natürliche Linienbreite
+ \end{itemize}
+\end{block}
+}
+\frame{\frametitle{Lorentz-, Gauß- und Voigt-Fit}
+\includegraphics[width=0.9\linewidth]{pictures/edelstahl.eps}
+}
+\frame{\frametitle{Isomerieverschiebung}
+\begin{block}{Isomerieverschiebung}
+ Die Isomerieverschiebung lässt sich aus der Lage des Transmissionsminimum direkt ablesen \\
+ Wir erhielten:
+\begin{align*}
+ v_{iso} = (0.22\pm 0.0026) \frac{mm}{s}
+\end{align*}
+Umgerechnet in Energie:
+\begin{align*}
+ E_{iso} = (10.7 \pm 0.12) 10^{-9} eV
+\end{align*}
+\end{block}
+}
+\frame{\frametitle{Linienbreite}
+\begin{block}{Linenbreite aus Voigt-Fit}
+ Aus dem Lorentzanteil des Voigt-Fits ergibt sich eine Linenbreite von:
+\begin{align*}
+ \Gamma_{mm} = (0.292 \pm 0.022) \frac{mm}{s}
+\end{align*}
+umgerechnet in Energieeinheiten ergibt sich:
+\begin{align*}
+ \Gamma_{mes} = \frac{E_0\Gamma_{mm}}{c} = (14 \pm 1.1) 10^{-9}eV
+\end{align*}
+\end{block}
+}
+\frame{\frametitle{Linienbreite}
+\begin{block}{Linenbreite alternativ}
+\begin{itemize}
+ \item Bestimmung der relativen Verbreiterung aus der effektiven Absorberdicke
+ \item Berechnung der natürlichen Linenbreite aus Lorent-Fit
+\end{itemize}
+Damit ergibt sich:
+\begin{align*}
+ \Gamma = (5.09 \pm 0.14) 10^{-9} eV
+\end{align*}
+\end{block}
+\vfill
+Abweichung: Ungenaue Angaben über Absorber, Quelldicke unbekannt
+}
 % 6 Linien (Eisen)
 
 \subsection{Ergebnisse}
