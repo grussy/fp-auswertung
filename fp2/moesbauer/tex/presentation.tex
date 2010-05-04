@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[draft]{beamer}
 \usepackage{beamerthemesplit} % kam neu dazu
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -121,65 +121,37 @@ für kleine Temperaturen $(T<<\Theta)$ und Kerne im arteigenen kubischen Gitter:
  f \approx exp \left[ -\frac{E_R}{k_B\Theta}\left(\frac{3}{2} + \left(\frac{\pi T}{\Theta}\right)^2\right)\right]
 \end{align*}
 $\Theta$ ist die Debye-Temperatur, eine Materialkonstante.
-\vfill
-$\Rightarrow f$ sollte möglichst groß sein
 }
 
-\frame{\frametitle{Temperaturabhängigkeit Debye-Waller-Faktor}
-\centering 
-\begin{figure}[H]  
-\includegraphics[width=0.75\linewidth]{pictures/debye.eps}
-\end{figure}
-\hfill
-Für $^{57}Fe$ Debye-Waller-Faktor bei Raumtemperatur > 90\% \\
-}
-\subsection{Hyperfeinstruktur und Isomerieverschiebung}
-
-
-\frame{\frametitle{Hyperfeinstruktur}
-\begin{columns}
-\column{.55\textwidth}
-\begin{itemize}
- \item Entartung des Kernspins wird durch Magnetfeld $B$ aufgehoben, neue Wechselwirkungsenergie $E_{mag}$
-\begin{align*}
- E_{mag}=\frac{\mu_l m_l}{l}B
-\end{align*}
- \item Zustände spalten in $2l+1$ Unterniveaus auf
- \item Auswahlregel $\Delta m_l = 0, \pm 1$ \\
-$\Rightarrow$ sechs mögliche Übergänge \\
-\end{itemize}
-\column{.45\textwidth}
-\includegraphics[width=0.9\linewidth]{pictures/termshema_eisen.eps}
-\end{columns}
-\vfill
-$\Rightarrow$ Transmissionskurve ist 6-Linien Spektrum
-}
-
-\frame{\frametitle{Isomerieverschiebung}
-Durch unterschiedliche Materialien in Absorber und Quelle verursacht
-\begin{columns}
-\column{.55\textwidth}
-\begin{itemize}
- \item unterschiedliche Ladungsdichteverteilungen von angeregtem und Kern im Grundzustand
- \item Elektronenhülle erzeugt unterschiedliche Coulombenergien
-\end{itemize}
-\column{.45\textwidth}
-\includegraphics[width=0.9\linewidth]{pictures/isomerie.eps}
-\end{columns}
-\vfill
-$\Rightarrow$ Bestimmung des Absorberstoffes durch Isomerieverschiebung möglich
-}
+\subsection{Hyperfeinstruktur}
 
 
 \subsection{Aufbau}
 
-\frame{\frametitle{Versuchaufbau}
-\centering 
-\begin{figure}[H]  
-\includegraphics[width=0.75\linewidth]{pictures/debye.eps}
+
+\frame{\frametitle{Resonanzabsorption}
+\begin{itemize}
+ \item Beim Kernübergang von angeregtem- in Grundzustand
+ \item wird ein Photon erzeugt $E_\gamma \approx E_a - E_g$
+ \item dieses kann einen anderen Kern anregen
+ \item Resonanzabsorption: Gleiche angeregte Zustände
+ \item Aus der Impulserhaltung folgt ein Engergiefehlbetrag der doppelten Rückstoßenergie
+\end{itemize}
+}
+
+\frame{\frametitle{Energieverschiebung}
+\begin{figure}
+ \includegraphics[width=0.7\linewidth]{pictures/energieverschiebung.eps}
+ \caption{Energieverschiebung von Emissions- und Absorptionslinie}
+ \label{energieverschiebung}
 \end{figure}
-\hfill
-Für $^{57}Fe$ Debye-Waller-Faktor bei Raumtemperatur > 90\% \\
+}
+
+\frame{\frametitle{Debye-Waller-Faktor}
+
+}
+\frame{\frametitle{Debye-Waller-Faktor}
+
 }
 
 \section{Durchführung und Ergebnisse}
@@ -366,11 +338,11 @@ Umgerechnet in Energie:
 \begin{block}{Linenbreite aus Voigt-Fit}
  Aus dem Lorentzanteil des Voigt-Fits ergibt sich eine Linenbreite von:
 \begin{align*}
- \Gamma_{mm} = (0.292 \pm 0.022) \frac{mm}{s}
+ \Gamma = ( 7 \pm 0,53) \cdot 10^{-9} eV
 \end{align*}
-umgerechnet in Energieeinheiten ergibt sich:
+Der Literaturwert beträgt:
 \begin{align*}
- \Gamma_{mes} = \frac{E_0\Gamma_{mm}}{c} = (14 \pm 1.1) 10^{-9}eV
+ \Gamma = 4,64 \cdot 10^{-9} 
 \end{align*}
 \end{block}
 }
