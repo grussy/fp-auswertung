@@ -14,14 +14,50 @@
 \frame{\frametitle{Inhaltsverzeichnis}\tableofcontents} 
 
 \section{Einleitung}
-\subsection{Historisches}
-\subsection{Anwendungen}
+
+\subsection{Mößbauers Entdeckung}
 
 \frame{\frametitle{Rudolf Mößbauer}
-Er ging davon aus, dass sich zwei Quanten die auf diese Weise wechselwirken mit der doppelten Rückstoßgeschwindigkeit aufeinander zu bewegen müssten.
-Diese Theorie folgt direkt aus der Impulserhaltung und schien zunächst auch durch das Experiment bestätigt zu werden. Zuerst untersuchte Mössbauer nämlich die
-Resonanzabsorption bei Zimmertemperatur und darüber. Als er aber begann Quelle und Absorber abzukühlen, stieg die Intensität des Messsignals plötzlich steil an,
-und zwar über die bei hohen Temperaturen gemessene.
+\begin{columns}
+\column{.65\textwidth}
+\begin{itemize}
+ \item entdeckte Effekt aurgrund von Abweichung der Messergebnisse von den Erwartungen
+ \item erhielt 1961 Nobelpreis für seine Entdeckung
+\end{itemize}
+\column{.35\textwidth}
+\centering 
+\begin{figure}[H]  
+\includegraphics[width=0.95\linewidth]{pictures/moessbauer.eps}
+\end{figure}
+\end{columns}
+}
+
+
+\frame{\frametitle{Schematischer Originalaufbau}
+\includegraphics[width=0.95\linewidth]{pictures/moessbauer_original_aufbau.eps}
+}
+
+\subsection{Anwendungen}
+
+\frame{\frametitle{Analyse Unbekannter Stoffe}
+\begin{columns}
+\column{.65\textwidth}
+\begin{itemize}
+ \item Effekt hat aufgrund hoher Auflösung große Bedeutung für chemische Analyse
+ \item Zum Beispiel werden die Gesteinsbrocken der Rover-Mission Mößbauer-spektroskopiert\\
+\end{itemize}
+\column{.35\textwidth}
+\centering 
+\begin{figure}[H]  
+\includegraphics[width=0.95\linewidth]{pictures/mer.eps}
+\end{figure}
+\end{columns}
+\vfill
+Daten offen verfügbar: http://iacgu32.chemie.uni-mainz.de/mer/index.php
+}
+
+\frame{\frametitle{Bekannte Mößbauerübergänge}
+\includegraphics[width=0.95\linewidth]{pictures/perioden.eps}
 }
 
 \section{Theorie und Aufbau}
@@ -42,7 +78,6 @@ und zwar über die bei hohen Temperaturen gemessene.
 \end{figure}
 \end{columns}
 \vfill
-Bei beiden Vorgängen wird Energie übertragen $\Rightarrow$ Linien verschoben
 }
 
 \frame{\frametitle{Energieübertrag}
@@ -68,20 +103,28 @@ Linien sind um $2E_R$ gegeneinander verschoben, also ist keine Resonanzabsorptio
 }
 
 \frame{\frametitle{Linienbreite}
-Die Breite der Energielinien ist durch zwei Effekte gegeben
+Die Breite der Energielinien ist durch folgende Effekte gegeben
 \begin{itemize}
  \item \textcolor{blue}{natürliche Linienbreite $\Gamma$}: \\
   resultiert aus Energie-Zeit-Unschärfe, diese verknüpft $\Gamma$ mit mittlerer Lebensdauer $\tau$\\
  \begin{align*}
   \tau \Gamma = \hbar \Rightarrow \Gamma = \frac{\hbar}{\tau}
  \end{align*}
+\vfill
+$\Rightarrow$ schmalste mögliche Linienbreite
+\end{itemize}
+}
+
+\frame{\frametitle{Linienbreite}
  \item \textcolor{blue}{Dopplerverbreiterung}: \\
   resultiert aus Bewegung der Atome, durch Dopplereffekt wird Frequenz $\nu_0$ verschoben:
  \begin{align*}
   \nu = \nu_0 * \left( 1 + \frac{v}{c} \right)
  \end{align*}
-\end{itemize}
+ \item \textcolor{blue}{Verbreiterung durch Signalverarbeitung}: \\
+  durch elektronische Signalverarbeitung wird Linie Gaußförmig verbreitert.
 }
+
 \subsection{Rückstoßfreie Resonanzabsorbtion}
 
 \frame{\frametitle{Kerne im Gitter}
@@ -128,18 +171,11 @@ $\Rightarrow f$ sollte möglichst groß sein
 \begin{figure}[H]  
 \includegraphics[width=0.75\linewidth]{pictures/debye.eps}
 \end{figure}
-}
-
-\frame{\frametitle{Temperaturabhängigkeit Debye-Waller-Faktor}
-\centering 
-\begin{figure}[H]  
-\includegraphics[width=0.75\linewidth]{pictures/debye.eps}
-\end{figure}
 \hfill
 Für $^{57}Fe$ Debye-Waller-Faktor bei Raumtemperatur > 90\% \\
 }
-\subsection{Hyperfeinstruktur und Isomerieverschiebung}
 
+\subsection{Hyperfeinstruktur und Isomerieverschiebung}
 
 \frame{\frametitle{Hyperfeinstruktur}
 \begin{columns}
@@ -231,25 +267,27 @@ Stoff & Rubidium & Molibdän & Silber & Terbium & Barium\\
 Energie $K_{\alpha}$/keV & 13.3 & 17.44 & 22.1 & 44.23 & 32.06 \\
 \hline
 \end{tabular}
+}
 
-}
 \frame{\frametitle{Gaußfits an $K_\alpha$-Linien}
-\includegraphics[width=0.9\linewidth]{pictures/eichung_terbium.eps}
+\includegraphics[width=0.9\linewidth]{pictures/eichung_barium.eps}
 }
-\frame{\frametitle{Gaußfits an $K_\alpha$-Linien}
-\begin{columns}
-        \column{.5\textwidth}
-                 \includegraphics[width=0.9\linewidth]{pictures/eichung_silber.eps}
-        \column{.5\textwidth}
-		 \includegraphics[width=0.9\linewidth]{pictures/eichung_rubidium.eps}
-\end{columns}
-\begin{columns}
-        \column{.5\textwidth}
-                \includegraphics[width=0.9\linewidth]{pictures/eichung_molibdaen.eps}
-        \column{.5\textwidth}
-                \includegraphics[width=0.9\linewidth]{pictures/eichung_barium.eps}
-\end{columns}
-}
+
+%\frame{\frametitle{Gaußfits an $K_\alpha$-Linien}
+%\begin{columns}
+%        \column{.5\textwidth}
+%                 \includegraphics[width=0.9\linewidth]{pictures/eichung_silber.eps}
+%        \column{.5\textwidth}
+%		 \includegraphics[width=0.9\linewidth]{pictures/eichung_rubidium.eps}
+%\end{columns}
+%\begin{columns}
+%        \column{.5\textwidth}
+%                \includegraphics[width=0.9\linewidth]{pictures/eichung_molibdaen.eps}
+%        \column{.5\textwidth}
+%                \includegraphics[width=0.9\linewidth]{pictures/eichung_barium.eps}
+%\end{columns}
+%}
+
 \frame{\frametitle{Fit an die Orte der Gaußkurven}
 \includegraphics[width=0.9\linewidth]{pictures/eichung_linear.eps}
 }
@@ -343,7 +381,7 @@ $\Rightarrow$ Doppelter Expotentialfit und Extrapolation auf Dicke 0
 \frame{\frametitle{Spektrum}
 \begin{block}{Transmissionsprofil}
 \begin{itemize}
- \item Transmissionsprofil näherungsweise Lorentzförmig
+ \item Transmissionsprofil näherungsweise Lorenzförmig
  \item Abweichung da dicker Absorber verwendet
  \item Lorentzfit zu schmal
 \end{itemize}
@@ -351,7 +389,7 @@ $\Rightarrow$ Doppelter Expotentialfit und Extrapolation auf Dicke 0
 
 \begin{block}{Voigt-Fit}
  \begin{itemize}
-  \item Faltung von Lorentz und Gauß
+  \item Faltung von Lorenz und Gauß
   \item Lorentzanteil liefert direkt die natürliche Linienbreite
  \end{itemize}
 \end{block}
@@ -388,7 +426,7 @@ Der Literaturwert beträgt:
 \begin{block}{Linenbreite alternativ}
 \begin{itemize}
  \item Bestimmung der relativen Verbreiterung aus der effektiven Absorberdicke
- \item Berechnung der natürlichen Linenbreite aus Lorent-Fit
+ \item Berechnung der natürlichen Linenbreite aus Lorenz-Fit
 \end{itemize}
 Damit ergibt sich:
 \begin{align*}
