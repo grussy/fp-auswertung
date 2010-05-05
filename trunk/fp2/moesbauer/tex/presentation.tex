@@ -401,6 +401,85 @@ Damit ergibt sich:
 Abweichung: Ungenaue Angaben über Absorber, Quelldicke unbekannt
 }
 % 6 Linien (Eisen)
+\frame{\frametitle{Eisen-(6-Linien-)absorber}
+\begin{block}{Der Absorber}
+ Natureisen, ferromagnetisch
+\end{block}
+\begin{block}{Absorberbewegung}
+\begin{itemize}
+ \item Geschwindigkeiten von $-10\frac{mm}{s}$ bis $10\frac{mm}{s}$
+ \item Schlechtere Genauigkeit durch kleinere Übersetztung
+\end{itemize}
+\end{block}
+}
+\frame{\frametitle{Spektrum}
+\begin{block}{Transmissionsprofil}
+\begin{itemize}
+ \item Transmissionsprofil 6-Linien wegen HFS
+\end{itemize}
+\end{block}
+
+\begin{block}{Fit}
+ \begin{itemize}
+  \item sechsfacher Lorentzfit $\Rightarrow$ keine Korrektur der Linenbreite
+ \end{itemize}
+\end{block}
+}
+\frame{\frametitle{6-Fach Lorentz-Fit}
+\includegraphics[width=0.9\linewidth]{pictures/eisen.eps}
+}
+\frame{\frametitle{Kurvenverlauf}
+\begin{block}{Identifikation der Peaks}
+\begin{align*}
+ v_i = v_{iso} - v_{hfs}^i \hspace{5pt} \textnormal{    mit } v_{hfs}^i = \frac{c}{E_0} E_{hfs}^i = \frac{c}{E_0} \left( \frac{\mu_a m_a^i}{I_a} - \frac{\mu_g m_g^i}{I_g} \right) B
+\label{geschw}
+\end{align*}
+\end{block}
+\vfill
+\begin{itemize}
+ \item Mit Auswahlregel für Dipolstrahlung ($\Delta m = 0, \pm 1$) $\Rightarrow$ 6 mögliche Übergänge
+ \item Je 2 Geschwindigkeiten unterscheiden sich nur durch Vorzeichen
+\end{itemize}
+
+}
+\frame{\frametitle{Messdaten}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+Peak& $\mu_a^i$ & $\mu_g^i$ & $v_{hfs}^i$ & $v_{mes}^i/\frac{mm}{s}$ & $E_{mes}^i/10^{-7} eV$ & \% Fehler\\
+\hline
+1 & $+\frac{3}{2}$ & $+\frac{1}{2}$ & $v_{hfs}^1$ & -5.158 & -2.48 & 0.72\\
+2 & $+\frac{1}{2}$ & $+\frac{1}{2}$ & $v_{hfs}^2$ & -2.858 & -1.37 & 0.63\\
+3 & $-\frac{1}{2}$ & $+\frac{1}{2}$ & $v_{hfs}^3$ & -0.7075 & -0.34 & 1.61\\
+4 & $+\frac{1}{2}$ & $-\frac{1}{2}$ & $v_{hfs}^4 = -v_{hfs}^3$ & 0.9118 & -0.44 & 0.68\\
+5 & $-\frac{1}{2}$ & $-\frac{1}{2}$ & $v_{hfs}^5 = -v_{hfs}^2$ & 3.31 & 1.59 & 0.39\\
+6 & $-\frac{3}{2}$ & $-\frac{1}{2}$ & $v_{hfs}^6 = -v_{hfs}^1$ & 5.457 & 2.62 & 0.3\\
+\hline
+\end{tabular}
+}
+
+\frame{\frametitle{Isomerieverschiebung}
+\begin{block}{Isomerieverschiebung}
+\begin{align*}
+ v_{iso} = \frac{v_{mes}^1+v_{mes}^6}{2} =\frac{v_{mes}^2+v_{mes}^5}{2} =\frac{v_{mes}^3+v_{mes}^4}{2}
+\end{align*}
+Wir erhielten als Ergebnisse:
+\begin{tabular}{|l|lll|}
+\hline
+Peaks & $v_{iso}/\frac{mm}{s}$ & $E_{iso}/10^{-9}eV$ & \% Fehler\\
+\hline
+1 und 6& $-0.1021 \pm 0.004$ & $-4.91 \pm 0.19$ & 3.9\\
+2 und 5& $-0.2262 \pm 0.028$ & $-10.8 \pm 1.4$ & 12.56\\
+3 und 4& $-0.1497 \pm 0.013$ & $-7.195 \pm 0.63$ & 8.78\\
+\hline
+\end{tabular}
+\end{block}
+\vfill
+\begin{align*}
+ \textnormal{gew. Mittel: } v_{iso} = (-0.1083\pm 0.0038)\frac{mm}{s} \quad \textnormal{Lit.:}  v_{iso,Lit} = -0,110 \frac{mm}{s}
+\end{align*}
+}
+
+\frame{\frametitle{Kernmagnetisches Moment}
 
 \subsection{Ergebnisse}
 \section{Die Entdeckung der Langsamkeit}
