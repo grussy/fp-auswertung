@@ -1,20 +1,20 @@
 # Messübersichtsdatei der Untergrundmessung Mößbauerversuch
 #Dateiname  Dicke/mm   Messdauer/s   Fehler_dicke/mm    Fehler_messdauer/s
-0.2mm960s.IEC   0.2 960 0.01    1e-3
-0.4mm1800s.IEC  0.4 1800    0.01    1e-3
-0.6mm1800s.IEC  0.6 1800    0.01    1e-3
-0.8mm1800s.IEC  0.8 1800    0.01    1e-3
-10.0mm43200s.IEC    10.0    43200   0.01    1e-3
-1.0mm1800s.IEC  1.0 1800    0.01    1e-3
-12mm46800s.IEC  12.0    46800   0.01    1e-3
-1.5mm1800s.IEC  1.5 1800    0.01    1e-3
-2.0mm1800s.IEC  2.0 1800    0.01    1e-3
-2.5mm1800s.IEC  2.5 1800    0.01    1e-3
-3.0mm1800s.IEC  3.0 1800    0.01    1e-3
-4.0mm1800s.IEC  4.0 1800    0.01    1e-3
-5.0mm1800s.IEC  5.0 1800    0.01    1e-3
-6.0mm1800s.IEC  6.0 1800    0.01    1e-3
-7.0mm1800s.IEC  7.0 1800    0.01    1e-3
-8.0mm5400s.IEC  8.0 5400    0.01    1e-3
+0.2mm960s.IEC   0.2 960 0.01    1
+0.4mm1800s.IEC  0.4 1800    0.01    1
+0.6mm1800s.IEC  0.6 1800    0.01    1
+0.8mm1800s.IEC  0.8 1800    0.01    1
+10.0mm43200s.IEC    10.0    43200   0.01    1
+1.0mm1800s.IEC  1.0 1800    0.01    1
+12mm46800s.IEC  12.0    46800   0.01    1
+1.5mm1800s.IEC  1.5 1800    0.01    1
+2.0mm1800s.IEC  2.0 1800    0.01    1
+2.5mm1800s.IEC  2.5 1800    0.01    1
+3.0mm1800s.IEC  3.0 1800    0.01    1
+4.0mm1800s.IEC  4.0 1800    0.01    1
+5.0mm1800s.IEC  5.0 1800    0.01    1
+6.0mm1800s.IEC  6.0 1800    0.01    1
+7.0mm1800s.IEC  7.0 1800    0.01    1
+8.0mm5400s.IEC  8.0 5400    0.01    1
 #fensterbreite.IEC   300 3400 2  3   4
 #spektrum_mit_eisen.IEC 300 2300 2 3 4

@@ -56,15 +56,15 @@ class Messung:
         self.canvas = c
         c.SetGrid()
         self.graph.Draw('APX')
-        lg = TLegend(0.47, 0.64, 0.88, 0.84)
-        lg.SetFillColor(0)
-        lg.AddEntry(self.graph, 'Messreihe:'+ self.name, 'p')
-        lg.AddEntry(self.fitfkt, 'Gaußfit', 'l')
-        lg.AddEntry(self.fitfkt, 'Schwerpkt = %.4f #pm %.4f' % (self.ort,self.sort), '')
-        lg.AddEntry(self.fitfkt, '#chi^{2}/ndf = %.2f/%d = %.2f' % (
-            self.chisq, self.ndf, self.rchisq), '')
-        self.legend = lg
-        self.legend.Draw()
+##        lg = TLegend(0.47, 0.64, 0.88, 0.84)
+##        lg.SetFillColor(0)
+##        lg.AddEntry(self.graph, 'Messreihe:'+ self.name, 'p')
+##        lg.AddEntry(self.fitfkt, 'Gaußfit', 'l')
+##        lg.AddEntry(self.fitfkt, 'Schwerpkt = %.4f #pm %.4f' % (self.ort,self.sort), '')
+##        lg.AddEntry(self.fitfkt, '#chi^{2}/ndf = %.2f/%d = %.2f' % (
+##            self.chisq, self.ndf, self.rchisq), '')
+##        self.legend = lg
+##        self.legend.Draw()
         c.Update()
 
     # Gaussfit ohne Korrektur

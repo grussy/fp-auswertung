@@ -25,6 +25,7 @@ class Messung:
         self.sdicke = float(FehlerDicke)
         self.stime = float(FehlerZeit)
         self.counts = []
+        self.scounts =[]
         dataline = 0
         for line in open(name,'r'):
             if dataline == 0:
@@ -33,12 +34,18 @@ class Messung:
             else:
                 for word in line.split()[2:]:
                     if word != "":
-                        self.counts.append(float(word))
+                        rate = float(word)
+                        srate =sqrt(rate)
+                        self.counts.append(rate)
+                        if rate == 0:
+                            rate = 1
+                        self.scounts.append(rate*sqrt((1/(1))+(self.stime/self.time)**2))
         self.count = len(self.counts)
         self.channel = [i for i in range(self.count)]
+        self.schannel = [1] * self.count
             
         # Erzeuge Graphen
-        g = TGraph(self.count, array('d',self.channel) ,array('d',self.counts))
+        g = TGraphErrors(self.count, array('d',self.channel) ,array('d',self.counts), array('d',self.schannel) ,array('d',self.scounts))
         g.SetTitle(';Channel;Counts')
         g.GetHistogram().SetTitleOffset(1.3, 'Y')
         g.SetMarkerStyle(1)
@@ -63,7 +70,7 @@ class Messung:
         return float(cps)
     
     def getScps(self, vonKanal, bisKanal):
-        scps = self.getCps(vonKanal, bisKanal) * sqrt((self.stime/self.time)**2 + (1/self.getCounts(vonKanal, bisKanal)))
+        scps = self.getCps(vonKanal, bisKanal) * sqrt((self.stime/self.time)**2 + (10/self.getCounts(vonKanal, bisKanal)))
         return scps
     
     def getDicke():
@@ -90,7 +97,7 @@ messungen = load()
 x,y,sy,sx=[],[],[],[]
 print "\nFiting and Drawing ..."
 for m in messungen:
-    m.draw()
+    #m.draw()
     print(m.dicke)
     print(m.getCps(900,1400))
     x.append(m.dicke)
@@ -106,8 +113,9 @@ g.SetMarkerStyle(3)
 g.SetMarkerColor(2)
 g.SetMarkerSize(1)
 f = TF1('fit', '[0]*exp([1]*x) + [2]*exp([3]*x)')
+f.SetParameters(34.7, -2.5, 50.3, -0.041, 50.38)
 f.SetMarkerColor(2)
-g.Fit(f, 'QEW')
+g.Fit(f, 'EQ')
 c = TCanvas('Eichung', 'eichung')
 c.SetGrid()
 g.Draw('AP')
