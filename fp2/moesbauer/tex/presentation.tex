@@ -11,8 +11,6 @@
 
 \frame{\titlepage} 
 
-\frame{\frametitle{Inhaltsverzeichnis}\tableofcontents} 
-
 \section{Einleitung}
 
 \subsection{Mößbauers Entdeckung}
@@ -431,12 +429,27 @@ Der Literaturwert beträgt:
 \end{itemize}
 Damit ergibt sich:
 \begin{align*}
- \Gamma = (5.09 \pm 0.14) 10^{-9} eV
+ \Gamma = (5.09 \pm 0.14) 10^{-9} eV 
 \end{align*}
 \end{block}
 \vfill
 Abweichung: Ungenaue Angaben über Absorber, Quelldicke unbekannt
 }
+
+\frame{\frametitle{Debye-Waller-Faktor der Quelle}
+\begin{itemize}
+ \item Bestimmung möglich über Formel:
+\begin{align*}
+f_Q= \frac{Z_{max}-Z_{min}}{Z_{max}} \left( 1 - e^{-\frac{T_A}{2}} J_0 \left( i \frac{T_A}{2} \right) \right) ^2
+\end{align*}
+\end{itemize}
+Damit ergab sich:
+\vfill
+\begin{align*}
+f_Q= 0,2 \pm 0,01
+\end{align*}
+}
+
 % 6 Linien (Eisen)
 \frame{\frametitle{Eisen-(6-Linien-)absorber}
 \begin{block}{Der Absorber}
@@ -596,7 +609,7 @@ Problem: späte Fertigstellung, wenig Messdaten
 \includegraphics[width=0.9\linewidth]{pictures/speed-histo.eps}
 }
 
-\frame{\frametitle{Messdaten: Histogramm}
+\frame{\frametitle{Ende}
 \begin{block}{}
 Vielen Dank für ihre Aufmerksamkeit.
 \end{block}
