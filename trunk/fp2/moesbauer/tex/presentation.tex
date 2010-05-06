@@ -1,4 +1,4 @@
-\documentclass[draft]{beamer}
+\documentclass{beamer}
 \usepackage{beamerthemesplit} % kam neu dazu
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -116,6 +116,7 @@ $\Rightarrow$ schmalste mögliche Linienbreite
 }
 
 \frame{\frametitle{Linienbreite}
+\begin{itemize}
  \item \textcolor{blue}{Dopplerverbreiterung}: \\
   resultiert aus Bewegung der Atome, durch Dopplereffekt wird Frequenz $\nu_0$ verschoben:
  \begin{align*}
@@ -123,6 +124,7 @@ $\Rightarrow$ schmalste mögliche Linienbreite
  \end{align*}
  \item \textcolor{blue}{Verbreiterung durch Signalverarbeitung}: \\
   durch elektronische Signalverarbeitung wird Linie Gaußförmig verbreitert.
+\end{itemize}
 }
 
 \subsection{Rückstoßfreie Resonanzabsorbtion}
@@ -221,11 +223,33 @@ $\Rightarrow$ Dopplerverschiebung der Übergangsfrequenz $\nu_0$ zu
  \end{align*}
 }
 
+\frame{\frametitle{Absorberschlitten und Zähler}
+\begin{block}{Absorberschlitten}
+ Absorberschlitten wird über Getriebe mit Motor angetrieben
+\begin{itemize}
+ \item 2 Übersetzungen (20:1 und 5:1)
+ \item Geschwindigkeiten von 0,01$\frac{mm}{s}$ bis 10$\frac{mm}{s}$
+\end{itemize}
+\end{block}
+
+\begin{block}{Zähler}
+ Der Zähler wird von der Motorsteuerung gesteuert
+ $\Rightarrow$ Es wird nur gezählt wenn die Fahrgeschwindigkeit konstant ist
+\end{block}
+}
+\frame{\frametitle{Absorberschlitten und Motor}
+%\includegraphics[width=0.9\linewidth]{pictures/motor.eps}
+}
+
 \frame{\frametitle{Versuchsaufbau mit Elektronik}
 \includegraphics[width=0.9\linewidth]{pictures/aufbau_el.eps} \\
 Elektronik soll Impulse des Detektors filtern \\
 \vfill
 $\Rightarrow$ nur relevante Impulse des Detektors werden gezählt
+}
+
+\frame{\frametitle{Elektronik}
+\includegraphics[width=0.9\linewidth]{pictures/elektr.eps} \\
 }
 
 \section{Durchführung und Ergebnisse}
@@ -348,23 +372,6 @@ $\Rightarrow$ Doppelter Expotentialfit und Extrapolation auf Dicke 0
 \end{block}
 }
 \subsection{Die Messung}
-\frame{\frametitle{Absorberschlitten und Zähler}
-\begin{block}{Absorberschlitten}
- Absorberschlitten wird über Getriebe mit Motor angetrieben
-\begin{itemize}
- \item 2 Übersetzungen (20:1 und 5:1)
- \item Geschwindigkeiten von 0,01$\frac{mm}{s}$ bis 10$\frac{mm}{s}$
-\end{itemize}
-\end{block}
-
-\begin{block}{Zähler}
- Der Zähler wird von der Motorsteuerung gesteuert
- $\Rightarrow$ Es wird nur gezählt wenn die Fahrgeschwindigkeit konstant ist
-\end{block}
-}
-\frame{\frametitle{Absorberschlitten und Motor}
-%\includegraphics[width=0.9\linewidth]{pictures/motor.eps}
-}
 % 1 Linien (Edelstahl)
 \frame{\frametitle{Edelstahl-(1-Linien-)absorber}
 \begin{block}{Der Absorber}
@@ -556,5 +563,33 @@ und $\mu_a$ aus Literatur:
 \end{block}
 }
 \section{Die Entdeckung der Langsamkeit}
+\subsection{Geswindigkeitsmessung}
+
+\frame{\frametitle{Geschwindigkeitsmessung}
+\begin{columns}
+\column{.55\textwidth}
+\begin{itemize}
+ \item Der Fehler der Geschwindigkeit des Messschlittens ist unbekannt
+ \item Idee der Messung mittels Computer-Maus
+ \item Schwierigkeiten der genauen Zeitanalyse
+\end{itemize}
+\column{.45\textwidth}
+\includegraphics[width=0.9\linewidth]{pictures/sensor.eps}
+\end{columns}
+}
+
+\frame{\frametitle{Hard- und Software}
+\begin{columns}
+\column{.55\textwidth}
+\begin{itemize}
+ \item wir benutzten direkt den Quatratur-Ausgang des Mauschips
+ \item die Zeit zwischen Wegänderungen wurde mit Timer in ATMega32 Microchip gemessen
+ \item übermittelung gemessener Daten über serielle Verbindung an PC
+\end{itemize}
+\column{.45\textwidth}
+\includegraphics[width=0.9\linewidth]{pictures/board.eps}
+\end{columns}
+}
+
 \end{document}
 
