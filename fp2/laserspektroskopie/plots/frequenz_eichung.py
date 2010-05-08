@@ -2,7 +2,7 @@
 # -*- coding: iso-8859-1 -*-
 
 #from konst import phi0, omega, somega
-from math import pi, cos, sin
+from math import pi, cos, sin, sqrt
 from array import array
 import sys; sys.path.append('/usr/lib/root/')
 from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraphErrors
@@ -34,41 +34,137 @@ def mw(data):
         retval = [r, sr]
     except ValueError:
         print "Error while converting data!"
-    return retval     
-        
+    return retval    
+
+def gew_mittel(x, sx):
+    assert len(x) == len(sx)
+    suma = sumb = 0.
+    for i in range(len(x)):
+        suma += x[i] / sx[i]**2
+        sumb += 1. / sx[i]**2
+    return (suma/sumb, 1/sqrt(sumb))
+
+As = []
+sAs = []
+
 # data
 freqs = []
 times = []
-for line in open('../data/eichung_frequenz.dat','r'):
+print "Dataset 0"
+for line in open('../daten/eichung_frequenz_0.dat','r'):
+    if (not line.strip()) or (line.strip()[0] == '#'): continue
     freqs.append(float(line.split()[0]))
     times.append(float(line.split()[1]))
 count = len(times)
-
 # fit and draw
-g = TGraphErrors(count, array('d',times) ,array('d',freqs),array('d',[0.75]*count),
+g0 = TGraphErrors(count, array('d',times) ,array('d',freqs),array('d',[0.75]*count),
                  array('d',[0,0001]*count))
-g.SetTitle(';time;frequency')
-g.SetMarkerStyle(1)
-g.SetMarkerColor(2)
-g.SetMarkerSize(3.0)
-f = TF1('Eichgerade', '[0]*x')
-f.SetMarkerColor(3)
-f.SetParameter(0, 1)
-g.Fit(f, 'M')
-c = TCanvas('Eichung', 'eichung')
-c.SetGrid()
-g.Draw('AP')
-c.Update()
+g0.SetTitle(';time;frequency')
+g0.SetMarkerStyle(1)
+g0.SetMarkerColor(2)
+g0.SetMarkerSize(3.0)
+f0 = TF1('Eichgerade', '[0]*x')
+f0.SetMarkerColor(3)
+f0.SetParameter(0, 1)
+g0.Fit(f0, 'MQ')
+c0 = TCanvas('Eichung', 'eichung')
+c0.SetGrid()
+g0.Draw('AP')
+c0.Update()
+a, sa = f0.GetParameter(0), f0.GetParError(0)
+As.append(a)
+sAs.append(sa)
+print "Frequency = A * Times[s] when A [s^-2] is\t%.3g +- %.3g\t(%.2f)"%(a, sa, (sa/a)*100)
+raw_input();
+# data
+freqs = []
+times = []
+print "Dataset 0"
+for line in open('../daten/eichung_frequenz_1.dat','r'):
+    if (not line.strip()) or (line.strip()[0] == '#'): continue
+    freqs.append(float(line.split()[0]))
+    times.append(float(line.split()[1]))
+count = len(times)
+# fit and draw
+g1 = TGraphErrors(count, array('d',times) ,array('d',freqs),array('d',[0.75]*count),
+                 array('d',[0,0001]*count))
+g1.SetTitle(';time;frequency')
+g1.SetMarkerStyle(1)
+g1.SetMarkerColor(2)
+g1.SetMarkerSize(3.0)
+f1 = TF1('Eichgerade', '[0]*x')
+f1.SetMarkerColor(3)
+f1.SetParameter(0, 1)
+g1.Fit(f1, 'MQ')
+c1 = TCanvas('Eichung', 'eichung')
+c1.SetGrid()
+g1.Draw('AP')
+c1.Update()
+a, sa = f1.GetParameter(0), f1.GetParError(0)
+As.append(a)
+sAs.append(sa)
+print "Frequency = A * Times[s] when A [s^-2] is\t%.3g +- %.3g\t(%.2f)"%(a, sa, (sa/a)*100)
+raw_input();
+# data
+freqs = []
+times = []
+print "Dataset 0"
+for line in open('../daten/eichung_frequenz_2.dat','r'):
+    if (not line.strip()) or (line.strip()[0] == '#'): continue
+    freqs.append(float(line.split()[0]))
+    times.append(float(line.split()[1]))
+count = len(times)
+# fit and draw
+g2 = TGraphErrors(count, array('d',times) ,array('d',freqs),array('d',[0.75]*count),
+                 array('d',[0,0001]*count))
+g2.SetTitle(';time;frequency')
+g2.SetMarkerStyle(1)
+g2.SetMarkerColor(2)
+g2.SetMarkerSize(3.0)
+f2 = TF1('Eichgerade', '[0]*x')
+f2.SetMarkerColor(3)
+f2.SetParameter(0, 1)
+g2.Fit(f2, 'MQ')
+c2 = TCanvas('Eichung', 'eichung')
+c2.SetGrid()
+g2.Draw('AP')
+c2.Update()
+a, sa = f2.GetParameter(0), f2.GetParError(0)
+As.append(a)
+sAs.append(sa)
+print "Frequency = A * Times[s] when A [s^-2] is\t%.3g +- %.3g\t(%.2f)"%(a, sa, (sa/a)*100)
+raw_input();
+# data
+freqs = []
+times = []
+print "Dataset 0"
+for line in open('../daten/eichung_frequenz_3.dat','r'):
+    if (not line.strip()) or (line.strip()[0] == '#'): continue
+    freqs.append(float(line.split()[0]))
+    times.append(float(line.split()[1]))
+count = len(times)
+# fit and draw
+g1 = TGraphErrors(count, array('d',times) ,array('d',freqs),array('d',[0.75]*count),
+                 array('d',[0,0001]*count))
+g1.SetTitle(';time;frequency')
+g1.SetMarkerStyle(1)
+g1.SetMarkerColor(2)
+g1.SetMarkerSize(3.0)
+f1 = TF1('Eichgerade', '[0]*x')
+f1.SetMarkerColor(3)
+f1.SetParameter(0, 1)
+g1.Fit(f1, 'MQ')
+c1 = TCanvas('Eichung', 'eichung')
+c1.SetGrid()
+g1.Draw('AP')
+c1.Update()
+a, sa = f1.GetParameter(0), f1.GetParError(0)
+As.append(a)
+sAs.append(sa)
+print "Frequency = A * Times[s] when A [s^-2] is\t%.3g +- %.3g\t(%.2f)"%(a, sa, (sa/a)*100)
 
-# Calculate Free Spectral Range of Resonator
-delta_6 = 7.44 #us
-delta_15 = 19.4
-delta_3 = 3.72
-
-delta = mw([delta_6/6, delta_15/15, delta_3/3])
-print "Mittelwert für deltaFSR: %.4f +- %.4f  (%.4f per cent)"%(float(delta[0]),
-                                                         float(delta[1]),
-                                                         float(delta[1])/float(delta[0])) 
+mitl, smitl = gew_mittel(As, sAs)
+print "gew Mittel =\t%.3g +- %.3g\t(%.2f)"%(mitl, smitl, (smitl/mitl)*100)
 print "\nDone. Press any Key to continue ..."
 raw_input();
 print "bye"
