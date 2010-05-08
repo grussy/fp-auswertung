@@ -19,8 +19,10 @@ class OsziData:
         self.beschreibung = beschreibung
         if (existsChannel(self.dateiNummer, '1')):
             self.ch1 = Channel(self.dateiNummer, '1')
+        else: self.ch1 = 0
         if (existsChannel(self.dateiNummer, '2')):
             self.ch2 = Channel(self.dateiNummer, '2')
+        else: self.ch2 = 0
         
 
 
@@ -95,5 +97,5 @@ def test():
     print 'so now we test the channel class'
     ch1 = Channel('04','1')
     ch1.cprint()
-    
+  
 #test()
