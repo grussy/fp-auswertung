@@ -9,7 +9,7 @@ from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraph
 
 #######################################################
 #
-# Zeigt die Verwendung von oszi.py
+# Messung aus Oszidaten mit graphen für kanäle und plot funktion
 #
 #######################################################
 
@@ -17,12 +17,18 @@ from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraph
 # Oszidata ( String dateinummer XX, String Beschreibung )
 #test = OsziData('04', 'Dopplerverbreitert Messung 3')
 class Messung:
-    def __init__(self, dateiNummer, beschreibung):
+    def __init__(self, dateiNummer, beschreibung, freqLineal):
         self.nummer = dateiNummer
         self.beschreibung = beschreibung
+        self.freqLineal = freqLineal
         self.data = OsziData(self.nummer, self.beschreibung)
         if self.data.ch1 != 0:
+            if self.freqLineal != 0:
+                cutData(self.data.ch1.y, self.freqLineal)
+                self.freqLineal = calcLineal(self.data.ch1)
+                print self.freqLineal
             self.graph1 = TGraph(len(self.data.ch1.x), array('d',self.data.ch1.x), array('d', self.data.ch1.y))
+        
         if self.data.ch2 != 0:
             self.graph2 = TGraph(len(self.data.ch2.x), array('d',self.data.ch2.x), array('d', self.data.ch2.y))
 
@@ -57,6 +63,30 @@ class Messung:
             self.draw2()
         self.mgraph.Draw('A')
         self.canvas.Update()
+def cutData(data, grenze):
+    for i in range(len(data)):
+        if data[i] < grenze: data[i] = 0.
+        print data[i]
+
+def calcLineal(channel):
+    return sum(findBigSpace(channel))/len(findBigSpace(channel))
+
+def findBigSpace(channel):
+    liste = []
+    for i in range(len(channel.y)):
+        if channel.y[i] != 0:
+            liste.append(channel.x[i])
+    abstaende = []
+    for i in range(len(liste)-1):
+        abstaende.append(liste[i+1]-liste[i])
+    grosseAbstaende = []
+    for abstand in abstaende:
+        if abstand > 0.5*max(abstaende):
+            grosseAbstaende.append(abstand)
+    return grosseAbstaende
+    
+    
+    
 def test():
     testmess = Messung('04', 'Dopplerverbreitert Messung 3')
     testmess.plot()

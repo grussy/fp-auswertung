@@ -9,7 +9,7 @@ import os.path
 
 #######################################################
 #
-# Liest die Daten eines Tektronik Oszi aus, gibt listen zurück
+# Liest die Daten eines Tektronik Oszi aus
 #
 #######################################################
 
