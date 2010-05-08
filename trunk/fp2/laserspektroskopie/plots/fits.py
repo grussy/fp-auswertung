@@ -62,7 +62,7 @@ class nLorenz:
         self.beschreibung = beschreibung
         self.n = n
         self.params = self.readParameters()
-        self.fixParams = [1,2]
+        self.fixParams = [0,1,2]
         self.messung = Messung(nummer, beschreibung, 0)
         self.messung.plot()
         self.fit1 = nLorenzFit(self.n, self.params, self.fixParams)
@@ -101,10 +101,10 @@ class nLorenzFit:
             self.fitFunc.FixParameter(i, 0.)
 
 def createNLorenz(n):
-    Lorenz = '[0]+[1]*x+[2]*x**2'
+    Lorenz = ''
     for i in range(1,n+1):
         j = 3*i + 2
-        Lorenz += '+ 2*[%i]/pi * [%i]/((x-[%i])^2 + [%i]^2)' % (j-2,j-1,j,j-1)
+        Lorenz += '+ 2*[%i]/pi * [%i]/(4*([6]*(x-[%i]))^2 + [%i]^2)' % (j-2,j-1,j,j-1)
     print Lorenz
     return Lorenz
 

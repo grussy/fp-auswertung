@@ -27,10 +27,10 @@ class Messung:
                 cutData(self.data.ch1.y, self.freqLineal)
                 self.freqLineal = calcLineal(self.data.ch1)
                 print self.freqLineal
-            self.graph1 = TGraph(len(self.data.ch1.x), array('d',self.data.ch1.x), array('d', self.data.ch1.y))
+            self.graph1 = TGraphErrors(len(self.data.ch1.x), array('d',self.data.ch1.x), array('d', self.data.ch1.y), array('d', [1e-5]*len(self.data.ch1.x)), array('d', [1e-3]*len(self.data.ch1.x)))
         
         if self.data.ch2 != 0:
-            self.graph2 = TGraph(len(self.data.ch2.x), array('d',self.data.ch2.x), array('d', self.data.ch2.y))
+            self.graph2 = TGraphErrors(len(self.data.ch2.x), array('d',self.data.ch2.x), array('d', self.data.ch2.y), array('d', [1e-5]*len(self.data.ch1.x)), array('d', [1e-4]*len(self.data.ch1.x)))
 
     def createCanvas(self, can):
         self.canvas = can
