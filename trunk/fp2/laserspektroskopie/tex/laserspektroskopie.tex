@@ -268,6 +268,7 @@ Für die Aufnahme der Photodiodenkennlinien werden die optischen Elemente wie in
  \caption{Aufbau Photodiodenkennlinien}
  \label{skizze-pd}
 \end{figure}
+\newpage
 \subsubsection{Messungen am Resonator}
 Für die Messungen am Resonator ``Cavity scannen'' wird der Aufbau wie in Abbildung \ref{skizze-cavity} verwendet. Wichtig ist hierbei, dass zwei Spiegel verwendet werden, da es sonst nicht möglich ist den Strahl parralell durch den Resonator laufen zu lassen. Hier wird ein sogenannter ``Beam Walk'' durchgeführt, im wesentlichen wird abwechselnd an den beiden Spiegeln gedreht bis das Signal der Photodiode maximal ist. Die für den ``Beam Walk'' geeignete Vorgehensweise ist gut in der Versuchsanleitung beschrieben.
 \begin{figure}[H]
@@ -275,6 +276,7 @@ Für die Messungen am Resonator ``Cavity scannen'' wird der Aufbau wie in Abbild
  \caption{Aufbau Cavity scannen}
  \label{skizze-cavity}
 \end{figure}
+\newpage
 \subsubsection{Dopplerverbreiterte Spektroskopie}
 Für die dopplerverbreiterte Spektroskopie am Rubidium wird nun auch noch die Rubidiumzelle in den Strahlengang eingebracht.
 Diese wird leicht schräg zum Strahlengang positioniert um die an den Endflächen der Zelle auftretenden Reflextionen nicht in den Strahl zurück zu führen. Der Aufbau ist Schematisch in Abbildung \ref{skizze-dopplerbreit}
@@ -283,6 +285,7 @@ Diese wird leicht schräg zum Strahlengang positioniert um die an den Endfläche
  \caption{Aufbau dopplerverbreiterte Spektroskopie}
  \label{skizze-dopplerbreit}
 \end{figure}
+\newpage
 \subsubsection{Dopplerfreie Spektroskopie}
 Bei der dopplerfreien Spektroskopie wird fast der selbe Aufbau wie für die dopplerverbreiterte verwendet. Es wird lediglich die Photodiode hinter der Rubidiumzelle durch einen Spiegel und ein $\frac{\lambda}{4}$-Plättchen ersetzt und hinter dem zweiten PBS plaziert. Siehe Abbildung \ref{skizze-dopplerfrei}
 \begin{figure}[H]
@@ -290,21 +293,25 @@ Bei der dopplerfreien Spektroskopie wird fast der selbe Aufbau wie für die dopp
  \caption{Aufbau dopplerfreie Spektroskopie}
  \label{skizze-dopplerfrei}
 \end{figure}
-
+\newpage
 
 \section{Auswertung}
 \subsection{Der Laser}
-Zunächst untersuchten wir die Laserschwelle grob mit der Infrarotkarte. Wir sahen ab $I_{Laser} /approx 20 mA$ ein einsetzen der Strahlung.
-Die Photodiodenkennlinien mit den drei Wiederständen sind in Abb. \ref{pdkennlinien} dargestellt. Wir bestimmten daraus die Laserschwelle zu:
+Zunächst untersuchten wir die Laserschwelle grob mit der Infrarotkarte. Wir sahen ab $I_{Laser} \approx 20 mA$ ein einsetzen der Strahlung.
+Die Photodiodenkennlinien mit den drei Wiederständen sind in Abb. \ref{pdkennlinien1} und \ref{pdkennlinien2} dargestellt. Wir bestimmten daraus die Laserschwelle zu:
 \begin{align*}
  I_{Laser, \Omega} = (72 \pm 2) mA. \\
 \end{align*}
 hierbei handelt es sich um geschätzte Ablesefehler.
 \begin{figure}[H]
  \includegraphics[width=0.9\linewidth]{pictures/pd_kenn1.eps}
+ \caption{Kennlinien der passiven Photodiode 1 für die drei schaltbaren Wiederstände}
+ \label{pdkennlinien1}
+\end{figure}
+\begin{figure}[H]
  \includegraphics[width=0.9\linewidth]{pictures/pd_kenn2.eps}
- \caption{Kennlinien der passiven Photodioden für die drei schaltbaren Wiederstände}
- \label{pdkennlinien}
+ \caption{Kennlinien der passiven Photodiode 2 für die drei schaltbaren Wiederstände}
+ \label{pdkennlinien2}
 \end{figure}
 
 \subsection{Der Resonator}
@@ -361,7 +368,7 @@ Wir charakterisierten die Frequenzmodulation und verglichen sie mit den theoreti
 \subsubsection{Linienbreite}
 Wir untersuchten die vier Linien mit und ohne Mathe-Einheit, als Differenz und Quotient. Aus der Linienform der Referenzdiode und den Ergebnissen beim fitten schlossen wir, das ein eine Faltung aus vier Gaußkurven mit einem Polynom 2.Grades die Daten am besten repräsentiere. Das Ergebniss unseres Fits an ein Signal, gemessen als Quotitnt, ist in Abb \ref{doppler} zu sehen. Aus den Parametern der Gaußbreiten des Fits berechneten wir Die volle Halbwertsbreite in $\mu s$. Über einen mitaufgenommenen Frequenzkamm rechneten wir sie in eine Frequenzen um. Zuletzt bildeten wir das gewichtete Mittel und erhielten als Dopplerbreite $\Delta f_{FWHM}$:
 \begin{align*}
- \Delta f_{FWHM} = (\pm) Ghz 
+ \Delta f_{FWHM} = (621 \pm 3.2) GHz
 \end{align*}
 hierbei berechnete sich der Fehler nach der Gaußschen Fehlerfortpflanzung. Die Einzelmessungen ergaben:
 \begin{center}
@@ -374,7 +381,7 @@ $\Delta f_{FWHM} [Mhz]$ & $596\pm12$ & $598 \pm 6$ & $633 \pm$ 5 & $635 \pm 9$\\
 \end{tabular}
 \end{center}
 \subsubsection{Abstände der Linien}
-Aus den Fits in Abb \ref{doppler} erhielten wir die Schwerpunkte der Peaks. Wir ordneten sie ihren Zuständen zu. Das Ergebniss ist in Tabellen \ref{order} dargestellt. Die Abstände sind in Tabelle \ref{dist} dargestellt. Aus beiden kann man, wie in der Zusammenfassung geschehen die Hyperfeinstruktur der Gundzustände beider Isotope bestimmen.
+Aus den Fits in Abb \ref{doppler} erhielten wir die Schwerpunkte der Peaks. Wir ordneten sie ihren Zuständen zu. Das Ergebniss ist in Tabelle \ref{order} dargestellt. Die Abstände sind in Tabelle \ref{dist} dargestellt. Aus beiden kann man, wie in der Zusammenfassung geschehen die Hyperfeinstruktur der Gundzustände beider Isotope bestimmen.
 
 \begin{table}[H]
 \begin{center}
@@ -387,8 +394,8 @@ $F$ of $5^2S_{\frac{1}{2}}$ & 1 & 2 & 3 & 2 \\
 \hline
 \end{tabular}
 \end{center}
-\label{order}
 \caption{Zuordnung der Peaks}
+\label{order}
 \end{table}
 
 \begin{table}[H]
@@ -401,8 +408,8 @@ Abstand [Ghz] & $2,59 \pm 0.0013$ & $3,08 \pm 0,004$ & $1,243 \pm 0,0023$\\
 \hline
 \end{tabular}
 \end{center}
-\label{dist}
 \caption{Abstaende der Peaks}
+\label{dist}
 \end{table}
 
 
