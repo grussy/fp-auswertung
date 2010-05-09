@@ -142,7 +142,6 @@ Es existieren wie erwähnt viele technische Umsetzungen des Lasers, wir verwende
 Um eine Konzentration der induzierten Emission auf wenige Moden zu erreichen braucht man desweiteren einen optischen Resonator.
 
 \subsubsection{Optischer Resonator}
-
 Ein optischer Resonator ist eine Anordnung von Spiegeln, die dazu dient, Licht möglichst oft hin und her zu reflektieren. Aufgrund von Interferenz bildet sich im Resonator dann eine stehende Welle, wenn die optische Weglänge des Resonators ein Vielfaches der halben Wellenlänge des eingestrahlten Lichts beträgt. In diesem Versuch kommen zwei Resonatoren zum Einsatz. Der erste befindet sich direkt hinter dem Laser, er bildet mit der Diode eine sogenannte Litrow-Anordnung.
 \subsubsection{Litrow-Anordnung}
 In dieser Anordnung reflektiert man einen Teil des von der Laserdiode emittierten Lichts wieder in sich zurück. Dies geschieht mit einem Refelexionsgitter und einem Kollimator, der zwischen Laserdiode und Reflexionsgitter sitzt (Abb. \ref{litrow}). Je nach Position des Reflexionsgitters wird eine andere Wellenlänge in die Laserdiode reflektiert und verstärkt. Für die verstärkte Wellenlänge erhält man in Abhängigkeit des Winkels
@@ -211,8 +210,26 @@ Für Zimmertemperatur und Rubuidium erwartet man also eine Halbwertsbreite von $
 \subsubsection{Absorbtionsquerschnitt}
 
 \subsubsection{Dopplerverbreiterte Spektroskopie}
+Wie der Name schon verrät spektroskopiert man in der dopplerverbreiterterten Spektroskopie Linien von Übergängen welche
+dopplerverbreitert sind. In unserem Versuch wird hier die Transmission der Linien von Rubidium beobachtet. Durch die große
+Linienbreite lässt sich mit Hilfe der dopplerverbreiterten Spektroskopie  bei Rubidium nur die Feinstruktur und nicht die
+Hyperfeinstruktur auflösen. Im Wesentlichen wird bei dieser Spektroskopie Licht auf das zu untersuchende Medium gestrahlt und hiter dem Medium die Intensität gemessen. Durch Variation der Wellenlänge des eingestrahlten Lichts lassen sich verschiedene Zustände im Medium anregen: Entspricht die eingestrahlte Wellenlänge gerade der eines Übgangs im Medium, so wird dieser Übergang angeregt und somit das einfallende Licht absorbiert. Dies bedeutet wiederum, dass die hinter dem Medium gemessene Intensität abnimmt. Dieses Verfahren nennt man auch transmissions Spektroskopie.
+
 \subsubsection{Dopplerfreie Spektroskopie}
+Durch eine geschickte anordnung des Versuchsaufbaus lässt Spektroskopie auch dopplerfrei durchführen.
+Hierzu lässt man das zu Spektroskopierende Medium von zwei Strahlen durchlaufen welche sich im Medium überlappen aber in entgegengesetzter Richtung verlaufen. Oft wird der Strahl nach dem ersten Durchlauf einfach wieder in sich zurück reflektiert. Bei dieser Anordnung gibt es zwei mögliche Situationen:
+\begin{itemize}
+ \item Die Wellenlänge des eingestrahlten Lichts entspricht gerade einem Übergang der Atome die ruhen.
+ \item Die Wellenlänge entspricht gerade nicht dem Übergang der ruhenden Atome.
+\end{itemize}
+Im ersten Fall werden durch den ersten Strahl, auch Sättigungsstrahl genannt, gerade die Atome in das höhere Nieveau des Übergangs angeregt welche ruhen. Für den rücklaufenden, zweiten Strahl, auch Abfragestrahl genannt, erscheint das Medium transparent, da sich bei ausreichender Intensität des Sättigungsstrahl die meisten verfügbaren ruhenden Atome schon im angeregten Zustand befinden. Im Zweiten fall dagegen, besteht die Übereinstimmung von Wellenlänge mit Übergang der einen Strahlrichtung gerade aus der entgegengesetzten Geschwindigkeitsklasse der anderen Strahlrichtung. Somit ist in diesem Fall keine tranzsparenz des Mediums für den Rücklaufenden Strahl gegeben. Die bei dieser Anordnung beobachteten Peaks nennt man \textbf{Lambdips}. Hat das Medium mehrere Übergänge und ist deren Abstand kleiner als die maximal auftretende Dopplerverschiebung, so entstehen bei der dopplerfreien Spektroskopie auch noch weitere Peaks, die sogenannten \textbf{crossover Resonanzen}. Diese liegen immer genau zwischen zwei Lambdips. Liegt die eingestrahlte Wellenlänge genau zwischen zwei Übergängen, so existiert eine Geschwindigkeitsklasse die für den einen Übergang gerade dem Sättigungsstrahl entspricht und für den anderen Übergang dem Abfragestrahl. Da der Sättigungsstrahl diese Geschwindigkeitsklasse somit in den einen angeregten Zustand anhebt, erscheint das Medium für den Abfragestrahl (dieser würde ja gerade die selbe Geschwindigkeitsklasse, also die selben Atome in den anderen Zustand anheben) transparent.
+
 \section{Versuchsaufbau}
+Der Versuchsaufbau besteht aus diversen Optischen und Elektronischen Komponenten die im folgenden Erläutert werden.
+Die Beschreibung der konkreten Verwendung für die einzelnen Versuchsteile erfolgt mit in der Auswertung.
+\subsection{Optik}
+Grundsätzlich werden alle optischen Elemente auf eine Metallplatte mit einem Lochraster geschraubt. Hierdurch kann ein ungewolltes verschieben der Elemente verhindert werden. Auf dieser Platte befindet sich bereits der Laser zusammen mit seinem Resonator, außerdem ein Strahlheber welcher den Laserstrahl auf eine angenehme Arbeitshöhe hebt. Zudem befinden sich ebenfalls ein Prismenpaar, welches den Strahl möglichst Kreisförmig machen soll, und ein optischer Isolator (lässt den Strahl nur in eine Richtung durch)
+\subsection{Elektronik}
 \section{Auswertung}
 \subsection{Der Laser}
 Zunächst untersuchten wir die Laserschwelle grob mit der Infrarotkarte. Wir sahen ab $I_{Laser} = () mA$ ein einsetzen der Strahlung.
