@@ -17,7 +17,7 @@ class nGauss:
         self.messung = Messung(nummer, beschreibung, freqLineal)
         self.messung.plot()
         self.fit2 = nGaussFit(self.n, self.params)
-        if fitgraph == 2: self.messung.graph2.Fit(self.fit2.fitFunc, 'Q+W')
+        if fitgraph == 2: self.messung.graph2.Fit(self.fit2.fitFunc, 'Q+')
         if fitgraph == 1: self.messung.graph1.Fit(self.fit2.fitFunc, 'Q+')
         self.messung.canvas.Update()
     
