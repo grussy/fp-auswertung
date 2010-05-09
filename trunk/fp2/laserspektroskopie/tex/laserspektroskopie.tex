@@ -265,12 +265,32 @@ Leider mussten wir nach beendigung des Versuchs feststellen das wir vergessen ha
 Wir charakterisierten die Frequenzmodulation und verglichen sie mit den theoretischen Werten, die Ergebnisse hiervon sind in Abb. \ref{bessel} zu sehen.
 %?SKIZZE bessel
 \subsection{Dopplerverbreiterte Spektroskopie}
-Wir untersuchten die vier Linien mit und ohne Mathe-Einheit, als Differenz und Quotient. Aus der Linienform der Referenzdiode und den Ergebnissen beim fitten schlossen wir, das ein eine Faltung aus vier Gaußkurven mit einem Polynom 2.Grades die Daten am besten repräsentiere. Das Ergebniss unseres Fits ist in Abb \ref{doppler} zu sehen. Aus den Parametern der Gaußbreiten des Fits berechneten wir Die volle Halbwertsbreite. Daraus über einen mitaufgenommenen Frequenzkamm  bildeten wir das gewichtete Ḿittel und erhielten als Dopplerbreite $\Delta f_{FWHM}$:
+\subsubsection{Linienbreite}
+Wir untersuchten die vier Linien mit und ohne Mathe-Einheit, als Differenz und Quotient. Aus der Linienform der Referenzdiode und den Ergebnissen beim fitten schlossen wir, das ein eine Faltung aus vier Gaußkurven mit einem Polynom 2.Grades die Daten am besten repräsentiere. Das Ergebniss unseres Fits an ein Signal, gemessen als Quotitnt, ist in Abb \ref{doppler} zu sehen. Aus den Parametern der Gaußbreiten des Fits berechneten wir Die volle Halbwertsbreite in $\mu s$. Über einen mitaufgenommenen Frequenzkamm rechneten wir sie in eine Frequenzen um. Zuletzt bildeten wir das gewichtete Ḿittel und erhielten als Dopplerbreite $\Delta f_{FWHM}$:
 \begin{align*}
- 
+ \Delta f_{FWHM} = (\pm) Ghz 
+\end{align*}
+hierbei berechnete sich der Fehler nach der Gaußschen Fehlerfortpflanzung
+\subsubsection{Abstände der Linien}
+Aus den Fits in Abb \ref{doppler} erhielten wir die Schwerpunkte der Peaks. Wir rechneten Sie wieder in eine Frequenz um und ordneten sie dann ihren Übergängen zu. Das Ergebniss ist in Tabelle \ref{dist} dargestellt.
+\begin{center}
+\begin{tabular}{|l|lll|}
+\label{dist}
+\hline
+Übergang & × & × & ×\\
+Abstand [Ghz] & × & × & ×
+\hline
+\end{tabular}
+\end{center}
+\subsubsection{Absobtionsquerschnitt}
+Da der Absorbtionsquerschnitt direkt vom Quotient der Intensitäten vor und hinter der Zelle abhängt, konnten wir diesen mittels des Gaußparameters bestimmen.
+Wir erhielten
+\begin{align*}
+ \sigma = \frac{ln \left( \frac{I_0}{I_d} \right) }{nd}
 \end{align*}
 \section{Zusammenfassung}
 \section{Anhang}
+
 
 \subsection{Quelltext}
 
