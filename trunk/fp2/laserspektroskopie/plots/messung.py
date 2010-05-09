@@ -40,11 +40,11 @@ class Messung:
     def draw1(self):
         #c = TCanvas('cre', 'lalala')
         #self.can = c
-        self.graph1.SetTitle(';Zeit / %s; Spannung / %s' % (self.data.ch1.xUnits, self.data.ch1.yUnits))
+        self.graph1.SetTitle('%s;Zeit / %s; Spannung / %s' % (self.beschreibung, self.data.ch1.xUnits, self.data.ch1.yUnits))
         self.graph1.GetHistogram().SetTitleOffset(1.3, 'Y')
         self.graph1.GetYaxis().CenterTitle()
-        self.graph1.SetMarkerColor(2)
-        self.graph1.SetMarkerStyle(3)
+        self.graph1.SetMarkerColor(3)
+        self.graph1.SetMarkerStyle(1)
         self.mgraph.Add(self.graph1, 'P')
         #self.can.Update()
         
@@ -52,8 +52,11 @@ class Messung:
         #self.graph2.SetTitle(';Zeit / %s; Spannung / %s' % (self.data.ch2.xUnits, self.data.ch2.yUnits))
         #self.graph2.GetHistogram().SetTitleOffset(1.3, 'Y')
         #self.graph2.GetYaxis().CenterTitle()
-        self.graph2.SetMarkerColor(3)
+        self.graph2.SetMarkerColor(2)
         self.graph2.SetMarkerStyle(2)
+        self.legend = TLegend(0.7, 0.8, 1, 1)
+        self.legend.SetFillColor(0)
+        self.legend.SetHeader('Vierfacher Gaussfit')
         self.mgraph.Add(self.graph2, 'P')
         
     def plot(self):

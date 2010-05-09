@@ -19,6 +19,15 @@ class nGauss:
         self.fit2 = nGaussFit(self.n, self.params)
         if fitgraph == 2: self.messung.graph2.Fit(self.fit2.fitFunc, 'Q+')
         if fitgraph == 1: self.messung.graph1.Fit(self.fit2.fitFunc, 'Q+')
+        self.saveParameters()
+        self.readParameters()
+        chisq = self.fit2.fitFunc.GetChisquare()
+        ndf = self.fit2.fitFunc.GetNDF()
+        self.messung.legend.AddEntry(self.messung.graph2, 'Messdaten', 'p')
+        for i, name, wert, fehler in self.params:
+            self.messung.legend.AddEntry(self.fit2.fitFunc, '%s%i = %.2g +- %.2g' % (name, i/3, float(wert) , float(fehler)), 'p')
+        self.messung.legend.AddEntry(self.fit2.fitFunc, '#chi^{2}/ndf = %.2f/%d = %.2f' % (chisq, ndf, chisq/ndf), '')
+        self.messung.legend.Draw()
         self.messung.canvas.Update()
     
     def saveParameters(self):
