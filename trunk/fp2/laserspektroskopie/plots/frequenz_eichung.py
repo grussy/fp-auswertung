@@ -16,21 +16,21 @@ n = 1.000292 # brechzahl luft bodennah
 #functions
 #mittelwert, fehler
 def mw(data):
-    print data
+##    print data
     retval = [0,0]
     try:
         sum, squaresum = 0.0, 0.0
         for value in data:
-            print 'Trying Value %s ...'%(value)
+##            print 'Trying Value %s ...'%(value)
             sum += float(value)
-            print 'converted.'
+##            print 'converted.'
         count = len(data)
-        print count
-        print '%f  %f'%(sum, squaresum)
+##        print count
+##        print '%f  %f'%(sum, squaresum)
         r = sum/count
-        print 'ok'        
+##        print 'ok'        
         sr = sqrt(squaresum/(count*(count-1)))
-        print r
+##        print r
         retval = [r, sr]
     except ValueError:
         print "Error while converting data!"
