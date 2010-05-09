@@ -214,6 +214,61 @@ Für Zimmertemperatur und Rubuidium erwartet man also eine Halbwertsbreite von $
 \subsubsection{Dopplerfreie Spektroskopie}
 \section{Versuchsaufbau}
 \section{Auswertung}
+\subsection{Der Laser}
+Zunächst untersuchten wir die Laserschwelle grob mit der Infrarotkarte. Wir sahen ab $I_{Laser} = () mA$ ein einsetzen der Strahlung.
+Die Photodiodenkennlinien mit den drei Wiederständen sind in Abb. \ref{pdkennlinien} dargestellt. Wir bestimmten daraus die jeweiligen Laserschwellen zu:
+\begin{align*}
+ I_{Laser, \Omega} = () mA \\
+ I_{Laser, \Omega} = () mA \\
+ I_{Laser, \Omega} = () mA
+\end{align*}
+hierbei handelt es sich um geschätzte Ablesefehler.
+\begin{figure}
+ \includegraphics[width=0.9\linewidth]{pictures/pdkennlinien.eps}
+ \caption{Kennlinien der passiven Photodiode für die drei schaltbaren Wiederstände}
+ \label{pdkennlinien}
+\end{figure}
+
+\subsection{Der Resonator}
+Um den freien Spektralbereich bestimmen zu können braucht man zunächst eine Frequenzeichung. Wir modulierten also unterschiedliche Frequenzen auf die Laserfrequenz.Für die Abstände der Seitenbänder $d_{\mu s}$ und der Modulationsfrequenz $f_M$muss dann folgender Zusammenhang gelten:
+\begin{align*}
+ $f_M$ = A * d_{\mu s}
+\end{align*} 
+in Abb. \ref{eichung} sind unsere Daten Zusammen mit dem Fit dargestellt. Die Fehler sind auch hier Ablesefeher. Wir erhielten also für $A$:
+\begin{align*}
+ A = ( \pm ) \frac{1}{s^2}
+\end{align*} 
+Wir bestimmten den freien Spektralbereich $\Delta f_{FSR}$ indem wir die Abstände $d_i$ von zwölf Resonatorpeaks mittelten. Auch hier schätzten wir während der Messung einen Fehler auf die Ablesegenauikeiten unserer Messdaten. Aus obiger Energieeichung erhielten wir dann:
+\begin{align*}
+ \Delta f_{FSR} = (\pm) Ghz
+\end{align*}
+hierbei berechnete sich der Fehler nach der Gaußschen Fehlerfortpflanzung zu
+\begin{align*}
+ s_{\Delta f_{FSR}} = \Delta f_{FSR} * \sqrt{ \left( \frac{s_A}{A} \right)^2 + \left( \frac{s_{d_i}}{d_i} \right)^2}
+\end{align*}
+
+nun lässt sich über $\Delta f_{FSR} = \frac{c}{4Ln}$ auch die Länge des Resonators bestimmen. Wir erhielten
+\begin{align*}
+ s_{\Delta f_{FSR}} = \Delta f_{FSR} * \sqrt{ \left( \frac{s_A}{A} \right)^2 + \left( \frac{s_{d_i}}{d_i} \right)^2}
+\end{align*}
+dabei überträgt sich hier der relative Fehler von $\Delta f_{FSR}$.  \\
+
+Weiter bestimmten wir mit dem Osziloskop die Halbwertsbreiten $\delta f$ von fünf Resonatorpeaks und mittelten diese, um damit die Finesse $F$ des Resonators zu bestimmen. Wir erhielten 
+\begin{align*}
+ F = \frac{\Delta f_{FSR}}{\delta f} = ( \ pm )
+\end{align*}
+hierbei berechnete sich der Fehler nach der Gaußschen Fehlerfortpflanzung zu
+\begin{align*}
+ s_F = F * \sqrt{ \left( \frac{s_{\Delta f_{FSR}}}{\Delta f_{FSR}} \right)^2 + \left( \frac{s_{\delta f}}{\delta f} \right)^2}
+\end{align*}
+Leider mussten wir nach beendigung des Versuchs feststellen das wir vergessen hatten die Piezo-Frequenz-Charakteristik zu vermessen. 
+Wir charakterisierten die Frequenzmodulation und verglichen sie mit den theoretischen Werten, die Ergebnisse hiervon sind in Abb. \ref{bessel} zu sehen.
+%?SKIZZE bessel
+\subsection{Dopplerverbreiterte Spektroskopie}
+Wir untersuchten die vier Linien mit und ohne Mathe-Einheit, als Differenz und Quotient. Aus der Linienform der Referenzdiode und den Ergebnissen beim fitten schlossen wir, das ein eine Faltung aus vier Gaußkurven mit einem Polynom 2.Grades die Daten am besten repräsentiere. Das Ergebniss unseres Fits ist in Abb \ref{doppler} zu sehen. Aus den Parametern der Gaußbreiten des Fits berechneten wir Die volle Halbwertsbreite. Daraus über einen mitaufgenommenen Frequenzkamm  bildeten wir das gewichtete Ḿittel und erhielten als Dopplerbreite $\Delta f_{FWHM}$:
+\begin{align*}
+ 
+\end{align*}
 \section{Zusammenfassung}
 \section{Anhang}
 
