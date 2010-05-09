@@ -54,11 +54,11 @@ print "Dataset 0"
 for line in open('../daten/eichung_frequenz_0.dat','r'):
     if (not line.strip()) or (line.strip()[0] == '#'): continue
     freqs.append(float(line.split()[0]))
-    times.append(float(line.split()[1]))
+    times.append(float(line.split()[1])*2)
 count = len(times)
 # fit and draw
-g0 = TGraphErrors(count, array('d',times) ,array('d',freqs),array('d',[0.75]*count),
-                 array('d',[0,0001]*count))
+g0 = TGraphErrors(count, array('d',times) ,array('d',freqs),array('d',[0.5]*count),
+                 array('d',[0.5]*count))
 g0.SetTitle(';time;frequency')
 g0.SetMarkerStyle(1)
 g0.SetMarkerColor(2)

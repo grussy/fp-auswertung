@@ -78,7 +78,8 @@ In diesem Versuch soll das Prinzip der Laserspektroskopie verstanden und an eine
 Licht und Magnetooptik gemacht werden.
 Unter Laserspektroskopie versteht man verschiedene Verfahren zur Spektroskopie, in denen Laser zur Untersuchung von atomaren oder molekularen Spektren eingesetzt werden. 
 In unserem Versuch wird das zu untersuchende Atom ($^{85}Rb$ und $^{87}Rb$) durch Lasereinstrahlung von einem unteren auf ein höheres Energienievau gehoben.
-Dadurch kommt es beim variieren der Laserfrequenz zu Absorbtionsmaxima die mit einem Detektor gemessen werden können. 
+Dadurch kommt es beim variieren der Laserfrequenz zu Absorbtionsmaxima die mit einem Detektor gemessen werden können.
+\newpage
 \section{Aufgabenstellung}
 \begin{itemize}
  \item Der Laser
@@ -123,14 +124,90 @@ Dadurch kommt es beim variieren der Laserfrequenz zu Absorbtionsmaxima die mit e
    \item Versuche, die Hyperfeinstruktur von Rubidium noch genauer auszumessen
   \end{itemize}
   \end{itemize}
-  
+  \item Messungen zur Polarisation von Licht
+  \item Messungen zur Magnetooptik
 \end{itemize}
+\newpage
 
 \section{Theoretische Grundlagen}
+Hier soll ein Einblick in die theoretischen Grundlagen gegeben werden.
+\subsection{Der Laser}
+Die Abkürzung LASER steht für "Light Amplification by stimulated Emision of Radiation". Es handelt sich also um einen lichtverstärkenden Effekt, der auf stimmulierter Emission von Strahlung beruht. Trotz den zahlreichen Realisierungen ist das physikaliche Prinzip eines jeden Lasers immer das Gleiche, es beruht auf einer Besetzungsinversion und stimmulierter Emission. Desweiteren benötigt man zur erzeugung von Laserlicht einen optischen Resonator. Um die Vorgänge beim lasen zu verstehen muß man also zunächst auf das Prinzip der Besetzungsinversion eingehen.
+
+\subsubsection{Besetzungsinversion}
+Von einer Besetzungsinversion spricht man wenn ein angeregter Zustand eines Systems stärker besetzt ist ist als ein energetisch niedrig gelegener. Man will also eine signifikante Abweichung von der thermischen Besetzungsverteilung der Zustände in einem aktiven Medium erreichen. Dies ist nur mit einem physikalischen Trick technisch zu realisieren.
+Im folgenden sollen $Z_g$ und $Z_a$ die Zustände invertierter Besetzung mit der Energiebeziehung $E_{Z_g}<E{Z_a}$ sein.
+Man erreicht Besetzungsinversion, wenn der Grundzustand $Z_g$ schnell relaxiert und die Lebensdauer kürzer ist als die durch spontane Emission bestimmte Lebensdauer des angeregten  Zustands $Z_a$. $Z_g$ muss schnell entleert werden, damit die Besetzungsinversion erhalten bleibt. Dagegen muss $Z_a$ langlebig sein, damit die Besetzung nicht durch spontane Emission soweit reduziert wird, dass die Inversion wieder ausgeglichen wird. Um nun $Z_a$ langfristig zu befüllen wird Energie mittels optischem Pumpen in das System geführt. Wird in dieses System nun Licht der Energie $E_{Z_a}-E_{Z_g}$ eingestrahlt, so kommt es zu stimmulierter Emmission.\\
+Es existieren wie erwähnt viele technische Umsetzungen des Lasers, wir verwenden einen Halbleiderdiodenlaser.
+Um eine Konzentration der induzierten Emission auf wenige Moden zu erreichen braucht man desweiteren einen optischen Resonator.
+
+\subsubsection{Optischer Resonator}
+
+Ein optischer Resonator ist eine Anordnung von Spiegeln, die dazu dient, Licht möglichst oft hin und her zu reflektieren. Aufgrund von Interferenz bildet sich im Resonator dann eine stehende Welle, wenn die optische Weglänge des Resonators ein Vielfaches der halben Wellenlänge des eingestrahlten Lichts beträgt. In diesem Versuch kommen zwei Resonatoren zum Einsatz. Der erste befindet sich direkt hinter dem Laser, er bildet mit der Diode eine sogenannte Litrow-Anordnung.
+\subsubsection{Litrow-Anordnung}
+In dieser Anordnung reflektiert man einen Teil des von der Laserdiode emittierten Lichts wieder in sich zurück. Dies geschieht mit einem Refelexionsgitter und einem Kollimator, der zwischen Laserdiode und Reflexionsgitter sitzt (Abb. \ref{litrow}). Je nach Position des Reflexionsgitters wird eine andere Wellenlänge in die Laserdiode reflektiert und verstärkt. Für die verstärkte Wellenlänge erhält man in Abhängigkeit des Winkels
+\begin{align}
+\label{litrowpeak}
+ 2d sin(\alpha) = \lambda.
+\end{align}
+%?SKIZZE litrow
+\subsubsection{Spiegel-Resonator}
+%?SKIZZE cavity
+Der zweite Resonator in diesem Versuch ist ein sogenannter Spiegel-Resonator. Ein Spiegel-Resonator  besteht aus zwei auf der optischen Achse liegenden,
+teildurchlässigen Spiegeln $S_1$ und $S_2$ im Abstand L (Abb. \ref{cavity}). Ein Resonator heißt optisch stabil, wenn ein paraxialer Lichtstrahl im Resonator
+auch nach vielen Reflexionen an den Spiegeln den Resonator nicht verlässt. Wir verwenden in diesem Versuch einen konfokalen Resonator, weil er auch bei kleinen Längenänderung stabil bleibt. Die Krümmungsradien $R_1$ und $R_2$ der beiden Spiegel entsprechen in diesem Fall genau der Länge L des Resonators, es gilt $R1 =R2 = L$. Beim konfokalen Resonator beträgt der Gangunterschied zwischen durchlaufendem und reflektierem Strahl $4L$. Es kommt zu konstruktiver Interferenz, wenn dieser Gangunterschied gerade $m\lambda$  beträgt. Daraus folgt für die Frequenzen der Transmissionslinien:
+\begin{align}
+\label{cavityfreq}
+ f_m = \frac{mc}{4Ln}\hspace{15pt}\textnormal{ mit Brechungsindex }n\textnormal{ und } m \in \mathbb N
+\end{align}
+%?SKIZZE cavitypeaks
+Der Abstand zweier Transmissionslinien (Abb. \ref{cavitypeaks}) wird als freier Spektralbereich ($\Delta f_{FSR}$) des Resonators bezeichnet. Mit Formel \ref{cavityfreq} erhält man
+\begin{align}
+\label{freespecrange}
+ \Delta f_{FSR} = f_{m+1}-f_{m} = \frac{c}{4Ln}
+\end{align}
+ 
+Durch Reflexionsverluste an den Spiegeln haben die Linien eine endliche Halbwertsbreite $\delta f$. Ein Maß für die Anzahl der Umläufe eines Photons im Resonator stellt die Finesse $F$ des Resonators dar. Sie hängt direkt von der Reflektivität der Spiegel ab und berechnet sich zu Quotient aus freiem Spektralbereich und Halbwertsbreite
+\begin{align}
+\label{finesse}
+ \Delta F  = \frac{\Delta f_{FSR}}{\delta f}
+\end{align}
+\subsection{Spektroskopie}
+In unserem Versuch sollen die $D2$-Linieen von zwei Rubidiumisotopen untersucht werden. Rubidium (Rb) ist ein Alkalimetall, d.h. es besitzt ein einzelnes Elektron in seiner Außenschale und hat somit ein wasserstoffähnliches Termschema. Es existieren zwei Isotope ($^{85}Rb$ und $^{87}Rb$) und es kommt in der Natur nicht ungebunden vor. $^{85}Rb$ ist ein stabiles Isotop, $^{87}Rb$ zefällt sehr langsam.
+
+\subsubsection{Feinstrukturaufspaltung}
+
+\subsubsection{Hyperfeinstrukturaufspaltung}
+Die Hyperfeinstrukturaufspaltung resultiert aus der Kopplung des kernmagnetischen Moments $\mu_I$ mit dem am Kernort durch die Hüllenelektronen erzeugten Magnetfeld $B_J$.
+Durch die Kopplung ist der Gesamtdrehimpuls $\vec{F}$, der die Summe aus Hüllendrehimpuls $\vec{J}$ und Kernspin $\vec{I}$ ist, gequantelt:
+\begin{align*}
+ \left|\vec{F}\right| = \hbar \sqrt{F(F+1)}
+\end{align*}
+Die Quantenzahl $F$ nimmt in ganzzahligen Schritten die Werte von $-I$ bis $I$ an.
+\subsubsection{Linienverbreiterung}
+\begin{itemize}
+ \item \textbf{natürliche Linienbreite} \\
+    Wegen der Heisenbergschen Unschärferelation für Energie $E$ und Zeit $t$:
+    \begin{align*}
+    \Delta E \Delta t \geq \hbar
+    \end{align*}
+    verursacht die endliche Lebensdauer $\tau$ angeregter Zustände eine natürliche Linienbreite $\Delta f_N$.
+    \begin{align}
+    \label{natbreite}
+    \Delta f_N  = \frac{\Delta E}{h} = \frac{1}{2 \pi \tau}
+    \end{align}
+    Der Zustand $5^2P_{\frac{3}{2}}$ hat (bei beiden Isotopen des verwendeten Rubidiums) eine Lebensdauer von $\tau =26,5 ns$
+    Die natürliche Linienbreite der Rb-Linien beträgt demnach $\Delta f_N \approx 6 Mhz$
+\end{itemize}
+\subsubsection{Absorbtionsquerschnitt}
+
+\subsubsection{Dopplerverbreiterte Spektroskopie}
+\subsubsection{Dopplerfreie Spektroskopie}
 \section{Durchführung}
+\subsubsection{Messung}
+\subsubsection{Versuchsaufbau}
 \section{Auswertung}
 \section{Zusammenfassung}
-
 \section{Anhang}
 
 \subsection{Quelltext}
