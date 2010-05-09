@@ -285,7 +285,7 @@ Die Photodiodenkennlinien mit den drei Wiederständen sind in Abb. \ref{pdkennli
  I_{Laser, \Omega} = (72 \pm 2) mA. \\
 \end{align*}
 hierbei handelt es sich um geschätzte Ablesefehler.
-\begin{figure}H
+\begin{figure}[H]
  \includegraphics[width=0.9\linewidth]{pictures/pd_kenn1.eps}
  \includegraphics[width=0.9\linewidth]{pictures/pd_kenn2.eps}
  \caption{Kennlinien der passiven Photodioden für die drei schaltbaren Wiederstände}
@@ -297,7 +297,7 @@ Um den freien Spektralbereich bestimmen zu können braucht man zunächst eine Fr
 \begin{align*}
  f_M = A * d_{\mu s}
 \end{align*} 
-\begin{figure}H
+\begin{figure}[H]
  \includegraphics[width=0.9\linewidth]{pictures/eichung.eps}
  \caption{Frequenzeichung über Modulation}
  \label{eichung}
@@ -321,22 +321,6 @@ nun lässt sich über $\Delta f_{FSR} = \frac{c}{4Ln}$ auch die Länge des Reson
  L_{Resonator}= (9,5 \pm 0,06) cm
 \end{align*}
 dabei überträgt sich hier der relative Fehler von $\Delta f_{FSR}$.  \\
-Halbwertsbreite eines Peaks: 3.380000e+07 +- 2.109120e+05 Hz
-Finess der ext. Cavity: 2.335664e+01 +- 0.000000e+00
-Halbwertsbreiten: [Hz]
-Peak 1: 5.957644e+08 +- 9.191241e+07 Hz
-Peak 2: 5.981192e+08 +- 4.020521e+07 Hz
-Peak 3: 6.357960e+08 +- 2.853475e+07 Hz
-Peak 4: 6.357960e+08 +- 6.135321e+07 Hz
-gew. Mittel der Halbwertsbreiten: 6.232235e+08 +- 2.117229e+07 Hz
-Absorptionsquerschnitte:
-Peak 1: 4.863352e-17 +- 7.169085e-18 m**2
-Peak 2: 1.317562e-16 +- 8.234760e-18 m**2
-Peak 3: 1.882369e-16 +- 8.234760e-18 m**2
-Peak 4: 8.535087e-17 +- 7.847242e-18 m**2
-Peakabstand 1: (2.592000e+09 +- 1.258403e+07)
-Peakabstand 2: (3.079000e+09 +- 4.851774e+06)
-Peakabstand 3: (1.243000e+09 +- 2.308319e+06)
 Weiter bestimmten wir mit dem Osziloskop die Halbwertsbreiten $\delta f$ von fünf Resonatorpeaks und mittelten diese, um damit die Finesse $F$ des Resonators zu bestimmen. Wir erhielten 
 \begin{align*}
  F = \frac{\Delta f_{FSR}}{\delta f} = ( 23,35 \pm 0,2 )
@@ -347,15 +331,14 @@ hierbei berechnete sich der Fehler nach der Gaußschen Fehlerfortpflanzung zu
 \end{align*}
 Leider mussten wir nach beendigung des Versuchs feststellen das wir vergessen hatten die Piezo-Frequenz-Charakteristik zu vermessen. 
 Wir charakterisierten die Frequenzmodulation und verglichen sie mit den theoretischen Werten, die Ergebnisse hiervon sind in Abb. \ref{bessel} zu sehen.
-\begin{figure}H
-
+\begin{figure}[H]
  \includegraphics[width=0.9\linewidth]{pictures/modulation.eps}
  \caption{Charakterisierung der Frequenzmodulation}
  \label{bessel}
 \end{figure}
 
 \subsection{Dopplerverbreiterte Spektroskopie}
-\begin{figure}H
+\begin{figure}[H]
  \includegraphics[width=0.9\linewidth]{pictures/doppler.eps}
  \caption{Frequenzeichung über Modulation}
  \label{doppler}
@@ -367,7 +350,7 @@ Wir untersuchten die vier Linien mit und ohne Mathe-Einheit, als Differenz und Q
 \end{align*}
 hierbei berechnete sich der Fehler nach der Gaußschen Fehlerfortpflanzung. Die Einzelmessungen ergaben:
 \begin{center}
-\begin{tabular}{|l|llll|}
+\begin{tabular}{|l|l|l|l|l|}
 \hline
 Peak & 1 & 2 & 3 & 4\\
 \hline
@@ -375,24 +358,55 @@ $\Delta f_{FWHM} [Mhz]$ & $596\pm12$ & $598 \pm 6$ & $633 \pm$ 5 & $635 \pm 9$\\
 \hline
 \end{tabular}
 \end{center}
-
 \subsubsection{Abstände der Linien}
-Aus den Fits in Abb \ref{doppler} erhielten wir die Schwerpunkte der Peaks. Wir rechneten Sie wieder in eine Frequenz um und ordneten sie dann ihren Übergängen zu. Das Ergebniss ist in Tabelle \ref{dist} dargestellt.
+Aus den Fits in Abb \ref{doppler} erhielten wir die Schwerpunkte der Peaks. Wir ordneten sie ihren Zuständen zu. Das Ergebniss ist in Tabellen \ref{order} dargestellt. Die Abstände sind in Tabelle \ref{dist} dargestellt. Aus beiden kann man, wie in der Zusammenfassung geschehen die Hyperfeinstruktur der Gundzustände beider Isotope bestimmen.
+
+\begin{table}[H]
 \begin{center}
-\begin{tabular}{|l|lll|}
+\begin{tabular}{|l|l|l|l|l|}
+\hline 
+Peak & 1 & 2 & 3 & 4\\
 \hline
-\label{dist}
-Übergang & 1 & 1 & 1\\
-Abstand [Ghz] & 1 & 1 & 1\\
+Isotop & $^{87}Rb$ & $^{85}Rb$ & $^{85}Rb$ & $^{87}Rb$\\
+$F$ of $5^2S_{\frac{1}{2}}$ & 1 & 2 & 3 & 2 \\
 \hline
 \end{tabular}
 \end{center}
+\label{order}
+\caption{Zuordnung der Peaks}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+Peaks & 1 und 2 & 2 und 3 & 3 und 4\\
+\hline
+Abstand [Ghz] & $2,59 \pm 0.0013$ & $3,08 \pm 0,004$ & $1,243 \pm 0,0023$\\
+\hline
+\end{tabular}
+\end{center}
+\label{dist}
+\caption{Abstaende der Peaks}
+\end{table}
+
+
 \subsubsection{Absobtionsquerschnitt}
-Da der Absorbtionsquerschnitt direkt vom Quotient der Intensitäten vor und hinter der Zelle abhängt, konnten wir diesen mittels des Gaußparameters bestimmen.
-Wir erhielten
+Da der Absorbtionsquerschnitt $\sigma$ direkt vom Quotient der Intensitäten vor und hinter der Zelle abhängt, konnten wir diesen mittels des Gaußparameters bestimmen. Aus Gleichung \ref{lambert} folgt nämlich
 \begin{align*}
- \sigma = \frac{ln \left( \frac{I_0}{I_d} \right) }{nd}
+ \sigma = \frac{ln \left( \frac{I_0}{I_d} \right) }{nd} 
 \end{align*}
+Wir erhielten somit
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+\hline 
+Peak & 1 & 2 & 3 & 4\\
+\hline
+$\sigma [10^{-17} m^2]$ & $4,86 \pm 0,009$ & $13,166 \pm 0,009$ & $18,746 \pm 0,009$ & $8.535 \pm 0,009$\\
+\hline
+\end{tabular}
+\end{center}
+
 \section{Zusammenfassung}
 \section{Anhang}
 
