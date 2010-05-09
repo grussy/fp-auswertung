@@ -53,7 +53,7 @@ hwbHz = hwbS * umrechnungsfaktor
 shwbHz = hwbHz * sqrt((sumrechnungsfaktor/umrechnungsfaktor)**2 + (shwbS/hwbS)**2)
 print 'Halbwertsbreite eines Peaks: %e +- %e Hz' % (hwbHz, shwbHz)
 finess = fsrHz / hwbHz
-sfiness = finess * sqrt((sfsrS/fsrS)**2 + (shwbS/hwbS)**2)
+sfiness = finess * sqrt((sfsrHz/fsrHz)**2 + (shwbHz/hwbHz)**2)
 print 'Finess der ext. Cavity: %e +- %e' % (finess, sfiness)
 
 #Resonatorlänge 
