@@ -5,6 +5,7 @@ from array import array
 import sys; sys.path.append('/usr/lib/root/')
 from oszi import OsziData
 from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraphErrors
+from frequenz_eichung import mw
 
 
 #######################################################
@@ -25,12 +26,12 @@ class Messung:
         if self.data.ch1 != 0:
             if self.freqLineal != 0:
                 cutData(self.data.ch1.y, self.freqLineal)
-                self.freqLineal = calcLineal(self.data.ch1)
-                print self.freqLineal
+                self.freqLineal, self.sfreqLineal = calcLineal(self.data.ch1)
+##                print self.freqLineal
             self.graph1 = TGraphErrors(len(self.data.ch1.x), array('d',self.data.ch1.x), array('d', self.data.ch1.y), array('d', [1e-5]*len(self.data.ch1.x)), array('d', [1e-3]*len(self.data.ch1.x)))
         
         if self.data.ch2 != 0:
-            self.graph2 = TGraphErrors(len(self.data.ch2.x), array('d',self.data.ch2.x), array('d', self.data.ch2.y), array('d', [1e-5]*len(self.data.ch1.x)), array('d', [1e-4]*len(self.data.ch1.x)))
+            self.graph2 = TGraphErrors(len(self.data.ch2.x), array('d',self.data.ch2.x), array('d', self.data.ch2.y), array('d', [1e-5]*len(self.data.ch1.x)), array('d', [1e-1]*len(self.data.ch1.x)))
 
     def createCanvas(self, can):
         self.canvas = can
@@ -66,10 +67,10 @@ class Messung:
 def cutData(data, grenze):
     for i in range(len(data)):
         if data[i] < grenze: data[i] = 0.
-        print data[i]
+##        print data[i]
 
 def calcLineal(channel):
-    return sum(findBigSpace(channel))/len(findBigSpace(channel))
+    return mw(findBigSpace(channel))
 
 def findBigSpace(channel):
     liste = []
@@ -88,7 +89,7 @@ def findBigSpace(channel):
     
     
 def test():
-    testmess = Messung('04', 'Dopplerverbreitert Messung 3')
+    testmess = Messung('04', 'Dopplerverbreitert Messung 3', 0)
     testmess.plot()
     raw_input();
     

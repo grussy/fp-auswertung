@@ -9,33 +9,38 @@ from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraph
 import os.path
 
 class nGauss:
-    def __init__(self, nummer, beschreibung, n):
+    def __init__(self, nummer, beschreibung, n, freqLineal, fitgraph):
         self.nummer = nummer
         self.beschreibung = beschreibung
         self.n = n
         self.params = self.readParameters()
-        self.messung = Messung(nummer, beschreibung,1)
+        self.messung = Messung(nummer, beschreibung, freqLineal)
         self.messung.plot()
         self.fit2 = nGaussFit(self.n, self.params)
-        self.messung.graph2.Fit(self.fit2.fitFunc, 'Q+')
+        if fitgraph == 2: self.messung.graph2.Fit(self.fit2.fitFunc, 'Q+W')
+        if fitgraph == 1: self.messung.graph1.Fit(self.fit2.fitFunc, 'Q+')
         self.messung.canvas.Update()
     
     def saveParameters(self):
         file = open('../daten/oszi/ALL00%s/parameters.dat' % self.nummer,'w')
         for i in range(self.fit2.fitFunc.GetNumberFreeParameters()):
-            file.write('%i  %s  %f\n' % (i, self.fit2.fitFunc.GetParName(i), self.fit2.fitFunc.GetParameter(i)))
+            file.write('%i  %s  %f %f\n' % (i, self.fit2.fitFunc.GetParName(i), self.fit2.fitFunc.GetParameter(i), self.fit2.fitFunc.GetParError(i)))
         file.close()
     
     def readParameters(self):
         params = []
         if os.path.isfile('../daten/oszi/ALL00%s/parameters.dat' % self.nummer):
             for line in open('../daten/oszi/ALL00%s/parameters.dat' % self.nummer,'r'):
-                params.append((int(line.split()[0]),line.split()[1],float(line.split()[2])))
+                params.append((int(line.split()[0]),line.split()[1],float(line.split()[2]), float(line.split()[3])))
         else:
             for i in range(self.n*3 +3):
-                params.append((i, 'p%i' %i, 0.))
+                params.append((i, 'p%i' %i, 0., 0.))
         return params
-            
+    
+    def printParameters(self):
+        for i in range(self.fit2.fitFunc.GetNumberFreeParameters()):
+            print ('%i  %s  %f\n' % (i, self.fit2.fitFunc.GetParName(i), self.fit2.fitFunc.GetParameter(i)))
+          
         
 class nGaussFit:
     def __init__(self, n, params):
@@ -44,7 +49,7 @@ class nGaussFit:
         
         self.fitFunc = TF1('f', createNGauss(self.n))
         if self.params != 0:
-            for i, pn, pv in self.params:
+            for i, pn, pv, pe in self.params:
                 self.fitFunc.SetParName(i, pn)
                 self.fitFunc.SetParameter(i, pv)
 
@@ -53,7 +58,7 @@ def createNGauss(n):
     for i in range(1,n+1):
         j = 3*i + 2
         gauss += '+[%i]/(2.50662827463100024*[%i])*exp(-0.5*((x-[%i])/[%i])**2)' % (j-2, j-1, j, j-1)
-    print gauss
+##    print gauss
     return gauss
 
 class nLorenz:
@@ -105,7 +110,7 @@ def createNLorenz(n):
     for i in range(1,n+1):
         j = 3*i + 2
         Lorenz += '+ 2*[%i]/pi * [%i]/(4*([6]*(x-[%i]))^2 + [%i]^2)' % (j-2,j-1,j,j-1)
-    print Lorenz
+##    print Lorenz
     return Lorenz
 
 
