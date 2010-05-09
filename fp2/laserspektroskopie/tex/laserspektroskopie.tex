@@ -455,9 +455,9 @@ $\sigma [10^{-17} m^2]$ & $4,8 \pm 0,1$ & $13,2 \pm 0,1$ & $18,7 \pm 0,1$ & $8.5
 \section{Zusammenfassung}
 Begonnen hatten wir mit der Feststellung der Laserschwelle, wobei wir mit hilfe der Photodioden einen Wert von:
 \begin{align*}
- I_{Laser, \Omega} = (72 \pm 2) mA. \\
+ I_{Laser, \Omega} = (72 \pm 2) mA. 
 \end{align*}
-erhielten.
+erhielten.\\
 
 Anschließend hatten wir uns dem externen Resonator zugewendet und dessen freien Spektralbereich bestimmt zu:
 \begin{align*}
@@ -471,14 +471,14 @@ Für die Länge des Resonators haben wir:
 \begin{align*}
  L_{Resonator}= (9,5 \pm 0,06) cm
 \end{align*}
-berechnet. Da man die genaue Position der Spiegel im Resonator von außen nicht sehen kann lies sich seine Länge nur grob messen. Hier hatten wir die Länge auf ca. $10cm$ bestimmt, wobei man hier einen Fehler von fast einem Zentimeter annehmen kann. Somit stimmen die beiden Längen gut überein.
+berechnet. Da man die genaue Position der Spiegel im Resonator von außen nicht sehen kann lies sich seine Länge nur grob messen. Hier hatten wir die Länge auf ca. $10cm$ bestimmt, wobei man hier einen Fehler von fast einem Zentimeter annehmen kann. Somit stimmen die beiden Längen gut überein.\\
 
 Bei der dopplerfreien Spektroskopie verwendeten wir den Resonator als Frequenzlineal und konnten somit die Abstände der Peaks und deren Breiten im Rubidiumspekrum vermessen.
 Die mittlere Breite der Peaks haben wir bestimmt zu:
 \begin{align*}
  \Delta f_{FWHM} = (621 \pm 3.2) GHz.
 \end{align*}
-Die theoretische erwartete Halbwertsbreite liegt bei $Delta f_{FWHM} \approx 0,5 Ghz$. Wir haben somit breitere Peaks als erwartet gemessen. Dies kann viele Ursachen haben, in erster Linie wird in dem Versuch viel Elektronik verwendet was eigentlich immer eine gaußförmige Verbreiterung bedeutet.
+Die theoretische erwartete Halbwertsbreite liegt bei $\Delta f_{FWHM} \approx 500 Ghz$. Wir haben somit breitere Peaks als erwartet gemessen. Dies kann viele Ursachen haben, in erster Linie wird in dem Versuch viel Elektronik verwendet was eigentlich immer eine gaußförmige Verbreiterung bedeutet.
 Die drei Abstände haben wir zu:
 \begin{table}[H]
 \begin{center}
@@ -486,7 +486,7 @@ Die drei Abstände haben wir zu:
 \hline
 Peaks & 1 und 2 & 2 und 3 & 3 und 4\\
 \hline
-Abstand [Ghz] & $2,59 \pm 0.0013$ & $3,08 \pm 0,004$ & $1,243 \pm 0,0023$\\
+Abstand [Ghz] & $2,59 \pm 0.02$ & $3,08 \pm 0,02$ & $1,243 \pm 0,01$\\
 \hline
 \end{tabular}
 \end{center}
@@ -504,11 +504,23 @@ Abstand [Ghz] & $2,66$ & $3,036$ & $1,138$\\
 \end{tabular}
 \end{center}
 \end{table}
+Die Abweichungen der ersten beiden Werte liegen im vier bzw. drei Sigma Bereich, der dritte Wert jedoch weicht weit von der Literatur ab.\\
 
-\section{Anhang}
+Für den Absorptionsquerschnitt der Linien haben wir:
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+\hline 
+Peak & 1 & 2 & 3 & 4\\
+\hline
+$\sigma [10^{-17} m^2]$ & $4,8 \pm 0,1$ & $13,2 \pm 0,1$ & $18,7 \pm 0,1$ & $8.5 \pm 0,1$\\
+\hline
+\end{tabular}
+\end{center}
+berechnet. Eine Aussage über die Qualität der Werte ist schwer da hier die Qualität der Matheeinheit eingeht und diese nicht bekannt ist (Unterschiedliche Verstärkungen der Kanäle wirken sich auf das Teilungsverhältniss aus.)\\
 
-
-\subsection{Quelltext}
+Leider haben wir am letzen der vier Tage die uns für den Versuch zur Verfügung standen vergessen die CF-Karte aus dem Oszilloskop auf den PC zu kopieren. Die Daten zur dopplerfreien und fm Spektroskopie sind uns somit leider verlorengegangen. Dennoch konnten wir die Hyperfeinstrukturaufspaltung des Angeregten Zustands bei der Durchführung sehen und das Prinzip der Laserspektroskopie verstehen. Für die Versuchsteile zur Polarisation von Licht und Magnetooptik fehlte uns leider die Zeit weshalb wir auf eine Beschreibung verzichteten.
+\section{Quelltext}
+Zur Auswertung verwendeeten wir das Datenanalyseframework PyRoot. Die Quelltexte sind im folgenden angehängt.
 
 %\lstinputlisting[language=python, extendedchars=false, inputencoding=utf8]{../staebe/staebe.py}
 
