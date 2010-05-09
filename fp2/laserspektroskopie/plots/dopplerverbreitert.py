@@ -8,7 +8,7 @@ from messung import Messung
 from fits import nGauss, nLorenz
 from ROOT import gROOT, TCanvas, TLegend, TF1, TH1F, TGraph, TMultiGraph, TGraphErrors
 import os.path
-from frequenz_eichung import mw
+from frequenz_eichung import mw, gew_mittel
 
 
 #############################################################################
@@ -68,6 +68,8 @@ orte = []
 sorte = []
 sigma = []
 ssigma = []
+hoehe = []
+shoehe = []
 for parameter in doppler1.params:
     if parameter[1] == 'u':
         orte.append(float(parameter[2]))
@@ -75,6 +77,9 @@ for parameter in doppler1.params:
     if parameter[1] == 'o':
         sigma.append(float(parameter[2]))
         ssigma.append(float(parameter[3]))
+    if parameter[1] == 'A':
+        hoehe.append(float(parameter[2]))
+        shoehe.append(float(parameter[3]))
 abstaende = []
 sabstaende = []
 for i in range(len(orte)-1):
@@ -88,10 +93,18 @@ sfwhmS = [2.3548 * ssig for ssig in ssigma]
 fwhmHz = [f * umrechnungsfaktor for f in fwhmS]
 sfwhmHz = []
 for i in range (len(fwhmHz)):
-    sfwhmHz.append(fwhmHz * sqrt((sfwhmS/fwhmS)**2 + (sumrechnungsfaktor/umrechnungsfaktor)**2))
+    sfwhmHz.append(fwhmHz[i] * sqrt((sfwhmS[i]/fwhmS[i])**2 + (sumrechnungsfaktor/umrechnungsfaktor)**2))
 print 'Halbwertsbreiten: [Hz]'
-for i, f, sf in range(1,4), fwhmHz, sfwhmHz:
-    print 'Peak %i: %e +- %e Hz' % (i, f, sf)
+for i in range(4):
+    print 'Peak %i: %e +- %e Hz' % (i+1, fwhmHz[i], sfwhmHz[i])
+mittelfwhm, smittelfwhm = gew_mittel(fwhmHz, sfwhmHz)
+print 'gew. Mittel der Halbwertsbreiten: %e +- %e Hz' % (mittelfwhm, smittelfwhm)
+#Absorptionsquerschnitte
+sig = [(780.2e-9)**2 / (2 * pi) * h for h in hoehe]
+ssig = [(780.2e-9)**2 / (2 * pi) * sh for sh in shoehe]
+print 'Absorptionsquerschnitte:'
+for i in range(4):
+    print 'Peak %i: %e +- %e m**2' % (i+1, sig[i], ssig[i])
 ###rausnehmen!##################################################################
 ##sollabstaende = [2.660e9, 3.036e9, 1.138e9]  # in Hz
 ##g = TGraphErrors(3, array('d',abstaende) ,array('d',sollabstaende),array('d',[1e-7]*3),
@@ -114,5 +127,5 @@ abstaendeGauss = [a*umrechnungsfaktor for a in abstaende]
 sabstaendeGauss = []
 for i in range(len(sabstaende)):
     sabstaendeGauss.append(abstaendeGauss[i] * sabstaende[i] / abstaende[i])
-    print 'Peakabstand %i: (%e +- %e)' % (i, abstaendeGauss[i], sabstaendeGauss[i])
+    print 'Peakabstand %i: (%e +- %e)' % (i+1, abstaendeGauss[i], sabstaendeGauss[i])
     
