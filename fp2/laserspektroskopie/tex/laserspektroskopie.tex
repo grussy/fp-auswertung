@@ -135,7 +135,7 @@ Hier soll ein Einblick in die theoretischen Grundlagen gegeben werden.
 Die Abkürzung LASER steht für "Light Amplification by stimulated Emision of Radiation". Es handelt sich also um einen lichtverstärkenden Effekt, der auf stimmulierter Emission von Strahlung beruht. Trotz den zahlreichen Realisierungen ist das physikaliche Prinzip eines jeden Lasers immer das Gleiche, es beruht auf einer Besetzungsinversion und stimmulierter Emission. Desweiteren benötigt man zur erzeugung von Laserlicht einen optischen Resonator. Um die Vorgänge beim lasen zu verstehen muß man also zunächst auf das Prinzip der Besetzungsinversion eingehen.
 
 \subsubsection{Besetzungsinversion}
-Von einer Besetzungsinversion spricht man wenn ein angeregter Zustand eines Systems stärker besetzt ist ist als ein energetisch niedrig gelegener. Man will also eine signifikante Abweichung von der thermischen Besetzungsverteilung der Zustände in einem aktiven Medium erreichen. Dies ist nur mit einem physikalischen Trick technisch zu realisieren.
+Von einer Besetzungsinversion spricht man wenn ein angeregter Zustand eines Systems stärker besetzt ist ist als ein energetisch niedrig gelegener. Es handelt sich also um eine signifikante Abweichung von der thermischen Besetzungsverteilung der Zustände in einem sogenannten aktiven Medium. Dies ist nur mit einem physikalischen Trick technisch zu realisieren.
 Im folgenden sollen $Z_g$ und $Z_a$ die Zustände invertierter Besetzung mit der Energiebeziehung $E_{Z_g}<E{Z_a}$ sein.
 Man erreicht Besetzungsinversion, wenn der Grundzustand $Z_g$ schnell relaxiert und die Lebensdauer kürzer ist als die durch spontane Emission bestimmte Lebensdauer des angeregten  Zustands $Z_a$. $Z_g$ muss schnell entleert werden, damit die Besetzungsinversion erhalten bleibt. Dagegen muss $Z_a$ langlebig sein, damit die Besetzung nicht durch spontane Emission soweit reduziert wird, dass die Inversion wieder ausgeglichen wird. Um nun $Z_a$ langfristig zu befüllen wird Energie mittels optischem Pumpen in das System geführt. Wird in dieses System nun Licht der Energie $E_{Z_a}-E_{Z_g}$ eingestrahlt, so kommt es zu stimmulierter Emmission.\\
 Es existieren wie erwähnt viele technische Umsetzungen des Lasers, wir verwenden einen Halbleiderdiodenlaser.
@@ -149,9 +149,18 @@ In dieser Anordnung reflektiert man einen Teil des von der Laserdiode emittierte
 \label{litrowpeak}
  2d sin(\alpha) = \lambda.
 \end{align}
-%?SKIZZE litrow
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/litrow.eps}
+ \caption{Litrow-Anordnung}
+ \label{litrow}
+\end{figure}
+Diese Anordnung wird im Versuch benutzt um einen möglich großen modensrungfreien Bereich zu erreichen. Ein Modensprung ist ein Sprung im Transmisionsspektrum des Resonators. Er entsteht dadurch das gerade eine andere Mode in besser in den resonator passt als die zu stabil haltende. Wir stimmen in unserem Versuch den Winkel der Litrow-Anordnung gemeinsam mit dem Laserdiodenstrom durch. Dadurch erhalten wir einen sehr viel größeren modensrungfreien Bereich also ohne variation des Gitters. Dieses Verfahren nennt sich Feed-Vorward.
 \subsubsection{Spiegel-Resonator}
-%?SKIZZE cavity
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/cavity.eps}
+ \caption{Aufbau des Spiegel-Resonators}
+ \label{cavity}
+\end{figure}
 Der zweite Resonator in diesem Versuch ist ein sogenannter Spiegel-Resonator. Ein Spiegel-Resonator  besteht aus zwei auf der optischen Achse liegenden,
 teildurchlässigen Spiegeln $S_1$ und $S_2$ im Abstand L (Abb. \ref{cavity}). Ein Resonator heißt optisch stabil, wenn ein paraxialer Lichtstrahl im Resonator
 auch nach vielen Reflexionen an den Spiegeln den Resonator nicht verlässt. Wir verwenden in diesem Versuch einen konfokalen Resonator, weil er auch bei kleinen Längenänderung stabil bleibt. Die Krümmungsradien $R_1$ und $R_2$ der beiden Spiegel entsprechen in diesem Fall genau der Länge L des Resonators, es gilt $R1 =R2 = L$. Beim konfokalen Resonator beträgt der Gangunterschied zwischen durchlaufendem und reflektierem Strahl $4L$. Es kommt zu konstruktiver Interferenz, wenn dieser Gangunterschied gerade $m\lambda$  beträgt. Daraus folgt für die Frequenzen der Transmissionslinien:
@@ -159,7 +168,11 @@ auch nach vielen Reflexionen an den Spiegeln den Resonator nicht verlässt. Wir 
 \label{cavityfreq}
  f_m = \frac{mc}{4Ln}\hspace{15pt}\textnormal{ mit Brechungsindex }n\textnormal{ und } m \in \mathbb N
 \end{align}
-%?SKIZZE cavitypeaks
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/cavitypeaks.eps}
+ \caption{Schematicher Verlauf der Resonator-Transmissionslinien}
+ \label{cavitypeaks}
+\end{figure}
 Der Abstand zweier Transmissionslinien (Abb. \ref{cavitypeaks}) wird als freier Spektralbereich ($\Delta f_{FSR}$) des Resonators bezeichnet. Mit Formel \ref{cavityfreq} erhält man
 \begin{align}
 \label{freespecrange}
@@ -172,7 +185,12 @@ Durch Reflexionsverluste an den Spiegeln haben die Linien eine endliche Halbwert
  \Delta F  = \frac{\Delta f_{FSR}}{\delta f}
 \end{align}
 \subsection{Spektroskopie}
-In unserem Versuch sollen die $D2$-Linieen von zwei Rubidiumisotopen untersucht werden. Rubidium (Rb) ist ein Alkalimetall, d.h. es besitzt ein einzelnes Elektron in seiner Außenschale und hat somit ein wasserstoffähnliches Termschema. Es existieren zwei Isotope ($^{85}Rb$ und $^{87}Rb$) und es kommt in der Natur nicht ungebunden vor. $^{85}Rb$ ist ein stabiles Isotop, $^{87}Rb$ zefällt sehr langsam.
+In unserem Versuch sollen die $D2$-Linieen von zwei Rubidiumisotopen untersucht werden. Rubidium (Rb) ist ein Alkalimetall, d.h. es besitzt ein einzelnes Elektron in seiner Außenschale und hat somit ein wasserstoffähnliches Termschema(Abb \ref{term}. Es existieren zwei Isotope ($^{85}Rb$ und $^{87}Rb$) und es kommt in der Natur nicht ungebunden vor. $^{85}Rb$ ist ein stabiles Isotop, $^{87}Rb$ zefällt sehr langsam.
+\begin{figure}[H]
+ \includegraphics[width=0.9\linewidth]{pictures/term.eps}
+ \caption{Termschema der $D2$-Linie von Rubidium}
+ \label{term}
+\end{figure}
 
 \subsubsection{Feinstrukturaufspaltung}
 Die Feinstruktur ist eine Folge der Kopplung zwischen Bahndrehimuls $L$ des äußeren Elektrons mit seimem Spin $S$.
@@ -260,6 +278,7 @@ Grundsätzlich werden alle optischen Elemente auf eine Metallplatte mit einem Lo
  \item Cavity (externer optischer Resonator)
  \item Rubidiumzelle
 \end{itemize}
+\newpage 
 \subsubsection{Leistung-Laserdiodenstrom-Kennlinie}
 Für die Aufnahme der Photodiodenkennlinien werden die optischen Elemente wie in Abbildung \ref{skizze-pd} angeordnet.
 Über die kombination aus $\frac{\lambda}{2}$-Plättchen und PBS kann die auf die Fotodiode treffende Intensität verändert werden. Somit kann man an diesem Aufbau auch gleich das verhalten des Beamsplitters studieren.
@@ -336,9 +355,13 @@ hierbei berechnete sich der Fehler nach der Gaußschen Fehlerfortpflanzung zu
 \begin{align*}
  s_{\Delta f_{FSR}} = \Delta f_{FSR} * \sqrt{ \left( \frac{s_A}{A} \right)^2 + \left( \frac{s_{d_i}}{d_i} \right)^2}
 \end{align*}
-Dieser Fehler überträgt sich nach Gaußscher Fehlerfortpflanzung auf viele nachfolgende Messungen, wobei wir die Formeln hier nicht immer angegeben haben. Sie sind aber in unseren Scripten nachzuvollziehen.
+Dieser Fehler überträgt sich nach Gaußscher Fehlerfortpflanzung auf viele nachfolgende Messungen. Dies liegt daran das dieser Wert später zur Eichung der Zeitachse genommen wird. Dabei wird ein Umrechnungsfaktor $U$ so bestimmt das $t\cdot U=f$, wenn $t$ die Zeit und $f$ die Frequenz sind. Der Fehler des Umrechnungsfaktors berechnet sich nach Gaußscher Fehlerfortflanzung zu
+\begin{align*}
+ s_U = U \sqrt{ \left( \frac{s_{\Delta f_{FSR}}}{\Delta f_{FSR}} \right) ^2 + \left( \frac{s_{T_{\Delta f_{FSR}}}}{T_{\Delta f_{FSR}}} \right) ^2 }
+\end{align*}
+wobei $T_{\Delta f_{FSR}}$ den Fehler auf eine Zeitmessung zur bestimmung von $\Delta f_{FSR}$ bezeichnet. Bei einigen Messungen dominierte dieser Fehler deutlich.
 
-nun lässt sich über $\Delta f_{FSR} = \frac{c}{4Ln}$ auch die Länge des Resonators bestimmen. Wir erhielten
+Weiter lässt sich über $\Delta f_{FSR} = \frac{c}{4Ln}$ auch die Länge des Resonators bestimmen. Wir erhielten
 \begin{align*}
  L_{Resonator}= (9,5 \pm 0,06) cm
 \end{align*}
@@ -430,6 +453,7 @@ $\sigma [10^{-17} m^2]$ & $4,86 \pm 0,009$ & $13,166 \pm 0,009$ & $18,746 \pm 0,
 \end{center}
 
 \section{Zusammenfassung}
+
 \section{Anhang}
 
 
