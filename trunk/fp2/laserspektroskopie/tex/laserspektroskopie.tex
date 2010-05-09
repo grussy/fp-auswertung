@@ -215,6 +215,21 @@ Für Zimmertemperatur und Rubuidium erwartet man also eine Halbwertsbreite von $
 \end{itemize}
 
 \subsubsection{Absorbtionsquerschnitt}
+Der Apsorptionsquerschnitt ist in unserem Fall ein Maß für die Fläche die der Laserstrahl beim durchlaufen der Zelle sieht.
+Dieser lässt sich mit dem Lambert-Beer'schen Gesetz 
+\begin{align}
+ I(d) = I(0) e^{-n \sigma d}
+ \label{lambert}
+\end{align}
+mit Teilchendichte $n$, Schichtdicke $d$ und Absorptionsquerschnitt $\sigma$
+für ein Zwei-Niveau-System näherungsbestimmen zu:
+\begin{align}
+ \sigma_0 \approx \frac{\lambda^2}{2\pi}.
+\end{align}
+Da in unserem Fall die Atome aber nicht alle Licht mit der selben Frequenz sehen muss man $\sigma_0$ noch mit dem Faktor $\frac{\Delta f_N}{\Delta f_D}$:
+\begin{align}
+ \sigma \approx \sigma_0 \frac{\Delta f_N}{\Delta f_D} \approx \frac{\lambda^2}{2\pi}\frac{\Delta f_N}{\Delta f_D}
+\end{align}
 
 \subsubsection{Dopplerverbreiterte Spektroskopie}
 Wie der Name schon verrät spektroskopiert man in der dopplerverbreiterterten Spektroskopie Linien von Übergängen welche
