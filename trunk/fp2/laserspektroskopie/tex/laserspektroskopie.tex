@@ -268,7 +268,7 @@ hierbei handelt es sich um geschätzte Ablesefehler.
 \subsection{Der Resonator}
 Um den freien Spektralbereich bestimmen zu können braucht man zunächst eine Frequenzeichung. Wir modulierten also unterschiedliche Frequenzen auf die Laserfrequenz.Für die Abstände der Seitenbänder $d_{\mu s}$ und der Modulationsfrequenz $f_M$muss dann folgender Zusammenhang gelten:
 \begin{align*}
- $f_M$ = A * d_{\mu s}
+ f_M = A * d_{\mu s}
 \end{align*} 
 \begin{figure}H
  \includegraphics[width=0.9\linewidth]{pictures/eichung.eps}
@@ -285,7 +285,6 @@ Wir bestimmten den freien Spektralbereich $\Delta f_{FSR}$ indem wir die Abstän
 \end{align*}
 hierbei berechnete sich der Fehler nach der Gaußschen Fehlerfortpflanzung zu
 \begin{align*}
-
  s_{\Delta f_{FSR}} = \Delta f_{FSR} * \sqrt{ \left( \frac{s_A}{A} \right)^2 + \left( \frac{s_{d_i}}{d_i} \right)^2}
 \end{align*}
 Dieser Fehler überträgt sich nach Gaußscher Fehlerfortpflanzung auf viele nachfolgende Messungen, wobei wir die Formeln hier nicht immer angegeben haben. Sie sind aber in unseren Scripten nachzuvollziehen.
@@ -322,7 +321,8 @@ hierbei berechnete sich der Fehler nach der Gaußschen Fehlerfortpflanzung zu
 Leider mussten wir nach beendigung des Versuchs feststellen das wir vergessen hatten die Piezo-Frequenz-Charakteristik zu vermessen. 
 Wir charakterisierten die Frequenzmodulation und verglichen sie mit den theoretischen Werten, die Ergebnisse hiervon sind in Abb. \ref{bessel} zu sehen.
 \begin{figure}H
- \includegraphics[width=0.9\linewidth]{pictures/bessel.eps}
+
+ \includegraphics[width=0.9\linewidth]{pictures/modulation.eps}
  \caption{Charakterisierung der Frequenzmodulation}
  \label{bessel}
 \end{figure}
@@ -334,19 +334,29 @@ Wir charakterisierten die Frequenzmodulation und verglichen sie mit den theoreti
  \label{doppler}
 \end{figure}
 \subsubsection{Linienbreite}
-Wir untersuchten die vier Linien mit und ohne Mathe-Einheit, als Differenz und Quotient. Aus der Linienform der Referenzdiode und den Ergebnissen beim fitten schlossen wir, das ein eine Faltung aus vier Gaußkurven mit einem Polynom 2.Grades die Daten am besten repräsentiere. Das Ergebniss unseres Fits an ein Signal, gemessen als Quotitnt, ist in Abb \ref{doppler} zu sehen. Aus den Parametern der Gaußbreiten des Fits berechneten wir Die volle Halbwertsbreite in $\mu s$. Über einen mitaufgenommenen Frequenzkamm rechneten wir sie in eine Frequenzen um. Zuletzt bildeten wir das gewichtete Ḿittel und erhielten als Dopplerbreite $\Delta f_{FWHM}$:
+Wir untersuchten die vier Linien mit und ohne Mathe-Einheit, als Differenz und Quotient. Aus der Linienform der Referenzdiode und den Ergebnissen beim fitten schlossen wir, das ein eine Faltung aus vier Gaußkurven mit einem Polynom 2.Grades die Daten am besten repräsentiere. Das Ergebniss unseres Fits an ein Signal, gemessen als Quotitnt, ist in Abb \ref{doppler} zu sehen. Aus den Parametern der Gaußbreiten des Fits berechneten wir Die volle Halbwertsbreite in $\mu s$. Über einen mitaufgenommenen Frequenzkamm rechneten wir sie in eine Frequenzen um. Zuletzt bildeten wir das gewichtete Mittel und erhielten als Dopplerbreite $\Delta f_{FWHM}$:
 \begin{align*}
  \Delta f_{FWHM} = (\pm) Ghz 
 \end{align*}
-hierbei berechnete sich der Fehler nach der Gaußschen Fehlerfortpflanzung
+hierbei berechnete sich der Fehler nach der Gaußschen Fehlerfortpflanzung. Die Einzelmessungen ergaben:
+\begin{center}
+\begin{tabular}{|l|llll|}
+\hline
+Peak & 1 & 2 & 3 & 4\\
+\hline
+$\Delta f_{FWHM} [Mhz]$ & $596\pm12$ & $598 \pm 6$ & $633 \pm$ 5 & $635 \pm 9$\\
+\hline
+\end{tabular}
+\end{center}
+
 \subsubsection{Abstände der Linien}
 Aus den Fits in Abb \ref{doppler} erhielten wir die Schwerpunkte der Peaks. Wir rechneten Sie wieder in eine Frequenz um und ordneten sie dann ihren Übergängen zu. Das Ergebniss ist in Tabelle \ref{dist} dargestellt.
 \begin{center}
 \begin{tabular}{|l|lll|}
-\label{dist}
 \hline
-Übergang & × & × & ×\\
-Abstand [Ghz] & × & × & ×
+\label{dist}
+Übergang & 1 & 1 & 1\\
+Abstand [Ghz] & 1 & 1 & 1\\
 \hline
 \end{tabular}
 \end{center}
